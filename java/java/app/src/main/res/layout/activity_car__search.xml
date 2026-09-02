@@ -1,0 +1,149 @@
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="#eee"
+    tools:context="com.ideabonyan.iranapp.Fragment.home.Search_Home">
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <include layout="@layout/toolbar"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorPrimary"/>
+
+        <LinearLayout
+            app:layout_scrollFlags="scroll|enterAlways"
+            app:tabMode="scrollable"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.ideabonyan.iranapp.Components.MyTextView
+                android:id="@+id/kasbokarSearchWarn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_marginBottom="-20dp"
+                android:layout_marginRight="20dp"
+                android:text="لطفا کلمه مورد نظر خود را وارد کنید"
+                android:textColor="@color/colorPrimary"
+                android:textSize="10sp"
+                android:visibility="invisible" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:gravity="center_vertical">
+
+                <LinearLayout
+                    android:gravity="center"
+                    android:id="@+id/kasbokarSearchBTN"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:clickable="true"
+                    android:foreground="?selectableItemBackgroundBorderless">
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="30dp"
+                        android:layout_centerInParent="true"
+                        android:src="@drawable/magnify"
+                        android:tint="@color/mildBlack" />
+                </LinearLayout>
+                <LinearLayout
+                    android:gravity="center"
+                    android:id="@+id/lin_select_filter"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:clickable="true"
+                    android:foreground="?selectableItemBackgroundBorderless">
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="25dp"
+                        android:layout_centerInParent="true"
+                        android:src="@drawable/ic_filter_outline"
+                        android:tint="@color/colorPrimary" />
+                </LinearLayout>
+
+                <com.ideabonyan.iranapp.Components.MyEdittextView
+                    android:id="@+id/kasbokarSearchEditText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:hint="کلمه مورد نظر را وارد کنید"
+                    android:inputType="text"
+                    android:textSize="15sp" />
+
+            </LinearLayout>
+        </LinearLayout>
+        <!--<LinearLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="1dp"-->
+            <!--android:background="@color/colorPrimary"/>-->
+    </android.support.design.widget.AppBarLayout>
+    <android.support.v4.widget.NestedScrollView
+        android:id="@+id/kasbokarSearchNestedScroll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+
+            <ProgressBar
+                android:id="@+id/progressbar"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="40dp"
+                android:indeterminateTint="@color/colorPrimary"
+                android:visibility="gone" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/kasbokarSearchRV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone" />
+
+            <ProgressBar
+                android:visibility="gone"
+                android:id="@+id/progressBar1"
+                android:indeterminateTint="@color/colorPrimary"
+                style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
+                android:indeterminate="true"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+
+            <com.ideabonyan.iranapp.Components.MyTextView
+                android:id="@+id/kasbokarSearchEmptyListText"
+                android:visibility="gone"
+                android:text="هیج آگهی برای متن مورد نظر شما ثبت نشده است"
+                android:gravity="center"
+                android:layout_marginTop="20dp"
+                android:textColor="#616161"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+
+
+
+
+
+
+</android.support.design.widget.CoordinatorLayout>

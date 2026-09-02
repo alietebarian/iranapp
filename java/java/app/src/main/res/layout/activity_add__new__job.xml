@@ -1,0 +1,977 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/newAd"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#eee"
+    android:baselineAligned="false"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:layoutDirection="ltr"
+    android:orientation="vertical"
+    tools:context="com.ideabonyan.iranapp.Activity.NewAdActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <include layout="@layout/toolbar_in_newad" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorPrimary"
+            android:visibility="visible" />
+
+    </android.support.design.widget.AppBarLayout>
+
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:elevation="5dp"
+                app:cardCornerRadius="8dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <com.ideabonyan.iranapp.Components.MyTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:background="@color/colorPrimary"
+                        android:gravity="center"
+                        android:text="تصاویر آگهی (اختیاری)"
+                        android:textColor="#fff" />
+
+                    <LinearLayout
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#eee"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:background="#eee"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <LinearLayout
+                                android:layout_weight="2"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:background="#eee"
+                                android:gravity="center"
+                                android:orientation="vertical">
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="5dp"
+                                    android:layout_marginRight="5dp"
+                                    android:layout_marginTop="5dp"
+                                    android:orientation="horizontal">
+
+
+                                    <android.support.v7.widget.CardView
+                                        android:id="@+id/card_pic3"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginBottom="5dp"
+                                        android:layout_marginLeft="5dp"
+                                        android:layout_marginRight="5dp"
+                                        app:cardBackgroundColor="#efefef"
+                                        android:layout_marginTop="5dp"
+                                        android:layout_weight="1"
+                                        app:cardCornerRadius="3dp"
+                                        app:cardElevation="3dp">
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="@dimen/_70sdp">
+
+                                            <FrameLayout
+                                                android:layout_width="match_parent"
+                                                android:layout_height="match_parent">
+
+                                                <ImageView
+                                                    android:id="@+id/img_pic3"
+
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="match_parent"
+                                                    android:clickable="true"
+                                                    android:foreground="?selectableItemBackgroundBorderless"
+                                                    android:scaleType="fitXY" />
+
+                                                <ImageView
+                                                    android:id="@+id/img_add_pic3"
+                                                    android:layout_width="20dp"
+                                                    android:layout_height="20dp"
+                                                    android:layout_gravity="center"
+                                                    android:elevation="1dp"
+                                                    android:src="@drawable/ic_add_black_24dp"
+                                                    android:tint="#4CAF50" />
+
+
+                                            </FrameLayout>
+
+                                        </LinearLayout>
+
+                                    </android.support.v7.widget.CardView>
+
+                                    <android.support.v7.widget.CardView
+                                        android:id="@+id/card_pic2"
+                                        app:cardBackgroundColor="#efefef"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginBottom="5dp"
+                                        android:layout_marginLeft="5dp"
+                                        android:layout_marginRight="5dp"
+                                        android:layout_marginTop="5dp"
+                                        android:layout_weight="1"
+                                        app:cardCornerRadius="3dp"
+                                        app:cardElevation="3dp">
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="@dimen/_70sdp">
+
+                                            <FrameLayout
+                                                android:layout_width="match_parent"
+                                                android:layout_height="match_parent">
+
+                                                <ImageView
+                                                    android:id="@+id/img_pic2"
+
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="match_parent"
+                                                    android:clickable="true"
+                                                    android:foreground="?selectableItemBackgroundBorderless"
+                                                    android:scaleType="fitXY" />
+
+                                                <ImageView
+                                                    android:id="@+id/img_add_pic2"
+                                                    android:layout_width="20dp"
+                                                    android:layout_height="20dp"
+                                                    android:layout_gravity="center"
+                                                    android:elevation="1dp"
+                                                    android:src="@drawable/ic_add_black_24dp"
+                                                    android:tint="#4CAF50" />
+
+                                            </FrameLayout>
+
+                                        </LinearLayout>
+
+                                    </android.support.v7.widget.CardView>
+                                </LinearLayout>
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginBottom="10dp"
+                                    android:layout_marginLeft="5dp"
+                                    android:layout_marginRight="5dp"
+                                    android:orientation="horizontal">
+
+                                    <android.support.v7.widget.CardView
+                                        android:id="@+id/card_pic5"
+                                        android:layout_width="0dp"
+                                        app:cardBackgroundColor="#efefef"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginBottom="5dp"
+                                        android:layout_marginLeft="5dp"
+                                        android:layout_marginRight="5dp"
+                                        android:layout_marginTop="5dp"
+                                        android:layout_weight="1"
+                                        app:cardCornerRadius="3dp"
+                                        app:cardElevation="3dp">
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="@dimen/_70sdp">
+
+                                            <FrameLayout
+                                                android:layout_width="match_parent"
+                                                android:layout_height="match_parent">
+
+                                                <ImageView
+                                                    android:id="@+id/img_add_pic5"
+                                                    android:layout_width="20dp"
+                                                    android:layout_height="20dp"
+                                                    android:layout_gravity="center"
+                                                    android:elevation="1dp"
+                                                    android:src="@drawable/ic_add_black_24dp"
+                                                    android:tint="#4CAF50" />
+
+                                                <ImageView
+                                                    android:id="@+id/img_pic5"
+
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="match_parent"
+                                                    android:clickable="true"
+                                                    android:foreground="?selectableItemBackgroundBorderless"
+                                                    android:scaleType="fitXY" />
+
+                                            </FrameLayout>
+
+                                        </LinearLayout>
+
+                                    </android.support.v7.widget.CardView>
+
+                                    <android.support.v7.widget.CardView
+                                        android:id="@+id/card_pic4"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginBottom="5dp"
+                                        android:layout_marginLeft="5dp"
+                                        android:layout_marginRight="5dp"
+                                        app:cardBackgroundColor="#efefef"
+                                        android:layout_marginTop="5dp"
+                                        android:layout_weight="1"
+                                        app:cardCornerRadius="3dp"
+                                        app:cardElevation="3dp">
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="@dimen/_70sdp">
+
+                                            <FrameLayout
+                                                android:layout_width="match_parent"
+                                                android:layout_height="match_parent">
+
+                                                <ImageView
+                                                    android:id="@+id/img_pic4"
+
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="match_parent"
+                                                    android:clickable="true"
+                                                    android:foreground="?selectableItemBackgroundBorderless"
+                                                    android:scaleType="fitXY" />
+
+                                                <ImageView
+                                                    android:id="@+id/img_add_pic4"
+                                                    android:layout_width="20dp"
+                                                    android:layout_height="20dp"
+                                                    android:layout_gravity="center"
+                                                    android:elevation="1dp"
+                                                    android:src="@drawable/ic_add_black_24dp"
+                                                    android:tint="#4CAF50" />
+
+                                            </FrameLayout>
+
+                                        </LinearLayout>
+
+                                    </android.support.v7.widget.CardView>
+
+                                </LinearLayout>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:gravity="center"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1">
+                                <android.support.v7.widget.CardView
+                                    android:id="@+id/card_pic1"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginBottom="5dp"
+                                    android:layout_marginLeft="5dp"
+                                    android:layout_marginRight="5dp"
+                                    android:layout_marginTop="5dp"
+                                    android:layout_weight="1"
+                                    app:cardCornerRadius="3dp"
+                                    app:cardElevation="3dp">
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="@dimen/_70sdp">
+
+                                        <FrameLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent">
+
+                                            <ImageView
+                                                android:id="@+id/img_add_pic1"
+                                                android:layout_width="20dp"
+                                                android:layout_height="20dp"
+                                                android:layout_gravity="center"
+                                                android:elevation="1dp"
+                                                android:src="@drawable/ic_add_black_24dp"
+                                                android:tint="#4CAF50" />
+                                            <ImageView
+                                                android:id="@+id/img_pic1"
+
+                                                android:layout_width="match_parent"
+                                                android:layout_height="match_parent"
+                                                android:clickable="true"
+                                                android:foreground="?selectableItemBackgroundBorderless"
+                                                android:scaleType="fitXY" />
+
+
+                                        </FrameLayout>
+
+                                    </LinearLayout>
+
+                                </android.support.v7.widget.CardView>
+
+                            </LinearLayout>
+                        </LinearLayout>
+
+
+
+
+                    </LinearLayout>
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:elevation="5dp"
+                app:cardCornerRadius="8dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <com.ideabonyan.iranapp.Components.MyTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:background="@color/colorPrimary"
+                        android:gravity="center"
+                        android:text="مشخصات آگهی"
+                        android:textColor="#fff" />
+
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+
+                        android:layout_marginRight="5dp"
+                        android:layout_marginTop="5dp"
+                        android:textColorHint="#9e9e9e">
+
+                        <com.ideabonyan.iranapp.Components.MyEdittextView
+                            android:id="@+id/edt_title"
+                            android:layout_width="match_parent"
+                            android:layout_height="45dp"
+                            android:background="@drawable/edittext_background"
+                            android:gravity="center_vertical|right"
+                            android:hint="عنوان آگهی ( اجباری )"
+                            android:paddingRight="8dp"
+                            android:textSize="14sp" />
+                    </android.support.design.widget.TextInputLayout>
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+
+                        android:layout_marginRight="5dp"
+                        android:textColorHint="#9e9e9e">
+
+                        <com.ideabonyan.iranapp.Components.MyEdittextView
+                            android:id="@+id/edt_dec"
+                            android:layout_width="match_parent"
+                            android:layout_height="150dp"
+                            android:layout_marginBottom="10dp"
+                            android:background="@drawable/edittext_background"
+                            android:gravity="right"
+                            android:hint="توضیحات آگهی ( اجباری )"
+                            android:paddingBottom="5dp"
+                            android:paddingRight="8dp"
+                            android:paddingTop="10dp"
+                            android:textSize="14sp" />
+                    </android.support.design.widget.TextInputLayout>
+
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:elevation="5dp"
+                app:cardCornerRadius="8dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:animateLayoutChanges="true"
+                    android:orientation="vertical">
+
+                    <com.ideabonyan.iranapp.Components.MyTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:background="@color/colorPrimary"
+                        android:gravity="center"
+                        android:text="اطلاعات تکمیلی"
+                        android:textColor="#fff" />
+
+                    <LinearLayout
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="3dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/edittext_background">
+
+                        <Spinner
+                            android:id="@+id/spin_type"
+                            android:layout_width="0dp"
+                            android:layout_height="45dp"
+                            android:layout_weight="1"
+                            android:layoutDirection="rtl"
+                            android:paddingRight="8dp"
+                            android:textSize="14sp" />
+
+                        <com.ideabonyan.iranapp.Components.MyTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="right|center_vertical"
+                            android:layout_marginRight="13dp"
+                            android:text="آماده به کار / استخدام ( اجباری )"
+                            android:textColor="@color/colorAccent"
+                            android:textSize="12dp" />
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/lin_brand"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="3dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:background="@drawable/edittext_background">
+
+                        <Spinner
+                            android:id="@+id/spin_education_level"
+                            android:layout_width="0dp"
+                            android:layout_height="45dp"
+                            android:layout_weight="1"
+                            android:layoutDirection="rtl"
+                            android:paddingRight="8dp"
+                            android:textSize="14sp" />
+
+                        <com.ideabonyan.iranapp.Components.MyTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="right|center_vertical"
+                            android:layout_marginRight="13dp"
+                            android:text="میزان تحصیلات ( اجباری )"
+                            android:textColor="@color/colorAccent"
+                            android:textSize="12dp" />
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/lin_modell"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="3dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:background="@drawable/edittext_background">
+
+                        <Spinner
+                            android:id="@+id/spin_specialty"
+                            android:layout_width="0dp"
+                            android:layout_height="45dp"
+                            android:layout_weight="1"
+                            android:layoutDirection="rtl"
+                            android:paddingRight="8dp"
+                            android:textSize="14sp" />
+
+                        <com.ideabonyan.iranapp.Components.MyTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="right|center_vertical"
+                            android:layout_marginRight="13dp"
+                            android:text="تخصص ( اجباری )"
+                            android:textColor="@color/colorAccent"
+                            android:textSize="12dp" />
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/lin_shasi"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="3dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:background="@drawable/edittext_background">
+
+                        <Spinner
+                            android:id="@+id/spin_agremment_type"
+                            android:layout_width="0dp"
+                            android:layout_height="45dp"
+                            android:layout_weight="1"
+                            android:layoutDirection="rtl"
+                            android:paddingRight="8dp"
+                            android:textSize="14sp" />
+
+                        <com.ideabonyan.iranapp.Components.MyTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="right|center_vertical"
+                            android:layout_marginRight="13dp"
+                            android:text="نوع قرارداد ( اجباری )"
+                            android:textColor="@color/colorAccent"
+                            android:textSize="12dp" />
+
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_marginBottom="5dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="right|center_vertical"
+                        android:orientation="horizontal">
+
+
+                        <RadioGroup
+
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_weight="1"
+                            android:orientation="horizontal">
+
+                            <com.ideabonyan.iranapp.Components.MyRadioButton
+                                android:id="@+id/radio_company"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:layoutDirection="rtl"
+                                android:text="شرکت/فروشگاه"
+                                android:textColor="#009688" />
+
+                            <com.ideabonyan.iranapp.Components.MyRadioButton
+                                android:id="@+id/radio_person"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:layoutDirection="rtl"
+                                android:text="فرد"
+                                android:textColor="#009688" />
+
+                        </RadioGroup>
+
+                        <com.ideabonyan.iranapp.Components.MyTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="3dp"
+                            android:layout_marginTop="3dp"
+                            android:text="آگهی دهنده ( اجباری )"
+                            android:textSize="10sp" />
+
+
+                    </LinearLayout>
+
+
+
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:elevation="5dp"
+                app:cardCornerRadius="8dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <com.ideabonyan.iranapp.Components.MyTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:background="@color/colorPrimary"
+                        android:gravity="center"
+                        android:text="اطلاعات شخصی"
+                        android:textColor="#fff" />
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+
+                        android:layout_marginRight="5dp"
+                        android:layout_marginTop="5dp"
+                        android:textColorHint="#9e9e9e">
+
+                        <com.ideabonyan.iranapp.Components.MyEdittextView
+                            android:id="@+id/edt_name"
+                            android:layout_width="match_parent"
+                            android:layout_height="45dp"
+                            android:background="@drawable/edittext_background"
+                            android:gravity="center_vertical|right"
+                            android:hint="نام و نام خانوادگی ( اجباری )"
+                            android:paddingRight="8dp"
+                            android:textSize="14sp" />
+                    </android.support.design.widget.TextInputLayout>
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+
+                        android:layout_marginRight="5dp"
+                        android:layout_marginTop="5dp"
+                        android:textColorHint="#9e9e9e">
+
+                        <com.ideabonyan.iranapp.Components.MyEdittextView
+                            android:id="@+id/edt_phone1"
+                            android:layout_width="match_parent"
+                            android:layout_height="45dp"
+                            android:background="@drawable/edittext_background"
+                            android:gravity="center_vertical|right"
+                            android:hint="تلفن تماس 1 (11 رقم - اجباری )"
+                            android:inputType="number"
+                            android:maxLength="11"
+                            android:paddingRight="8dp"
+                            android:textSize="14sp" />
+                    </android.support.design.widget.TextInputLayout>
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+
+                        android:layout_marginRight="5dp"
+                        android:layout_marginTop="5dp"
+                        android:textColorHint="#9e9e9e">
+
+                        <com.ideabonyan.iranapp.Components.MyEdittextView
+                            android:id="@+id/edt_phone2"
+                            android:layout_width="match_parent"
+                            android:layout_height="45dp"
+                            android:background="@drawable/edittext_background"
+                            android:gravity="center_vertical|right"
+                            android:hint="تلفن تماس 2 (11 رقم - اختیاری )"
+                            android:inputType="number"
+                            android:maxLength="11"
+
+                            android:paddingRight="8dp"
+                            android:textSize="14sp" />
+                    </android.support.design.widget.TextInputLayout>
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:elevation="5dp"
+                app:cardCornerRadius="8dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <com.ideabonyan.iranapp.Components.MyTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:background="@color/colorPrimary"
+                        android:gravity="center"
+                        android:text="اطلاعات موقعیت"
+                        android:textColor="#fff" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:background="@drawable/edittext_background">
+
+                        <Spinner
+                            android:id="@+id/spin_province"
+                            android:layout_width="0dp"
+                            android:layout_height="45dp"
+                            android:layout_weight="1"
+                            android:layoutDirection="rtl"
+                            android:paddingRight="8dp"
+                            android:textSize="14sp" />
+
+
+                        <com.ideabonyan.iranapp.Components.MyTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="right|center_vertical"
+                            android:layout_marginRight="13dp"
+                            android:text="استان ( اجباری )"
+                            android:textColor="@color/colorAccent"
+                            android:textSize="12dp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:background="@drawable/edittext_background">
+
+                        <Spinner
+                            android:id="@+id/spin_city"
+                            android:layout_width="0dp"
+                            android:layout_height="45dp"
+                            android:layout_weight="1"
+                            android:layoutDirection="rtl"
+                            android:paddingRight="8dp"
+                            android:textSize="14sp" />
+
+                        <com.ideabonyan.iranapp.Components.MyTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="right|center_vertical"
+                            android:layout_marginRight="13dp"
+                            android:text="شهر ( اجباری )"
+                            android:textColor="@color/colorAccent"
+                            android:textSize="12dp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:background="@drawable/edittext_background">
+
+                        <Spinner
+                            android:id="@+id/spin_region"
+                            android:layout_width="0dp"
+                            android:layout_height="45dp"
+                            android:layout_weight="1"
+                            android:layoutDirection="rtl"
+                            android:paddingRight="8dp"
+                            android:textSize="14sp" />
+
+                        <com.ideabonyan.iranapp.Components.MyTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="right|center_vertical"
+                            android:layout_marginRight="13dp"
+                            android:text="منطقه ( اجباری )"
+                            android:textColor="@color/colorAccent"
+                            android:textSize="12dp" />
+
+                    </LinearLayout>
+                    <com.ideabonyan.iranapp.Components.MyTextView
+                        android:layout_marginRight="5dp"
+                        android:layout_width="match_parent"
+                        android:gravity="right"
+                        android:layout_height="wrap_content"
+                        android:text="آدرس شما در برنامه نمایش داده نمی شود"/>
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+
+                        android:layout_marginRight="5dp"
+                        android:layout_marginTop="5dp"
+                        android:textColorHint="#9e9e9e">
+
+                        <com.ideabonyan.iranapp.Components.MyEdittextView
+                            android:id="@+id/edt_address"
+                            android:layout_width="match_parent"
+                            android:layout_height="80dp"
+                            android:layout_marginBottom="10dp"
+                            android:background="@drawable/edittext_background"
+                            android:gravity="right"
+                            android:hint="آدرس ( اجباری )"
+                            android:paddingBottom="10dp"
+                            android:paddingRight="8dp"
+                            android:paddingTop="10dp"
+                            android:textSize="14sp" />
+                    </android.support.design.widget.TextInputLayout>
+
+                    <android.support.v7.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginTop="20dp"
+                        android:elevation="5dp"
+                        app:cardCornerRadius="8dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <com.ideabonyan.iranapp.Components.MyCheckbox
+                                android:id="@+id/newAdShowMap"
+                                android:layout_width="match_parent"
+                                android:layout_height="35dp"
+                                android:background="@color/colorPrimary"
+                                android:buttonTint="#fff"
+                                android:checked="false"
+                                android:paddingLeft="5dp"
+                                android:paddingRight="10dp"
+                                android:text="نشان کردن روی نقشه ( اختیاری )"
+                                android:textColor="#fff" />
+                            <RelativeLayout
+                                android:visibility="gone"
+                                android:id="@+id/newAdMapLayout"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical">
+                                    <RelativeLayout
+
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        >
+
+                                        <fragment
+                                            android:id="@+id/newAdMap"
+                                            android:name="com.google.android.gms.maps.SupportMapFragment"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="@dimen/_250sdp" />
+
+                                        <ImageView
+                                            android:id="@+id/newAdMapOverlay"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="@dimen/_250sdp"
+                                            android:src="#00875252" />
+                                    </RelativeLayout>
+                                    <LinearLayout
+                                        android:visibility="gone"
+                                        android:id="@+id/lin_remove_map_loc"
+                                        android:layout_width="match_parent"
+                                        android:gravity="center"
+                                        android:layout_height="35dp">
+                                        <com.ideabonyan.iranapp.Components.MyTextView
+                                            android:textColor="#444"
+                                            android:text="حذف نشان روی نقشه"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content" />
+                                    </LinearLayout>
+
+                                </LinearLayout>
+                            </RelativeLayout>
+
+
+
+                        </LinearLayout>
+
+                    </android.support.v7.widget.CardView>
+
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
+            <LinearLayout
+                android:visibility="gone"
+                android:paddingBottom="10dp"
+                android:foreground="?attr/selectableItemBackgroundBorderless"
+                android:clickable="true"
+                android:id="@+id/lin_accept_roul"
+                android:paddingTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center">
+                <com.ideabonyan.iranapp.Components.MyTextView
+                    android:textSize="16sp"
+                    android:textColor="#03A9F4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="با قوانین و شرایط موافقم"/>
+            </LinearLayout>
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="60dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="10dp"
+                android:elevation="5dp"
+                app:cardCornerRadius="8dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <com.ideabonyan.iranapp.Components.MyButton
+                        android:id="@+id/newAdSubmitBTN"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:background="@drawable/login_sign_up_btn"
+                        android:foreground="?android:attr/selectableItemBackground"
+                        android:text="ثبت آگهی"
+                        android:textColor="#fff" />
+
+
+                    <ProgressBar
+                        android:id="@+id/newAdProgressbar"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:layout_centerInParent="true"
+                        android:elevation="10dp"
+                        android:indeterminateTint="#fff"
+                        android:visibility="gone" />
+
+                </RelativeLayout>
+
+            </android.support.v7.widget.CardView>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <ProgressBar
+        android:id="@+id/newAdSpinnerLoadProgressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="false"
+        android:layout_marginBottom="-5dp"
+        android:layout_marginTop="-5dp"
+        android:indeterminate="true"
+        android:indeterminateTint="@color/colorPrimary"
+        android:visibility="gone" />
+
+</LinearLayout>

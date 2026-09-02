@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="180dp"
+    android:background="#263238"
+    android:layoutDirection="rtl"
+    android:textDirection="rtl">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="-383dp"
+        android:background="#b71c1c"
+        android:rotation="-60" />
+
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:background="#b71c1c" />
+
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginRight="150dp"
+        android:layout_marginTop="38dp"
+        android:src="#263238"
+        app:civ_border_color="#b71c1c"
+        app:civ_border_width="3dp" />
+
+    <ImageView
+        android:padding="2dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginRight="170dp"
+        android:layout_marginTop="55dp"
+        android:tint="#fff"/>
+
+    <com.ideabonyan.iranapp.Components.MyTextView
+        android:id="@+id/headerWelcomeTXT"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_marginRight="10dp"
+        android:gravity="center_vertical"
+        android:text="کاربر مهمان به قلک خوش آمدید "
+        android:textColor="#fff"
+        android:textSize="14sp" />
+
+    <com.ideabonyan.iranapp.Components.MyTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="117dp"
+        android:text="با اپ قلک"
+        android:textColor="#fff"
+        android:textSize="15dp" />
+
+    <com.ideabonyan.iranapp.Components.MyTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="137dp"
+        android:text="از پول خود نگهداری کنید"
+        android:textColor="#fff"
+        android:textSize="15dp" />
+
+
+    <com.ideabonyan.iranapp.Components.MyTextView
+        android:id="@+id/headerAccountTXT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="35dp"
+        android:layout_marginTop="150dp"
+        android:text="برای ورود یا ثبت نام کلیک کنید"
+        android:textColor="#fff"
+        android:textSize="12dp"
+        android:visibility="gone" />
+
+    <ImageView
+        android:id="@+id/headerTouchIcon"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="150dp"
+        android:src="@drawable/gesturetap"
+        android:visibility="gone" />
+
+
+</RelativeLayout>

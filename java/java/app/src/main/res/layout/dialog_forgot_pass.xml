@@ -1,0 +1,196 @@
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/forgotPassDialogRoot"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:layoutDirection="ltr"
+    android:minWidth="4500dp"
+    app:cardBackgroundColor="#eee">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#fff"
+        android:gravity="right"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="#fff">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+
+                android:background="@color/colorPrimary"
+                android:gravity="right|center_vertical"
+                android:orientation="horizontal">
+
+                <com.ideabonyan.iranapp.Components.MyTextView
+                    android:id="@+id/forgotPassDialogTitleText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:text="رمز عبور جدید"
+                    android:textColor="#fff"
+                    android:textSize="15sp" />
+
+            </LinearLayout>
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/imagestorecircle"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="15dp"
+                android:src="#fff"
+                app:civ_border_color="@color/colorPrimary"
+                app:civ_border_width="3dp" />
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="34dp"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"
+                android:layout_marginBottom="3dp"
+                android:layout_marginLeft="23dp"
+                android:src="@drawable/ic_vpn_key_white_24dp"
+                android:tint="@color/colorPrimary" />
+
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#fff"
+                android:orientation="vertical">
+
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/forgotPassDialogPhoneEdtP"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="5dp"
+                    android:textColorHint="#9e9e9e">
+
+                    <com.ideabonyan.iranapp.Components.MyEdittextView
+                        android:id="@+id/forgotPassDialogPhoneEdt"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@drawable/edittext_background"
+                        android:gravity="center_vertical|right"
+                        android:hint="شماره همراه خود را وارد کنید"
+                        android:inputType="number"
+                        android:paddingRight="8dp"
+                        android:textSize="14sp" />
+                </android.support.design.widget.TextInputLayout>
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/forgotPassDialogConfirmationCodeEdtP"
+                    android:visibility="gone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="5dp"
+                    android:textColorHint="#9e9e9e">
+
+                    <com.ideabonyan.iranapp.Components.MyEdittextView
+                        android:id="@+id/forgotPassDialogConfirmationCodeEdt"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@drawable/edittext_background"
+                        android:gravity="center_vertical|right"
+                        android:hint="کد تایید را وارد کنید"
+                        android:inputType="number"
+                        android:paddingRight="8dp"
+                        android:textSize="14sp" />
+                </android.support.design.widget.TextInputLayout>
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/forgotPassDialogNewPassEdtP"
+                    android:visibility="gone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="5dp"
+                    android:textColorHint="#9e9e9e">
+
+                    <com.ideabonyan.iranapp.Components.MyEdittextView
+                        android:id="@+id/forgotPassDialogNewPassEdt"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@drawable/edittext_background"
+                        android:gravity="center_vertical|right"
+                        android:hint="رمز عبور جدید را وارد کنید (6 حرف)"
+                        android:paddingRight="8dp"
+                        android:textSize="14sp" />
+                </android.support.design.widget.TextInputLayout>
+
+
+
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp">
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <ProgressBar
+                            android:visibility="gone"
+                            android:indeterminateTint="@color/hotText"
+                            android:id="@+id/forgotPassDialogProgressBar"
+                            android:layout_centerInParent="true"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp" />
+
+                        <com.ideabonyan.iranapp.Components.MyButton
+                            android:visibility="visible"
+                            android:id="@+id/forgotPassDialogShowBTN"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="#0000"
+                            android:foreground="?selectableItemBackgroundBorderless"
+                            android:text="درخواست کد"
+                            android:textColor="@color/hotText" />
+                    </RelativeLayout>
+
+                    <com.ideabonyan.iranapp.Components.MyButton
+                        android:id="@+id/forgotPassDialogDismissBTN"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="#0000"
+                        android:foreground="?selectableItemBackgroundBorderless"
+                        android:text="انصراف"
+                        android:textColor="@color/hotText" />
+                </LinearLayout>
+            </LinearLayout>
+
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</android.support.v7.widget.CardView>

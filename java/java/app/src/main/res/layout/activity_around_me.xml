@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:id="@+id/aroundMeRootView"
+    android:layoutDirection="ltr"
+    tools:context="com.ideabonyan.iranapp.Activity.AroundMeActivity">
+
+    <!--<LinearLayout-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:elevation="10dp">-->
+
+    <!--<android.support.v7.widget.CardView-->
+    <!--android:clickable="true"-->
+    <!--android:foreground="?selectableItemBackground"-->
+    <!--android:layout_width="0dp"-->
+    <!--android:layout_height="50dp"-->
+    <!--android:layout_marginTop="10dp"-->
+    <!--android:layout_marginLeft="10dp"-->
+    <!--android:layout_marginBottom="10dp"-->
+    <!--android:layout_marginRight="5dp"-->
+    <!--android:layout_weight="1.3">-->
+
+    <!--<LinearLayout-->
+    <!--android:gravity="center"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent">-->
+
+    <!--<ImageView-->
+    <!--android:layout_width="30dp"-->
+    <!--android:layout_height="30dp"-->
+    <!--android:src="@drawable/magnify"-->
+    <!--android:tint="#757575" />-->
+    <!--</LinearLayout>-->
+    <!--</android.support.v7.widget.CardView>-->
+
+    <!--<android.support.v7.widget.CardView-->
+    <!--android:layout_marginTop="10dp"-->
+    <!--android:layout_marginBottom="10dp"-->
+    <!--android:layout_marginRight="10dp"-->
+    <!--android:layout_width="0dp"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_weight="7">-->
+
+    <!--<RelativeLayout-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:paddingLeft="15dp"-->
+    <!--android:paddingRight="15dp">-->
+
+    <!--<com.ideabonyan.iranapp.Components.MyTextView-->
+    <!--android:id="@+id/text1"-->
+    <!--android:textColor="#757575"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_alignParentRight="true"-->
+    <!--android:layout_centerVertical="true"-->
+    <!--android:text="گشتن در شعاع:" />-->
+
+    <!--<com.ideabonyan.iranapp.Components.MyTextView-->
+    <!--android:id="@+id/text2"-->
+    <!--android:textColor="#757575"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_centerVertical="true"-->
+    <!--android:text="متری" />-->
+
+    <!--<com.ideabonyan.iranapp.Components.MyEdittextView-->
+    <!--android:inputType="number"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="50dp"-->
+    <!--android:layout_toLeftOf="@id/text1"-->
+    <!--android:layout_toRightOf="@id/text2"-->
+    <!--android:gravity="center"-->
+    <!--android:text="500" />-->
+
+    <!--</RelativeLayout>-->
+
+    <!--</android.support.v7.widget.CardView>-->
+    <!--</LinearLayout>-->
+
+    <!--<ImageView-->
+        <!--android:id="@+id/aroundMeMapOverlay"-->
+        <!--android:src="#00875252"-->
+        <!--android:elevation="10dp"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent" />-->
+
+
+
+    <fragment
+        android:id="@+id/aroundMeMap"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <ProgressBar
+        android:id="@+id/aroundMeProgressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:indeterminate="true"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="-7dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:indeterminateTint="@color/colorPrimary" />
+
+    <android.support.v7.widget.CardView
+        app:cardElevation="10dp"
+        android:layout_width="match_parent"
+        app:cardUseCompatPadding="true"
+        android:layout_height="wrap_content"
+        android:layout_margin="0dp">
+
+        <LinearLayout
+
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dp">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4">
+
+                    <Spinner
+
+                        android:id="@+id/aroundMeSubCatSpinner"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
+
+                    <com.ideabonyan.iranapp.Components.MyTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="زیر دسته:"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4">
+
+                    <Spinner
+                        android:id="@+id/aroundMeCatSpinner"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
+
+                    <com.ideabonyan.iranapp.Components.MyTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="دسته:"
+                        android:textSize="12sp" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+
+            <ProgressBar
+                android:id="@+id/aroundMeSpinnerLoadProgressBar"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:indeterminate="true"
+                android:indeterminateTint="@color/colorPrimary" />
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+    <android.support.v7.widget.CardView
+        android:id="@+id/aroundMeNoAdCard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="50dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:alpha=".8"
+        android:visibility="gone"
+        app:cardBackgroundColor="#FF9800"
+        app:contentPadding="5dp">
+
+        <com.ideabonyan.iranapp.Components.MyTextView
+            android:id="@+id/aroundMeNoAdAroundMeText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="در نزدیکی شما آگهی وجود ندارد. شما میتوانید با تکان دادن نقشه اگهی های دورتر را ببینید."
+            android:textColor="#ffffff"
+            android:visibility="gone" />
+
+        <com.ideabonyan.iranapp.Components.MyTextView
+            android:id="@+id/aroundMeNoAdWhereILookText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="در منطقه ای که میبینید آگهی وجود ندارد."
+            android:textColor="#ffffff"
+            android:visibility="gone" />
+
+    </android.support.v7.widget.CardView>
+
+</RelativeLayout>

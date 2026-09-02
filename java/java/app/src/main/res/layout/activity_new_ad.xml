@@ -1,0 +1,1426 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/newAd"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#eee"
+    android:focusable="true"
+    android:layoutDirection="ltr"
+    android:focusableInTouchMode="true"
+    android:orientation="vertical"
+    tools:context="com.ideabonyan.iranapp.Activity.NewAdActivity"
+    android:baselineAligned="false">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <include layout="@layout/toolbar_in_newad" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorPrimary"
+            android:visibility="visible" />
+
+    </android.support.design.widget.AppBarLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ScrollView
+            android:id="@+id/newAdScrollView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <android.support.v7.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:elevation="5dp"
+                    app:cardCornerRadius="8dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <com.ideabonyan.iranapp.Components.MyTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="35dp"
+                            android:background="@color/colorPrimary"
+                            android:gravity="center"
+                            android:text="مشخصات آگهی"
+                            android:textColor="#fff" />
+
+                        <com.ideabonyan.iranapp.Components.MyTextView
+                            android:id="@+id/newAdTitleWarn"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:layout_marginBottom="-20dp"
+                            android:layout_marginLeft="15dp"
+                            android:text="لطفا عنوان آگهی خود را وارد کنید"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="10sp"
+                            android:visibility="invisible" />
+
+                        <android.support.design.widget.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+
+                            android:layout_marginRight="5dp"
+                            android:layout_marginTop="5dp"
+                            android:textColorHint="#9e9e9e">
+
+                            <com.ideabonyan.iranapp.Components.MyEdittextView
+                                android:id="@+id/newAdTitle"
+                                android:layout_width="match_parent"
+                                android:layout_height="45dp"
+                                android:layout_marginBottom="10dp"
+                                android:background="@drawable/edittext_background"
+                                android:gravity="center_vertical|right"
+                                android:hint="عنوان (اجباری)"
+                                android:paddingRight="8dp"
+                                android:textSize="14sp" />
+                        </android.support.design.widget.TextInputLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="-8dp">
+
+                            <com.ideabonyan.iranapp.Components.MyTextView
+                                android:id="@+id/newAdCatWarn"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="left"
+                                android:layout_marginLeft="15dp"
+                                android:text="لطفا دسته بندی آگهی خود را انتخاب کنید"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="10sp"
+                                android:visibility="invisible" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="11dp"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="5dp"
+                            android:background="@drawable/edittext_background">
+
+                            <Spinner
+                                android:id="@+id/newAdCategories"
+                                android:layout_width="0dp"
+                                android:layout_height="45dp"
+                                android:layout_weight="1"
+                                android:layoutDirection="rtl"
+                                android:paddingRight="8dp"
+                                android:textSize="14sp" />
+
+                            <com.ideabonyan.iranapp.Components.MyTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="right|center_vertical"
+                                android:layout_marginRight="13dp"
+                                android:text="دسته ها (اجباری)"
+                                android:textColor="@color/colorAccent"
+                                android:textSize="12dp" />
+
+
+                        </LinearLayout>
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="-8dp">
+
+                            <com.ideabonyan.iranapp.Components.MyTextView
+                                android:id="@+id/newAdSubCatWarn"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="left"
+                                android:layout_marginLeft="15dp"
+                                android:text="لطفا دسته بندی آگهی خود را انتخاب کنید"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="10sp"
+                                android:visibility="invisible" />
+
+
+                        </LinearLayout>
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="10dp"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="5dp"
+                            android:background="@drawable/edittext_background">
+
+                            <Spinner
+                                android:id="@+id/newAdSubCategories"
+                                android:layout_width="0dp"
+                                android:layout_height="45dp"
+                                android:layout_weight="1"
+                                android:layoutDirection="rtl"
+                                android:paddingRight="8dp"
+                                android:textSize="14sp" />
+
+
+                            <com.ideabonyan.iranapp.Components.MyTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="right|center_vertical"
+                                android:layout_marginRight="13dp"
+                                android:text="زیر دسته ها (اجباری)"
+                                android:textColor="@color/colorAccent"
+                                android:textSize="12dp" />
+
+                        </LinearLayout>
+
+
+                        <com.ideabonyan.iranapp.Components.MyTextView
+                            android:id="@+id/newAdDescriptionWarn"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:layout_marginBottom="-20dp"
+                            android:layout_marginLeft="15dp"
+                            android:text="لطفا متن آگهی خود را وارد کنید"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="10sp"
+                            android:visibility="invisible" />
+
+                        <android.support.design.widget.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+
+                            android:layout_marginRight="5dp"
+                            android:layout_marginTop="5dp"
+                            android:textColorHint="#9e9e9e">
+
+                            <com.ideabonyan.iranapp.Components.MyEdittextView
+                                android:id="@+id/newAdDescription"
+                                android:layout_width="match_parent"
+                                android:layout_height="150dp"
+                                android:layout_marginBottom="10dp"
+                                android:background="@drawable/edittext_background"
+                                android:gravity="right"
+                                android:hint="متن آگهی (اجباری)"
+                                android:paddingBottom="10dp"
+                                android:paddingRight="8dp"
+                                android:paddingTop="10dp"
+                                android:textSize="14sp" />
+                        </android.support.design.widget.TextInputLayout>
+
+                        <android.support.design.widget.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+
+                            android:layout_marginRight="5dp"
+                            android:layout_marginTop="5dp"
+                            android:textColorHint="#9e9e9e">
+
+                            <com.ideabonyan.iranapp.Components.MyEdittextView
+                                android:id="@+id/newAdWorkTime"
+                                android:layout_width="match_parent"
+                                android:layout_height="45dp"
+                                android:layout_marginBottom="10dp"
+                                android:background="@drawable/edittext_background"
+                                android:gravity="center_vertical|right"
+                                android:hint="ساعات کاری (اختیاری)"
+                                android:paddingBottom="10dp"
+                                android:paddingRight="8dp"
+                                android:paddingTop="10dp"
+                                android:textSize="14sp" />
+                        </android.support.design.widget.TextInputLayout>
+
+
+                        <com.ideabonyan.iranapp.Components.MyTextView
+                            android:id="@+id/newAdOwnerNameWarn"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:layout_marginBottom="-20dp"
+                            android:layout_marginLeft="15dp"
+                            android:text="لطفا نام مدیر را وارد کنید"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="10sp"
+                            android:visibility="invisible" />
+
+                        <android.support.design.widget.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+
+                            android:layout_marginRight="5dp"
+                            android:layout_marginTop="5dp"
+                            android:textColorHint="#9e9e9e">
+
+                            <com.ideabonyan.iranapp.Components.MyEdittextView
+                                android:id="@+id/newAdOwnerName"
+                                android:layout_width="match_parent"
+                                android:layout_height="45dp"
+                                android:layout_marginBottom="10dp"
+                                android:background="@drawable/edittext_background"
+                                android:gravity="center_vertical|right"
+                                android:hint="نام مدیر آگهی (اجباری)"
+                                android:paddingBottom="10dp"
+                                android:paddingRight="8dp"
+                                android:paddingTop="10dp"
+                                android:textSize="14sp" />
+                        </android.support.design.widget.TextInputLayout>
+                        <com.ideabonyan.iranapp.Components.MyTextView
+                            android:id="@+id/txt_Dis_Danger"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:layout_marginBottom="-20dp"
+                            android:layout_marginLeft="15dp"
+                            android:text="لطفا درصد تخفیف را وارد نمایید."
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="10sp"
+                            android:visibility="invisible" />
+
+                        <android.support.design.widget.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+
+                            android:layout_marginRight="5dp"
+                            android:layout_marginTop="5dp"
+                            android:textColorHint="#9e9e9e">
+
+                            <com.ideabonyan.iranapp.Components.MyEdittextView
+                                android:id="@+id/newAdDiscount"
+                                android:layout_width="match_parent"
+                                android:layout_height="45dp"
+                                android:layout_marginBottom="10dp"
+                                android:background="@drawable/edittext_background"
+                                android:gravity="center_vertical|right"
+                                android:hint="درصد تخفیف (اجباری)"
+                                android:inputType="number"
+                                android:maxLength="2"
+                                android:paddingBottom="10dp"
+                                android:paddingRight="8dp"
+                                android:paddingTop="10dp"
+                                android:textSize="14sp" />
+                        </android.support.design.widget.TextInputLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="-8dp">
+
+                            <com.ideabonyan.iranapp.Components.MyTextView
+                                android:id="@+id/newAdTypeWarn"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="left"
+                                android:layout_marginLeft="15dp"
+                                android:text="لطفا نوع آگهی خود را انتخاب کنید"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="10sp"
+                                android:visibility="invisible" />
+                        </LinearLayout>
+
+
+                        <LinearLayout
+                            android:visibility="gone"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <com.ideabonyan.iranapp.Components.MyTextView
+                                android:id="@+id/newAdPlanPrice"
+                                android:layout_width="0dp"
+                                android:layout_height="40dp"
+                                android:layout_weight="4"
+                                android:gravity="center"
+                                android:text="- -" />
+
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="10dp"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="5dp"
+                                android:layout_weight="7"
+                                android:background="@drawable/edittext_background">
+
+                                <Spinner
+                                    android:id="@+id/newAdAdKind"
+                                    android:layout_width="0dp"
+                                    android:layout_height="45dp"
+                                    android:layout_weight="1"
+                                    android:layoutDirection="rtl"
+                                    android:paddingRight="8dp"
+                                    android:textSize="14sp" />
+
+
+                                <com.ideabonyan.iranapp.Components.MyTextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="right|center_vertical"
+                                    android:layout_marginRight="13dp"
+                                    android:text="نوع آگهی"
+                                    android:textColor="@color/colorAccent"
+                                    android:textSize="12dp" />
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+
+                        <android.support.v7.widget.CardView
+                            android:id="@+id/newAdPlanDescription"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="5dp"
+                            android:visibility="gone"
+                            app:cardBackgroundColor="#f5f5f5"
+                            app:cardCornerRadius="8dp"
+                            app:cardElevation="1dp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <com.ideabonyan.iranapp.Components.MyTextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="25dp"
+                                    android:background="@color/hotText"
+                                    android:gravity="center"
+                                    android:text="ویژگی های نوع آگهی"
+                                    android:textColor="#fff"
+                                    android:textSize="12sp" />
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical"
+                                    android:padding="10dp">
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content">
+
+                                        <com.ideabonyan.iranapp.Components.MyTextView
+                                            android:id="@+id/newAdPlanImageCount"
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="2"
+                                            android:gravity="left"
+                                            android:text="3"
+                                            android:textColor="@color/hotText" />
+
+                                        <com.ideabonyan.iranapp.Components.MyTextView
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="8"
+                                            android:text="حد اکثر تعداد تصاویر:"
+                                            android:textColor="@color/hotText" />
+
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content">
+
+                                        <com.ideabonyan.iranapp.Components.MyTextView
+                                            android:id="@+id/newAdPlanUpdateCount"
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="2"
+                                            android:gravity="left"
+                                            android:text="5"
+                                            android:textColor="@color/hotText" />
+
+                                        <com.ideabonyan.iranapp.Components.MyTextView
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="8"
+                                            android:text="حد اکثر دفعات امکان تغییر در آگهی:"
+                                            android:textColor="@color/hotText" />
+
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content">
+
+                                        <com.ideabonyan.iranapp.Components.MyTextView
+                                            android:id="@+id/newAdPlanInterval"
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="2"
+                                            android:gravity="left"
+                                            android:text="7"
+                                            android:textColor="@color/hotText" />
+
+                                        <com.ideabonyan.iranapp.Components.MyTextView
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="8"
+                                            android:text="اعتبار آگهی به روز:"
+                                            android:textColor="@color/hotText" />
+
+                                    </LinearLayout>
+
+                                </LinearLayout>
+                            </LinearLayout>
+
+                        </android.support.v7.widget.CardView>
+
+                        <android.support.v7.widget.CardView
+                            android:id="@+id/newAdCantUpdateTypeWarn"
+                            android:visibility="gone"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="5dp"
+                            app:cardBackgroundColor="#f5f5f5"
+                            app:cardCornerRadius="8dp"
+                            app:cardElevation="1dp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+
+                                <com.ideabonyan.iranapp.Components.MyTextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="25dp"
+                                    android:background="#FF5722"
+                                    android:gravity="center"
+                                    android:text="اطلاعات نوع آگهی"
+                                    android:textColor="#fff"
+                                    android:textSize="12sp" />
+
+                                <LinearLayout
+                                    android:padding="5dp"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center_vertical">
+
+                                    <ImageButton
+                                        android:id="@+id/newAdContactUsBTN"
+                                        android:layout_marginLeft="5dp"
+                                        android:foreground="?selectableItemBackgroundBorderless"
+                                        android:layout_width="30dp"
+                                        android:layout_height="30dp"
+                                        android:background="#0000"
+                                        android:src="@drawable/ic_phone_black_24dp"
+                                        android:tint="#FF5722" />
+
+                                    <com.ideabonyan.iranapp.Components.MyTextView
+                                        android:gravity="center_vertical"
+                                        android:layout_marginLeft="20dp"
+                                        android:layout_marginRight="10dp"
+                                        android:text="برای تغییر نوع آگهی خود با ما تماس بگیرید"
+                                        android:layout_weight="1"
+                                        android:textColor="#FF5722"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content" />
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:visibility="gone"
+                                    android:padding="5dp"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center_vertical">
+
+                                    <com.ideabonyan.iranapp.Components.MyTextView
+                                        android:id="@+id/newAdUpdatesLeftCountTXT"
+                                        android:text="5"
+                                        android:textColor="#FF5722"
+                                        android:gravity="center"
+                                        android:layout_marginLeft="5dp"
+                                        android:layout_width="30dp"
+                                        android:layout_height="30dp"/>
+
+                                    <com.ideabonyan.iranapp.Components.MyTextView
+                                        android:layout_marginLeft="20dp"
+                                        android:layout_marginRight="10dp"
+                                        android:gravity="center_vertical"
+                                        android:textColor="#FF5722"
+                                        android:text="مانده حد اکثر دفعات امکان تغییر در آگهی:"
+                                        android:layout_weight="1"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content" />
+                                </LinearLayout>
+                            </LinearLayout>
+
+                        </android.support.v7.widget.CardView>
+
+                    </LinearLayout>
+
+                </android.support.v7.widget.CardView>
+
+
+                <android.support.v7.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="20dp"
+                    android:elevation="5dp"
+                    android:visibility="gone"
+                    app:cardCornerRadius="8dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+
+                        <com.ideabonyan.iranapp.Components.MyTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="35dp"
+                            android:background="@color/colorPrimary"
+                            android:gravity="center"
+                            android:text="کلمات کلیدی"
+                            android:textColor="#fff" />
+
+                        <android.support.design.widget.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+
+                            android:layout_marginRight="5dp"
+                            android:layout_marginTop="5dp"
+                            android:textColorHint="#9e9e9e">
+
+                            <com.ideabonyan.iranapp.Components.MyEdittextView
+                                android:id="@+id/newAdSEO"
+                                android:layout_width="match_parent"
+                                android:layout_height="50dp"
+                                android:layout_marginBottom="10dp"
+                                android:background="@drawable/edittext_background"
+                                android:gravity="center_vertical|right"
+                                android:hint="کلمات را با کاما یا اینتر جدا کنید"
+                                android:paddingRight="8dp"
+                                android:textSize="14sp" />
+                        </android.support.design.widget.TextInputLayout>
+
+                        <com.ideabonyan.iranapp.Components.MyTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="10dp"
+                            android:layout_marginRight="13dp"
+                            android:text="شما میتوانید با درج عبارات مرتبط، به رتبه آگهی تان در موتورهای جستجو کمک کنید."
+                            android:textColor="#00796B"
+                            android:textSize="13dp" />
+
+                    </LinearLayout>
+
+                </android.support.v7.widget.CardView>
+
+
+                <android.support.v7.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="20dp"
+                    android:elevation="5dp"
+                    app:cardCornerRadius="8dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <com.ideabonyan.iranapp.Components.MyTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="35dp"
+                            android:background="@color/colorPrimary"
+                            android:gravity="center"
+                            android:text="اطلاعات تکمیلی"
+                            android:textColor="#fff" />
+
+                        <com.ideabonyan.iranapp.Components.MyTextView
+                            android:id="@+id/newAdPhoneWarn"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:layout_marginBottom="-20dp"
+                            android:layout_marginLeft="15dp"
+                            android:text="لطفا شماره خود را وارد کنید"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="10sp"
+                            android:visibility="invisible" />
+
+
+                        <android.support.design.widget.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+
+                            android:layout_marginRight="5dp"
+                            android:layout_marginTop="5dp"
+                            android:textColorHint="#9e9e9e">
+
+                            <com.ideabonyan.iranapp.Components.MyEdittextView
+                                android:id="@+id/newAdPhone"
+                                android:layout_width="match_parent"
+                                android:layout_height="45dp"
+                                android:background="@drawable/edittext_background"
+                                android:gravity="center_vertical|right"
+                                android:hint="تلفن همراه (اختیاری)"
+                                android:inputType="number"
+                                android:paddingRight="8dp"
+                                android:textSize="14sp" />
+                        </android.support.design.widget.TextInputLayout>
+
+                        <android.support.design.widget.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+
+                            android:layout_marginRight="5dp"
+                            android:layout_marginTop="5dp"
+                            android:textColorHint="#9e9e9e">
+
+                            <com.ideabonyan.iranapp.Components.MyEdittextView
+                                android:id="@+id/newAdTel1"
+                                android:layout_width="match_parent"
+                                android:layout_height="45dp"
+                                android:background="@drawable/edittext_background"
+                                android:gravity="center_vertical|right"
+                                android:hint="تلفن ثابت (اختیاری)"
+                                android:inputType="number"
+                                android:paddingRight="8dp"
+                                android:textSize="14sp" />
+                        </android.support.design.widget.TextInputLayout>
+
+                        <android.support.design.widget.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+
+                            android:layout_marginRight="5dp"
+                            android:layout_marginTop="5dp"
+                            android:textColorHint="#9e9e9e">
+
+                            <com.ideabonyan.iranapp.Components.MyEdittextView
+                                android:id="@+id/newAdTel2"
+                                android:layout_width="match_parent"
+                                android:layout_height="45dp"
+                                android:background="@drawable/edittext_background"
+                                android:gravity="center_vertical|right"
+                                android:hint="تلفن ثابت دوم (اختیاری)"
+                                android:inputType="number"
+                                android:paddingRight="8dp"
+                                android:textSize="14sp" />
+                        </android.support.design.widget.TextInputLayout>
+
+
+                        <android.support.design.widget.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+
+                            android:layout_marginRight="5dp"
+                            android:layout_marginTop="5dp"
+                            android:textColorHint="#9e9e9e">
+
+                            <com.ideabonyan.iranapp.Components.MyEdittextView
+                                android:id="@+id/newAdLink"
+                                android:layout_width="match_parent"
+                                android:layout_height="45dp"
+                                android:background="@drawable/edittext_background"
+                                android:gravity="center_vertical|right"
+                                android:hint="لینک مرتبط (اختیاری)"
+                                android:paddingBottom="10dp"
+                                android:paddingRight="8dp"
+                                android:paddingTop="10dp"
+                                android:textSize="14sp" />
+                        </android.support.design.widget.TextInputLayout>
+
+
+                        <android.support.design.widget.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+
+                            android:layout_marginRight="5dp"
+                            android:layout_marginTop="5dp"
+                            android:textColorHint="#9e9e9e">
+
+                            <com.ideabonyan.iranapp.Components.MyEdittextView
+                                android:id="@+id/newAdTelegram"
+                                android:layout_width="match_parent"
+                                android:layout_height="45dp"
+                                android:background="@drawable/edittext_background"
+                                android:gravity="center_vertical|right"
+                                android:hint="آدرس تلگرام (اختیاری)"
+                                android:paddingRight="8dp"
+                                android:textSize="14sp" />
+                        </android.support.design.widget.TextInputLayout>
+
+                        <android.support.design.widget.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+
+                            android:layout_marginRight="5dp"
+                            android:layout_marginTop="5dp"
+                            android:textColorHint="#9e9e9e">
+
+                            <com.ideabonyan.iranapp.Components.MyEdittextView
+                                android:id="@+id/newAdInstagram"
+                                android:layout_width="match_parent"
+                                android:layout_height="45dp"
+                                android:layout_marginBottom="10dp"
+                                android:background="@drawable/edittext_background"
+                                android:gravity="center_vertical|right"
+                                android:hint="آدرس اینستاگرام (اختیاری)"
+                                android:paddingRight="8dp"
+                                android:textSize="14sp" />
+                        </android.support.design.widget.TextInputLayout>
+                        <com.ideabonyan.iranapp.Components.MyTextView
+                            android:id="@+id/txt_emailWarn"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:layout_marginBottom="-20dp"
+                            android:layout_marginLeft="15dp"
+                            android:text="لطفا ایمیل خود رابصورت صحیح وارد نمایید"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="10sp"
+                            android:visibility="invisible" />
+
+                        <android.support.design.widget.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+
+                            android:layout_marginRight="5dp"
+                            android:layout_marginTop="5dp"
+                            android:textColorHint="#9e9e9e">
+
+                            <com.ideabonyan.iranapp.Components.MyEdittextView
+                                android:id="@+id/edt_email"
+                                android:layout_width="match_parent"
+                                android:layout_height="45dp"
+                                android:layout_marginBottom="10dp"
+                                android:background="@drawable/edittext_background"
+                                android:gravity="center_vertical|right"
+                                android:hint="آدرس ایمیل (اختیاری)"
+                                android:paddingRight="8dp"
+                                android:textSize="14sp" />
+                        </android.support.design.widget.TextInputLayout>
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="-8dp">
+
+                            <com.ideabonyan.iranapp.Components.MyTextView
+                                android:id="@+id/newAdProvinceWarn"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="left"
+                                android:layout_marginLeft="15dp"
+                                android:text="لطفا استان خود را انتخاب کنید"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="10sp"
+                                android:visibility="invisible" />
+                        </LinearLayout>
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:layout_marginBottom="10dp"
+                            android:layout_marginLeft="5dp"
+                            android:gravity="center_vertical"
+                            android:layout_marginRight="5dp"
+                            android:background="@drawable/edittext_background">
+
+                            <Spinner
+                                android:id="@+id/newAdProvince"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:layoutDirection="rtl"
+                                android:paddingRight="8dp"
+                                android:textSize="14sp" />
+
+
+                            <com.ideabonyan.iranapp.Components.MyTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="right|center_vertical"
+                                android:layout_marginRight="13dp"
+                                android:text="استان (اجباری)"
+                                android:textColor="@color/colorAccent"
+                                android:textSize="12dp" />
+                        </LinearLayout>
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="-8dp">
+
+                            <com.ideabonyan.iranapp.Components.MyTextView
+                                android:id="@+id/newAdCityWarn"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="left"
+                                android:layout_marginLeft="15dp"
+                                android:text="لطفا شهر خود را انتخاب کنید"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="10sp"
+                                android:visibility="invisible" />
+                        </LinearLayout>
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="10dp"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="5dp"
+                            android:background="@drawable/edittext_background">
+
+                            <Spinner
+                                android:id="@+id/newAdCity"
+                                android:layout_width="0dp"
+                                android:layout_height="45dp"
+                                android:layout_weight="1"
+                                android:layoutDirection="rtl"
+                                android:paddingRight="8dp"
+                                android:textSize="14sp" />
+
+                            <com.ideabonyan.iranapp.Components.MyTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="right|center_vertical"
+                                android:layout_marginRight="13dp"
+                                android:text="شهر (اجباری)"
+                                android:textColor="@color/colorAccent"
+                                android:textSize="12dp" />
+                        </LinearLayout>
+
+
+                        <com.ideabonyan.iranapp.Components.MyTextView
+                            android:id="@+id/newAdAddressWarn"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:layout_marginBottom="-20dp"
+                            android:layout_marginLeft="15dp"
+                            android:text="لطفاآدرس خود را وارد کنید"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="10sp"
+                            android:visibility="invisible" />
+
+                        <android.support.design.widget.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+
+                            android:layout_marginRight="5dp"
+                            android:layout_marginTop="5dp"
+                            android:textColorHint="#9e9e9e">
+
+                            <com.ideabonyan.iranapp.Components.MyEdittextView
+                                android:id="@+id/newAdAddress"
+                                android:layout_width="match_parent"
+                                android:layout_height="80dp"
+                                android:layout_marginBottom="10dp"
+                                android:background="@drawable/edittext_background"
+                                android:gravity="right"
+                                android:hint="آدرس (اجباری)"
+                                android:paddingBottom="10dp"
+                                android:paddingRight="8dp"
+                                android:paddingTop="10dp"
+                                android:textSize="14sp" />
+                        </android.support.design.widget.TextInputLayout>
+
+                    </LinearLayout>
+
+                </android.support.v7.widget.CardView>
+
+                <com.ideabonyan.iranapp.Components.MyTextView
+                    android:id="@+id/txt_mapError"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:layout_marginBottom="-20dp"
+                    android:layout_marginLeft="15dp"
+                    android:text="لطفا مکان خود روی نقشه نشان دهید"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="10sp"
+                    android:visibility="invisible" />
+
+                <android.support.v7.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="20dp"
+                    android:elevation="5dp"
+                    app:cardCornerRadius="8dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <com.ideabonyan.iranapp.Components.MyCheckbox
+                            android:id="@+id/newAdShowMap"
+                            android:layout_width="match_parent"
+                            android:layout_height="35dp"
+                            android:background="@color/colorPrimary"
+                            android:buttonTint="#fff"
+                            android:checked="false"
+                            android:paddingLeft="5dp"
+                            android:paddingRight="10dp"
+                            android:text="نشان کردن روی نقشه اجباری"
+                            android:textColor="#fff" />
+                        <RelativeLayout
+                            android:visibility="gone"
+                            android:id="@+id/newAdMapLayout"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+                                <RelativeLayout
+
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    >
+
+                                    <fragment
+                                        android:id="@+id/newAdMap"
+                                        android:name="com.google.android.gms.maps.SupportMapFragment"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="@dimen/_250sdp" />
+
+                                    <ImageView
+                                        android:id="@+id/newAdMapOverlay"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="@dimen/_250sdp"
+                                        android:src="#00875252" />
+                                </RelativeLayout>
+                                <LinearLayout
+                                    android:visibility="gone"
+                                    android:id="@+id/lin_remove_map_loc"
+                                    android:layout_width="match_parent"
+                                    android:gravity="center"
+                                    android:layout_height="35dp">
+                                    <com.ideabonyan.iranapp.Components.MyTextView
+                                        android:textColor="#444"
+                                        android:text="حذف نشان روی نقشه"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content" />
+                                </LinearLayout>
+
+                            </LinearLayout>
+                        </RelativeLayout>
+
+
+
+                    </LinearLayout>
+
+                </android.support.v7.widget.CardView>
+
+
+                <android.support.v7.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="20dp"
+                    android:elevation="5dp"
+                    app:cardCornerRadius="8dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <com.ideabonyan.iranapp.Components.MyTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="35dp"
+                            android:background="@color/colorPrimary"
+                            android:gravity="center"
+                            android:text="تصاویر"
+                            android:textColor="#fff" />
+
+                        <com.ideabonyan.iranapp.Components.MyTextView
+                            android:id="@+id/newAdImagesWarn"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:gravity="center"
+                            android:text="لطفا قبل از قرار دادن تصویر، نوع آگهی خود را انتخاب کنید"
+                            android:textColor="@color/colorPrimary" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="2dp"
+                            android:layout_marginRight="2dp"
+                            android:layout_marginTop="10dp">
+
+                            <FrameLayout
+                                android:layout_width="0dp"
+                                android:layout_height="@dimen/_140sdp"
+                                android:layout_weight="33"
+                                android:gravity="center">
+
+
+                                <ImageView
+                                    android:id="@+id/newAdImage1"
+                                    android:layout_width="@dimen/_140sdp"
+                                    android:layout_height="@dimen/_140sdp"
+                                    android:background="#ef9a9a"
+                                    android:clickable="true" />
+
+                                <ImageView
+                                    android:layout_marginRight="@dimen/_5sdp"
+                                    android:id="@+id/newAdImage1lock"
+                                    android:layout_width="30dp"
+                                    android:layout_height="30dp"
+                                    android:layout_gravity="center"
+                                    android:src="@drawable/ic_lock_black_24dp"
+                                    android:tint="#F4511E" />
+                            </FrameLayout>
+
+                            <FrameLayout
+                                android:layout_width="0dp"
+                                android:layout_height="@dimen/_140sdp"
+                                android:layout_weight="33"
+                                android:gravity="center">
+
+                                <ImageView
+                                    android:id="@+id/newAdImage2"
+                                    android:layout_width="@dimen/_140sdp"
+                                    android:layout_height="@dimen/_140sdp"
+                                    android:background="#ef9a9a" />
+
+                                <ImageView
+                                    android:layout_gravity="center"
+                                    android:layout_marginRight="@dimen/_5sdp"
+                                    android:id="@+id/newAdImage2lock"
+                                    android:layout_width="30dp"
+                                    android:layout_height="30dp"
+                                    android:layout_centerInParent="true"
+                                    android:src="@drawable/ic_lock_black_24dp"
+                                    android:tint="#F4511E" />
+                            </FrameLayout>
+
+
+                        </LinearLayout>
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="3dp"
+                            android:layout_marginRight="3dp"
+                            android:layout_marginTop="10dp">
+
+                            <RelativeLayout
+                                android:layout_width="0dp"
+                                android:layout_height="@dimen/_80sdp"
+                                android:layout_weight="33">
+
+                                <ImageView
+                                    android:layout_centerInParent="true"
+                                    android:id="@+id/newAdImage3"
+                                    android:layout_width="@dimen/_70sdp"
+                                    android:layout_height="@dimen/_70sdp"
+                                    android:background="#ef9a9a" />
+
+                                <ImageView
+                                    android:id="@+id/newAdImage3lock"
+                                    android:layout_width="30dp"
+                                    android:layout_height="30dp"
+                                    android:layout_centerInParent="true"
+                                    android:src="@drawable/ic_lock_black_24dp"
+                                    android:tint="#F4511E" />
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:layout_width="0dp"
+                                android:layout_height="@dimen/_80sdp"
+                                android:layout_weight="33">
+
+                                <ImageView
+                                    android:layout_centerInParent="true"
+                                    android:id="@+id/newAdImage4"
+                                    android:layout_width="@dimen/_70sdp"
+                                    android:layout_height="@dimen/_70sdp"
+                                    android:background="#ef9a9a" />
+
+                                <ImageView
+                                    android:id="@+id/newAdImage4lock"
+                                    android:layout_width="30dp"
+                                    android:layout_height="30dp"
+                                    android:layout_centerInParent="true"
+                                    android:src="@drawable/ic_lock_black_24dp"
+                                    android:tint="#F4511E" />
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:layout_width="0dp"
+                                android:layout_height="@dimen/_80sdp"
+                                android:layout_weight="33">
+
+                                <ImageView
+                                    android:layout_centerInParent="true"
+                                    android:id="@+id/newAdImage5"
+                                    android:layout_width="@dimen/_70sdp"
+                                    android:layout_height="@dimen/_70sdp"
+                                    android:background="#ef9a9a" />
+
+                                <ImageView
+                                    android:id="@+id/newAdImage5lock"
+                                    android:layout_width="30dp"
+                                    android:layout_height="30dp"
+                                    android:layout_centerInParent="true"
+                                    android:src="@drawable/ic_lock_black_24dp"
+                                    android:tint="#F4511E" />
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:layout_width="0dp"
+                                android:layout_height="@dimen/_80sdp"
+                                android:layout_weight="33">
+
+                                <ImageView
+                                    android:layout_centerInParent="true"
+                                    android:id="@+id/newAdImage6"
+                                    android:layout_width="@dimen/_70sdp"
+                                    android:layout_height="@dimen/_70sdp"
+                                    android:background="#ef9a9a" />
+
+                                <ImageView
+                                    android:id="@+id/newAdImage6lock"
+                                    android:layout_width="30dp"
+                                    android:layout_height="30dp"
+                                    android:layout_centerInParent="true"
+                                    android:src="@drawable/ic_lock_black_24dp"
+                                    android:tint="#F4511E" />
+                            </RelativeLayout>
+
+                        </LinearLayout>
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="3dp"
+                            android:layout_marginRight="3dp"
+                            android:layout_marginTop="0dp">
+
+                            <RelativeLayout
+                                android:layout_width="0dp"
+                                android:layout_height="@dimen/_80sdp"
+                                android:layout_weight="33">
+
+                                <ImageView
+                                    android:layout_centerInParent="true"
+                                    android:id="@+id/newAdImage7"
+                                    android:layout_width="@dimen/_70sdp"
+                                    android:layout_height="@dimen/_70sdp"
+                                    android:background="#ef9a9a" />
+
+                                <ImageView
+                                    android:id="@+id/newAdImage7lock"
+                                    android:layout_width="30dp"
+                                    android:layout_height="30dp"
+                                    android:layout_centerInParent="true"
+                                    android:src="@drawable/ic_lock_black_24dp"
+                                    android:tint="#F4511E" />
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:layout_width="0dp"
+                                android:layout_height="@dimen/_80sdp"
+                                android:layout_weight="33">
+
+                                <ImageView
+                                    android:layout_centerInParent="true"
+                                    android:id="@+id/newAdImage8"
+                                    android:layout_width="@dimen/_70sdp"
+                                    android:layout_height="@dimen/_70sdp"
+                                    android:background="#ef9a9a" />
+
+                                <ImageView
+                                    android:id="@+id/newAdImage8lock"
+                                    android:layout_width="30dp"
+                                    android:layout_height="30dp"
+                                    android:layout_centerInParent="true"
+                                    android:src="@drawable/ic_lock_black_24dp"
+                                    android:tint="#F4511E" />
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:layout_width="0dp"
+                                android:layout_height="@dimen/_80sdp"
+                                android:layout_weight="33">
+
+                                <ImageView
+                                    android:layout_centerInParent="true"
+                                    android:id="@+id/newAdImage9"
+                                    android:layout_width="@dimen/_70sdp"
+                                    android:layout_height="@dimen/_70sdp"
+                                    android:background="#ef9a9a" />
+
+                                <ImageView
+                                    android:id="@+id/newAdImage9lock"
+                                    android:layout_width="30dp"
+                                    android:layout_height="30dp"
+                                    android:layout_centerInParent="true"
+                                    android:src="@drawable/ic_lock_black_24dp"
+                                    android:tint="#F4511E" />
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:layout_width="0dp"
+                                android:layout_height="@dimen/_80sdp"
+                                android:layout_weight="33">
+
+                                <ImageView
+                                    android:layout_centerInParent="true"
+                                    android:id="@+id/newAdImage10"
+                                    android:layout_width="@dimen/_70sdp"
+                                    android:layout_height="@dimen/_70sdp"
+                                    android:background="#ef9a9a" />
+
+                                <ImageView
+                                    android:id="@+id/newAdImage10lock"
+                                    android:layout_width="30dp"
+                                    android:layout_height="30dp"
+                                    android:layout_centerInParent="true"
+                                    android:src="@drawable/ic_lock_black_24dp"
+                                    android:tint="#F4511E" />
+                            </RelativeLayout>
+
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+                </android.support.v7.widget.CardView>
+
+
+                <com.ideabonyan.iranapp.Components.MyTextView
+                    android:id="@+id/newAdMajorWarnAtBottom"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="-20dp"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:text="در اطلاعات آگهی شما اشکالاتی وجود دارد. لطفا آنها را رفع کنید."
+                    android:textColor="@color/colorPrimary"
+                    android:visibility="gone" />
+
+
+                <LinearLayout
+                    android:visibility="gone"
+                    android:paddingBottom="10dp"
+                    android:foreground="?attr/selectableItemBackgroundBorderless"
+                    android:clickable="true"
+                    android:id="@+id/lin_accept_roul"
+                    android:paddingTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center">
+                    <com.ideabonyan.iranapp.Components.MyTextView
+                        android:textSize="16sp"
+                        android:textColor="#03A9F4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="با قوانین و شرایط موافقم"/>
+                </LinearLayout>
+
+
+                <android.support.v7.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="60dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="10dp"
+                    android:elevation="5dp"
+                    app:cardCornerRadius="8dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <com.ideabonyan.iranapp.Components.MyButton
+                            android:id="@+id/newAdSubmitBTN"
+                            android:layout_width="match_parent"
+                            android:layout_height="60dp"
+                            android:background="@drawable/login_sign_up_btn"
+                            android:foreground="?android:attr/selectableItemBackground"
+                            android:text="ثبت آگهی"
+                            android:textColor="#fff" />
+
+
+                        <ProgressBar
+                            android:id="@+id/newAdProgressbar"
+                            android:layout_width="35dp"
+                            android:layout_height="35dp"
+                            android:layout_centerInParent="true"
+                            android:elevation="10dp"
+                            android:indeterminateTint="#fff"
+                            android:visibility="gone" />
+
+                    </RelativeLayout>
+
+                </android.support.v7.widget.CardView>
+
+            </LinearLayout>
+
+        </ScrollView>
+
+
+        <ProgressBar
+            android:id="@+id/newAdSpinnerLoadProgressBar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="4dp"
+            android:layout_alignParentBottom="false"
+            android:indeterminate="true"
+            android:indeterminateTint="@color/colorPrimary" />
+
+    </RelativeLayout>
+
+</LinearLayout>

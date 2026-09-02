@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#eee"
+    android:layoutDirection="ltr"
+
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:orientation="vertical"
+    tools:context="com.ideabonyan.iranapp.Activity.LoginActivity"
+    android:id="@+id/loginContentView">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <android.support.design.widget.AppBarLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_354sdp"
+                    android:background="@drawable/gradient"
+                    android:elevation="5dp"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:elevation="6dp"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true">
+
+                    <RelativeLayout
+                        android:layout_marginBottom="@dimen/_15sdp"
+                        android:layout_marginTop="@dimen/_20sdp"
+                        android:layout_width="130dp"
+                        android:layout_height="130dp">
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            android:layout_width="130dp"
+                            android:layout_height="130dp"
+
+                            android:src="@color/colorPrimary"
+                            app:civ_border_color="#fff"
+                            app:civ_border_width="2dp" />
+                        <ImageView
+                            android:tint="#fff"
+                            android:paddingLeft="10dp"
+                            android:layout_width="90dp"
+                            android:layout_height="90dp"
+                            android:src="@drawable/user1"
+                            android:layout_centerVertical="true"
+                            android:layout_centerHorizontal="true"/>
+
+                    </RelativeLayout>
+
+                    <com.ideabonyan.iranapp.Components.MyTextView
+                        android:id="@+id/mytextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/_10sdp"
+                        android:layout_marginTop="5dp"
+                        android:text="اگر قبلا ثبت نام کرده اید ، وارد شوید"
+                        android:textColor="#fff"
+                        android:textSize="20sp" />
+
+                    <com.ideabonyan.iranapp.Components.MyTextView
+                        android:id="@+id/name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:text="قلک"
+                        android:textColor="#ffffff"
+                        android:textSize="30sp"
+                        android:visibility="gone" />
+
+
+                    <android.support.v7.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:layout_marginTop="20dp"
+                        app:cardBackgroundColor="#ffffff"
+                        app:cardCornerRadius="6dp"
+                        app:cardElevation="4dp"
+                        app:contentPadding="5dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <com.ideabonyan.iranapp.Components.MyTextView
+                                android:id="@+id/loginPutNumberWarningTXT"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="-23dp"
+                                android:gravity="left"
+                                android:text="لطفا شماره همراه خود را وارد کنید"
+                                android:textColor="#df0404"
+                                android:textSize="10sp"
+                                android:visibility="gone" />
+
+                            <android.support.design.widget.TextInputLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="5dp"
+
+                                android:layout_marginRight="5dp"
+                                android:layout_marginTop="5dp"
+                                android:textColorHint="#9e9e9e">
+
+                                <com.ideabonyan.iranapp.Components.MyEdittextView
+                                    android:id="@+id/loginNumberEDT"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="50dp"
+                                    android:layout_marginBottom="10dp"
+                                    android:background="@drawable/edittext_background"
+                                    android:gravity="center_vertical|right"
+                                    android:hint="شماره همراه"
+                                    android:inputType="number"
+                                    android:paddingRight="8dp"
+                                    android:textSize="14sp" />
+                            </android.support.design.widget.TextInputLayout>
+
+                            <com.ideabonyan.iranapp.Components.MyTextView
+                                android:id="@+id/loginPutPassTXT"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="-23dp"
+                                android:gravity="left"
+                                android:text="لطفا کلمه عبور را وارد کنید"
+                                android:textColor="#df0404"
+                                android:textSize="10sp"
+                                android:visibility="gone" />
+
+                            <android.support.design.widget.TextInputLayout
+                                android:id="@+id/loginTIL"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="5dp"
+                                android:layout_marginTop="5dp"
+                                android:textColorHint="#9e9e9e">
+
+                                <com.ideabonyan.iranapp.Components.CustomEditText
+                                    android:id="@+id/loginPassEDT"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="50dp"
+                                    android:background="@drawable/edittext_background"
+                                    android:drawableLeft="@drawable/ic_visibility_black_24dp"
+                                    android:ems="10"
+                                    android:drawableTint="#f44336"
+                                    android:gravity="center_vertical|right"
+                                    android:hint="کلمه عبور"
+                                    android:inputType="textPassword"
+                                    android:paddingLeft="5dp"
+                                    android:paddingRight="8dp"
+                                    android:textSize="14sp" />
+                            </android.support.design.widget.TextInputLayout>
+
+                            <RelativeLayout
+                                android:layout_marginTop="20dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="45dp">
+
+                                <com.ideabonyan.iranapp.Components.MyButton
+                                    android:id="@+id/loginLoginNowBTN"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="45dp"
+                                    android:background="@drawable/login_login_btn"
+                                    android:gravity="center"
+                                    android:text="ورود"
+                                    android:textColor="#fff"
+                                    android:textSize="16sp" />
+
+                                <ProgressBar
+                                    android:id="@+id/loginProgressbar"
+                                    android:layout_centerInParent="true"
+                                    android:indeterminateTint="#fff"
+                                    android:elevation="10dp"
+                                    android:visibility="gone"
+                                    android:layout_width="30dp"
+                                    android:layout_height="30dp" />
+
+                            </RelativeLayout>
+
+                            <LinearLayout
+                                android:visibility="visible"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:foreground="?android:attr/selectableItemBackground"
+                                android:clickable="true"
+                                android:gravity="right|center_vertical"
+                                android:layout_marginRight="5dp"
+                                android:paddingTop="5dp"
+                                android:paddingBottom="5dp"
+                                android:layout_marginTop="5dp"
+                                android:orientation="horizontal">
+                                <com.ideabonyan.iranapp.Components.MyTextView
+                                    android:id="@+id/forgotPassTXT"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginRight="3dp"
+
+                                    android:clickable="true"
+                                    android:text="رمز عبور خود را فراموش کرده اید؟"
+                                    android:textColor="#009688" />
+
+                                <ImageView
+                                    android:layout_width="20dp"
+                                    android:layout_height="20dp"
+                                    android:src="@drawable/ic_vpn_key_white_24dp"
+                                    android:tint="#009688"/>
+                            </LinearLayout>
+
+                        </LinearLayout>
+                    </android.support.v7.widget.CardView>
+
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+
+
+
+
+    <LinearLayout
+        android:visibility="gone"
+        android:id="@+id/loginSignupActivityBTN"
+        android:layout_width="match_parent"
+        android:layout_height="?android:attr/actionBarSize"
+        android:clickable="true"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:gravity="center"
+        android:orientation="horizontal">
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:cardCornerRadius="3dp"
+            app:cardElevation="3dp"
+           android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="5dp">
+            <LinearLayout
+                android:visibility="visible"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/login_sign_up_btn"
+                android:gravity="center"
+                android:orientation="horizontal">
+                <com.ideabonyan.iranapp.Components.MyTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="کلیک کنید"
+                    android:textColor="#fff"
+                    android:textSize="16sp" />
+                <com.ideabonyan.iranapp.Components.MyTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="اینجا "
+                    android:textColor="#E64A19"
+                    android:textSize="16sp" />
+                <com.ideabonyan.iranapp.Components.MyTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="اگر هنوز ثبت نام نکرده اید "
+                    android:textColor="#fff"
+                    android:textSize="16sp" />
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginLeft="8dp"
+                    android:src="@drawable/ic_person_add_white_24dp" />
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+
+
+    </LinearLayout>
+</LinearLayout>

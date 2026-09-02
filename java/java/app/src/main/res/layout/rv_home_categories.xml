@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?><!--<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"--><!--xmlns:app="http://schemas.android.com/apk/res-auto"--><!--android:layout_width="match_parent"--><!--android:layout_height="wrap_content"--><!--android:layout_marginBottom="2dp"--><!--android:orientation="vertical"--><!--android:padding="3dp">-->
+
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/_99sdp"
+    app:cardCornerRadius="3dp"
+    android:layout_margin="3dp"
+    app:cardElevation="3dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#FF5722"
+        android:gravity="right"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/lin_img"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/card_img"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_80sdp"
+                android:layout_marginTop="2dp"
+                android:layout_marginRight="2dp"
+                android:layout_marginLeft="2dp"
+                app:cardCornerRadius="3dp">
+
+                <ImageView
+                    android:id="@+id/homeCategoriesImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/seller_store_blured" />
+            </android.support.v7.widget.CardView>
+            <LinearLayout
+                android:visibility="gone"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="2dp"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="#fff"
+                android:elevation="6dp"></LinearLayout>
+
+
+
+
+
+        </LinearLayout>
+        <LinearLayout
+
+            android:layout_below="@+id/lin_img"
+            android:elevation="6dp"
+            android:background="#FF5722"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_18sdp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"/>
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_alignParentBottom="true"
+            android:layout_width="@dimen/_30sdp"
+            android:layout_height="@dimen/_35sdp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="3dp"
+            android:elevation="8dp"
+            android:src="#FF5722"
+            app:civ_border_color="#fff" />
+
+        <ImageView
+
+            android:layout_alignParentBottom="true"
+            android:layout_width="@dimen/_15sdp"
+            android:layout_height="@dimen/_30sdp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:elevation="8dp"
+            android:paddingBottom="@dimen/_12sdp"
+            android:src="@drawable/ic_card_giftcard_black_24dp"
+            android:tint="#fff" />
+        <com.ideabonyan.iranapp.Components.MyTextView
+            android:textSize="12sp"
+            android:id="@+id/homeCategoriesName"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:textColor="#fff"
+            android:elevation="10dp"
+            android:layout_width="match_parent"
+            android:gravity="center_horizontal"
+            android:text="دسته 1"
+            android:layout_height="wrap_content" />
+
+
+    </RelativeLayout>
+</android.support.v7.widget.CardView>

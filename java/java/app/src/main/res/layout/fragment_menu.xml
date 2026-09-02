@@ -1,0 +1,496 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/menuFragment"
+    android:background="#fff"
+    android:layoutDirection="ltr"
+    tools:context="com.ideabonyan.iranapp.Fragment.MenuFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:visibility="gone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/icon"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="10dp"  />
+
+
+                    <com.ideabonyan.iranapp.Components.MyTextView
+                        android:layout_marginTop="10dp"
+                        android:id="@+id/menuFragmentWelcomeText"
+                        android:layout_below="@id/icon"
+                        android:layout_centerHorizontal="true"
+                        android:text="فلانی به قلک خوش آمدید"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <ImageView
+                        android:id="@+id/devider"
+                        android:layout_width="match_parent"
+                        android:layout_height="70dp"
+                        android:layout_below="@id/menuFragmentWelcomeText"
+                        android:src="@drawable/place_holder" />
+
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:id="@+id/menuFragmentSignupBTN"
+                        android:gravity="right|center_vertical"
+                        android:background="?android:attr/selectableItemBackground"
+                        android:clickable="true"
+
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp">
+                        <LinearLayout
+                            android:layout_marginRight="20dp"
+                            android:id="@+id/lin_reg"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+                            <com.ideabonyan.iranapp.Components.MyTextView
+                                android:id="@+id/txt_reg"
+                                android:text="ثبت نام"
+                                android:layout_marginRight="30dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
+
+                            <ImageView
+                                android:src="@drawable/ic_supervisor_account_black_24dp"
+                                android:tint="@color/colorPrimary"
+                                android:layout_width="25dp"
+                                android:layout_height="30dp" />
+                        </LinearLayout>
+
+
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:id="@+id/menuFragmentLoginBTN"
+                        android:gravity="right|center_vertical"
+                        android:background="?android:attr/selectableItemBackground"
+                        android:clickable="true"
+
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp">
+                        <LinearLayout
+                            android:layout_marginRight="20dp"
+                            android:id="@+id/lin_login"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+                            <com.ideabonyan.iranapp.Components.MyTextView
+                                android:id="@+id/txt_login"
+                                android:text="ورود"
+                                android:layout_marginRight="30dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
+
+                            <ImageView
+                                android:src="@drawable/ic_supervisor_account_black_24dp"
+                                android:tint="@color/colorPrimary"
+                                android:layout_width="25dp"
+                                android:layout_height="30dp" />
+                        </LinearLayout>
+
+
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:id="@+id/menuFragmentDashboardBTN"
+                        android:gravity="right|center_vertical"
+                        android:background="?android:attr/selectableItemBackground"
+                        android:clickable="true"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp">
+
+                        <com.ideabonyan.iranapp.Components.MyTextView
+                            android:text="محیط کاربری"
+                            android:layout_marginRight="30dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                        <ImageView
+                            android:layout_marginRight="20dp"
+                            android:src="@drawable/ic_supervisor_account_black_24dp"
+                            android:tint="@color/colorPrimary"
+                            android:layout_width="25dp"
+                            android:layout_height="30dp" />
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:id="@+id/menuFragmentNewAdBTN"
+                        android:gravity="right|center_vertical"
+                        android:background="?android:attr/selectableItemBackground"
+                        android:clickable="true"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp">
+
+                        <com.ideabonyan.iranapp.Components.MyTextView
+                            android:text="درج آگهی"
+                            android:layout_marginRight="30dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                        <ImageView
+                            android:layout_marginRight="20dp"
+                            android:src="@drawable/ic_add_black_24dp"
+                            android:tint="@color/colorPrimary"
+                            android:layout_width="25dp"
+                            android:layout_height="30dp" />
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:gravity="right|center_vertical"
+                        android:background="#eee"
+                        android:clickable="true"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp">
+
+                        <com.ideabonyan.iranapp.Components.MyTextView
+                            android:text="تنظیمات"
+                            android:layout_marginRight="30dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:id="@+id/menuFragmentSetLocationBTN"
+                        android:gravity="right|center_vertical"
+                        android:background="?android:attr/selectableItemBackground"
+                        android:clickable="true"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp">
+                        <LinearLayout
+                            android:layout_marginRight="20dp"
+                            android:id="@+id/lin_location"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+
+                        <com.ideabonyan.iranapp.Components.MyTextView
+                            android:text="انتخاب شهر"
+                            android:layout_marginRight="30dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                        <ImageView
+                            android:src="@drawable/ic_location_on_black_24dp"
+                            android:tint="@color/colorPrimary"
+                            android:layout_width="25dp"
+                            android:layout_height="30dp" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:id="@+id/menuFragmentNotificationSelectionBTN"
+                        android:gravity="right|center_vertical"
+                        android:background="?android:attr/selectableItemBackground"
+                        android:clickable="true"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp">
+
+                        <LinearLayout
+                            android:layout_marginRight="20dp"
+                            android:id="@+id/lin_notify"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                        <com.ideabonyan.iranapp.Components.MyTextView
+                            android:text="دریافت اطلاعیه ها"
+                            android:layout_marginRight="30dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                        <ImageView
+                            android:src="@drawable/ic_notifications_black_24dp"
+                            android:tint="@color/colorPrimary"
+                            android:layout_width="25dp"
+                            android:layout_height="30dp" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:id="@+id/menuFragmentAroundMEBTN"
+                        android:gravity="right|center_vertical"
+                        android:background="?android:attr/selectableItemBackground"
+                        android:clickable="true"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp">
+                        <LinearLayout
+                            android:layout_marginRight="20dp"
+                            android:id="@+id/lin_near_me"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <com.ideabonyan.iranapp.Components.MyTextView
+                                android:text="اطراف من"
+                                android:layout_marginRight="30dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
+
+                            <ImageView
+                                android:src="@drawable/ic_map_black_24dp"
+                                android:tint="@color/colorPrimary"
+                                android:layout_width="25dp"
+                                android:layout_height="30dp" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:gravity="right|center_vertical"
+                        android:background="#eee"
+                        android:clickable="true"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp">
+
+                        <com.ideabonyan.iranapp.Components.MyTextView
+                            android:text="دیگر"
+                            android:layout_marginRight="30dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:visibility="gone"
+                        android:id="@+id/menuFragmentPlansBTN"
+                        android:gravity="right|center_vertical"
+                        android:background="?android:attr/selectableItemBackground"
+                        android:clickable="true"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp">
+
+                        <com.ideabonyan.iranapp.Components.MyTextView
+                            android:text="تعرفه ها"
+                            android:layout_marginRight="30dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                        <ImageView
+                            android:layout_marginRight="20dp"
+                            android:src="@drawable/ic_library_books_black_24dp"
+                            android:tint="@color/colorPrimary"
+                            android:layout_width="25dp"
+                            android:layout_height="30dp" />
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:visibility="gone"
+                        android:id="@+id/lin_byeCharge"
+                        android:gravity="right|center_vertical"
+                        android:background="?android:attr/selectableItemBackground"
+                        android:clickable="true"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp">
+                        <LinearLayout
+                            android:layout_marginRight="20dp"
+                            android:id="@+id/lin_bye"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                        <com.ideabonyan.iranapp.Components.MyTextView
+                            android:text="خرید شارژ و پرداخت قبوض"
+                            android:layout_marginRight="30dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                        <ImageView
+                            android:src="@drawable/ic_credit_card_black_24dp"
+                            android:tint="@color/colorPrimary"
+                            android:layout_width="25dp"
+                            android:layout_height="30dp" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:id="@+id/menuFragmentHelpBTN"
+                        android:gravity="right|center_vertical"
+                        android:background="?android:attr/selectableItemBackground"
+                        android:clickable="true"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp">
+                        <LinearLayout
+                            android:layout_marginRight="20dp"
+                            android:id="@+id/lin_help"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                        <com.ideabonyan.iranapp.Components.MyTextView
+                            android:text="راهنمای برنامه"
+                            android:layout_marginRight="30dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                        <ImageView
+                            android:src="@drawable/ic_help_black_24dp"
+                            android:tint="@color/colorPrimary"
+                            android:layout_width="25dp"
+                            android:layout_height="30dp" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:id="@+id/menuFragmentShareBTN"
+                        android:gravity="right|center_vertical"
+                        android:background="?android:attr/selectableItemBackground"
+                        android:clickable="true"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp">
+                        <LinearLayout
+                            android:layout_marginRight="20dp"
+                            android:id="@+id/lin_share"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                        <com.ideabonyan.iranapp.Components.MyTextView
+                            android:text="معرفی به دوستان"
+                            android:layout_marginRight="30dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                        <ImageView
+                            android:src="@drawable/ic_share_black_24dp"
+                            android:tint="@color/colorPrimary"
+                            android:layout_width="25dp"
+                            android:layout_height="30dp" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+
+
+                    <LinearLayout
+                        android:gravity="right|center_vertical"
+                        android:background="#eee"
+                        android:clickable="true"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp">
+
+                        <com.ideabonyan.iranapp.Components.MyTextView
+                            android:text="درباره ما"
+                            android:layout_marginRight="30dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:id="@+id/menuFragmentContactUsBTN"
+                        android:gravity="right|center_vertical"
+                        android:background="?android:attr/selectableItemBackground"
+                        android:clickable="true"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp">
+                        <LinearLayout
+                            android:layout_marginRight="20dp"
+                            android:id="@+id/lin_about_us"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+                        <com.ideabonyan.iranapp.Components.MyTextView
+                            android:text="درباره ما"
+                            android:layout_marginRight="30dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                        <ImageView
+                            android:src="@drawable/ic_contact_mail_black_24dp"
+                            android:tint="@color/colorPrimary"
+                            android:layout_width="25dp"
+                            android:layout_height="30dp" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:id="@+id/lin_link_to_us"
+                        android:gravity="right|center_vertical"
+                        android:background="?android:attr/selectableItemBackground"
+                        android:clickable="true"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp">
+                        <LinearLayout
+                            android:layout_marginRight="20dp"
+                            android:id="@+id/lin_link"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+                        <com.ideabonyan.iranapp.Components.MyTextView
+                            android:text="ارتباط با ما"
+                            android:layout_marginRight="30dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                        <ImageView
+                            android:src="@drawable/ic_headset_mic_black_24dp"
+                            android:tint="@color/colorPrimary"
+                            android:layout_width="25dp"
+                            android:layout_height="30dp" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:id="@+id/menuFragmentTermsBTN"
+                        android:gravity="right|center_vertical"
+                        android:background="?android:attr/selectableItemBackground"
+                        android:clickable="true"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp">
+                        <LinearLayout
+                            android:layout_marginRight="20dp"
+                            android:id="@+id/lin_rouls"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+                        <com.ideabonyan.iranapp.Components.MyTextView
+                            android:text="قوانین و مقررات"
+                            android:layout_marginRight="30dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                        <ImageView
+                            android:src="@drawable/ic_note_black_24dp"
+                            android:tint="@color/colorPrimary"
+                            android:layout_width="25dp"
+                            android:layout_height="30dp" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+            <ImageView
+                android:id="@+id/img_focous"
+                android:visibility="gone"
+                android:clickable="true"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </FrameLayout>
+
+    </ScrollView>
+</LinearLayout>

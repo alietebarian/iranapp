@@ -1,0 +1,257 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.ideabonyan.iranapp.Fragment.home.Search_Home">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/lin__search_home"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="3dp">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_30sdp"
+                android:layout_marginRight="@dimen/_30sdp"
+                android:layout_marginTop="10dp">
+
+                <com.joooonho.SelectableRoundedImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                    android:layout_width="match_parent"
+
+                    android:layout_height="@dimen/_80sdp"
+                    android:scaleType="fitXY"
+                    android:src="#E64A19"
+                    app:sriv_left_bottom_corner_radius="4dp"
+                    app:sriv_left_top_corner_radius="4dp"
+                    app:sriv_right_bottom_corner_radius="4dp"
+                    app:sriv_right_top_corner_radius="4dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="2"
+                        android:gravity="center">
+                            <com.ideabonyan.iranapp.Components.MyTextView
+                                android:text="جستجو در املاک"
+                                android:textColor="#fff"
+                                android:textSize="15sp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center">
+                        <ImageView
+
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:elevation="1dp"
+                            android:src="@drawable/aparteman"
+                            android:tint="#fff" />
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+                <!--</RelativeLayout>-->
+                <!--</android.support.v7.widget.CardView>-->
+            </FrameLayout>
+            <!--</RelativeLayout>-->
+            <!--</android.support.v7.widget.CardView>-->
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/lin_search_car"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="3dp">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_30sdp"
+                android:layout_marginRight="@dimen/_30sdp"
+                android:layout_marginTop="10dp">
+
+                <com.joooonho.SelectableRoundedImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                    android:layout_width="match_parent"
+
+                    android:layout_height="@dimen/_80sdp"
+                    android:scaleType="fitXY"
+                    android:src="#00897B"
+                    app:sriv_left_bottom_corner_radius="4dp"
+                    app:sriv_left_top_corner_radius="4dp"
+                    app:sriv_right_bottom_corner_radius="4dp"
+                    app:sriv_right_top_corner_radius="4dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="2"
+                        android:gravity="center">
+                        <com.ideabonyan.iranapp.Components.MyTextView
+                            android:text="جستجو در وسایل نقلیه"
+                            android:textColor="#fff"
+                            android:textSize="15sp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center">
+                        <ImageView
+
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:elevation="1dp"
+                            android:src="@drawable/car1"
+                            android:tint="#fff" />
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+                <!--</RelativeLayout>-->
+                <!--</android.support.v7.widget.CardView>-->
+            </FrameLayout>
+            <!--</RelativeLayout>-->
+            <!--</android.support.v7.widget.CardView>-->
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/lic_search_job"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="3dp">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_30sdp"
+                android:layout_marginRight="@dimen/_30sdp"
+                android:layout_marginTop="10dp">
+
+                <com.joooonho.SelectableRoundedImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                    android:layout_width="match_parent"
+
+                    android:layout_height="@dimen/_80sdp"
+                    android:scaleType="fitXY"
+                    android:src="#1976D2"
+                    app:sriv_left_bottom_corner_radius="4dp"
+                    app:sriv_left_top_corner_radius="4dp"
+                    app:sriv_right_bottom_corner_radius="4dp"
+                    app:sriv_right_top_corner_radius="4dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="2"
+                        android:gravity="center">
+                        <com.ideabonyan.iranapp.Components.MyTextView
+                            android:text="جستجو در استخدام"
+                            android:textColor="#fff"
+                            android:textSize="15sp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center">
+                        <ImageView
+
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:elevation="1dp"
+                            android:src="@drawable/worker"
+                            android:tint="#fff" />
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+                <!--</RelativeLayout>-->
+                <!--</android.support.v7.widget.CardView>-->
+            </FrameLayout>
+            <!--</RelativeLayout>-->
+            <!--</android.support.v7.widget.CardView>-->
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

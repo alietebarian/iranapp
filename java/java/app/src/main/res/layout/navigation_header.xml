@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layoutDirection="ltr"
+
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:id="@+id/row1"
+        android:background="@drawable/gradient_header"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"/>
+
+
+
+    <LinearLayout
+        android:visibility="gone"
+        android:layout_below="@id/row1"
+        android:background="#fff"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:padding="3dp">
+
+        <com.ideabonyan.iranapp.Components.MyButton
+            android:background="@drawable/main_login_btn"
+            android:text="ورود / ثبت نام"
+            android:textColor="#fff"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:visibility="visible"
+        android:layout_below="@id/row1"
+        android:background="#fff"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:padding="3dp">
+
+        <com.ideabonyan.iranapp.Components.MyButton
+            android:text="محیط کاربری"
+            android:layout_width="0dp"
+            android:textColor="#fff"
+            android:layout_weight="7"
+            android:layout_height="match_parent"
+            android:background="@drawable/main_login_btn"/>
+        <com.ideabonyan.iranapp.Components.MyButton
+            android:text="خروج"
+            android:layout_width="0dp"
+            android:textColor="#fff"
+            android:layout_weight="3"
+            android:layout_height="match_parent"
+            android:background="@drawable/main_logout_btn"
+            android:layout_marginRight="5dp"/>
+
+    </LinearLayout>
+
+
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="58dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="150dp"
+        android:gravity="right|center_vertical"
+        android:orientation="vertical">
+
+        <com.ideabonyan.iranapp.Components.MyTextView
+            android:visibility="visible"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="سهیل"
+            android:textSize="18sp"
+            android:textColor="#fff"/>
+        <com.ideabonyan.iranapp.Components.MyTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="خوش آمدید"
+            android:textSize="18sp"
+            android:textColor="#fff"/>
+
+        <!--e81313-->
+    </LinearLayout>
+    <android.support.v7.widget.CardView
+        app:cardCornerRadius="25dp"
+        app:cardBackgroundColor="#d60c0c"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="35dp"
+        app:cardElevation="15dp"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginBottom="5dp">
+
+        <ImageView
+            android:padding="10dp"
+            android:src="@drawable/account"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:tint="#fff"/>
+
+    </android.support.v7.widget.CardView>
+
+</RelativeLayout>

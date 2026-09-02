@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/splashScreen"
+    android:gravity="center"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/splash_background"
+    android:layoutDirection="ltr"
+    tools:context="com.ideabonyan.iranapp.Activity.SplashScreenActivity">
+
+    <LinearLayout
+android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_width="250dp"
+        android:layout_height="match_parent"
+        android:layout_centerHorizontal="true"
+        android:orientation="vertical">
+
+
+
+
+        <LinearLayout
+            android:gravity="bottom|center_horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:layout_marginTop="15dp">
+
+            <ImageView
+                android:tint="@color/colorPrimary"
+                android:id="@+id/img_asreEsfahanLogo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:alpha="0"
+                android:src="@drawable/iran_app_logo1" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:gravity="center|bottom"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:orientation="horizontal">
+
+            <com.ideabonyan.iranapp.Components.MyTextViewSina
+                android:alpha="0"
+                android:textSize="16sp"
+                android:id="@+id/txt_t4"
+                android:textColor="@color/colorPrimary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" همراه" />
+
+            <com.ideabonyan.iranapp.Components.MyTextViewSina
+                android:textSize="16sp"
+                android:alpha="0"
+                android:id="@+id/txt_t3"
+                android:textColor="@color/colorPrimary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" همیشه" />
+
+            <com.ideabonyan.iranapp.Components.MyTextViewSina
+                android:textSize="16sp"
+                android:alpha="0"
+                android:id="@+id/txt_t2"
+                android:textColor="@color/colorPrimary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="" />
+
+            <com.ideabonyan.iranapp.Components.MyTextViewSina
+                android:textSize="16sp"
+                android:alpha="0"
+                android:id="@+id/txt_t1"
+                android:textColor="@color/colorPrimary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="نیازمندیهای" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <com.ideabonyan.iranapp.Components.MyTextView
+        android:layout_gravity="bottom|center_horizontal"
+        android:id="@+id/txt_appVersion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="10dp"
+        android:text="@string/appVersion" />
+
+    <ProgressBar
+        android:layout_gravity="bottom"
+        android:id="@+id/splashScreenProgressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="-7dp"
+        android:alpha="0"
+        android:indeterminate="true"
+        android:indeterminateTint="@color/colorPrimary" />
+
+</FrameLayout>

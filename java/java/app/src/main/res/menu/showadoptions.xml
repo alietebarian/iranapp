@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+<item
+    android:id="@+id/showAdRemoveAd"
+    android:title="حذف آگهی"/>
+
+<item
+    android:id="@+id/showAdUpdateAd"
+    android:title="ویرایش آگهی"/>
+
+<item
+    android:id="@+id/showAdDENIED"
+    android:title="شما به حد اکثر تعداد تغییر در آگهی رسیدید"/>
+
+</menu>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:focusableInTouchMode="true"
+    android:layoutDirection="ltr"
+    android:focusable="true"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.ideabonyan.iranapp.Activity.PishkhanBookSearchActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <include layout="@layout/toolbar_in_newad"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorPrimary"/>
+    </android.support.design.widget.AppBarLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageButton
+            android:id="@+id/pishkhanBookBTN"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/magnify"
+            android:background="?selectableItemBackgroundBorderless"
+            android:padding="10dp"
+            android:tint="#000"
+            android:scaleType="centerCrop"
+            android:layout_width="50dp"
+            android:layout_height="50dp" />
+
+        <com.ideabonyan.iranapp.Components.MyEdittextView
+            android:id="@+id/pishkhanBookEDT"
+            android:layout_weight="1"
+            android:hint="نام کتاب را وارد کنید"
+            android:textSize="15sp"
+            android:inputType="text"
+            android:layout_marginRight="10dp"
+            android:gravity="right"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/pishkhanBookRV"
+        android:layout_marginTop="0dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <ProgressBar
+        android:id="@+id/pishkhanBookProgressbar"
+        android:visibility="gone"
+        android:layout_gravity="center_horizontal"
+        android:indeterminateTint="@color/colorPrimary"
+        android:layout_marginTop="30dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp" />
+
+    <com.ideabonyan.iranapp.Components.MyTextView
+        android:id="@+id/pishkhanBookNoEntry"
+        android:visibility="gone"
+        android:text="کتابی با این نام پیدا نشد"
+        android:gravity="center"
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>

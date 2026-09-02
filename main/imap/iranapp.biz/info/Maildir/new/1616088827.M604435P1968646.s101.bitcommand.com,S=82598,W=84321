@@ -1,0 +1,1723 @@
+Return-Path: <research@bertina.ir>
+Delivered-To: info@iranapp.biz
+Received: from amaya101.bitcommand.com
+	by s101.bitcommand.com with LMTP
+	id /1WyIfuOU2AGCh4A7VyodQ
+	(envelope-from <research@bertina.ir>)
+	for <info@iranapp.biz>; Thu, 18 Mar 2021 17:33:47 +0000
+Return-path: <research@bertina.ir>
+Envelope-to: info@iranapp.biz
+Delivery-date: Thu, 18 Mar 2021 17:33:47 +0000
+Received: from mail7.bertina.ir ([185.88.152.37] helo=mail.bertina.ir)
+	by amaya101.bitcommand.com with esmtps (TLSv1.2:ECDHE-RSA-AES128-GCM-SHA256:128)
+	(Exim 4.92.3)
+	(envelope-from <research@bertina.ir>)
+	id 1lMwWo-008hz7-Ug
+	for info@iranapp.biz; Thu, 18 Mar 2021 17:33:47 +0000
+dkim-signature: v=1; a=rsa-sha256; d=bertina.ir; s=bertina;
+	c=relaxed/relaxed; q=dns/txt; h=From:Reply-To:Subject:Date:Message-ID:To:MIME-Version:Content-Type:List-Id:List-Unsubscribe;
+	bh=G0tbQNkP9jTDPZejhE5zrkU3U6OCXWmpi5uW0hl074A=;
+	b=d9GJet3wx4tEtL/0jVWdrydOMIxwIXZCGWcrEmNfmjy8W3i8Iwu2jsxJMeyoS+LueR+zpJR3HlkZXNc9Q3nhWddp90AfdowJz6DrhEjNQ1X0SBhSJzFs/fxcPrdhA4aISrJkeHd629YtuFh1aedAm+oZ7PqRtvcAcnREWKR844U=
+Date: Thu, 18 Mar 2021 14:07:45 +0000
+To: "info@iranapp.biz" <info@iranapp.biz>
+From: =?utf-8?B?2KjYsdiq24zZhtin?= <research@bertina.ir>
+Reply-To: =?utf-8?B?2KjYsdiq24zZhtin?= <research@bertina.ir>
+Subject: =?utf-8?B?24zaqSDYqtiu2YHbjNmBINis2LDYp9ioINio2Kcg2KzYtNmG2YjYp9ix2Ycg?= =?utf-8?B?2KjZh9in2LHbjCDYqNix2KrbjNmG2Kc=?=
+Message-ID: <28f3849abac0f1ab9c94d5d739dee513@bertina.ir>
+X-Hzpr-Campaign-Uid: sb966zjkyz757
+X-Hzpr-Subscriber-Uid: ly558nh9ny0eb
+X-Hzpr-Customer-Uid: nd929cn1zmf55
+X-Hzpr-Customer-Gid: 0
+X-Hzpr-Delivery-Sid: 1
+X-Hzpr-Tracking-Did: 0
+List-Unsubscribe: <https://bertinacloud.com/latest/index.php/lists/wo756ykp285d2/unsubscribe/ly558nh9ny0eb/sb966zjkyz757?source=email-client-unsubscribe-button>,
+ <mailto:research@bertina.ir?subject=Campaign-Uid:sb966zjkyz757 /
+ Subscriber-Uid:ly558nh9ny0eb - Unsubscribe request&body=Please unsubscribe
+ me!>
+List-Unsubscribe-Post: List-Unsubscribe=One-Click
+List-Id: wo756ykp285d2 <info-all>
+X-Report-Abuse: Please report abuse for this campaign here: https://bertinacloud.com/latest/index.php/campaigns/sb966zjkyz757/report-abuse/wo756ykp285d2/ly558nh9ny0eb
+Feedback-ID: sb966zjkyz757:regular:wo756ykp285d2:nd929cn1zmf55
+Precedence: bulk
+X-Hzpr-EBS: https://bertinacloud.com/latest/index.php/lists/block-address
+X-Hzpr-Mailer: PHPMailer - 6.x
+MIME-Version: 1.0
+Content-Type: multipart/alternative; boundary="b1_ugYW224b3J2J1Y9SB6buTvaaTvqB5PXTDRdgFAVQ"
+
+This is a multi-part message in MIME format.
+
+--b1_ugYW224b3J2J1Y9SB6buTvaaTvqB5PXTDRdgFAVQ
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+=C2=A0
+=C2=A0
+=C2=A0
+=C2=A0
+=C2=A0
+https://bertinacloud.com/latest/index.php/campaigns/sb966zjkyz757/track-url=
+/ly558nh9ny0eb/c2496bafc02cf4f6dd51a54699fd7dfd2ade352e
+=C2=A0
+=D8=A8=D8=B1=D8=AA=DB=8C=D9=86=D8=A7
+https://bertinacloud.com/latest/index.php/campaigns/sb966zjkyz757/track-url=
+/ly558nh9ny0eb/c2496bafc02cf4f6dd51a54699fd7dfd2ade352e
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 =D8=AF=D8=A7=D9=85=DB=8C=D9=86
+https://bertinacloud.com/latest/index.php/campaigns/sb966zjkyz757/track-url=
+/ly558nh9ny0eb/8fcf489637dfbf65a3e93ebb90920730a5bf1a5d
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 =D9=87=D8=A7=D8=B3=D8=AA
+https://bertinacloud.com/latest/index.php/campaigns/sb966zjkyz757/track-url=
+/ly558nh9ny0eb/3bff7b1ce42b8c12daac38cb83a87850973a0305
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 =DA=AF=D9=88=D8=A7=D9=87=DB=8C ssl
+https://bertinacloud.com/latest/index.php/campaigns/sb966zjkyz757/track-url=
+/ly558nh9ny0eb/5de96822c35684f96725be990cbafca5a0542899
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 =D8=AA=D8=A8=D9=84=DB=8C=D8=BA =D8=AF=D8=
+=B1 =DA=AF=D9=88=DA=AF=D9=84
+https://bertinacloud.com/latest/index.php/campaigns/sb966zjkyz757/track-url=
+/ly558nh9ny0eb/62e1fb4cf5b0ce9cb1a29663128e7cd9c1facd58
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 61064-021
+https://bertinacloud.com/latest/index.php/campaigns/sb966zjkyz757/track-url=
+/ly558nh9ny0eb/8817015377834a4eff471a14e7c7a45e0fb3914a
+=C2=A0
+https://bertinacloud.com/latest/index.php/campaigns/sb966zjkyz757/track-url=
+/ly558nh9ny0eb/c2496bafc02cf4f6dd51a54699fd7dfd2ade352e
+=C2=A0
+=D9=86=D8=B3=D8=AE=D9=87 =D8=AA=D8=AD=D8=AA =D9=88=D8=A8
+https://bertinacloud.com/latest/index.php/campaigns/sb966zjkyz757/track-url=
+/ly558nh9ny0eb/38dc49ad8ea0db666ff4605a4e8d76d74c20c7ba
+=D8=AC=D8=B4=D9=86=D9=88=D8=A7=D8=B1=D9=87 =D9=86=D9=88=D8=B1=D9=88=D8=
+=B2=DB=8C =D8=A8=D8=B1=D8=AA=DB=8C=D9=86=D8=A7
+https://bertinacloud.com/latest/index.php/campaigns/sb966zjkyz757/track-url=
+/ly558nh9ny0eb/c2496bafc02cf4f6dd51a54699fd7dfd2ade352e
+=D8=B9=DB=8C=D8=AF =D8=A7=D9=85=D8=B3=D8=A7=D9=84=D8=8C =D8=A8=D8=B1=D8=
+=AA=DB=8C=D9=86=D8=A7 =D9=85=DB=8C=D8=B2=D8=A8=D8=A7=D9=86 =D9=82=D8=AF=
+=D9=85 =D9=87=D8=A7=DB=8C =D8=B4=D9=85=D8=A7
+=D8=A7=D8=B3=D8=AA. =D8=B9=DB=8C=D8=AF=DB=8C =D9=87=D8=A7=D8=AA=D9=88=D9=
+=86 =D8=B1=D9=88 =D8=A7=D8=B2 =D9=85=D8=A7 =D8=A8=DA=AF=DB=8C=D8=B1=DB=
+=8C=D8=AF.
+=C2=A0
+https://bertinacloud.com/latest/index.php/campaigns/sb966zjkyz757/track-url=
+/ly558nh9ny0eb/3bff7b1ce42b8c12daac38cb83a87850973a0305
+=C2=A0
+=C2=A0
+=D9=87=D8=A7=D8=B3=D8=AA
+6 =D9=85=D8=A7=D9=87=D9=87 =D8=A8=D8=A7 %100 =D8=AA=D8=AE=D9=81=DB=8C=D9=
+=81
+=C2=A0
+=DA=A9=D8=AF =D8=AA=D8=AE=D9=81=DB=8C=D9=81 : H1400
+=C2=A0
+=D8=AE=D8=B1=DB=8C=D8=AF =D8=B3=D8=B1=D9=88=DB=8C=D8=B3
+https://bertinacloud.com/latest/index.php/campaigns/sb966zjkyz757/track-url=
+/ly558nh9ny0eb/3bff7b1ce42b8c12daac38cb83a87850973a0305
+=C2=A0
+=C2=A0
+https://bertinacloud.com/latest/index.php/campaigns/sb966zjkyz757/track-url=
+/ly558nh9ny0eb/62e1fb4cf5b0ce9cb1a29663128e7cd9c1facd58
+=C2=A0
+=C2=A0
+=D8=AA=D8=A8=D9=84=DB=8C=D8=BA =D8=AF=D8=B1 =DA=AF=D9=88=DA=AF=D9=84
+https://bertinacloud.com/latest/index.php/campaigns/sb966zjkyz757/track-url=
+/ly558nh9ny0eb/62e1fb4cf5b0ce9cb1a29663128e7cd9c1facd58
+=C2=A0
+=DA=A9=D8=AF =D8=AA=D8=AE=D9=81=DB=8C=D9=81 =D9=BE=D9=84=D9=86 =D8=A7=D9=
+=88=D9=84 : ads20
+=DA=A9=D8=AF =D8=AA=D8=AE=D9=81=DB=8C=D9=81 =D9=BE=D9=84=D9=86 =D8=AF=D9=
+=88=D9=85 : ads30
+=DA=A9=D8=AF =D8=AA=D8=AE=D9=81=DB=8C=D9=81 =D9=BE=D9=84=D9=86 =D8=B3=D9=
+=88=D9=85 : ads50
+=C2=A0
+=D8=AE=D8=B1=DB=8C=D8=AF =D8=B3=D8=B1=D9=88=DB=8C=D8=B3
+https://bertinacloud.com/latest/index.php/campaigns/sb966zjkyz757/track-url=
+/ly558nh9ny0eb/62e1fb4cf5b0ce9cb1a29663128e7cd9c1facd58
+=C2=A0
+=C2=A0
+https://bertinacloud.com/latest/index.php/campaigns/sb966zjkyz757/track-url=
+/ly558nh9ny0eb/a8b0c6300d6e8ea66b90a39e98a88da4facd7393
+=C2=A0
+=D9=85=DB=8C=D8=B2=D8=A8=D8=A7=D9=86=DB=8C =D8=A7=DB=8C=D9=85=DB=8C=D9=
+=84
+30 =D8=AF=D8=B1=D8=B5=D8=AF =D8=AA=D8=AE=D9=81=DB=8C=D9=81
+=C2=A0
+=DA=A9=D8=AF =D8=AA=D8=AE=D9=81=DB=8C=D9=81 : E1400
+=C2=A0
+=D8=AE=D8=B1=DB=8C=D8=AF =D8=B3=D8=B1=D9=88=DB=8C=D8=B3
+https://bertinacloud.com/latest/index.php/campaigns/sb966zjkyz757/track-url=
+/ly558nh9ny0eb/a8b0c6300d6e8ea66b90a39e98a88da4facd7393
+=C2=A0
+=C2=A0
+=C2=A0
+https://bertinacloud.com/latest/index.php/campaigns/sb966zjkyz757/track-url=
+/ly558nh9ny0eb/5de96822c35684f96725be990cbafca5a0542899
+=C2=A0
+=DA=AF=D9=88=D8=A7=D9=87=DB=8C=D9=86=D8=A7=D9=85=D9=87 SSL
+25 =D8=AF=D8=B1=D8=B5=D8=AF =D8=AA=D8=AE=D9=81=DB=8C=D9=81
+=C2=A0
+=DA=A9=D8=AF =D8=AA=D8=AE=D9=81=DB=8C=D9=81 : S1400
+=C2=A0
+=D8=AE=D8=B1=DB=8C=D8=AF =D8=B3=D8=B1=D9=88=DB=8C=D8=B3
+https://bertinacloud.com/latest/index.php/campaigns/sb966zjkyz757/track-url=
+/ly558nh9ny0eb/5de96822c35684f96725be990cbafca5a0542899
+=C2=A0
+=C2=A0
+=C2=A0
+https://bertinacloud.com/latest/index.php/campaigns/sb966zjkyz757/track-url=
+/ly558nh9ny0eb/8fcf489637dfbf65a3e93ebb90920730a5bf1a5d
+=C2=A0
+=D8=AF=D8=A7=D9=85=D9=86=D9=87
+20 =D8=AF=D8=B1=D8=B5=D8=AF =D8=AA=D8=AE=D9=81=DB=8C=D9=81
+=C2=A0
+=DA=A9=D8=AF =D8=AA=D8=AE=D9=81=DB=8C=D9=81 : D1400
+=C2=A0
+=D8=AE=D8=B1=DB=8C=D8=AF =D8=B3=D8=B1=D9=88=DB=8C=D8=B3
+https://bertinacloud.com/latest/index.php/campaigns/sb966zjkyz757/track-url=
+/ly558nh9ny0eb/8fcf489637dfbf65a3e93ebb90920730a5bf1a5d
+=C2=A0
+=C2=A0
+=C2=A0
+=D8=A2=D8=AF=D8=B1=D8=B3 - Company Address : =D8=AA=D9=87=D8=B1=D8=A7=D9=
+=86=D8=8C =D8=AE=DB=8C=D8=A7=D8=A8=D8=A7=D9=86
+=D8=B3=D8=AA=D8=A7=D8=B1=D8=AE=D8=A7=D9=86=D8=8C =DA=A9=D9=88=DA=86=D9=
+=87 =D8=AD=D8=AC=D8=AA=D8=8C =D9=BE=D9=84=D8=A7=DA=A9 8=D8=8C =D8=B3=D8=
+=A7=D8=AE=D8=AA=D9=85=D8=A7=D9=86
+=D8=A8=D8=B1=D8=AA=DB=8C=D9=86=D8=A7
+=DA=A9=D8=AF =D9=BE=D8=B3=D8=AA=DB=8C : 1454714588
+=D8=AA=D9=84=D9=81=D9=86 : 02161064
+https://bertinacloud.com/latest/index.php/campaigns/sb966zjkyz757/track-url=
+/ly558nh9ny0eb/b43233692fcb8854ade5b7d164abdccf941b99ef
+=D8=A7=DB=8C=D9=85=DB=8C=D9=84 : it@bertina.ir
+https://bertinacloud.com/latest/index.php/campaigns/sb966zjkyz757/track-url=
+/ly558nh9ny0eb/4fc1efddbaa5ee98f1519cfe3e6156824909ffa9
+=C2=A0
+=C2=A0
+=C2=A0
+https://bertinacloud.com/latest/index.php/campaigns/sb966zjkyz757/track-url=
+/ly558nh9ny0eb/492a52a00670d0a8cf6c7423f4871538250c1752
+https://bertinacloud.com/latest/index.php/campaigns/sb966zjkyz757/track-url=
+/ly558nh9ny0eb/6a6bd08c2f75e296fd48931cefbabc2c0722d877
+https://bertinacloud.com/latest/index.php/campaigns/sb966zjkyz757/track-url=
+/ly558nh9ny0eb/d20c5b34459374ada2443d41faa6b5e2f6f53bdf
+https://bertinacloud.com/latest/index.php/campaigns/sb966zjkyz757/track-url=
+/ly558nh9ny0eb/b886d5627e0d530e7d3393982980fd94369b64e3
+https://bertinacloud.com/latest/index.php/campaigns/sb966zjkyz757/track-url=
+/ly558nh9ny0eb/65f3d07aa48b7d1fa697a7d144ac08d7b02b8f34
+=C2=A0
+=C2=A0
+=C2=A0
+A B C =D8=AA=D9=85=D8=A7=D9=85=DB=8C =D8=AD=D9=82=D9=88=D9=82 =D9=85=D8=
+=AA=D8=B9=D9=84=D9=82 =D8=A8=D9=87 =D8=B4=D8=B1=DA=A9=D8=AA =D8=A8=D8=B1=
+=D8=AA=DB=8C=D9=86=D8=A7
+=D9=85=DB=8C =D8=A8=D8=A7=D8=B4=D8=AF =D9=84=D8=BA=D9=88 =D8=A7=D8=B4=D8=
+=AA=D8=B1=D8=A7=DA=A9
+https://bertinacloud.com/latest/index.php/campaigns/sb966zjkyz757/track-url=
+/ly558nh9ny0eb/bf536972d039e076dbe111bd3bb5a6e0c79c495c
+( unsubscribe
+https://bertinacloud.com/latest/index.php/campaigns/sb966zjkyz757/track-url=
+/ly558nh9ny0eb/bf536972d039e076dbe111bd3bb5a6e0c79c495c)
+=C2=A0
+
+--b1_ugYW224b3J2J1Y9SB6buTvaaTvqB5PXTDRdgFAVQ
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.=
+w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html dir=3D"rtl" lang=3D"fa-IR" style=3D"width: 100%;" xml:lang=3D"fa-IR" =
+xmlns=3D"http://www.w3.org/1999/xhtml">
+<head>
+=09<title></title>
+=09<meta charset=3D"UTF-8" /><meta http-equiv=3D"Content-Type" content=3D"t=
+ext/html; charset=3DUTF-8" /><meta name=3D"viewport" content=3D"initial-sca=
+le=3D1.0" /><meta name=3D"format-detection" content=3D"telephone=3Dno" />
+=09<style type=3D"text/css">.ReadMsgBody {
+width: 100%; background-color: #ffffff;
+}
+.ExternalClass {
+width: 100%; background-color: #ffffff;
+}
+.ExternalClass {
+line-height: 100%;
+}
+body {
+-webkit-text-size-adjust: none; -ms-text-size-adjust: none;
+}
+body {
+margin: 0; padding: 0;
+}
+img {
+display: block !important;
+}
+img {
+height: auto !important;
+}
+@media only screen and (max-width: 640px) {
+  body {
+    width: auto !important;
+  }
+  table[class=3D"container"] {
+    width: 100% !important; padding-left: 20px !important; padding-right: 2=
+0px !important;
+  }
+  img[class=3D"image-100-percent"] {
+    width: 100% !important; height: auto !important; max-width: 100% !impor=
+tant;
+  }
+  img[class=3D"small-image-100-percent"] {
+    width: 100% !important; height: auto !important;
+  }
+  table[class=3D"full-width"] {
+    width: 100% !important;
+  }
+  table[class=3D"full-width-text"] {
+    width: 100% !important; background-color: #b91925; padding-left: 20px !=
+important; padding-right: 20px !important;
+  }
+  table[class=3D"full-width-text2"] {
+    width: 100% !important; background-color: #f3f3f3; padding-left: 20px !=
+important; padding-right: 20px !important;
+  }
+  table[class=3D"col-2-3img"] {
+    width: 50% !important; margin-right: 20px !important;
+  }
+  table[class=3D"col-2-3img-last"] {
+    width: 50% !important;
+  }
+  table[class=3D"col-2"] {
+    width: 47% !important; margin-right: 20px !important;
+  }
+  table[class=3D"col-2-last"] {
+    width: 47% !important;
+  }
+  table[class=3D"col-3"] {
+    width: 29% !important; margin-right: 20px !important;
+  }
+  table[class=3D"col-3-last"] {
+    width: 29% !important;
+  }
+  table[class=3D"row-2"] {
+    width: 50% !important;
+  }
+  td[class=3D"text-center"] {
+    text-align: center !important;
+  }
+  table[class=3D"remove"] {
+    display: none !important;
+  }
+  td[class=3D"remove"] {
+    display: none !important;
+  }
+  table[class=3D"fix-box"] {
+    padding-left: 20px !important; padding-right: 20px !important;
+  }
+  td[class=3D"fix-box"] {
+    padding-left: 20px !important; padding-right: 20px !important;
+  }
+  td[class=3D"font-resize"] {
+    font-size: 18px !important; line-height: 22px !important;
+  }
+}
+@media only screen and (max-width: 479px) {
+  body {
+    font-size: 10px !important;
+  }
+  table[class=3D"container"] {
+    width: 100% !important; padding-left: 10px !important; padding-right: 1=
+0px !important;
+  }
+  table[class=3D"container2"] {
+    width: 100% !important; float: none !important;
+  }
+  img[class=3D"image-100-percent"] {
+    width: 100% !important; height: auto !important; max-width: 100% !impor=
+tant; min-width: 124px !important;
+  }
+  img[class=3D"small-image-100-percent"] {
+    width: 100% !important; height: auto !important; max-width: 100% !impor=
+tant; min-width: 124px !important;
+  }
+  table[class=3D"full-width"] {
+    width: 100% !important;
+  }
+  table[class=3D"full-width-text"] {
+    width: 100% !important; background-color: #b91925; padding-left: 20px !=
+important; padding-right: 20px !important;
+  }
+  table[class=3D"full-width-text2"] {
+    width: 100% !important; background-color: #f3f3f3; padding-left: 20px !=
+important; padding-right: 20px !important;
+  }
+  table[class=3D"col-2"] {
+    width: 100% !important; margin-right: 0px !important;
+  }
+  table[class=3D"col-2-last"] {
+    width: 100% !important;
+  }
+  table[class=3D"col-3"] {
+    width: 100% !important; margin-right: 0px !important;
+  }
+  table[class=3D"col-3-last"] {
+    width: 100% !important;
+  }
+  table[class=3D"row-2"] {
+    width: 100% !important;
+  }
+  table[id=3D"col-underline"] {
+    float: none !important; width: 100% !important; border-bottom: 1px soli=
+d #eee;
+  }
+  td[id=3D"col-underline"] {
+    float: none !important; width: 100% !important; border-bottom: 1px soli=
+d #eee;
+  }
+  td[class=3D"col-underline"] {
+    float: none !important; width: 100% !important; border-bottom: 1px soli=
+d #eee;
+  }
+  td[class=3D"text-center"] {
+    text-align: center !important;
+  }
+  div[class=3D"text-center"] {
+    text-align: center !important;
+  }
+  table[id=3D"clear-padding"] {
+    padding: 0 !important;
+  }
+  td[id=3D"clear-padding"] {
+    padding: 0 !important;
+  }
+  td[class=3D"clear-padding"] {
+    padding: 0 !important;
+  }
+  table[class=3D"remove-479"] {
+    display: none !important;
+  }
+  td[class=3D"remove-479"] {
+    display: none !important;
+  }
+  table[class=3D"clear-align"] {
+    float: none !important;
+  }
+  table[class=3D"width-small"] {
+    width: 100% !important;
+  }
+  table[class=3D"fix-box"] {
+    padding-left: 0px !important; padding-right: 0px !important;
+  }
+  td[class=3D"fix-box"] {
+    padding-left: 0px !important; padding-right: 0px !important;
+  }
+  td[class=3D"font-resize"] {
+    font-size: 14px !important;
+  }
+  td[class=3D"increase-Height"] {
+    height: 10px !important;
+  }
+  td[class=3D"increase-Height-20"] {
+    height: 20px !important;
+  }
+}
+@media only screen and (max-width: 320px) {
+  table[class=3D"width-small"] {
+    width: 125px !important;
+  }
+  img[class=3D"image-100-percent"] {
+    width: 100% !important; height: auto !important; max-width: 100% !impor=
+tant; min-width: 124px !important;
+  }
+}
+=09</style>
+</head>
+<body dir=3D"ltr" style=3D"font-size: 12px; -webkit-text-size-adjust: none;=
+ -ms-text-size-adjust: none; margin: 0; padding: 0;">
+<div dir=3D"rtl">
+<table bgcolor=3D"#ececec" border=3D"0" cellpadding=3D"0" cellspacing=3D"0"=
+ dir=3D"rtl" id=3D"mainStructure" style=3D"border-spacing: 0;" width=3D"100=
+%"><!--START VIEW ONLINE AND ICON SOCAIL -->
+=09<tbody>
+=09=09<tr>
+=09=09=09<td align=3D"center" bgcolor=3D"#e81b2b" style=3D"border-collapse:=
+ collapse;" valign=3D"top"><!-- start container 600 -->
+=09=09=09<table align=3D"center" bgcolor=3D"#e81b2b" border=3D"0" cellpaddi=
+ng=3D"0" cellspacing=3D"0" class=3D"container" style=3D"border-spacing: 0;"=
+ width=3D"600">
+=09=09=09=09<tbody>
+=09=09=09=09=09<tr>
+=09=09=09=09=09=09<td style=3D"border-collapse: collapse;" valign=3D"top">
+=09=09=09=09=09=09<table align=3D"center" bgcolor=3D"#e81b2b" border=3D"0" =
+cellpadding=3D"0" cellspacing=3D"0" class=3D"full-width" style=3D"border-sp=
+acing: 0;" width=3D"560"><!-- start space -->
+=09=09=09=09=09=09=09<tbody>
+=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09<td height=3D"10" style=3D"border-collapse: coll=
+apse;" valign=3D"top">=C2=A0</td>
+=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09<!-- end space -->
+=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09<td style=3D"border-collapse: collapse;" valign=
+=3D"top">=C2=A0</td>
+=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09<!-- start space -->
+=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09<td height=3D"10" style=3D"border-collapse: coll=
+apse;" valign=3D"top">=C2=A0</td>
+=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09<!-- end space --><!-- start space -->
+=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09<td class=3D"increase-Height" style=3D"border-co=
+llapse: collapse;" valign=3D"top">=C2=A0</td>
+=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09<!-- end space -->
+=09=09=09=09=09=09=09</tbody>
+=09=09=09=09=09=09</table>
+=09=09=09=09=09=09<!-- end container 600--></td>
+=09=09=09=09=09</tr>
+=09=09=09=09</tbody>
+=09=09=09</table>
+=09=09=09</td>
+=09=09</tr>
+=09=09<!--END VIEW ONLINE AND ICON SOCAIL--><!--START BORDER OF LAYOUT -->
+=09=09<tr>
+=09=09=09<td align=3D"center" bgcolor=3D"#e81b2b" class=3D"full-width" styl=
+e=3D"border-collapse: collapse;" valign=3D"top" width=3D"100%">
+=09=09=09<table align=3D"center" bgcolor=3D"#ffffff" border=3D"0" cellpaddi=
+ng=3D"0" cellspacing=3D"0" class=3D"container" style=3D"height: 20px; opaci=
+ty: 0.5; border-spacing: 0;" width=3D"600">
+=09=09=09=09<tbody>
+=09=09=09=09=09<tr>
+=09=09=09=09=09=09<td height=3D"20" style=3D"border-collapse: collapse;" va=
+lign=3D"top">=C2=A0</td>
+=09=09=09=09=09</tr>
+=09=09=09=09</tbody>
+=09=09=09</table>
+=09=09=09</td>
+=09=09</tr>
+=09=09<!--END BORDER OF LAYOUT --><!--START TOP NAVIGATION =E2=80=8BLAYOUT-=
+->
+=09=09<tr>
+=09=09=09<td style=3D"border-collapse: collapse;" valign=3D"top">
+=09=09=09<table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=
+=3D"0" style=3D"border-spacing: 0;" width=3D"100%"><!-- START CONTAINER NAV=
+IGATION -->
+=09=09=09=09<tbody>
+=09=09=09=09=09<tr>
+=09=09=09=09=09=09<td align=3D"center" class=3D"fix-box" style=3D"border-co=
+llapse: collapse;" valign=3D"top"><!-- start top navigation container -->
+=09=09=09=09=09=09<table align=3D"center" bgcolor=3D"#ffffff" border=3D"0" =
+cellpadding=3D"0" cellspacing=3D"0" class=3D"container" style=3D"border-spa=
+cing: 0;" width=3D"600">
+=09=09=09=09=09=09=09<tbody>
+=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09<td style=3D"border-collapse: collapse;" valign=
+=3D"top"><!-- start top navigaton -->
+=09=09=09=09=09=09=09=09=09<table align=3D"center" border=3D"0" cellpadding=
+=3D"3" cellspacing=3D"0" class=3D"full-width" style=3D"border-spacing: 0;" =
+width=3D"560">
+=09=09=09=09=09=09=09=09=09=09<tbody>
+=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09<td style=3D"border-collapse: collapse;=
+" valign=3D"middle">
+=09=09=09=09=09=09=09=09=09=09=09=09<table align=3D"left" border=3D"0" cell=
+padding=3D"0" cellspacing=3D"0" class=3D"container2" style=3D"border-spacin=
+g: 0;">
+=09=09=09=09=09=09=09=09=09=09=09=09=09<tbody>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<td align=3D"center" style=3D"=
+border-collapse: collapse;" valign=3D"top"><a href=3D"https://bertinacloud.=
+com/latest/index.php/campaigns/sb966zjkyz757/track-url/ly558nh9ny0eb/c2496b=
+afc02cf4f6dd51a54699fd7dfd2ade352e" style=3D"text-decoration: none;" target=
+=3D"_blank"><img alt=3D"Logo" border=3D"0" hspace=3D"0" src=3D"https://bert=
+inacloud.com/mail2/images/logo-bertina.png" style=3D"max-width: 137px; disp=
+lay: block !important; height: auto !important;" vspace=3D"0" width=3D"137"=
+ /></a></td>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09<!-- start space -->
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<td class=3D"increase-Height-2=
+0" style=3D"border-collapse: collapse;" valign=3D"top">=C2=A0</td>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09<!-- end space -->
+=09=09=09=09=09=09=09=09=09=09=09=09=09</tbody>
+=09=09=09=09=09=09=09=09=09=09=09=09</table>
+=09=09=09=09=09=09=09=09=09=09=09=09<!--start content nav -->
+
+=09=09=09=09=09=09=09=09=09=09=09=09<table align=3D"right" border=3D"0" cel=
+lpadding=3D"0" cellspacing=3D"0" class=3D"container2" style=3D"border-spaci=
+ng: 0;"><!--start call us -->
+=09=09=09=09=09=09=09=09=09=09=09=09=09<tbody>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<td align=3D"center" valign=3D=
+"middle">
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<table align=3D"right" border=
+=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=3D"clear-align" style=3D"h=
+eight:100%;">
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<tbody>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<td style=3D"font-siz=
+e: 13px;  line-height: 18px; color: #a3a2a2;  font-weight:normal; text-alig=
+n: center; font-family:B Yekan;">
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<p><span style=3D"col=
+or: #000000;"><strong><span style=3D"text-decoration: none;"><a href=3D"htt=
+ps://bertinacloud.com/latest/index.php/campaigns/sb966zjkyz757/track-url/ly=
+558nh9ny0eb/c2496bafc02cf4f6dd51a54699fd7dfd2ade352e" style=3D"text-decorat=
+ion: none; color: #000000;" target=3D"_blank">=D8=A8=D8=B1=D8=AA=DB=8C=
+=D9=86=D8=A7</a></span></strong> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 <strong><sp=
+an style=3D"text-decoration: none;"><a href=3D"https://bertinacloud.com/lat=
+est/index.php/campaigns/sb966zjkyz757/track-url/ly558nh9ny0eb/8fcf489637dfb=
+f65a3e93ebb90920730a5bf1a5d" style=3D"text-decoration: none; color: #000000=
+;" target=3D"_blank">=D8=AF=D8=A7=D9=85=DB=8C=D9=86</a></span></strong> =
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 <strong><span style=3D"text-decoration: none=
+;"><a href=3D"https://bertinacloud.com/latest/index.php/campaigns/sb966zjky=
+z757/track-url/ly558nh9ny0eb/3bff7b1ce42b8c12daac38cb83a87850973a0305" styl=
+e=3D"text-decoration: none; color: #000000;" target=3D"_blank">=D9=87=D8=
+=A7=D8=B3=D8=AA</a></span></strong> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 <strong>=
+<span style=3D"text-decoration: none;"><a href=3D"https://bertinacloud.com/=
+latest/index.php/campaigns/sb966zjkyz757/track-url/ly558nh9ny0eb/5de96822c3=
+5684f96725be990cbafca5a0542899" style=3D"text-decoration: none; direction: =
+rtl; color: #000000;" target=3D"_blank">=DA=AF=D9=88=D8=A7=D9=87=DB=8C ssl<=
+/a></span></strong> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 <strong><span style=3D"t=
+ext-decoration: none;"><a href=3D"https://bertinacloud.com/latest/index.php=
+/campaigns/sb966zjkyz757/track-url/ly558nh9ny0eb/62e1fb4cf5b0ce9cb1a2966312=
+8e7cd9c1facd58" style=3D"text-decoration: none; direction: rtl; color: #000=
+000;" target=3D"_blank">=D8=AA=D8=A8=D9=84=DB=8C=D8=BA =D8=AF=D8=B1 =DA=
+=AF=D9=88=DA=AF=D9=84</a></span></strong> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 <s=
+trong><span style=3D"text-decoration: none;"><a href=3D"https://bertinaclou=
+d.com/latest/index.php/campaigns/sb966zjkyz757/track-url/ly558nh9ny0eb/8817=
+015377834a4eff471a14e7c7a45e0fb3914a" style=3D"text-decoration: none; color=
+: #000000;" target=3D"_blank">61064-021</a></span></strong></span></p>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09</td>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09</tbody>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09</table>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09</td>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09<!--end call us -->
+=09=09=09=09=09=09=09=09=09=09=09=09=09</tbody>
+=09=09=09=09=09=09=09=09=09=09=09=09</table>
+=09=09=09=09=09=09=09=09=09=09=09=09<!--end content nav --></td>
+=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09=09<!-- start space -->
+=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09<td height=3D"10" style=3D"border-colla=
+pse: collapse;" valign=3D"top">=C2=A0</td>
+=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09=09<!-- end space -->
+=09=09=09=09=09=09=09=09=09=09</tbody>
+=09=09=09=09=09=09=09=09=09</table>
+=09=09=09=09=09=09=09=09=09<!-- end top navigaton --></td>
+=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09</tbody>
+=09=09=09=09=09=09</table>
+=09=09=09=09=09=09<!-- end top navigation container --></td>
+=09=09=09=09=09</tr>
+=09=09=09=09=09<!-- END CONTAINER NAVIGATION -->
+=09=09=09=09</tbody>
+=09=09=09</table>
+=09=09=09</td>
+=09=09</tr>
+=09=09<!--END TOP NAVIGATION =E2=80=8BLAYOUT--><!--START IMAGE HEADER LAYOU=
+T-->
+=09=09<tr>
+=09=09=09<td class=3D"fix-box" style=3D"border-collapse: collapse;" valign=
+=3D"top">
+=09=09=09<table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=
+=3D"0" class=3D"full-width" style=3D"border-spacing: 0;" width=3D"100%">
+=09=09=09=09<tbody>
+=09=09=09=09=09<tr>
+=09=09=09=09=09=09<td align=3D"center" class=3D"full-width" style=3D"border=
+-collapse: collapse;" valign=3D"top" width=3D"100%"><!-- start header conta=
+iner -->
+=09=09=09=09=09=09<table align=3D"center" bgcolor=3D"#ffffff" border=3D"0" =
+cellpadding=3D"0" cellspacing=3D"0" class=3D"full-width" style=3D"border-sp=
+acing: 0;" width=3D"600">
+=09=09=09=09=09=09=09<tbody>
+=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09<td align=3D"center" style=3D"border-collapse: c=
+ollapse;" valign=3D"top"><a href=3D"https://bertinacloud.com/latest/index.p=
+hp/campaigns/sb966zjkyz757/track-url/ly558nh9ny0eb/c2496bafc02cf4f6dd51a546=
+99fd7dfd2ade352e" style=3D"text-decoration: none;" target=3D"_blank"><img a=
+lt=3D"=D8=AC=D8=B4=D9=86=D9=88=D8=A7=D8=B1=D9=87 =D9=86=D9=88=D8=B1=D9=
+=88=D8=B2=DB=8C =D8=A8=D8=B1=D8=AA=DB=8C=D9=86=D8=A7" border=3D"0" class=3D=
+"image-100-percent" hspace=3D"0" src=3D"https://bertinacloud.com/mail2/imag=
+es/nowrooz-off.png" style=3D"max-width: 600px display:block; display: block=
+ !important; height: auto !important;" vspace=3D"0" width=3D"600" /> </a></=
+td>
+=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09</tbody>
+=09=09=09=09=09=09</table>
+=09=09=09=09=09=09<!-- end header container --></td>
+=09=09=09=09=09</tr>
+=09=09=09=09</tbody>
+=09=09=09</table>
+=09=09=09</td>
+=09=09</tr>
+=09=09<!--END IMAGE HEADER LAYOUT--><!-- START LAYOUT 1 -->
+=09=09<tr>
+=09=09=09<td align=3D"center" class=3D"fix-box" style=3D"border-collapse: c=
+ollapse;" valign=3D"top"><!-- start layout-1 container width 600px -->
+=09=09=09<table align=3D"center" bgcolor=3D"#ffffff" border=3D"0" cellpaddi=
+ng=3D"0" cellspacing=3D"0" class=3D"container" style=3D"border-spacing: 0;"=
+ width=3D"600">
+=09=09=09=09<tbody>
+=09=09=09=09=09<tr>
+=09=09=09=09=09=09<td style=3D"border-collapse: collapse;" valign=3D"top"><=
+!-- start layout-1 container width 560px -->
+=09=09=09=09=09=09<table align=3D"center" bgcolor=3D"#ffffff" border=3D"0" =
+cellpadding=3D"0" cellspacing=3D"0" class=3D"full-width" style=3D"padding-t=
+op: 5px; border-spacing: 0;" width=3D"560"><!--start space height -->
+=09=09=09=09=09=09=09<tbody>
+=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09<td height=3D"15" style=3D"border-collapse: coll=
+apse;">=C2=A0</td>
+=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09<!--end space height --><!-- start text content -->
+=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09<td style=3D"border-collapse: collapse;" valign=
+=3D"top">
+=09=09=09=09=09=09=09=09=09<table align=3D"center" border=3D"0" cellpadding=
+=3D"0" cellspacing=3D"0" style=3D"border-spacing: 0;">
+=09=09=09=09=09=09=09=09=09=09<tbody>
+=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09<td align=3D"center" style=3D"font-size=
+: 18px; line-height: 18px; font-family: B Yekan; color: #555555; font-weigh=
+t: bold; border-collapse: collapse;"><span style=3D"color: #555555; font-we=
+ight: bold; padding: 10px;"><span style=3D"font-size:14px;"><span style=3D"=
+text-decoration: none; color: rgb(85, 85, 85); font-weight: bold;"><span st=
+yle=3D"color: #e81b2b; font-weight: bold;"><a href=3D"https://bertinacloud.=
+com/latest/index.php/campaigns/sb966zjkyz757/track-url/ly558nh9ny0eb/38dc49=
+ad8ea0db666ff4605a4e8d76d74c20c7ba">=D9=86=D8=B3=D8=AE=D9=87 =D8=AA=D8=
+=AD=D8=AA =D9=88=D8=A8</a></span></span></span><br />
+=09=09=09=09=09=09=09=09=09=09=09=09<br />
+=09=09=09=09=09=09=09=09=09=09=09=09<br />
+=09=09=09=09=09=09=09=09=09=09=09=09<a href=3D"https://bertinacloud.com/lat=
+est/index.php/campaigns/sb966zjkyz757/track-url/ly558nh9ny0eb/c2496bafc02cf=
+4f6dd51a54699fd7dfd2ade352e" style=3D"text-decoration: none; color: rgb(85,=
+ 85, 85); font-weight: bold;" target=3D"_blank"><span style=3D"color: #e81b=
+2b; font-weight: bold;">=D8=AC=D8=B4=D9=86=D9=88=D8=A7=D8=B1=D9=87 =D9=
+=86=D9=88=D8=B1=D9=88=D8=B2=DB=8C =D8=A8=D8=B1=D8=AA=DB=8C=D9=86=D8=A7</spa=
+n> </a> </span></td>
+=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09</tbody>
+=09=09=09=09=09=09=09=09=09=09<tbody>
+=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09<td align=3D"center" style=3D"font-size=
+: 15px; line-height: 22px; font-family: B Yekan; color: #000000; font-weigh=
+t: normal; border-collapse: collapse; padding: 10px;">
+=09=09=09=09=09=09=09=09=09=09=09=09<p align=3D"center">=D8=B9=DB=8C=D8=
+=AF =D8=A7=D9=85=D8=B3=D8=A7=D9=84=D8=8C =D8=A8=D8=B1=D8=AA=DB=8C=D9=86=
+=D8=A7 =D9=85=DB=8C=D8=B2=D8=A8=D8=A7=D9=86 =D9=82=D8=AF=D9=85 =D9=87=D8=
+=A7=DB=8C =D8=B4=D9=85=D8=A7 =D8=A7=D8=B3=D8=AA. =D8=B9=DB=8C=D8=AF=DB=
+=8C =D9=87=D8=A7=D8=AA=D9=88=D9=86 =D8=B1=D9=88 =D8=A7=D8=B2 =D9=85=D8=
+=A7 =D8=A8=DA=AF=DB=8C=D8=B1=DB=8C=D8=AF.</p>
+=09=09=09=09=09=09=09=09=09=09=09=09</td>
+=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09</tbody>
+=09=09=09=09=09=09=09=09=09</table>
+=09=09=09=09=09=09=09=09=09</td>
+=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09<!-- end text content -->
+=09=09=09=09=09=09=09</tbody>
+=09=09=09=09=09=09</table>
+=09=09=09=09=09=09<!-- end layout-1 container width 560px --></td>
+=09=09=09=09=09</tr>
+=09=09=09=09</tbody>
+=09=09=09</table>
+=09=09=09<!-- end layout-1 container width 600px --></td>
+=09=09</tr>
+=09=09<!-- END LAYOUT 1 --><!-- START HEIGHT SPACE 10PX-->
+=09=09<tr>
+=09=09=09<td align=3D"center" valign=3D"top">
+=09=09=09<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" height=3D"=
+10" width=3D"100%">
+=09=09=09=09<tbody>
+=09=09=09=09=09<tr>
+=09=09=09=09=09=09<td height=3D"10" valign=3D"top"><img alt=3D"space" src=
+=3D"https://bertinacloud.com/mail2/images/space.png" style=3D"display:block=
+; max-height:10px; max-width:10px;" width=3D"10" /></td>
+=09=09=09=09=09</tr>
+=09=09=09=09</tbody>
+=09=09=09</table>
+=09=09=09</td>
+=09=09</tr>
+=09=09<!-- END HEIGHT SPACE 10PX--><!-- START LAYOUT-4 -->
+=09=09<tr>
+=09=09=09<td align=3D"center" class=3D"fix-box" valign=3D"top"><!-- start l=
+ayout-4 container width 600px -->
+=09=09=09<table align=3D"center" bgcolor=3D"#ffffff" border=3D"0" cellpaddi=
+ng=3D"0" cellspacing=3D"0" class=3D"container" style=3D"background-color: #=
+ffffff; border-bottom:2px solid #c7c7c7;" width=3D"600">
+=09=09=09=09<tbody>
+=09=09=09=09=09<tr>
+=09=09=09=09=09=09<td valign=3D"top"><!-- start layout-4 container width 56=
+0px -->
+=09=09=09=09=09=09<table align=3D"center" bgcolor=3D"#ffffff" border=3D"0" =
+cellpadding=3D"0" cellspacing=3D"0" class=3D"full-width" style=3D"backgroun=
+d-color:#ffffff;" width=3D"560"><!--start space height -->
+=09=09=09=09=09=09=09<tbody>
+=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09<td height=3D"20">=C2=A0</td>
+=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09<!--end space height --><!-- start image content --=
+>
+=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09<td valign=3D"top" width=3D"100%"><!-- start con=
+tent left -->
+=09=09=09=09=09=09=09=09=09<table align=3D"left" border=3D"0" cellpadding=
+=3D"0" cellspacing=3D"0" class=3D"full-width" width=3D"270">
+=09=09=09=09=09=09=09=09=09=09<tbody>
+=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09<td valign=3D"top">
+=09=09=09=09=09=09=09=09=09=09=09=09<table align=3D"left" border=3D"0" cell=
+padding=3D"0" cellspacing=3D"0" width=3D"100%">
+=09=09=09=09=09=09=09=09=09=09=09=09=09<tbody>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<td align=3D"left" valign=3D"t=
+op"><a href=3D"https://bertinacloud.com/latest/index.php/campaigns/sb966zjk=
+yz757/track-url/ly558nh9ny0eb/3bff7b1ce42b8c12daac38cb83a87850973a0305"><im=
+g alt=3D"=D9=87=D8=A7=D8=B3=D8=AA" border=3D"0" class=3D"image-100-percent"=
+ hspace=3D"0" src=3D"https://bertinacloud.com/mail2/images/host.png" style=
+=3D"display:block; max-width:270px; " vspace=3D"0" width=3D"270" /> </a></t=
+d>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09</tbody>
+=09=09=09=09=09=09=09=09=09=09=09=09</table>
+=09=09=09=09=09=09=09=09=09=09=09=09</td>
+=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09=09<!--start space height -->
+=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09<td height=3D"20">=C2=A0</td>
+=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09=09<!--end space height -->
+=09=09=09=09=09=09=09=09=09=09</tbody>
+=09=09=09=09=09=09=09=09=09</table>
+=09=09=09=09=09=09=09=09=09<!-- end content left --><!-- start space width =
+-->
+
+=09=09=09=09=09=09=09=09=09<table align=3D"left" border=3D"0" cellpadding=
+=3D"0" cellspacing=3D"0" class=3D"remove" style=3D"font-size: 0;line-height=
+: 0;border-collapse: collapse;" width=3D"1">
+=09=09=09=09=09=09=09=09=09=09<tbody>
+=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09<td height=3D"2" style=3D"font-size: 0;=
+line-height: 0;border-collapse: collapse;" width=3D"0">
+=09=09=09=09=09=09=09=09=09=09=09=09<p style=3D"padding-left: 20px;">=C2=
+=A0</p>
+=09=09=09=09=09=09=09=09=09=09=09=09</td>
+=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09</tbody>
+=09=09=09=09=09=09=09=09=09</table>
+=09=09=09=09=09=09=09=09=09<!-- end space width --><!-- start content left =
+-->
+
+=09=09=09=09=09=09=09=09=09<table align=3D"center" border=3D"0" cellpadding=
+=3D"0" cellspacing=3D"0" class=3D"full-width" width=3D"270"><!-- start text=
+ content -->
+=09=09=09=09=09=09=09=09=09=09<tbody>
+=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09<td valign=3D"top">
+=09=09=09=09=09=09=09=09=09=09=09=09<table align=3D"center" border=3D"0" ce=
+llpadding=3D"0" cellspacing=3D"0">
+=09=09=09=09=09=09=09=09=09=09=09=09=09<tbody>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<td style=3D"font-size: 18px; =
+line-height: 22px; font-family: B Yekan; color:#555555; font-weight:bold; t=
+ext-align:center;"><span style=3D"color: #555555; font-weight: bold;"><a hr=
+ef=3D"https://bertinacloud.com/latest/index.php/campaigns/sb966zjkyz757/tra=
+ck-url/ly558nh9ny0eb/3bff7b1ce42b8c12daac38cb83a87850973a0305" style=3D"tex=
+t-decoration: none; color: #555555; font-weight: bold;">=D9=87=D8=A7=D8=
+=B3=D8=AA<br />
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=096 =D9=85=D8=A7=D9=87=D9=87 =
+=D8=A8=D8=A7 %100 =D8=AA=D8=AE=D9=81=DB=8C=D9=81 </a> </span></td>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09<!--start space height -->
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<td height=3D"15">=C2=A0</td>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09<!--end space height -->
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<td style=3D"font-size: 18px; =
+line-height: 22px; font-family:B Yekan; color:#e81b2b; font-weight:normal; =
+text-align:center; ">=DA=A9=D8=AF =D8=AA=D8=AE=D9=81=DB=8C=D9=81 : H1400</t=
+d>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09<!--start space height -->
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<td height=3D"15">=C2=A0</td>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09<!--end space height -->
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<td valign=3D"top" width=3D"au=
+to"><!-- start button -->
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<table align=3D"center" border=
+=3D"0" cellpadding=3D"0" cellspacing=3D"0">
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<tbody>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<td align=3D"center" =
+height=3D"32" style=3D" background-color:#e81b2b; background-clip: padding-=
+box;font-size:13px; font-family: B Yekan; text-align:center;  color:#ffffff=
+; font-weight: normal; padding-left:18px; padding-right:18px; " valign=3D"m=
+iddle" width=3D"auto"><span style=3D"color: #ffffff; font-weight: normal;">=
+<a href=3D"https://bertinacloud.com/latest/index.php/campaigns/sb966zjkyz75=
+7/track-url/ly558nh9ny0eb/3bff7b1ce42b8c12daac38cb83a87850973a0305" style=
+=3D"text-decoration: none; color: #ffffff; font-weight: normal;">=D8=AE=
+=D8=B1=DB=8C=D8=AF =D8=B3=D8=B1=D9=88=DB=8C=D8=B3</a> </span></td>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09</tbody>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09</table>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<!-- end button --></td>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09<!--start space height -->
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<td height=3D"20">=C2=A0</td>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09<!--end space height -->
+=09=09=09=09=09=09=09=09=09=09=09=09=09</tbody>
+=09=09=09=09=09=09=09=09=09=09=09=09</table>
+=09=09=09=09=09=09=09=09=09=09=09=09</td>
+=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09=09<!-- end text content -->
+=09=09=09=09=09=09=09=09=09=09</tbody>
+=09=09=09=09=09=09=09=09=09</table>
+=09=09=09=09=09=09=09=09=09<!-- end content left --></td>
+=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09<!-- end image content -->
+=09=09=09=09=09=09=09</tbody>
+=09=09=09=09=09=09</table>
+=09=09=09=09=09=09<!-- end layout-4 container width 560px --></td>
+=09=09=09=09=09</tr>
+=09=09=09=09</tbody>
+=09=09=09</table>
+=09=09=09<!-- end layout-4 container width 600px --></td>
+=09=09</tr>
+=09=09<!-- END LAYOUT-4  --><!-- START HEIGHT SPACE 10PX-->
+=09=09<tr>
+=09=09=09<td align=3D"center" valign=3D"top">
+=09=09=09<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" height=3D"=
+10" width=3D"100%">
+=09=09=09=09<tbody>
+=09=09=09=09=09<tr>
+=09=09=09=09=09=09<td height=3D"10" valign=3D"top"><img alt=3D"space" src=
+=3D"https://bertinacloud.com/mail2/images/space.png" style=3D"display:block=
+; max-height:10px; max-width:10px;" width=3D"10" /></td>
+=09=09=09=09=09</tr>
+=09=09=09=09</tbody>
+=09=09=09</table>
+=09=09=09</td>
+=09=09</tr>
+=09=09<!-- END HEIGHT SPACE 10PX--><!-- START LAYOUT-5 -->
+=09=09<tr>
+=09=09=09<td align=3D"center" class=3D"fix-box" valign=3D"top"><!-- start l=
+ayout-5 container width 600px -->
+=09=09=09<table align=3D"center" bgcolor=3D"#ffffff" border=3D"0" cellpaddi=
+ng=3D"0" cellspacing=3D"0" class=3D"container" style=3D"background-color: #=
+ffffff; border-bottom:2px solid #c7c7c7;" width=3D"600">
+=09=09=09=09<tbody>
+=09=09=09=09=09<tr>
+=09=09=09=09=09=09<td valign=3D"top"><!-- start layout-5 container width 56=
+0px -->
+=09=09=09=09=09=09<table align=3D"center" bgcolor=3D"#ffffff" border=3D"0" =
+cellpadding=3D"0" cellspacing=3D"0" class=3D"full-width" style=3D"backgroun=
+d-color:#ffffff;" width=3D"560"><!--start space height -->
+=09=09=09=09=09=09=09<tbody>
+=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09<td height=3D"20">=C2=A0</td>
+=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09<!--end space height --><!-- start image content --=
+>
+=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09<td valign=3D"top" width=3D"100%"><!-- start con=
+tent right -->
+=09=09=09=09=09=09=09=09=09<table align=3D"right" border=3D"0" cellpadding=
+=3D"0" cellspacing=3D"0" class=3D"full-width" width=3D"270">
+=09=09=09=09=09=09=09=09=09=09<tbody>
+=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09<td valign=3D"top">
+=09=09=09=09=09=09=09=09=09=09=09=09<table align=3D"left" border=3D"0" cell=
+padding=3D"0" cellspacing=3D"0" width=3D"100%">
+=09=09=09=09=09=09=09=09=09=09=09=09=09<tbody>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<td align=3D"left" valign=3D"t=
+op"><a href=3D"https://bertinacloud.com/latest/index.php/campaigns/sb966zjk=
+yz757/track-url/ly558nh9ny0eb/62e1fb4cf5b0ce9cb1a29663128e7cd9c1facd58"><im=
+g alt=3D"=DA=AF=D9=88=DA=AF=D9=84 =D8=A7=D8=AF=D8=B2" border=3D"0" class=3D=
+"image-100-percent" hspace=3D"0" src=3D"https://bertinacloud.com/mail2/imag=
+es/google-ads.png" style=3D"display:block; max-width:270px; " vspace=3D"0" =
+width=3D"270" /> </a></td>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09</tbody>
+=09=09=09=09=09=09=09=09=09=09=09=09</table>
+=09=09=09=09=09=09=09=09=09=09=09=09</td>
+=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09=09<!--start space height -->
+=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09<td height=3D"20">=C2=A0</td>
+=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09=09<!--end space height -->
+=09=09=09=09=09=09=09=09=09=09</tbody>
+=09=09=09=09=09=09=09=09=09</table>
+=09=09=09=09=09=09=09=09=09<!-- end content right --><!-- start space width=
+ -->
+
+=09=09=09=09=09=09=09=09=09<table align=3D"right" border=3D"0" cellpadding=
+=3D"0" cellspacing=3D"0" class=3D"remove" style=3D"font-size: 0;line-height=
+: 0;border-collapse: collapse;" width=3D"1">
+=09=09=09=09=09=09=09=09=09=09<tbody>
+=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09<td height=3D"2" style=3D"font-size: 0;=
+line-height: 0;border-collapse: collapse;" width=3D"0">
+=09=09=09=09=09=09=09=09=09=09=09=09<p style=3D"padding-left: 20px;">=C2=
+=A0</p>
+=09=09=09=09=09=09=09=09=09=09=09=09</td>
+=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09</tbody>
+=09=09=09=09=09=09=09=09=09</table>
+=09=09=09=09=09=09=09=09=09<!-- end space width --><!-- start content left =
+-->
+
+=09=09=09=09=09=09=09=09=09<table align=3D"center" border=3D"0" cellpadding=
+=3D"0" cellspacing=3D"0" class=3D"full-width" width=3D"270"><!-- start text=
+ content -->
+=09=09=09=09=09=09=09=09=09=09<tbody>
+=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09<td valign=3D"top">
+=09=09=09=09=09=09=09=09=09=09=09=09<table align=3D"center" border=3D"0" ce=
+llpadding=3D"0" cellspacing=3D"0">
+=09=09=09=09=09=09=09=09=09=09=09=09=09<tbody>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<td style=3D"font-size: 18px; =
+line-height: 22px; font-family: B Yekan; color:#555555; font-weight:bold; t=
+ext-align:center;"><span style=3D"color: #555555; font-weight: bold;"><a hr=
+ef=3D"https://bertinacloud.com/latest/index.php/campaigns/sb966zjkyz757/tra=
+ck-url/ly558nh9ny0eb/62e1fb4cf5b0ce9cb1a29663128e7cd9c1facd58" style=3D"tex=
+t-decoration: none; color: #555555; font-weight: bold;">=D8=AA=D8=A8=D9=
+=84=DB=8C=D8=BA =D8=AF=D8=B1 =DA=AF=D9=88=DA=AF=D9=84 </a> </span></td>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09<!--start space height -->
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<td height=3D"15">=C2=A0</td>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09<!--end space height -->
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<td style=3D"font-size: 18px; =
+line-height: 22px; font-family:B Yekan; color:#e81b2b; font-weight:normal; =
+text-align:center; ">=DA=A9=D8=AF =D8=AA=D8=AE=D9=81=DB=8C=D9=81 =D9=BE=
+=D9=84=D9=86 =D8=A7=D9=88=D9=84 : ads20<br />
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=DA=A9=D8=AF =D8=AA=D8=AE=
+=D9=81=DB=8C=D9=81 =D9=BE=D9=84=D9=86 =D8=AF=D9=88=D9=85 : ads30<br />
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=DA=A9=D8=AF =D8=AA=D8=AE=
+=D9=81=DB=8C=D9=81 =D9=BE=D9=84=D9=86 =D8=B3=D9=88=D9=85 : ads50</td>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09<!--start space height -->
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<td height=3D"15">=C2=A0</td>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09<!--end space height -->
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<td valign=3D"top" width=3D"au=
+to"><!-- start button -->
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<table align=3D"center" border=
+=3D"0" cellpadding=3D"0" cellspacing=3D"0">
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<tbody>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<td align=3D"center" =
+height=3D"32" style=3D" background-color:#e81b2b; background-clip: padding-=
+box;font-size:13px; font-family: B Yekan; text-align:center;  color:#ffffff=
+; font-weight: normal; padding-left:18px; padding-right:18px; " valign=3D"m=
+iddle" width=3D"auto"><span style=3D"color: #ffffff; font-weight: normal;">=
+<a href=3D"https://bertinacloud.com/latest/index.php/campaigns/sb966zjkyz75=
+7/track-url/ly558nh9ny0eb/62e1fb4cf5b0ce9cb1a29663128e7cd9c1facd58" style=
+=3D"text-decoration: none; color: #ffffff; font-weight: normal;">=D8=AE=
+=D8=B1=DB=8C=D8=AF =D8=B3=D8=B1=D9=88=DB=8C=D8=B3</a> </span></td>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09</tbody>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09</table>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<!-- end button --></td>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09<!--start space height -->
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<td height=3D"20">=C2=A0</td>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09<!--end space height -->
+=09=09=09=09=09=09=09=09=09=09=09=09=09</tbody>
+=09=09=09=09=09=09=09=09=09=09=09=09</table>
+=09=09=09=09=09=09=09=09=09=09=09=09</td>
+=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09=09<!-- end text content -->
+=09=09=09=09=09=09=09=09=09=09</tbody>
+=09=09=09=09=09=09=09=09=09</table>
+=09=09=09=09=09=09=09=09=09<!-- end content left --></td>
+=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09<!-- end image content -->
+=09=09=09=09=09=09=09</tbody>
+=09=09=09=09=09=09</table>
+=09=09=09=09=09=09<!-- end layout-5 container width 560px --></td>
+=09=09=09=09=09</tr>
+=09=09=09=09</tbody>
+=09=09=09</table>
+=09=09=09<!-- end layout-5 container width 600px --></td>
+=09=09</tr>
+=09=09<!-- END LAYOUT-5  --><!-- START HEIGHT SPACE 10PX-->
+=09=09<tr>
+=09=09=09<td align=3D"center" valign=3D"top">
+=09=09=09<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" height=3D"=
+10" width=3D"100%">
+=09=09=09=09<tbody>
+=09=09=09=09=09<tr>
+=09=09=09=09=09=09<td height=3D"10" valign=3D"top"><img alt=3D"space" src=
+=3D"https://bertinacloud.com/mail2/images/space.png" style=3D"display:block=
+; max-height:10px; max-width:10px;" width=3D"10" /></td>
+=09=09=09=09=09</tr>
+=09=09=09=09</tbody>
+=09=09=09</table>
+=09=09=09</td>
+=09=09</tr>
+=09=09<!-- END HEIGHT SPACE 10PX--><!-- START LAYOUT 3 -->
+=09=09<tr>
+=09=09=09<td align=3D"center" class=3D"fix-box" valign=3D"top"><!-- start l=
+ayout-3 container width 600px -->
+=09=09=09<table align=3D"center" bgcolor=3D"#ffffff" border=3D"0" cellpaddi=
+ng=3D"0" cellspacing=3D"0" class=3D"container" style=3D"background-color: #=
+ffffff; border-bottom:2px solid #c7c7c7;" width=3D"600">
+=09=09=09=09<tbody>
+=09=09=09=09=09<tr>
+=09=09=09=09=09=09<td valign=3D"top"><!-- start layout-3 container width 56=
+0px -->
+=09=09=09=09=09=09<table align=3D"center" bgcolor=3D"#ffffff" border=3D"0" =
+cellpadding=3D"0" cellspacing=3D"0" class=3D"full-width" style=3D"backgroun=
+d-color:#ffffff;" width=3D"560"><!-- start image and content -->
+=09=09=09=09=09=09=09<tbody>
+=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09<td valign=3D"top"><!-- start content left -->
+=09=09=09=09=09=09=09=09=09<table align=3D"left" border=3D"0" cellpadding=
+=3D"0" cellspacing=3D"0" class=3D"col-3" width=3D"170"><!--start space heig=
+ht -->
+=09=09=09=09=09=09=09=09=09=09<tbody>
+=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09<td height=3D"20">=C2=A0</td>
+=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09=09<!--end space height -->
+=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09<td align=3D"center" valign=3D"top" wid=
+th=3D"100%"><a href=3D"https://bertinacloud.com/latest/index.php/campaigns/=
+sb966zjkyz757/track-url/ly558nh9ny0eb/a8b0c6300d6e8ea66b90a39e98a88da4facd7=
+393"><img alt=3D"=D9=85=DB=8C=D8=B2=D8=A8=D8=A7=D9=86=DB=8C =D8=A7=DB=8C=
+=D9=85=DB=8C=D9=84" border=3D"0" class=3D"image-100-percent" hspace=3D"0" s=
+rc=3D"https://bertinacloud.com/mail2/images/mail.png" style=3D"max-width:17=
+0px; display:block; " vspace=3D"0" width=3D"170" /> </a></td>
+=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09=09<!--start space height -->
+=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09<td height=3D"20">=C2=A0</td>
+=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09=09<!--end space height -->
+=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09<td>
+=09=09=09=09=09=09=09=09=09=09=09=09<table align=3D"center" border=3D"0" ce=
+llpadding=3D"0" cellspacing=3D"0">
+=09=09=09=09=09=09=09=09=09=09=09=09=09<tbody>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<td style=3D"font-size: 18px; =
+line-height: 22px; font-family: B Yekan; color:#555555; font-weight:bold; t=
+ext-align:center;"><span style=3D"color: #555555; font-weight: bold;"><a hr=
+ef=3D"https://bertinacloud.com/latest/index.php/campaigns/sb966zjkyz757/tra=
+ck-url/ly558nh9ny0eb/a8b0c6300d6e8ea66b90a39e98a88da4facd7393" style=3D"tex=
+t-decoration: none; color: #555555; font-weight: bold;">=D9=85=DB=8C=D8=
+=B2=D8=A8=D8=A7=D9=86=DB=8C =D8=A7=DB=8C=D9=85=DB=8C=D9=84<br />
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=0930 =D8=AF=D8=B1=D8=B5=D8=AF =
+=D8=AA=D8=AE=D9=81=DB=8C=D9=81 </a> </span></td>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09<!--start space height -->
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<td height=3D"15">=C2=A0</td>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09<!--end space height -->
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<td style=3D"font-size: 18px; =
+line-height: 22px; font-family: B Yekan; color:#e81b2b; font-weight:normal;=
+ text-align:center; ">=DA=A9=D8=AF =D8=AA=D8=AE=D9=81=DB=8C=D9=81 : E1400</=
+td>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09<!--start space height -->
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<td height=3D"20">=C2=A0</td>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09<!--end space height -->
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<td valign=3D"top" width=3D"au=
+to"><!-- start button -->
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<table align=3D"center" border=
+=3D"0" cellpadding=3D"0" cellspacing=3D"0">
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<tbody>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<td align=3D"center" =
+height=3D"32" style=3D" background-color:#e81b2b; background-clip: padding-=
+box;font-size:13px; font-family: B Yekan; text-align:center;  color:#ffffff=
+; font-weight: normal; padding-left:18px; padding-right:18px; " valign=3D"m=
+iddle" width=3D"auto"><span style=3D"color: #ffffff; font-weight: normal;">=
+<a href=3D"https://bertinacloud.com/latest/index.php/campaigns/sb966zjkyz75=
+7/track-url/ly558nh9ny0eb/a8b0c6300d6e8ea66b90a39e98a88da4facd7393" style=
+=3D"text-decoration: none; color: #ffffff; font-weight: normal;">=D8=AE=
+=D8=B1=DB=8C=D8=AF =D8=B3=D8=B1=D9=88=DB=8C=D8=B3 </a> </span></td>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09</tbody>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09</table>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<!-- end button --></td>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09</tbody>
+=09=09=09=09=09=09=09=09=09=09=09=09</table>
+=09=09=09=09=09=09=09=09=09=09=09=09</td>
+=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09=09<!--start space height -->
+=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09<td class=3D"col-underline" height=3D"2=
+0">=C2=A0</td>
+=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09=09<!--end space height -->
+=09=09=09=09=09=09=09=09=09=09</tbody>
+=09=09=09=09=09=09=09=09=09</table>
+=09=09=09=09=09=09=09=09=09<!-- end content left --><!-- start space width =
+ -->
+
+=09=09=09=09=09=09=09=09=09<table align=3D"left" border=3D"0" cellpadding=
+=3D"0" cellspacing=3D"0" class=3D"remove" style=3D"font-size: 0;line-height=
+: 0;border-collapse: collapse;" width=3D"1">
+=09=09=09=09=09=09=09=09=09=09<tbody>
+=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09<td height=3D"3" style=3D"font-size: 0;=
+line-height: 0;border-collapse: collapse;" width=3D"0">
+=09=09=09=09=09=09=09=09=09=09=09=09<p style=3D"padding-left: 20px;">=C2=
+=A0</p>
+=09=09=09=09=09=09=09=09=09=09=09=09</td>
+=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09</tbody>
+=09=09=09=09=09=09=09=09=09</table>
+=09=09=09=09=09=09=09=09=09<!-- end space width  --><!-- start content cent=
+er -->
+
+=09=09=09=09=09=09=09=09=09<table align=3D"left" border=3D"0" cellpadding=
+=3D"0" cellspacing=3D"0" class=3D"col-3" width=3D"170"><!--start space heig=
+ht -->
+=09=09=09=09=09=09=09=09=09=09<tbody>
+=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09<td height=3D"20">=C2=A0</td>
+=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09=09<!--end space height -->
+=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09<td align=3D"center" valign=3D"top" wid=
+th=3D"100%"><a href=3D"https://bertinacloud.com/latest/index.php/campaigns/=
+sb966zjkyz757/track-url/ly558nh9ny0eb/5de96822c35684f96725be990cbafca5a0542=
+899"><img alt=3D"=DA=AF=D9=88=D8=A7=D9=87=DB=8C ssl" border=3D"0" class=3D"=
+image-100-percent" hspace=3D"0" src=3D"https://bertinacloud.com/mail2/image=
+s/ssl.png" style=3D"max-width:170px; display:block; " vspace=3D"0" width=3D=
+"170" /> </a></td>
+=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09=09<!--start space height -->
+=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09<td height=3D"20">=C2=A0</td>
+=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09=09<!--end space height -->
+=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09<td>
+=09=09=09=09=09=09=09=09=09=09=09=09<table align=3D"center" border=3D"0" ce=
+llpadding=3D"0" cellspacing=3D"0">
+=09=09=09=09=09=09=09=09=09=09=09=09=09<tbody>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<td style=3D"font-size: 18px; =
+line-height: 22px; font-family: B Yekan; color:#555555; font-weight:bold; t=
+ext-align:center;"><span style=3D"color: #555555; font-weight: bold;"><a hr=
+ef=3D"https://bertinacloud.com/latest/index.php/campaigns/sb966zjkyz757/tra=
+ck-url/ly558nh9ny0eb/5de96822c35684f96725be990cbafca5a0542899" style=3D"tex=
+t-decoration: none; color: #555555; font-weight: bold;">=DA=AF=D9=88=D8=
+=A7=D9=87=DB=8C=D9=86=D8=A7=D9=85=D9=87 SSL<br />
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=0925 =D8=AF=D8=B1=D8=B5=D8=AF =
+=D8=AA=D8=AE=D9=81=DB=8C=D9=81 </a> </span></td>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09<!--start space height -->
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<td height=3D"15">=C2=A0</td>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09<!--end space height -->
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<td style=3D"font-size: 18px; =
+line-height: 22px; font-family: B Yekan; color:#e81b2b; font-weight:normal;=
+ text-align:center; ">=DA=A9=D8=AF =D8=AA=D8=AE=D9=81=DB=8C=D9=81 : S1400</=
+td>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09<!--start space height -->
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<td height=3D"20">=C2=A0</td>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09<!--end space height -->
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<td valign=3D"top" width=3D"au=
+to"><!-- start button -->
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<table align=3D"center" border=
+=3D"0" cellpadding=3D"0" cellspacing=3D"0">
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<tbody>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<td align=3D"center" =
+height=3D"32" style=3D" background-color:#e81b2b; background-clip: padding-=
+box;font-size:13px; font-family: B Yekan; text-align:center;  color:#ffffff=
+; font-weight: normal; padding-left:18px; padding-right:18px; " valign=3D"m=
+iddle" width=3D"auto"><span style=3D"color: #ffffff; font-weight: normal;">=
+<a href=3D"https://bertinacloud.com/latest/index.php/campaigns/sb966zjkyz75=
+7/track-url/ly558nh9ny0eb/5de96822c35684f96725be990cbafca5a0542899" style=
+=3D"text-decoration: none; color: #ffffff; font-weight: normal;">=D8=AE=
+=D8=B1=DB=8C=D8=AF =D8=B3=D8=B1=D9=88=DB=8C=D8=B3 </a> </span></td>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09</tbody>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09</table>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<!-- end button --></td>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09</tbody>
+=09=09=09=09=09=09=09=09=09=09=09=09</table>
+=09=09=09=09=09=09=09=09=09=09=09=09</td>
+=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09=09<!--start space height -->
+=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09<td class=3D"col-underline" height=3D"2=
+0">=C2=A0</td>
+=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09=09<!--end space height -->
+=09=09=09=09=09=09=09=09=09=09</tbody>
+=09=09=09=09=09=09=09=09=09</table>
+=09=09=09=09=09=09=09=09=09<!-- end content center --><!-- start space widt=
+h  -->
+
+=09=09=09=09=09=09=09=09=09<table align=3D"left" border=3D"0" cellpadding=
+=3D"0" cellspacing=3D"0" class=3D"remove" style=3D"font-size: 0;line-height=
+: 0;border-collapse: collapse;" width=3D"1">
+=09=09=09=09=09=09=09=09=09=09<tbody>
+=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09<td height=3D"3" style=3D"font-size: 0;=
+line-height: 0;border-collapse: collapse;" width=3D"0">
+=09=09=09=09=09=09=09=09=09=09=09=09<p style=3D"padding-left:20px ">=C2=
+=A0</p>
+=09=09=09=09=09=09=09=09=09=09=09=09</td>
+=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09</tbody>
+=09=09=09=09=09=09=09=09=09</table>
+=09=09=09=09=09=09=09=09=09<!-- end space width  --><!-- start content righ=
+t -->
+
+=09=09=09=09=09=09=09=09=09<table align=3D"left" border=3D"0" cellpadding=
+=3D"0" cellspacing=3D"0" class=3D"col-3-last" width=3D"170"><!--start space=
+ height -->
+=09=09=09=09=09=09=09=09=09=09<tbody>
+=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09<td height=3D"20">=C2=A0</td>
+=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09=09<!--end space height -->
+=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09<td align=3D"center" valign=3D"top" wid=
+th=3D"100%"><a href=3D"https://bertinacloud.com/latest/index.php/campaigns/=
+sb966zjkyz757/track-url/ly558nh9ny0eb/8fcf489637dfbf65a3e93ebb90920730a5bf1=
+a5d"><img alt=3D"=D8=AF=D8=A7=D9=85=DB=8C=D9=86" border=3D"0" class=3D"imag=
+e-100-percent" hspace=3D"0" src=3D"https://bertinacloud.com/mail2/images/do=
+main.png" style=3D"max-width:170px; display:block; " vspace=3D"0" width=3D"=
+170" /> </a></td>
+=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09=09<!--start space height -->
+=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09<td height=3D"20">=C2=A0</td>
+=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09=09<!--end space height -->
+=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09<td>
+=09=09=09=09=09=09=09=09=09=09=09=09<table align=3D"center" border=3D"0" ce=
+llpadding=3D"0" cellspacing=3D"0">
+=09=09=09=09=09=09=09=09=09=09=09=09=09<tbody>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<td style=3D"font-size: 18px; =
+line-height: 22px; font-family: B Yekan; color:#555555; font-weight:bold; t=
+ext-align:center;"><span style=3D"color: #555555; font-weight: bold;"><a hr=
+ef=3D"https://bertinacloud.com/latest/index.php/campaigns/sb966zjkyz757/tra=
+ck-url/ly558nh9ny0eb/8fcf489637dfbf65a3e93ebb90920730a5bf1a5d" style=3D"tex=
+t-decoration: none; color: #555555; font-weight: bold;">=D8=AF=D8=A7=D9=
+=85=D9=86=D9=87<br />
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=0920 =D8=AF=D8=B1=D8=B5=D8=AF =
+=D8=AA=D8=AE=D9=81=DB=8C=D9=81 </a> </span></td>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09<!--start space height -->
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<td height=3D"15">=C2=A0</td>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09<!--end space height -->
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<td style=3D"font-size: 18px; =
+line-height: 22px; font-family: B Yekan; color:#e81b2b; font-weight:normal;=
+ text-align:center; ">=DA=A9=D8=AF =D8=AA=D8=AE=D9=81=DB=8C=D9=81 : D1400</=
+td>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09<!--start space height -->
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<td height=3D"20">=C2=A0</td>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09<!--end space height -->
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<td valign=3D"top" width=3D"au=
+to"><!-- start button -->
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<table align=3D"center" border=
+=3D"0" cellpadding=3D"0" cellspacing=3D"0">
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<tbody>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<td align=3D"center" =
+height=3D"32" style=3D" background-color:#e81b2b; background-clip: padding-=
+box;font-size:13px; font-family: B Yekan; text-align:center;  color:#ffffff=
+; font-weight: normal; padding-left:18px; padding-right:18px; " valign=3D"m=
+iddle" width=3D"auto"><span style=3D"color: #ffffff; font-weight: normal;">=
+<a href=3D"https://bertinacloud.com/latest/index.php/campaigns/sb966zjkyz75=
+7/track-url/ly558nh9ny0eb/8fcf489637dfbf65a3e93ebb90920730a5bf1a5d" style=
+=3D"text-decoration: none; color: #ffffff; font-weight: normal;">=D8=AE=
+=D8=B1=DB=8C=D8=AF =D8=B3=D8=B1=D9=88=DB=8C=D8=B3 </a> </span></td>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09</tbody>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09</table>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<!-- end button --></td>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09</tbody>
+=09=09=09=09=09=09=09=09=09=09=09=09</table>
+=09=09=09=09=09=09=09=09=09=09=09=09</td>
+=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09=09<!--start space height -->
+=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09<td height=3D"20">=C2=A0</td>
+=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09=09<!--end space height -->
+=09=09=09=09=09=09=09=09=09=09</tbody>
+=09=09=09=09=09=09=09=09=09</table>
+=09=09=09=09=09=09=09=09=09<!-- end content right --></td>
+=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09<!-- end image and content -->
+=09=09=09=09=09=09=09</tbody>
+=09=09=09=09=09=09</table>
+=09=09=09=09=09=09<!-- end layout-3 container width 560px --></td>
+=09=09=09=09=09</tr>
+=09=09=09=09</tbody>
+=09=09=09</table>
+=09=09=09<!-- end layout-3 container width 600px --></td>
+=09=09</tr>
+=09=09<!-- END LAYOUT 3  --><!-- START HEIGHT SPACE 10PX-->
+=09=09<tr>
+=09=09=09<td align=3D"center" valign=3D"top">
+=09=09=09<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" height=3D"=
+10" width=3D"100%">
+=09=09=09=09<tbody>
+=09=09=09=09=09<tr>
+=09=09=09=09=09=09<td height=3D"10" valign=3D"top"><img alt=3D"space" src=
+=3D"https://bertinacloud.com/mail2/images/space.png" style=3D"display:block=
+; max-height:10px; max-width:10px;" width=3D"10" /></td>
+=09=09=09=09=09</tr>
+=09=09=09=09</tbody>
+=09=09=09</table>
+=09=09=09</td>
+=09=09</tr>
+=09=09<!-- END HEIGHT SPACE 10PX--><!-- START LAYOUT 13 -->
+=09=09<tr>
+=09=09=09<td align=3D"center" class=3D"fix-box" style=3D"border-collapse: c=
+ollapse;" valign=3D"top"><!-- start layout-13 container width 600px -->
+=09=09=09<table align=3D"center" bgcolor=3D"#f6f6f6" border=3D"0" cellpaddi=
+ng=3D"0" cellspacing=3D"0" class=3D"container" style=3D"border-bottom-width=
+: 2px; border-bottom-color: #c7c7c7; border-bottom-style: solid; border-spa=
+cing: 0;" width=3D"600">
+=09=09=09=09<tbody>
+=09=09=09=09=09<tr>
+=09=09=09=09=09=09<td style=3D"border-collapse: collapse;" valign=3D"top"><=
+!-- start layout-13 container width 560px -->
+=09=09=09=09=09=09<table align=3D"center" bgcolor=3D"#f6f6f6" border=3D"0" =
+cellpadding=3D"0" cellspacing=3D"0" class=3D"full-width" style=3D"border-sp=
+acing: 0;" width=3D"560"><!--start space height -->
+=09=09=09=09=09=09=09<tbody>
+=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09<td height=3D"5" style=3D"border-collapse: colla=
+pse;">=C2=A0</td>
+=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09<!--end space height --><!-- start text content -->
+=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09<td bgcolor=3D"#e81b2b" height=3D"auto" style=3D=
+"width: 2px; border-collapse: collapse;">
+=09=09=09=09=09=09=09=09=09<table align=3D"center" border=3D"0" cellpadding=
+=3D"0" cellspacing=3D"0" style=3D"border-spacing: 0;" width=3D"2">
+=09=09=09=09=09=09=09=09=09=09<tbody>
+=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09<td height=3D"auto" style=3D"border-col=
+lapse: collapse;" valign=3D"top">=C2=A0</td>
+=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09</tbody>
+=09=09=09=09=09=09=09=09=09</table>
+=09=09=09=09=09=09=09=09=09</td>
+=09=09=09=09=09=09=09=09=09<td style=3D"border-collapse: collapse;" valign=
+=3D"top">
+=09=09=09=09=09=09=09=09=09<table align=3D"center" bgcolor=3D"#f6f6f6" bord=
+er=3D"0" cellpadding=3D"0" cellspacing=3D"0" style=3D"border-spacing: 0;">
+=09=09=09=09=09=09=09=09=09=09<tbody>
+=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09<td align=3D"center" style=3D"font-size=
+: 13px; line-height: 10px; font-family: B Yekan; color: #000000; font-weigh=
+t: normal; border-collapse: collapse; padding: 5px;">
+=09=09=09=09=09=09=09=09=09=09=09=09<p align=3D"center"><img alt=3D"=D9=
+=84=D9=88=DA=AF=D9=88=DB=8C =D8=A8=D8=B1=D8=AA=DB=8C=D9=86=D8=A7" height=3D=
+"59" src=3D"https://bertinacloud.com/mail2/images/logo-bertina.png" style=
+=3D"display: block !important; height: auto !important;" width=3D"116" /></=
+p>
+
+=09=09=09=09=09=09=09=09=09=09=09=09<p align=3D"center" style=3D"">=D8=
+=A2=D8=AF=D8=B1=D8=B3 - Company Address : =D8=AA=D9=87=D8=B1=D8=A7=D9=86=
+=D8=8C =D8=AE=DB=8C=D8=A7=D8=A8=D8=A7=D9=86 =D8=B3=D8=AA=D8=A7=D8=B1=D8=
+=AE=D8=A7=D9=86=D8=8C =DA=A9=D9=88=DA=86=D9=87 =D8=AD=D8=AC=D8=AA=D8=8C =
+=D9=BE=D9=84=D8=A7=DA=A9 8=D8=8C =D8=B3=D8=A7=D8=AE=D8=AA=D9=85=D8=A7=D9=
+=86 =D8=A8=D8=B1=D8=AA=DB=8C=D9=86=D8=A7</p>
+
+=09=09=09=09=09=09=09=09=09=09=09=09<p align=3D"center" style=3D"">=DA=
+=A9=D8=AF =D9=BE=D8=B3=D8=AA=DB=8C : 1454714588</p>
+
+=09=09=09=09=09=09=09=09=09=09=09=09<p align=3D"center" style=3D"">=D8=
+=AA=D9=84=D9=81=D9=86 : <a href=3D"https://bertinacloud.com/latest/index.ph=
+p/campaigns/sb966zjkyz757/track-url/ly558nh9ny0eb/b43233692fcb8854ade5b7d16=
+4abdccf941b99ef">02161064</a></p>
+
+=09=09=09=09=09=09=09=09=09=09=09=09<p align=3D"center" style=3D"">=D8=
+=A7=DB=8C=D9=85=DB=8C=D9=84 : <a href=3D"https://bertinacloud.com/latest/in=
+dex.php/campaigns/sb966zjkyz757/track-url/ly558nh9ny0eb/4fc1efddbaa5ee98f15=
+19cfe3e6156824909ffa9">it@bertina.ir</a></p>
+=09=09=09=09=09=09=09=09=09=09=09=09</td>
+=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09</tbody>
+=09=09=09=09=09=09=09=09=09</table>
+=09=09=09=09=09=09=09=09=09</td>
+=09=09=09=09=09=09=09=09=09<td bgcolor=3D"#e81b2b" height=3D"auto" style=3D=
+"width: 2px; border-collapse: collapse;">
+=09=09=09=09=09=09=09=09=09<table align=3D"center" border=3D"0" cellpadding=
+=3D"0" cellspacing=3D"0" style=3D"border-spacing: 0;" width=3D"2">
+=09=09=09=09=09=09=09=09=09=09<tbody>
+=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09<td height=3D"auto" style=3D"border-col=
+lapse: collapse;" valign=3D"top">=C2=A0</td>
+=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09</tbody>
+=09=09=09=09=09=09=09=09=09</table>
+=09=09=09=09=09=09=09=09=09</td>
+=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09<!-- end text content --><!--start space height -->
+=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09<td height=3D"5" style=3D"border-collapse: colla=
+pse;">=C2=A0</td>
+=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09<!--end space height -->
+=09=09=09=09=09=09=09</tbody>
+=09=09=09=09=09=09</table>
+=09=09=09=09=09=09<!-- end layout-13 container width 560px --></td>
+=09=09=09=09=09</tr>
+=09=09=09=09</tbody>
+=09=09=09</table>
+=09=09=09<!-- end layout-13 container width 600px --></td>
+=09=09</tr>
+=09=09<!-- END LAYOUT 13 --><!-- START LAYOUT-12 -->
+=09=09<tr>
+=09=09=09<td align=3D"center" class=3D"fix-box" style=3D"border-collapse: c=
+ollapse;" valign=3D"top"><!-- start layout-12 container width 600px -->
+=09=09=09<table align=3D"center" bgcolor=3D"#ffffff" border=3D"0" cellpaddi=
+ng=3D"0" cellspacing=3D"0" class=3D"container" style=3D"border-bottom-width=
+: 2px; border-bottom-color: #c7c7c7; border-bottom-style: solid; border-spa=
+cing: 0;" width=3D"600"><!--start space height -->
+=09=09=09=09<tbody>
+=09=09=09=09=09<tr>
+=09=09=09=09=09=09<td height=3D"10" style=3D"border-collapse: collapse;">=
+=C2=A0</td>
+=09=09=09=09=09</tr>
+=09=09=09=09=09<!--end space height -->
+=09=09=09=09=09<tr>
+=09=09=09=09=09=09<td style=3D"border-collapse: collapse;" valign=3D"top"><=
+!-- start logo footer and address -->
+=09=09=09=09=09=09<table align=3D"center" border=3D"0" cellpadding=3D"0" ce=
+llspacing=3D"0" style=3D"border-spacing: 0;" width=3D"100%">
+=09=09=09=09=09=09=09<tbody>
+=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09<td style=3D"border-collapse: collapse;" valign=
+=3D"top"><!--start icon socail navigation -->
+=09=09=09=09=09=09=09=09=09<table align=3D"center" border=3D"0" cellpadding=
+=3D"0" cellspacing=3D"0" class=3D"container" style=3D"border-spacing: 0;">
+=09=09=09=09=09=09=09=09=09=09<tbody>
+=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09<td align=3D"center" style=3D"border-co=
+llapse: collapse;" valign=3D"top">
+=09=09=09=09=09=09=09=09=09=09=09=09<table align=3D"left" border=3D"0" cell=
+padding=3D"0" cellspacing=3D"0" class=3D"container" style=3D"border-spacing=
+: 0;">
+=09=09=09=09=09=09=09=09=09=09=09=09=09<tbody>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<td align=3D"center" class=3D"=
+clear-padding" height=3D"30" style=3D"padding-left:5px;" valign=3D"middle">=
+<a href=3D"https://bertinacloud.com/latest/index.php/campaigns/sb966zjkyz75=
+7/track-url/ly558nh9ny0eb/492a52a00670d0a8cf6c7423f4871538250c1752" style=
+=3D"text-decoration: none;" target=3D"_blank"><img alt=3D"icon-instagram" b=
+order=3D"0" hspace=3D"0" src=3D"https://bertinacloud.com/mail2/images/icon-=
+instagram-gray.png" style=3D"max-width:30px;" vspace=3D"0" width=3D"30" /> =
+</a></td>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<td align=3D"center" class=3D"=
+clear-padding" height=3D"30" style=3D"border-collapse: collapse;" valign=3D=
+"middle"><a href=3D"https://bertinacloud.com/latest/index.php/campaigns/sb9=
+66zjkyz757/track-url/ly558nh9ny0eb/6a6bd08c2f75e296fd48931cefbabc2c0722d877=
+" style=3D"text-decoration: none;" target=3D"_blank"><img alt=3D"icon-faceb=
+ook" border=3D"0" hspace=3D"0" src=3D"https://bertinacloud.com/mail2/images=
+/icon-facebook-gray.png" style=3D"max-width: 30px; display: block !importan=
+t; height: auto !important;" vspace=3D"0" width=3D"30" /> </a></td>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<td align=3D"center" class=3D"=
+clear-padding" height=3D"30" style=3D"padding-left: 5px; border-collapse: c=
+ollapse;" valign=3D"middle"><a href=3D"https://bertinacloud.com/latest/inde=
+x.php/campaigns/sb966zjkyz757/track-url/ly558nh9ny0eb/d20c5b34459374ada2443=
+d41faa6b5e2f6f53bdf" style=3D"text-decoration: none;" target=3D"_blank"><im=
+g alt=3D"icon-twitter" border=3D"0" hspace=3D"0" src=3D"https://bertinaclou=
+d.com/mail2/images/icon-twitter-gray.png" style=3D"max-width: 30px; display=
+: block !important; height: auto !important;" vspace=3D"0" width=3D"30" /> =
+</a></td>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<td align=3D"center" class=3D"=
+clear-padding" height=3D"30" style=3D"padding-left: 5px; border-collapse: c=
+ollapse;" valign=3D"middle"><a href=3D"https://bertinacloud.com/latest/inde=
+x.php/campaigns/sb966zjkyz757/track-url/ly558nh9ny0eb/b886d5627e0d530e7d339=
+3982980fd94369b64e3" style=3D"text-decoration: none;" target=3D"_blank"><im=
+g alt=3D"icon-Linkedin" border=3D"0" hspace=3D"0" src=3D"https://bertinaclo=
+ud.com/mail2/images/icon-linkedIn-gray.png" style=3D"max-width: 30px; displ=
+ay: block !important; height: auto !important;" vspace=3D"0" width=3D"30" /=
+> </a></td>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<td align=3D"center" class=3D"=
+clear-padding" height=3D"30" style=3D"padding-left: 5px; border-collapse: c=
+ollapse;" valign=3D"middle"><a href=3D"https://bertinacloud.com/latest/inde=
+x.php/campaigns/sb966zjkyz757/track-url/ly558nh9ny0eb/65f3d07aa48b7d1fa697a=
+7d144ac08d7b02b8f34" style=3D"text-decoration: none;" target=3D"_blank"><im=
+g alt=3D"icon-telegram" border=3D"0" hspace=3D"0" src=3D"https://bertinaclo=
+ud.com/mail2/images/telegram-logo.png" style=3D"max-width: 30px; display: b=
+lock !important; height: auto !important;" vspace=3D"0" width=3D"30" /> </a=
+></td>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09</tbody>
+=09=09=09=09=09=09=09=09=09=09=09=09</table>
+=09=09=09=09=09=09=09=09=09=09=09=09</td>
+=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09</tbody>
+=09=09=09=09=09=09=09=09=09</table>
+=09=09=09=09=09=09=09=09=09<!--end icon socail navigation --></td>
+=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09</tbody>
+=09=09=09=09=09=09</table>
+=09=09=09=09=09=09<!-- end logo footer and address --></td>
+=09=09=09=09=09</tr>
+=09=09=09=09=09<!--start space height -->
+=09=09=09=09=09<tr>
+=09=09=09=09=09=09<td height=3D"10" style=3D"border-collapse: collapse;">=
+=C2=A0</td>
+=09=09=09=09=09</tr>
+=09=09=09=09=09<!--end space height -->
+=09=09=09=09</tbody>
+=09=09=09</table>
+=09=09=09</td>
+=09=09</tr>
+=09=09<!-- END LAYOUT-12--><!--START FOOTER LAYOUT-->
+=09=09<tr>
+=09=09=09<td style=3D"border-collapse: collapse;" valign=3D"top">
+=09=09=09<table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=
+=3D"0" style=3D"border-spacing: 0;" width=3D"100%"><!-- START CONTAINER  --=
+>
+=09=09=09=09<tbody>
+=09=09=09=09=09<tr>
+=09=09=09=09=09=09<td align=3D"center" class=3D"fix-box" style=3D"border-co=
+llapse: collapse;" valign=3D"top"><!-- start footer container -->
+=09=09=09=09=09=09<table align=3D"center" border=3D"0" cellpadding=3D"0" ce=
+llspacing=3D"0" class=3D"container" style=3D"border-spacing: 0;" width=3D"6=
+00">
+=09=09=09=09=09=09=09<tbody>
+=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09<td style=3D"border-collapse: collapse;" valign=
+=3D"top"><!-- start footer -->
+=09=09=09=09=09=09=09=09=09<table align=3D"center" border=3D"0" cellpadding=
+=3D"0" cellspacing=3D"0" class=3D"full-width" style=3D"border-spacing: 0;" =
+width=3D"560">
+=09=09=09=09=09=09=09=09=09=09<tbody>
+=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09<td style=3D"border-collapse: collapse;=
+" valign=3D"middle">
+=09=09=09=09=09=09=09=09=09=09=09=09<table align=3D"left" border=3D"0" cell=
+padding=3D"0" cellspacing=3D"0" class=3D"container2" style=3D"border-spacin=
+g: 0;"><!-- start space -->
+=09=09=09=09=09=09=09=09=09=09=09=09=09<tbody>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<td class=3D"increase-Height-2=
+0" style=3D"border-collapse: collapse;" valign=3D"top">=C2=A0</td>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09<!-- end space -->
+=09=09=09=09=09=09=09=09=09=09=09=09=09</tbody>
+=09=09=09=09=09=09=09=09=09=09=09=09</table>
+=09=09=09=09=09=09=09=09=09=09=09=09</td>
+=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09</tbody>
+=09=09=09=09=09=09=09=09=09</table>
+=09=09=09=09=09=09=09=09=09<!-- end footer --></td>
+=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09</tbody>
+=09=09=09=09=09=09</table>
+=09=09=09=09=09=09<!-- end footer container --></td>
+=09=09=09=09=09</tr>
+=09=09=09=09=09<!-- END CONTAINER  -->
+=09=09=09=09</tbody>
+=09=09=09</table>
+=09=09=09</td>
+=09=09</tr>
+=09=09<!--END FOOTER =E2=80=8BLAYOUT-->
+=09=09<tr>
+=09=09=09<td align=3D"center" bgcolor=3D"#e81b2b" class=3D"fix-box" style=
+=3D"border-collapse: collapse;" valign=3D"top">
+=09=09=09<table align=3D"center" bgcolor=3D"#e81b2b" border=3D"0" cellpaddi=
+ng=3D"0" cellspacing=3D"0" class=3D"container" style=3D"border-spacing: 0;"=
+ width=3D"100%">
+=09=09=09=09<tbody>
+=09=09=09=09=09<tr>
+=09=09=09=09=09=09<td style=3D"border-collapse: collapse;">
+=09=09=09=09=09=09<table align=3D"center" bgcolor=3D"#e81b2b" border=3D"0" =
+cellpadding=3D"0" cellspacing=3D"0" class=3D"container" style=3D"border-spa=
+cing: 0;" width=3D"560"><!--start space height -->
+=09=09=09=09=09=09=09<tbody>
+=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09<td height=3D"10" style=3D"border-collapse: coll=
+apse;">=C2=A0</td>
+=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09<!--end space height -->
+=09=09=09=09=09=09=09=09<tr><!-- start COPY RIGHT content -->
+=09=09=09=09=09=09=09=09=09<td align=3D"center" style=3D"font-size: 12px; l=
+ine-height: 10px; font-family: B Yekan; color: #ffffff; font-weight: normal=
+; border-collapse: collapse;" valign=3D"top">A B C =D8=AA=D9=85=D8=A7=D9=
+=85=DB=8C =D8=AD=D9=82=D9=88=D9=82 =D9=85=D8=AA=D8=B9=D9=84=D9=82 =D8=A8=
+=D9=87 =D8=B4=D8=B1=DA=A9=D8=AA =D8=A8=D8=B1=D8=AA=DB=8C=D9=86=D8=A7 =D9=
+=85=DB=8C =D8=A8=D8=A7=D8=B4=D8=AF <a data-unsubtag=3D"_UNSUBSCRIBE_URL_" h=
+ref=3D"https://bertinacloud.com/latest/index.php/campaigns/sb966zjkyz757/tr=
+ack-url/ly558nh9ny0eb/bf536972d039e076dbe111bd3bb5a6e0c79c495c" rel=3D"noop=
+ener" target=3D"_blank"><span style=3D"color: #000000;"> =D9=84=D8=BA=D9=
+=88 =D8=A7=D8=B4=D8=AA=D8=B1=D8=A7=DA=A9</span></a><span style=3D"color: #0=
+00000;"> ( <a data-unsubtag=3D"_UNSUBSCRIBE_URL_" href=3D"https://bertinacl=
+oud.com/latest/index.php/campaigns/sb966zjkyz757/track-url/ly558nh9ny0eb/bf=
+536972d039e076dbe111bd3bb5a6e0c79c495c">unsubscribe </a>)</span></td>
+=09=09=09=09=09=09=09=09=09<!-- end COPY RIGHT content -->
+=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09<!--start space height -->
+=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09<td height=3D"10" style=3D"border-collapse: coll=
+apse;">=C2=A0</td>
+=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09<!--end space height -->
+=09=09=09=09=09=09=09</tbody>
+=09=09=09=09=09=09</table>
+=09=09=09=09=09=09</td>
+=09=09=09=09=09</tr>
+=09=09=09=09=09<tr>
+=09=09=09=09=09</tr>
+=09=09=09=09</tbody>
+=09=09=09</table>
+=09=09=09</td>
+=09=09</tr>
+=09=09<!--  END FOOTER COPY RIGHT -->
+=09</tbody>
+</table>
+</div>
+<img width=3D"1" height=3D"1" src=3D"https://bertinacloud.com/latest/index.=
+php/campaigns/sb966zjkyz757/track-opening/ly558nh9ny0eb" alt=3D"" />=0A</bo=
+dy>
+</html>
+
+--b1_ugYW224b3J2J1Y9SB6buTvaaTvqB5PXTDRdgFAVQ--
+

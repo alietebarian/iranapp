@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layoutDirection="ltr"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/card_main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="3dp"
+        android:background="#fff"
+        app:cardElevation="5dp">
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:id="@+id/lin_main"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_height="wrap_content">
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent">
+                        <android.support.v7.widget.CardView
+                            android:id="@+id/relative"
+                            app:cardCornerRadius="3dp"
+                            android:layout_width="@dimen/_80sdp"
+                            android:layout_height="@dimen/_80sdp">
+
+                            <RelativeLayout
+                                android:layout_width="@dimen/_80sdp"
+                                android:layout_height="@dimen/_80sdp">
+
+                                <ImageView
+                                    android:id="@+id/rvAdListImage"
+                                    android:layout_width="@dimen/_80sdp"
+                                    android:layout_height="@dimen/_80sdp"
+                                    android:background="#c7c7c7" />
+
+                            </RelativeLayout>
+                        </android.support.v7.widget.CardView>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:gravity="right"
+                        android:orientation="vertical"
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <com.ideabonyan.iranapp.Components.MyTextView
+                            android:id="@+id/rvAdListTitle"
+                            android:gravity="right"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_margin="5dp"
+                            android:layout_toRightOf="@id/relative"
+                            android:maxLines="2"
+                            android:text="آموزشگاه و سالن زیبایه کلبه آرزو"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="14sp" />
+
+                        <com.ideabonyan.iranapp.Components.MyTextView
+                            android:id="@+id/txt_cost"
+                            android:gravity="right"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_margin="5dp"
+                            android:layout_toRightOf="@id/relative"
+                            android:maxLines="2"
+                            android:text="12.000.000"
+                            android:textColor="#009688"
+                            android:textSize="14sp" />
+
+                        <LinearLayout
+                            android:orientation="horizontal"
+                            android:id="@+id/location"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentRight="true"
+                            android:layout_below="@+id/rvAdListTitle"
+                            android:gravity="right|center_vertical"
+                            android:paddingBottom="5dp"
+                            android:paddingLeft="5dp"
+                            android:paddingTop="5dp">
+
+                            <com.ideabonyan.iranapp.Components.MyTextView
+                                android:singleLine="true"
+                                android:layout_weight="1"
+                                android:ellipsize="end"
+                                android:id="@+id/rvAdListAddress"
+                                android:gravity="right"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="3dp"
+                                android:layout_toRightOf="@id/relative"
+                                android:maxLines="1"
+                                android:text="جردن - خیابان سعیدی - پلاک 10 - واحد 3"
+                                android:textSize="12sp" />
+
+                            <ImageView
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:src="@drawable/ic_location_on_black_24dp"
+                                android:tint="@color/colorPrimary" />
+
+                        </LinearLayout>
+
+
+
+                        <!--<ImageView-->
+                        <!--android:id="@+id/rvAdListPendingIdentifier"-->
+                        <!--android:visibility="visible"-->
+                        <!--android:layout_below="@id/location"-->
+                        <!--android:layout_toRightOf="@id/relative"-->
+                        <!--android:layout_marginLeft="5dp"-->
+                        <!--android:layout_marginTop="5dp"-->
+                        <!--android:tint="#FB8C00"-->
+                        <!--android:src="@drawable/pending"-->
+                        <!--android:layout_width="20dp"-->
+                        <!--android:layout_height="20dp" />-->
+
+
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+                <com.ideabonyan.iranapp.Components.MyTextView
+                    android:gravity="center"
+                    android:text="وضعیت"
+                    android:id="@+id/txt_statous"
+                    android:textColor="#fff"
+                    android:background="#388E3C"
+                    android:layout_width="match_parent"
+                    android:layout_height="25dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:visibility="invisible"
+                android:id="@+id/lin_edit"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="fill_parent"
+                android:background="#455A64">
+                <LinearLayout
+                    android:foreground="?android:attr/selectableItemBackgroundBorderless"
+                    android:clickable="true"
+                    android:id="@+id/lin_go_back"
+                    android:orientation="horizontal"
+                    android:gravity="right|center_vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    tools:targetApi="lollipop">
+                    <com.ideabonyan.iranapp.Components.MyTextView
+                        android:layout_weight="1"
+                        android:text="بازگشت"
+                        android:textColor="#fff"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="5dp"/>
+                    <LinearLayout
+                        android:gravity="center"
+
+                        android:layout_width="30dp"
+                        android:layout_height="30dp">
+                        <ImageView
+                            android:tint="#fff"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:src="@drawable/ic_replay_black_24dp"
+                            />
+                    </LinearLayout>
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#fff"/>
+
+
+                <LinearLayout
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <LinearLayout
+                        android:id="@+id/lin_delete_product"
+                        android:foreground="?android:attr/selectableItemBackgroundBorderless"
+                        android:clickable="true"
+                        android:gravity="center"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        tools:targetApi="lollipop">
+                        <com.ideabonyan.iranapp.Components.MyTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="حذف آگهی"
+                            android:layout_marginRight="5dp"
+                            android:textColor="#fff"/>
+                        <ImageView
+                            android:tint="#fff"
+                            android:src="@drawable/ic_delete_forever_black_24dp"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:background="#fff"/>
+                    <LinearLayout
+                        android:id="@+id/lin_edit_product"
+                        android:foreground="?android:attr/selectableItemBackgroundBorderless"
+                        android:clickable="true"
+                        android:gravity="center"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        tools:targetApi="lollipop">
+                        <com.ideabonyan.iranapp.Components.MyTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="ویرایش آگهی"
+                            android:layout_marginRight="5dp"
+                            android:textColor="#fff"/>
+                        <ImageView
+                            android:tint="#fff"
+                            android:src="@drawable/ic_import_contacts_black_24dp"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+        </FrameLayout>
+
+
+    </android.support.v7.widget.CardView>
+
+</RelativeLayout>

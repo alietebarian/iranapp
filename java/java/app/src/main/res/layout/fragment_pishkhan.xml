@@ -1,0 +1,228 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layoutDirection="ltr"
+    android:padding="30dp"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context="com.ideabonyan.iranapp.Fragment.MenuFragment">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/pishkhanFalHafezBTN"
+            android:foreground="?selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content">
+
+            <android.support.v7.widget.CardView
+                android:layout_width="@dimen/_60sdp"
+                android:layout_height="@dimen/_60sdp"
+                app:cardBackgroundColor="#1a9167"
+                app:cardCornerRadius="3dp">
+
+                <ImageView
+                    android:padding="9dp"
+                    android:tint="#fff"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+            </android.support.v7.widget.CardView>
+
+            <com.ideabonyan.iranapp.Components.MyTextView
+                android:text="فال حافظ"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#37474F"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/pishkhanAgeCalculatorBTN"
+            android:foreground="?selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content">
+
+            <android.support.v7.widget.CardView
+                android:layout_width="@dimen/_60sdp"
+                android:layout_height="@dimen/_60sdp"
+                app:cardBackgroundColor="#EF6C00"
+                app:cardCornerRadius="3dp">
+
+                <ImageView
+                    android:padding="10dp"
+                    android:src="@drawable/weather_icon"
+                    android:tint="#fff"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+            </android.support.v7.widget.CardView>
+
+            <com.ideabonyan.iranapp.Components.MyTextView
+                android:text="دمای هوا"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#37474F"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+
+
+
+    <LinearLayout
+        android:layout_marginTop="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/pishkhanTime"
+            android:foreground="?selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content">
+
+            <android.support.v7.widget.CardView
+                android:layout_width="@dimen/_60sdp"
+                android:layout_height="@dimen/_60sdp"
+                app:cardBackgroundColor="#FF5722"
+                app:cardCornerRadius="3dp">
+
+                <ImageView
+                    android:padding="13dp"
+                    android:src="@drawable/pishkhantime"
+                    android:tint="#fff"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+            </android.support.v7.widget.CardView>
+
+            <com.ideabonyan.iranapp.Components.MyTextView
+                android:text="تاریخ و ساعت"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#37474F"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/pishkhanCurrency"
+            android:foreground="?selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content">
+
+            <android.support.v7.widget.CardView
+                android:layout_width="@dimen/_60sdp"
+                android:layout_height="@dimen/_60sdp"
+                app:cardBackgroundColor="#8E24AA"
+                app:cardCornerRadius="3dp">
+
+                <ImageView
+                    android:padding="13dp"
+                    android:src="@drawable/ic_library_books_black_24dp"
+                    android:tint="#fff"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+            </android.support.v7.widget.CardView>
+
+            <com.ideabonyan.iranapp.Components.MyTextView
+                android:text="جستجوی کتاب"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#37474F"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_marginTop="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/pishkhanLiveScores"
+            android:foreground="?selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content">
+
+            <android.support.v7.widget.CardView
+                android:layout_width="@dimen/_60sdp"
+                android:layout_height="@dimen/_60sdp"
+                app:cardBackgroundColor="#e53935"
+                app:cardCornerRadius="3dp">
+
+                <ImageView
+                    android:padding="13dp"
+                    android:src="@drawable/football"
+                    android:tint="#fff"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+            </android.support.v7.widget.CardView>
+
+            <com.ideabonyan.iranapp.Components.MyTextView
+                android:text="نتایج زنده"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#37474F"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/pishkhanPersianGulfLeague"
+            android:foreground="?selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content">
+
+            <android.support.v7.widget.CardView
+                android:layout_width="@dimen/_60sdp"
+                android:layout_height="@dimen/_60sdp"
+                app:cardBackgroundColor="#9E9D24"
+                app:cardCornerRadius="3dp">
+
+                <ImageView
+                    android:padding="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+            </android.support.v7.widget.CardView>
+
+            <com.ideabonyan.iranapp.Components.MyTextView
+                android:text="جام خلیج فارس"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#37474F"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</LinearLayout>

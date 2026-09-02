@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#EEE"
+    android:layoutDirection="ltr"
+
+    android:id="@+id/baseLayout">
+
+<android.support.design.widget.AppBarLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <include layout="@layout/toolbar"/>
+    <View
+        android:background="@color/colorPrimary"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
+</android.support.design.widget.AppBarLayout>
+
+    <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="1dp"-->
+        <!--android:background="#444"/>-->
+
+
+    <FrameLayout
+
+        android:id="@+id/viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1" />
+
+    <android.support.design.widget.AppBarLayout
+        android:elevation="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+
+            android:elevation="5dp"
+            android:background="#FFF"
+            android:weightSum="5"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize">
+            <LinearLayout
+                android:foreground="?android:attr/selectableItemBackground"
+                android:clickable="true"
+                android:id="@+id/menuBTN"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:orientation="vertical">
+                <ImageView
+                    android:id="@+id/menuIMG"
+                    android:tint="#444"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:src="@drawable/ic_menu_white_24dp"/>
+                <com.ideabonyan.iranapp.Components.MyTextView
+                    android:textSize="12sp"
+                    android:id="@+id/menuTXT"
+                    android:text="منو"
+                    android:layout_width="match_parent"
+                    android:gravity="center"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/favoritesBTN"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:clickable="true"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:orientation="vertical">
+                <ImageView
+                    android:id="@+id/favoritesIMG"
+                    android:tint="#444"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:src="@drawable/heart"/>
+                <com.ideabonyan.iranapp.Components.MyTextView
+                    android:textSize="12sp"
+                    android:id="@+id/favoritesTXT"
+                    android:text="انتخاب من"
+                    android:layout_below="@id/favoritesIMG"
+                    android:layout_width="match_parent"
+                    android:gravity="center"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/pishkhanBTN"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:clickable="true"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:orientation="vertical">
+                <ImageView
+                    android:visibility="gone"
+                    android:id="@+id/pishkhanIMG"
+                    android:tint="#444"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:src="@drawable/home"/>
+                <com.ideabonyan.iranapp.Components.MyTextView
+                    android:textSize="10sp"
+                    android:id="@+id/pishkhanTXT"
+                    android:text="املاک"
+                    android:layout_below="@id/pishkhanIMG"
+                    android:layout_width="match_parent"
+                    android:gravity="center"
+                    android:layout_height="wrap_content" />
+                <com.ideabonyan.iranapp.Components.MyTextView
+                    android:textSize="10sp"
+                    android:id="@+id/pishkhanTXT1"
+                    android:text="استخدام"
+                    android:layout_below="@id/pishkhanIMG"
+                    android:layout_width="match_parent"
+                    android:gravity="center"
+                    android:layout_height="wrap_content" />
+                <com.ideabonyan.iranapp.Components.MyTextView
+                    android:textSize="10sp"
+                    android:id="@+id/pishkhanTXT2"
+                    android:text="وسایل نقلیه"
+                    android:layout_below="@id/pishkhanIMG"
+                    android:layout_width="match_parent"
+                    android:gravity="center"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/newsBTN"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:clickable="true"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:orientation="vertical">
+                <ImageView
+                    android:id="@+id/newsIMG"
+                    android:tint="#444"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:src="@drawable/newspaper"/>
+                <com.ideabonyan.iranapp.Components.MyTextView
+                    android:textSize="12sp"
+                    android:id="@+id/newsTXT"
+                    android:text="اخبار"
+                    android:layout_below="@id/newsIMG"
+                    android:layout_width="match_parent"
+                    android:gravity="center"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/kasbokarBTN"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:clickable="true"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:orientation="vertical">
+                <ImageView
+                    android:id="@+id/kasbokarIMG"
+                    android:tint="#444"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:src="@drawable/kasbokar"/>
+                <com.ideabonyan.iranapp.Components.MyTextView
+                    android:textSize="12sp"
+                    android:id="@+id/kasbokarTXT"
+                    android:text="کسب و کار"
+                    android:layout_below="@id/kasbokarIMG"
+                    android:layout_width="match_parent"
+                    android:gravity="center"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </android.support.design.widget.AppBarLayout>
+
+</LinearLayout>

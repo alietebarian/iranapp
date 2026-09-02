@@ -1,0 +1,649 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#eee"
+    android:fitsSystemWindows="true"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:layoutDirection="ltr"
+    android:orientation="vertical"
+    tools:context="com.ideabonyan.iranapp.Activity.ShowAdActivity">
+
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/showAdAppBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="true"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        android:visibility="visible">
+
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:id="@+id/showAdCollapsingToolbar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            app:contentScrim="?attr/colorPrimary"
+            app:expandedTitleMarginEnd="64dp"
+            app:expandedTitleMarginStart="48dp"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+            <!--android:layout_height="@dimen/_295sdp"-->
+            <RelativeLayout
+                android:id="@+id/showAdImageArea"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_295sdp"
+                android:background="#fff"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                app:layout_collapseMode="parallax">
+
+                <com.daimajia.slider.library.SliderLayout
+                    android:id="@+id/showAdSliderLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_260sdp"
+                    android:layout_marginTop="0dp"
+                    android:layout_weight="1"
+                    android:background="#eee" />
+
+                <com.daimajia.slider.library.Indicators.PagerIndicator
+                    android:id="@+id/showAdCustomIndicator"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/showAdSliderLayout"
+                    android:layout_marginTop="5dp"
+                    android:background="#fff"
+                    android:gravity="center"
+                    app:selected_color="#151515"
+                    app:unselected_color="#a3a3a3" />
+            </RelativeLayout>
+
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="@drawable/toolbar_back"
+                app:layout_collapseMode="pin"
+                app:theme="@style/toolbar_stayle">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageButton
+                        android:id="@+id/newAdBackButton"
+                        android:layout_width="@dimen/_50sdp"
+                        android:layout_height="@dimen/_50sdp"
+                        android:layout_alignParentRight="true"
+                        android:background="?selectableItemBackgroundBorderless"
+                        android:src="@drawable/ic_arrow_back_black_24dp"
+                        android:tint="#fff" />
+
+                    <com.ideabonyan.iranapp.Components.MyTextView
+                        android:id="@+id/headerTXT"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="@dimen/_15sdp"
+                        android:gravity="center"
+                        android:text=""
+                        android:textColor="#fff" />
+
+                    <ImageButton
+                        android:id="@+id/showAdMenuBTN"
+                        android:layout_width="@dimen/_50sdp"
+                        android:layout_height="@dimen/_50sdp"
+                        android:background="#0000"
+                        android:src="@drawable/ic_more_vert_black_24dp"
+                        android:tint="#fff"
+                        android:visibility="gone" />
+
+                </RelativeLayout>
+
+            </android.support.v7.widget.Toolbar>
+
+        </android.support.design.widget.CollapsingToolbarLayout>
+    </android.support.design.widget.AppBarLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <View
+            android:id="@+id/showAdHeaderDevider"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorPrimary"
+            android:visibility="gone" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+
+            android:layout_height="40dp"
+            android:layout_margin="10dp"
+            android:visibility="gone">
+
+            <com.ideabonyan.iranapp.Components.MyButton
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@drawable/btn_blue"
+                android:gravity="center"
+                android:textColor="#fff" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:elevation="10dp"
+                android:gravity="center">
+
+                <com.ideabonyan.iranapp.Components.MyTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="تماس با ما"
+                    android:textColor="#fff" />
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginLeft="5dp"
+                    android:src="@drawable/ic_headset_mic_black_24dp"
+                    android:tint="#fff" />
+
+            </LinearLayout>
+        </RelativeLayout>
+
+        <com.ideabonyan.iranapp.Components.MyTextView
+            android:id="@+id/showAdPendingMessage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:background="#FB8C00"
+            android:gravity="center"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp"
+            android:text="آگهی شما در حال بررسی است و پس از تایید نمایش داده خواهد شد"
+            android:textColor="#fff"
+            android:visibility="gone" />
+
+
+        <android.support.v7.widget.CardView
+            app:cardUseCompatPadding="true"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_50sdp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="5dp"
+            app:cardBackgroundColor="#00796B"
+            app:cardElevation="5dp">
+
+            <LinearLayout
+                android:id="@+id/showAdContactUsBTN"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:background="?android:attr/selectableItemBackground"
+                android:clickable="true"
+                android:gravity="center">
+
+                <com.ideabonyan.iranapp.Components.MyTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:text="ارتباط با ما"
+                    android:textColor="#fff"
+                    android:textSize="16sp" />
+
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:src="@drawable/ic_headset_mic_black_24dp"
+                    android:tint="#fff" />
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+
+        <android.support.v4.widget.NestedScrollView
+            android:id="@+id/showAdNestedScroll"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/showAdRatingBarArea"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center">
+
+                        <!--style="?android:attr/ratingBarStyleIndicator"-->
+                        <me.zhanghai.android.materialratingbar.MaterialRatingBar
+                            android:layout_marginTop="5dp"
+                            android:isIndicator="true"
+                            android:id="@+id/showAdRatingBar"
+                            android:layout_width="wrap_content"
+                            android:layout_height="30dp"
+                            android:numStars="8"
+                            style="@style/RatingBar"
+                            app:mrb_progressTint="#FFDF00"
+                            app:mrb_progressBackgroundTint="#f7d800"/>
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_margin="5dp"
+                        android:background="#eee" />
+
+                </LinearLayout>
+
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:elevation="5dp">
+
+
+                    <android.support.v7.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginTop="30dp"
+                        app:cardElevation="3dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:padding="4dp">
+
+                            <com.ideabonyan.iranapp.Components.MyTextView
+                                android:id="@+id/showAdTitle"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="70dp"
+                                android:gravity="right"
+                                android:padding="5dp"
+                                android:text="یونجه فروشی ببعی"
+                                android:textColor="#444"
+                                android:textSize="16sp" />
+
+                            <com.ideabonyan.iranapp.Components.MyTextView
+                                android:id="@+id/showAdDescription"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="5dp"
+                                android:gravity="right"
+                                android:lineSpacingExtra="5dp"
+                                android:text="برای تامین هرگونه علفهای اعلای خود با ما تماس بگیرید.برای تامین هرگونه علفهای اعلای خود با ما تماس بگیرید.برای تامین هرگونه علفهای اعلای خود با ما تماس بگیرید.برای تامین هرگونه علفهای اعلای خود با ما تماس بگیرید." />
+
+                        </LinearLayout>
+
+                    </android.support.v7.widget.CardView>
+
+                    <RelativeLayout
+                        android:id="@+id/showAdDiscountLayout"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_marginLeft="10dp"
+                        android:background="?selectableItemBackgroundBorderless"
+                        android:clickable="true"
+                        android:elevation="10dp"
+                        android:gravity="center">
+                        <FrameLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+                            <ImageView
+                                android:layout_width="60dp"
+                                android:layout_height="60dp"
+                                android:src="@drawable/decagram"
+                                android:tint="@color/colorPrimary" />
+
+                            <com.ideabonyan.iranapp.Components.MyTextView
+                                android:layout_gravity="center"
+                                android:textSize="16sp"
+                                android:id="@+id/showAdDiscountText"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"
+                                android:gravity="center"
+                                android:text="20%"
+                                android:textColor="#fff" />
+                        </FrameLayout>
+
+
+
+                        <ImageView
+                            android:visibility="gone"
+                            android:layout_width="15dp"
+                            android:layout_height="match_parent"
+                            android:layout_centerInParent="true"
+                            android:paddingTop="20dp"
+                            android:src="@drawable/ic_touch_app_black_24dp"
+                            android:tint="#fff" />
+
+                    </RelativeLayout>
+
+                </RelativeLayout>
+
+                <android.support.v7.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="15dp"
+                    android:visibility="gone"
+                    app:contentPadding="4dp">
+
+                    <Spinner
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"/>
+
+                </android.support.v7.widget.CardView>
+
+                <android.support.v7.widget.CardView
+                    android:id="@+id/showAdAdOwnerArea"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="15dp"
+                    app:contentPadding="4dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <com.ideabonyan.iranapp.Components.MyTextView
+                                android:id="@+id/showAdOwnerNameTXT"
+                                android:layout_width="0dp"
+                                android:gravity="right"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="4dp"
+                                android:layout_weight="1"
+                                android:text="نام"
+                                android:textColor="#555" />
+
+                            <com.ideabonyan.iranapp.Components.MyTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="با مدیریت:" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+                </android.support.v7.widget.CardView>
+
+                <android.support.v7.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="15dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="10dp"
+                    app:contentPadding="4dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <ProgressBar
+                            android:id="@+id/showAdProgressBar"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_centerInParent="true"
+                            android:indeterminateTint="@color/colorPrimary" />
+                        <com.ideabonyan.iranapp.Components.MyTextView
+                            android:id="@+id/showAdUserPrefRetryBTN"
+                            android:visibility="gone"
+                            android:text="تلاش مجدد"
+                            android:clickable="true"
+                            android:gravity="center"
+                            android:textColor="#1976d2"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
+                    </RelativeLayout>
+
+                    <LinearLayout
+                        android:id="@+id/showAdUserPrefLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:visibility="invisible">
+
+                        <LinearLayout
+                            android:id="@+id/showAdShareBTN"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="?selectableItemBackgroundBorderless"
+                            android:clickable="true"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                android:src="@drawable/ic_share_black_24dp"
+                                android:tint="#00BCD4" />
+
+                            <com.ideabonyan.iranapp.Components.MyTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="اشتراک گذاری"
+                                android:textSize="8sp" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/showAdFavoriteBTN"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="?selectableItemBackgroundBorderless"
+                            android:clickable="true"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:id="@+id/showAdFavoriteIMG"
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                android:src="@drawable/ic_favorite_border_black_24dp"
+                                android:tint="#E91E63" />
+
+                            <com.ideabonyan.iranapp.Components.MyTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="افزودن به انتخاب من"
+                                android:textSize="8sp" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/showAdDownVoteBTN"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="30dp"
+                            android:layout_weight="1"
+                            android:background="?selectableItemBackgroundBorderless"
+                            android:clickable="true"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:id="@+id/showAdDownVoteIMG"
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                android:src="@drawable/ic_thumb_down_black_24dp"
+                                android:tint="#999999" />
+
+                            <com.ideabonyan.iranapp.Components.MyTextView
+                                android:id="@+id/showAdDownVoteTXT"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="4"
+                                android:textColor="#999999"
+                                android:textSize="11sp" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/showAdUpVoteBTN"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="?selectableItemBackgroundBorderless"
+                            android:clickable="true"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:id="@+id/showAdUpVoteIMG"
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                android:src="@drawable/ic_thumb_up_black_24dp"
+                                android:tint="#999999" />
+
+                            <com.ideabonyan.iranapp.Components.MyTextView
+                                android:id="@+id/showAdUpVoteTXT"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="26"
+                                android:textColor="#999999"
+                                android:textSize="11sp" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </android.support.v7.widget.CardView>
+
+                <android.support.v7.widget.CardView
+                    android:visibility="visible"
+                    android:id="@+id/card_discount"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginLeft="5dp"
+                    app:cardBackgroundColor="@color/colorPrimary"
+                    app:cardCornerRadius="3dp"
+                    app:cardElevation="3dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                <android.support.v7.widget.CardView
+
+                    android:visibility="visible"
+                    android:layout_marginBottom="3dp"
+                    android:layout_marginTop="3dp"
+                    app:cardBackgroundColor="#fff"
+                    app:cardCornerRadius="3dp"
+                    app:cardElevation="3dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp">
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:id="@+id/lin_use_discount"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:foreground="?attr/selectableItemBackgroundBorderless"
+                        android:clickable="true"
+                        android:gravity="center">
+                        <com.ideabonyan.iranapp.Components.MyTextView
+                            android:id="@+id/txt_use_discount"
+                            android:maxLines="2"
+                            android:layout_weight="1"
+                            android:textColor="@color/colorPrimary"
+                            android:gravity="center"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="برای استفاده از تخفیف این مرکز کلیک نمایید"/>
+                        <ProgressBar
+                            android:id="@+id/progressbar_use_discount"
+                            android:visibility="gone"
+                            android:layout_gravity="center"
+                            android:indeterminateTint="@color/colorPrimary"
+                            android:layout_width="match_parent"
+                            android:layout_weight="1"
+                            android:layout_height="25dp" />
+
+
+                            
+                        <ImageView
+                            android:scaleType="fitXY"
+                            android:src="@drawable/ic_gift_box_ube"
+                            android:layout_gravity="right|center_vertical"
+                            android:tint="@color/colorPrimary"
+                            android:layout_width="70dp"
+                            android:layout_height="60dp" />
+
+
+                    </LinearLayout>
+                </android.support.v7.widget.CardView>
+                </android.support.v7.widget.CardView>
+
+                <android.support.v7.widget.CardView
+                    android:id="@+id/showAdMapCard"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="15dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    app:cardElevation="3dp">
+
+                    <RelativeLayout
+                        android:id="@+id/newAdMapLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:visibility="visible">
+
+                        <fragment
+                            android:id="@+id/showAdMap"
+                            android:name="com.google.android.gms.maps.SupportMapFragment"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_250sdp" />
+
+                        <ImageView
+                            android:id="@+id/showAdMapOverlay"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_250sdp"
+                            android:src="#00875252" />
+                    </RelativeLayout>
+
+                </android.support.v7.widget.CardView>
+
+            </LinearLayout>
+
+        </android.support.v4.widget.NestedScrollView>
+    </LinearLayout>
+
+</android.support.design.widget.CoordinatorLayout>

@@ -1,0 +1,47 @@
+<android.support.v7.widget.Toolbar
+    android:layoutDirection="ltr"
+    android:elevation="5dp"
+    android:layout_width="match_parent"
+    android:layout_height="?attr/actionBarSize"
+    android:background="#fff"
+    android:id="@+id/toolbarInNewAd"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageButton
+            android:id="@+id/newAdBackButton"
+            android:background="?selectableItemBackgroundBorderless"
+            android:layout_alignParentRight="true"
+            android:tint="@color/colorPrimary"
+            android:src="@drawable/ic_arrow_back_black_24dp"
+            android:layout_width="@dimen/_50sdp"
+            android:layout_height="@dimen/_50sdp" />
+
+        <ImageView
+            android:layout_marginTop="10dp"
+            android:layout_width="150dp"
+            android:layout_height="40dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/iran_app_logo1"
+            android:tint="@color/colorPrimary" />
+
+
+        <com.ideabonyan.iranapp.Components.LogotextView
+            android:visibility="gone"
+            android:gravity="center"
+            android:id="@+id/headerTXT"
+            android:text="ایران آپ"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/_18sdp"
+            android:layout_marginRight="@dimen/_15sdp"
+            android:layout_centerVertical="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </RelativeLayout>
+
+</android.support.v7.widget.Toolbar>

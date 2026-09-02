@@ -1,0 +1,278 @@
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:layoutDirection="ltr">
+    <!--<com.ideabonyan.markazkharid.Utility.CustomNestedScrollView-->
+        <!--android:fadeScrollbars="false"-->
+        <!--android:fillViewport="true"-->
+        <!--android:scrollbars="vertical"-->
+        <!--app:layout_behavior="@string/appbar_scrolling_view_behavior"-->
+        <!--android:id="@+id/nested"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent">-->
+        <!--<RelativeLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content">-->
+            <!--<ProgressBar-->
+                <!--app:layout_behavior="@string/appbar_scrolling_view_behavior"-->
+
+                <!--android:id="@+id/progressbar"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_centerHorizontal="true"-->
+                <!--android:layout_centerVertical="true"-->
+                <!--android:visibility="gone" />-->
+            <!--<android.support.v7.widget.RecyclerView-->
+                <!--app:layout_behavior="@string/appbar_scrolling_view_behavior"-->
+
+                <!--android:id="@+id/rvFeed"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:layout_marginRight="5dp"-->
+                <!--android:visibility="gone"/>-->
+
+        <!--</RelativeLayout>-->
+
+
+
+    <!--</com.ideabonyan.markazkharid.Utility.CustomNestedScrollView>-->
+
+
+    <!--<android.support.design.widget.AppBarLayout-->
+
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:theme="@style/ThemeOverlay.AppCompat.ActionBar">-->
+
+        <!--<LinearLayout-->
+
+            <!--app:layout_scrollFlags="scroll|enterAlways"-->
+            <!--app:tabMode="scrollable"-->
+            <!--android:id="@+id/lsearchfilter"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:background="@color/colorPrimary"-->
+            <!--android:gravity="right"-->
+            <!--android:orientation="vertical">-->
+            <!--<LinearLayout-->
+                <!--app:layout_behavior="@string/appbar_scrolling_view_behavior"-->
+
+                <!--android:layout_marginTop="5dp"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:orientation="vertical">-->
+
+
+
+                <!--<ProgressBar-->
+                    <!--app:layout_behavior="@string/appbar_scrolling_view_behavior"-->
+
+                    <!--android:id="@+id/progressBar1"-->
+                    <!--style="@style/Widget.AppCompat.ProgressBar.Horizontal"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_alignParentBottom="true"-->
+                    <!--android:layout_marginBottom="-5dp"-->
+                    <!--android:layout_marginTop="-5dp"-->
+                    <!--android:indeterminate="true"-->
+                    <!--android:max="100"-->
+                    <!--android:progress="20"-->
+                    <!--android:visibility="gone" />-->
+            <!--</LinearLayout>-->
+
+            <!--<LinearLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="50dp">-->
+
+                <!--<LinearLayout-->
+                    <!--android:id="@+id/lin_search_btn"-->
+                    <!--android:layout_width="@dimen/_50sdp"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:background="#66ffffff"-->
+                    <!--android:clickable="true"-->
+                    <!--android:foreground="?android:attr/selectableItemBackground"-->
+                    <!--android:gravity="center">-->
+
+                    <!--<ImageView-->
+                        <!--android:layout_width="25dp"-->
+                        <!--android:layout_height="25dp"-->
+                        <!--android:src="@drawable/ic_search_white_24dp" />-->
+                <!--</LinearLayout>-->
+
+                <!--<com.ideabonyan.markazkharid.component.MyedittextView-->
+                    <!--android:id="@+id/edt_name"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:layout_weight="1"-->
+                    <!--android:backgroundTint="#fff"-->
+                    <!--android:hint="عبارت جستجو "-->
+                    <!--android:textColor="#fff"-->
+                    <!--android:textColorHint="#fff"-->
+                    <!--android:textSize="14sp" />-->
+            <!--</LinearLayout>-->
+
+
+            <!--<LinearLayout-->
+                <!--android:id="@+id/lselectostan"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:layout_weight="1"-->
+                <!--android:background="?android:attr/selectableItemBackground"-->
+                <!--android:clickable="true"-->
+                <!--android:gravity="right|center_vertical"-->
+                <!--android:orientation="vertical"-->
+                <!--android:paddingLeft="10dp"-->
+                <!--android:paddingTop="5dp">-->
+
+                <!--<LinearLayout-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:gravity="right|center_vertical">-->
+
+                    <!--<ImageView-->
+                        <!--android:id="@+id/ostancansel"-->
+                        <!--android:layout_width="0dp"-->
+                        <!--android:layout_height="25dp"-->
+                        <!--android:layout_gravity="center"-->
+                        <!--android:layout_weight="1"-->
+                        <!--android:clickable="true"-->
+                        <!--android:src="@drawable/ic_clear_black_24dp"-->
+                        <!--android:tint="#fff" />-->
+
+                    <!--<TextView-->
+                        <!--android:id="@+id/txtostan"-->
+                        <!--android:layout_width="0dp"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_marginRight="10dp"-->
+                        <!--android:layout_weight="10"-->
+                        <!--android:text="انتخاب شهر و استان"-->
+                        <!--android:textColor="#fff"-->
+                        <!--android:textSize="14sp" />-->
+
+                    <!--<ImageView-->
+                        <!--android:layout_width="25dp"-->
+                        <!--android:layout_height="25dp"-->
+                        <!--android:layout_marginRight="5dp"-->
+                        <!--android:src="@drawable/ic_location_on_white_24dp"-->
+                        <!--android:tint="#fff" />-->
+                <!--</LinearLayout>-->
+
+                <!--<com.ideabonyan.markazkharid.component.MytextView-->
+                    <!--android:id="@+id/txt_place_name"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_marginRight="40dp"-->
+                    <!--android:text="نام شهر استان منطقه"-->
+                    <!--android:textColor="#FFF59D"-->
+                    <!--android:textSize="12sp"-->
+                    <!--android:visibility="invisible" />-->
+
+            <!--</LinearLayout>-->
+
+
+            <!--<LinearLayout-->
+                <!--android:id="@+id/lselectcat"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:background="?android:attr/selectableItemBackground"-->
+                <!--android:clickable="true"-->
+                <!--android:gravity="right|center_vertical"-->
+                <!--android:orientation="vertical"-->
+                <!--android:paddingLeft="10dp">-->
+
+                <!--<LinearLayout-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:gravity="right|center_vertical">-->
+
+                    <!--<LinearLayout-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="match_parent"-->
+                        <!--android:layout_weight="1"-->
+                        <!--android:gravity="right|center_vertical">-->
+
+                        <!--<ImageView-->
+                            <!--android:id="@+id/catcansel"-->
+                            <!--android:layout_width="0dp"-->
+                            <!--android:layout_height="25dp"-->
+                            <!--android:layout_gravity="center"-->
+                            <!--android:layout_weight="1"-->
+                            <!--android:clickable="true"-->
+                            <!--android:src="@drawable/ic_clear_black_24dp"-->
+                            <!--android:tint="#fff" />-->
+
+                        <!--<TextView-->
+                            <!--android:id="@+id/txtcat"-->
+                            <!--android:layout_width="0dp"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:layout_marginRight="10dp"-->
+                            <!--android:layout_weight="10"-->
+                            <!--android:text="انتخاب دسته بندی"-->
+                            <!--android:textColor="#fff"-->
+                            <!--android:textSize="14sp" />-->
+
+                        <!--<ImageView-->
+                            <!--android:layout_width="25dp"-->
+                            <!--android:layout_height="25dp"-->
+                            <!--android:layout_marginRight="5dp"-->
+                            <!--android:src="@drawable/ic_select_all_white_24dp"-->
+                            <!--android:tint="#fff" />-->
+                    <!--</LinearLayout>-->
+
+
+                <!--</LinearLayout>-->
+
+                <!--<com.ideabonyan.markazkharid.component.MytextView-->
+                    <!--android:id="@+id/txt_cate_name"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_marginRight="40dp"-->
+                    <!--android:text="نام شهر استان منطقه"-->
+                    <!--android:textColor="#FFF59D"-->
+                    <!--android:textSize="12sp"-->
+                    <!--android:visibility="invisible" />-->
+
+            <!--</LinearLayout>-->
+
+
+            <!--<LinearLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginBottom="5dp"-->
+                <!--android:layout_marginRight="5dp"-->
+                <!--android:gravity="right|center_vertical"-->
+                <!--android:orientation="horizontal">-->
+
+                <!--<Spinner-->
+                    <!--android:id="@+id/spin_see_what"-->
+
+
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_marginLeft="5dp"-->
+                    <!--android:layout_marginRight="5dp"-->
+                    <!--android:layout_weight="1"-->
+                    <!--android:background="@color/colorPrimary"-->
+                    <!--android:layoutDirection="rtl" />-->
+
+                <!--<TextView-->
+                    <!--android:id="@+id/textView"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_marginRight="5dp"-->
+                    <!--android:text="جستجو در : "-->
+                    <!--android:textColor="#fff"-->
+                    <!--android:textSize="14sp" />-->
+
+            <!--</LinearLayout>-->
+
+        <!--</LinearLayout>-->
+
+    <!--</android.support.design.widget.AppBarLayout>-->
+
+
+
+
+</android.support.design.widget.CoordinatorLayout>

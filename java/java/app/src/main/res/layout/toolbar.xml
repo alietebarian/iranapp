@@ -1,0 +1,36 @@
+<android.support.v7.widget.Toolbar
+    android:layoutDirection="ltr"
+    android:elevation="5dp"
+    android:layout_width="match_parent"
+    android:layout_height="?attr/actionBarSize"
+    android:background="#fff"
+    android:id="@+id/toolbar"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.ideabonyan.iranapp.Components.LogotextView
+            android:visibility="gone"
+            android:gravity="center"
+            android:id="@+id/headerTXT"
+            android:text="ایران آپ"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/_18sdp"
+            android:layout_marginRight="6dp"
+            android:layout_centerVertical="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <ImageView
+            android:layout_marginTop="10dp"
+            android:layout_width="150dp"
+            android:layout_height="40dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/iran_app_logo1"
+            android:tint="@color/colorPrimary" />
+
+    </RelativeLayout>
+
+</android.support.v7.widget.Toolbar>

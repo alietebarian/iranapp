@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "615994400578",
+    "firebase_url": "https://ghollac-b0aa5.firebaseio.com",
+    "project_id": "ghollac-b0aa5",
+    "storage_bucket": "ghollac-b0aa5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:615994400578:android:2261cb463319f067",
+        "android_client_info": {
+          "package_name": "com.ideabonyan.iranapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "615994400578-6g0helmirmbr44nt99o152bpmd8rhuic.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAGRRga8sbH3VGZGguC0teiQh5iufjfkL8"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

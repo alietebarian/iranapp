@@ -1,0 +1,474 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/contactForm"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#eee"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:layoutDirection="ltr"
+    android:minWidth="4500dp"
+    app:cardBackgroundColor="#eee">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#eee"
+        android:gravity="right"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="#eee">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+
+                android:background="@color/colorPrimary"
+                android:gravity="right|center_vertical"
+                android:orientation="horizontal">
+
+                <com.ideabonyan.iranapp.Components.MyTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:text="اطلاعات تماس"
+                    android:textColor="#fff"
+                    android:textSize="15sp" />
+
+            </LinearLayout>
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/imagestorecircle"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="15dp"
+                android:src="#fff"
+                app:civ_border_color="@color/colorPrimary"
+                app:civ_border_width="3dp" />
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="25dp"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"
+                android:layout_marginBottom="7dp"
+                android:layout_marginLeft="20dp"
+                android:src="@drawable/ic_headset_mic_black_24dp"
+                android:tint="@color/colorPrimary" />
+
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp">
+
+                    <android.support.v7.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        app:contentPadding="3dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="right|center_vertical">
+
+                                <com.ideabonyan.iranapp.Components.MyTextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="شماره ها " />
+
+                                <ImageView
+                                    android:tint="@color/colorPrimary"
+                                    android:layout_width="15dp"
+                                    android:layout_height="15dp"
+                                    android:layout_marginLeft="8dp"
+                                    android:src="@drawable/ic_phone_android_black_24dp" />
+                            </LinearLayout>
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:background="#bcbcbc"/>
+
+
+                            <LinearLayout
+                                android:id="@+id/contactFormMobile"
+                                android:background="?android:attr/selectableItemBackground"
+                                android:clickable="true"
+                                android:padding="4dp"
+                                android:layout_marginTop="3dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="right|center_vertical">
+
+                                <com.ideabonyan.iranapp.Components.MyTextView
+                                    android:id="@+id/contactFormMobileTXT"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+
+                                    android:textColor="#2196F3"
+                                    android:text="شماره های فروشنده " />
+
+                                <ImageView
+                                    android:tint="@color/colorPrimary"
+                                    android:layout_width="15dp"
+                                    android:layout_height="15dp"
+                                    android:layout_marginLeft="8dp"
+                                    android:src="@drawable/ic_phone_black_24dp" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/contactFormTel1"
+                                android:background="?android:attr/selectableItemBackground"
+                                android:clickable="true"
+                                android:padding="4dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="right|center_vertical">
+
+                                <com.ideabonyan.iranapp.Components.MyTextView
+                                    android:id="@+id/contactFormTel1TXT"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="#2196F3"
+                                    android:text="شماره های فروشنده " />
+
+                                <ImageView
+                                    android:tint="@color/colorPrimary"
+                                    android:layout_width="15dp"
+                                    android:layout_height="15dp"
+                                    android:layout_marginLeft="8dp"
+                                    android:src="@drawable/ic_phone_classic_black_24dp" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/contactFormTel2"
+                                android:background="?android:attr/selectableItemBackground"
+                                android:clickable="true"
+                                android:padding="4dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="right|center_vertical">
+
+                                <com.ideabonyan.iranapp.Components.MyTextView
+                                    android:id="@+id/contactFormTel2TXT"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="#2196F3"
+                                    android:text="شماره های فروشنده " />
+
+                                <ImageView
+                                    android:tint="@color/colorPrimary"
+                                    android:layout_width="15dp"
+                                    android:layout_height="15dp"
+                                    android:layout_marginLeft="8dp"
+                                    android:src="@drawable/ic_phone_classic_black_24dp" />
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+
+                    </android.support.v7.widget.CardView>
+
+
+
+
+                    <android.support.v7.widget.CardView
+                        android:id="@+id/contactFormInternet"
+                        android:layout_marginBottom="8dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:contentPadding="3dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="right|center_vertical">
+
+                                <com.ideabonyan.iranapp.Components.MyTextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="تماس اینترنتی" />
+
+                                <ImageView
+                                    android:tint="@color/colorPrimary"
+                                    android:layout_width="15dp"
+                                    android:layout_height="15dp"
+                                    android:layout_marginLeft="8dp"
+                                    android:src="@drawable/ic_web_black_24dp" />
+                            </LinearLayout>
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:background="#bcbcbc"/>
+
+
+                            <LinearLayout
+                                android:id="@+id/contactFormWebsite"
+                                android:background="?android:attr/selectableItemBackground"
+                                android:clickable="true"
+                                android:padding="4dp"
+                                android:layout_marginTop="3dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="left|center_vertical">
+
+                                <ImageView
+                                    android:tint="@color/colorPrimary"
+                                    android:layout_width="15dp"
+                                    android:layout_height="15dp"
+                                    android:layout_marginRight="8dp"
+                                    android:src="@drawable/ic_edge_black_24dp" />
+                                <com.ideabonyan.iranapp.Components.MyTextView
+                                    android:id="@+id/contactFormWebsiteTXT"
+                                    android:layout_width="wrap_content"
+                                    android:textColor="#2196F3"
+                                    android:layout_height="wrap_content"
+                                    android:text="website" />
+
+                            </LinearLayout>
+                            <LinearLayout
+                                android:id="@+id/contactFormEmail"
+                                android:background="?android:attr/selectableItemBackground"
+                                android:clickable="true"
+                                android:padding="4dp"
+                                android:layout_marginTop="3dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="left|center_vertical">
+
+                                <ImageView
+                                    android:tint="@color/colorPrimary"
+                                    android:layout_width="15dp"
+                                    android:layout_height="15dp"
+                                    android:layout_marginRight="8dp"
+                                    android:src="@drawable/ic_email_black_24dp" />
+                                <com.ideabonyan.iranapp.Components.MyTextView
+                                    android:id="@+id/contactFormEmailTXT"
+                                    android:layout_width="wrap_content"
+                                    android:textColor="#2196F3"
+                                    android:layout_height="wrap_content"
+                                    android:text="website" />
+
+                            </LinearLayout>
+                            <LinearLayout
+                                android:id="@+id/contactFormTelegram"
+                                android:background="?android:attr/selectableItemBackground"
+                                android:clickable="true"
+                                android:padding="4dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="left|center_vertical">
+
+                                <ImageView
+                                    android:tint="@color/colorPrimary"
+                                    android:layout_width="15dp"
+                                    android:layout_height="15dp"
+                                    android:layout_marginRight="8dp"
+                                    android:src="@drawable/ic_telegram_black_24dp" />
+                                <com.ideabonyan.iranapp.Components.MyTextView
+                                    android:id="@+id/contactFormTelegramTXT"
+                                    android:layout_width="wrap_content"
+                                    android:textColor="#2196F3"
+                                    android:layout_height="wrap_content"
+                                    android:text="website" />
+
+                            </LinearLayout>
+                            <LinearLayout
+                                android:id="@+id/contactFormInstagram"
+                                android:background="?android:attr/selectableItemBackground"
+                                android:clickable="true"
+                                android:padding="4dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="left|center_vertical">
+
+                                <ImageView
+                                    android:tint="@color/colorPrimary"
+                                    android:layout_width="15dp"
+                                    android:layout_height="15dp"
+                                    android:layout_marginRight="8dp"
+                                    android:src="@drawable/ic_instagram_black_24dp" />
+                                <com.ideabonyan.iranapp.Components.MyTextView
+                                    android:id="@+id/contactFormInstagramTXT"
+                                    android:textColor="#2196F3"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="website" />
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+
+                    </android.support.v7.widget.CardView>
+
+
+
+
+                    <android.support.v7.widget.CardView
+                        android:id="@+id/contactFormAddressCard"
+                        android:layout_marginBottom="5dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:contentPadding="3dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="right|center_vertical">
+
+                                <com.ideabonyan.iranapp.Components.MyTextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="آدرس" />
+
+                                <ImageView
+                                    android:tint="@color/colorPrimary"
+                                    android:layout_width="15dp"
+                                    android:layout_height="15dp"
+                                    android:layout_marginLeft="8dp"
+                                    android:src="@drawable/ic_map_black_24dp" />
+                            </LinearLayout>
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:background="#bcbcbc"/>
+
+                            <LinearLayout
+                                android:id="@+id/contactFormCityName"
+                                android:layout_marginTop="4dp"
+                                android:padding="4dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="right|center_vertical">
+
+                                <com.ideabonyan.iranapp.Components.MyTextView
+                                    android:layout_weight="1"
+                                    android:gravity="right"
+                                    android:id="@+id/contactFormCityNameTXT"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="-" />
+
+                                <ImageView
+                                    android:tint="@color/colorPrimary"
+                                    android:layout_width="15dp"
+                                    android:layout_height="15dp"
+                                    android:layout_marginLeft="8dp"
+                                    android:src="@drawable/ic_location_on_black_24dp" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/contactFormAddress"
+                                android:layout_marginTop="4dp"
+                                android:padding="4dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="right|center_vertical">
+
+                                <com.ideabonyan.iranapp.Components.MyTextView
+                                    android:id="@+id/contactFormAddressTXT"
+                                    android:layout_width="0dp"
+                                    android:layout_weight="1"
+                                    android:gravity="right"
+                                    android:layout_height="wrap_content"
+                                    android:text="-" />
+
+                                <ImageView
+                                    android:tint="@color/colorPrimary"
+                                    android:layout_width="15dp"
+                                    android:layout_height="15dp"
+                                    android:layout_marginLeft="8dp"
+                                    android:src="@drawable/ic_my_location_black_24dp" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/contactFormWorkTime"
+                                android:layout_marginTop="4dp"
+                                android:padding="4dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="right|center_vertical">
+
+                                <com.ideabonyan.iranapp.Components.MyTextView
+                                    android:id="@+id/contactFormWorkTimeTXT"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:gravity="right"
+                                    android:text="-" />
+
+                                <ImageView
+                                    android:tint="@color/colorPrimary"
+                                    android:layout_width="15dp"
+                                    android:layout_height="15dp"
+                                    android:layout_marginLeft="8dp"
+                                    android:src="@drawable/ic_watch_later_black_24dp" />
+                            </LinearLayout>
+
+
+                        </LinearLayout>
+
+
+                    </android.support.v7.widget.CardView>
+
+
+                    <com.ideabonyan.iranapp.Components.MyButton
+                        android:visibility="gone"
+                        android:id="@+id/contactFormClose"
+                        android:layout_width="wrap_content"
+                        android:layout_margin="20dp"
+                        android:background="#00000000"
+                        android:text="بستن"
+                        android:textColor="@color/colorPrimary"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+            </ScrollView>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</android.support.v7.widget.CardView>

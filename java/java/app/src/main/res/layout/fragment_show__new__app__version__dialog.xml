@@ -1,0 +1,119 @@
+<android.support.v7.widget.CardView
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layoutDirection="ltr"
+    app:cardCornerRadius="3dp"
+    app:cardElevation="3dp" >
+
+    <LinearLayout
+        android:minWidth="1000dp"
+
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center|center_vertical"
+            android:orientation="horizontal">
+
+            <com.ideabonyan.iranapp.Components.MyTextView
+                android:textSize="16sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="نسخه جدید ایران آپ را از کافه بازار بخواهید."
+                android:textColor="#c62828" />
+
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/ic_system_update_black_24dp"
+                android:tint="#c62828" />
+
+
+        </LinearLayout>
+
+
+        <com.ideabonyan.iranapp.Components.MyCheckbox
+            android:visibility="gone"
+            android:id="@+id/check_dontshow"
+            android:layoutDirection="rtl"
+            android:textColor="#444"
+            android:layout_margin="5dp"
+            android:textSize="14sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="عدم نمایش مجدد این هشدار"/>
+        
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal">
+            <android.support.v7.widget.CardView
+                app:cardCornerRadius="3dp"
+                app:cardElevation="3dp"
+                app:cardBackgroundColor="#F4511E"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent">
+                <LinearLayout
+                    android:id="@+id/lexit"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <com.ideabonyan.iranapp.Components.MyTextView
+                        android:id="@+id/txt_exit"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="بیخیال"
+                        android:textColor="#fff"
+                        android:textSize="16sp"
+                        />
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                app:cardCornerRadius="3dp"
+                app:cardElevation="3dp"
+                app:cardBackgroundColor="#2E7D32"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent">
+                <LinearLayout
+                    android:id="@+id/lupdate"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                <com.ideabonyan.iranapp.Components.MyTextView
+                    android:id="@+id/txtupdate"
+                    android:textColor="#fff"
+                    android:textSize="16sp"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="بروزرسانی"/>
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+        </LinearLayout>
+    </LinearLayout>
+
+</android.support.v7.widget.CardView>

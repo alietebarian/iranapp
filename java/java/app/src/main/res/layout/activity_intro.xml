@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+    Copyright (C) 2016 .all right reserved for Esfandune.ir & Mohammad Rahmani
+    salam
+    in source ba zahmate faravani tahiye va montasher shode
+    lotfan az enteshare source khoddari farmaeid.
+    in kar be lahaze ghanuni va shar'i gheire ghanuni mibashad
+    lotfan baraye hemayat az ma dustane barnamenevise khod ra be Esfandune.ir hedayat konid.
+    ba tashakor az shoma
+    MOhammad Rahmani
+   -->
+
+<LinearLayout
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="#fff"
+    android:orientation="vertical">
+
+    <RelativeLayout
+
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="#fff">
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/viewpager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></android.support.v4.view.ViewPager>
+
+        <RadioGroup
+            android:layout_marginBottom="45dp"
+            android:id="@+id/radiogroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/viewpager"
+            android:layout_centerHorizontal="true"
+            android:orientation="horizontal"
+            android:paddingBottom="4dp"
+            android:paddingLeft="6dp">
+
+
+            <RadioButton
+                android:id="@+id/radioButton3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:button="@drawable/radio"
+                android:clickable="false"
+                android:scaleX="0.5"
+                android:scaleY="0.5" />
+
+            <RadioButton
+                android:id="@+id/radioButton2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:button="@drawable/radio"
+                android:clickable="false"
+                android:scaleX="0.5"
+                android:scaleY="0.5" />
+
+            <RadioButton
+                android:id="@+id/radioButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:button="@drawable/radio"
+                android:checked="true"
+                android:clickable="false"
+                android:scaleX="0.5"
+                android:scaleY="0.5" />
+        </RadioGroup>
+
+        <LinearLayout
+            android:layout_marginRight="10dp"
+            android:orientation="horizontal"
+            android:gravity="right"
+            android:id="@+id/rel_back"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/viewpager" >
+
+
+            <android.support.v7.widget.CardView
+
+                android:layout_margin="15dp"
+                android:layout_width="120dp"
+                android:layout_height="35dp"
+                app:cardBackgroundColor="#afb71c1c"
+                app:cardCornerRadius="15dp"
+                app:cardElevation="3dp">
+
+                <LinearLayout
+                    android:animateLayoutChanges="true"
+                    android:id="@+id/lin_btnNext"
+                    android:gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:clickable="true"
+                    android:foreground="?attr/selectableItemBackgroundBorderless">
+                    <com.ideabonyan.iranapp.Components.MyTextView
+                        android:id="@+id/txt_next"
+                        android:textSize="16sp"
+                        android:textColor="#fff"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="بعدی"
+                        />
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+
+</LinearLayout>
