@@ -6,7 +6,7 @@ use App\Models\EstateAds;
 use App\Models\EstateAdsPhoto;
 use App\Http\Requests\Admin\UploadEstateAdsPhotoRequest;
 use Illuminate\Http\Request;
-use Intervention\Image\Facades\Image;
+use App\Libraries\Image;
 
 class EstateAdsPhotoController extends Controller
 {

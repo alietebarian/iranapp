@@ -23,11 +23,7 @@ use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\URL;
-use Intervention\Image\Facades\Image;
-use LaravelFCM\Facades\FCM;
-use LaravelFCM\Message\OptionsBuilder;
-use LaravelFCM\Message\PayloadDataBuilder;
-use LaravelFCM\Message\PayloadNotificationBuilder;
+use App\Libraries\Image;
 
 class AdsController extends Controller {
 	public function getBySubCategoryId( Request $request , $cityId , $subCategoryId ) {
@@ -525,20 +521,7 @@ class AdsController extends Controller {
 			                ->where( 'notification_setting.city_id' , '=' , $ads->city_id )
 			                ->pluck( 'fcm_token' )->toArray();
 			if ( count( $fcm_tokens ) > 0 ) {
-				$optionBuilder = new OptionsBuilder();
-				$optionBuilder->setTimeToLive( 60 * 20 );
-
-				$notificationBuilder = new PayloadNotificationBuilder( 'ایران اپ' );
-				$notificationBuilder->setBody( $ads->title )
-				                    ->setSound( 'default' );
-
-				$dataBuilder = new PayloadDataBuilder();
-				$dataBuilder->addData( [ 'status' => '0' , 'content_id' => $ads->id ] );
-				$data         = $dataBuilder->build();
-				$option       = $optionBuilder->build();
-				$notification = $notificationBuilder->build();
-
-				$downstreamResponse = FCM::sendTo( $fcm_tokens , $option , $notification , $data );
+				$downstreamResponse = \App\Libraries\PrNotification::sendToTokens( $fcm_tokens , 'ایران اپ' , $ads->title , [ 'status' => '0' , 'content_id' => $ads->id ] );
 
 				$downstreamResponse->numberFailure();
 				$downstreamResponse->numberModification();
@@ -709,20 +692,7 @@ class AdsController extends Controller {
 			                ->where( 'notification_setting.city_id' , '=' , $ads->city_id )
 			                ->pluck( 'fcm_token' )->toArray();
 			if ( count( $fcm_tokens ) > 0 ) {
-				$optionBuilder = new OptionsBuilder();
-				$optionBuilder->setTimeToLive( 60 * 20 );
-
-				$notificationBuilder = new PayloadNotificationBuilder( 'ایران اپ' );
-				$notificationBuilder->setBody( $ads->title )
-				                    ->setSound( 'default' );
-
-				$dataBuilder = new PayloadDataBuilder();
-				$dataBuilder->addData( [ 'status' => '0' , 'content_id' => $ads->id ] );
-				$data         = $dataBuilder->build();
-				$option       = $optionBuilder->build();
-				$notification = $notificationBuilder->build();
-
-				$downstreamResponse = FCM::sendTo( $fcm_tokens , $option , $notification , $data );
+				$downstreamResponse = \App\Libraries\PrNotification::sendToTokens( $fcm_tokens , 'ایران اپ' , $ads->title , [ 'status' => '0' , 'content_id' => $ads->id ] );
 
 				$downstreamResponse->numberFailure();
 				$downstreamResponse->numberModification();

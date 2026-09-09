@@ -9,7 +9,7 @@ use App\Models\EmploysAdsPhoto;
 use App\Models\EstateAdsPhoto;
 use App\Models\VehicleAdsPhoto;
 use Illuminate\Http\Request;
-use Intervention\Image\Facades\Image;
+use App\Libraries\Image;
 
 class AdsPhotoController extends Controller
 {

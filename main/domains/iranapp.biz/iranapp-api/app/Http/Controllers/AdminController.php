@@ -70,8 +70,10 @@ class AdminController extends Controller
             ->where('status' , '=' , 'approved')
             ->count();
         $allAdsCount = $discountAdsCount + $needAdsCount;
-        $discountPercentage = $discountAdsCount * 100 / $allAdsCount;
-        $needsPercentage = $needAdsCount * 100 / $allAdsCount;
+        // PHP 8 raises DivisionByZeroError where PHP 7 only warned, so guard the
+        // empty case instead of letting an ad-less database break the dashboard.
+        $discountPercentage = $allAdsCount > 0 ? $discountAdsCount * 100 / $allAdsCount : 0;
+        $needsPercentage = $allAdsCount > 0 ? $needAdsCount * 100 / $allAdsCount : 0;
         $data['discountPercentage'] = round($discountPercentage);
         $data['needsPercentage'] = round($needsPercentage);
         $data['needsAdsCount'] = $needAdsCount;

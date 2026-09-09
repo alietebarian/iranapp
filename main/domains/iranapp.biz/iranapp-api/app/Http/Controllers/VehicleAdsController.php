@@ -19,11 +19,7 @@ use Carbon\Carbon;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Intervention\Image\Facades\Image;
-use LaravelFCM\Facades\FCM;
-use LaravelFCM\Message\OptionsBuilder;
-use LaravelFCM\Message\PayloadDataBuilder;
-use LaravelFCM\Message\PayloadNotificationBuilder;
+use App\Libraries\Image;
 
 class VehicleAdsController extends Controller
 {
@@ -178,20 +174,7 @@ class VehicleAdsController extends Controller
         if ($request->has('send_notification') && $request->status == 'approved') {
             $fcm_tokens = DB::table('notification_setting')->where('send_ads_notifications', '=', 1)->pluck('fcm_token')->toArray();
             if (count($fcm_tokens) > 0) {
-                $optionBuilder = new OptionsBuilder();
-                $optionBuilder->setTimeToLive(60 * 20);
-
-                $notificationBuilder = new PayloadNotificationBuilder('ایران اپ');
-                $notificationBuilder->setBody($ads->ads_title)
-                    ->setSound('default');
-
-                $dataBuilder = new PayloadDataBuilder();
-                $dataBuilder->addData(['status' => '0', 'content_id' => $ads->id]);
-                $data = $dataBuilder->build();
-                $option = $optionBuilder->build();
-                $notification = $notificationBuilder->build();
-
-                $downstreamResponse = FCM::sendTo($fcm_tokens, $option, $notification, $data);
+                $downstreamResponse = \App\Libraries\PrNotification::sendToTokens( $fcm_tokens , 'ایران اپ' , $ads->ads_title , ['status' => '0', 'content_id' => $ads->id] );
 
                 $downstreamResponse->numberFailure();
                 $downstreamResponse->numberModification();

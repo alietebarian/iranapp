@@ -37,9 +37,8 @@ dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.6.1'
 
-    // TODO(A4): replaces raw org.apache.http.* multipart uploads for now; the network
-    // layer (this dependency included) gets consolidated onto Retrofit/OkHttp in Phase A4.
-    implementation 'cz.msebera.android:httpclient:4.5.8'
+    // OkHttp (via Retrofit, below) handles the multipart uploads that used to go through
+    // Apache HttpClient — no separate HTTP client dependency is needed any more.
 
     implementation project(path: ':MultiImageSelector')
     implementation 'com.squareup.retrofit2:retrofit:2.11.0'

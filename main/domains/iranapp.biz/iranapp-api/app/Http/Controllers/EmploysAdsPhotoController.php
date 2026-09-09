@@ -6,7 +6,7 @@ use App\Models\EmploysAds;
 use App\Models\EmploysAdsPhoto;
 use App\Http\Requests\Admin\UploadVehicleAdsPhotoRequest;
 use Illuminate\Http\Request;
-use Intervention\Image\Facades\Image;
+use App\Libraries\Image;
 
 class EmploysAdsPhotoController extends Controller
 {

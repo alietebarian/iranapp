@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
+use App\Exports\UserMobilesExport;
 use Maatwebsite\Excel\Facades\Excel;
 use SoapClient;
 
@@ -73,7 +74,7 @@ class UserController extends Controller {
 		if ( Hash::check( $password , $user->password ) ) {
 			try {
 				$token = $user->createToken('mobile')->plainTextToken;
-			} catch ( JWTException $exception ) {
+			} catch ( \Throwable $exception ) {
 				return response()->json( [ 'status' => 500 , 'error' => 'could not create token' ] );
 			}
 			$user->fcm_token = $fcmToken;
@@ -96,7 +97,7 @@ class UserController extends Controller {
 		if ( $user->verify_token == $verifyToken ) {
 			try {
 				$token = $user->createToken('mobile')->plainTextToken;
-			} catch ( JWTException $exception ) {
+			} catch ( \Throwable $exception ) {
 				return response()->json( [ 'status' => 500 , 'error' => 'could_not_create_token' ] );
 			}
 			$user->verify_token       = null;
@@ -279,22 +280,7 @@ class UserController extends Controller {
 	}
 
 	public function exportUserMobilesInExcelFormat( Request $request ) {
-		Excel::create( 'user_mobiles' , function ( $excel ) {
-			$users      = DB::table( 'users' )->select( 'first_name' , 'last_name' , 'mobile' )->get();
-			$usersArr   = [];
-			$headerArr  = [ 'نام' , 'نام خانوادگی' , 'تلفن همراه' ];
-			$usersArr[] = $headerArr;
-			foreach ( $users as $user ) {
-				$userArr    = [];
-				$userArr[]  = $user->first_name;
-				$userArr[]  = $user->last_name;
-				$userArr[]  = $user->mobile;
-				$usersArr[] = $userArr;
-			}
-			$excel->sheet( 'users' , function ( $sheet ) use ( $usersArr ) {
-				$sheet->fromArray( $usersArr );
-			} );
-		} )->download( 'xlsx' );
+		return Excel::download( new UserMobilesExport() , 'user_mobiles.xlsx' );
 	}
 
 	public function sendResetPasswordToken( Request $request ) {
