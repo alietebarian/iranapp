@@ -1,0 +1,30 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+    {
+        Schema::create('news_photo', function (Blueprint $table) {
+            $table->increments('id');
+            $table->unsignedInteger('news_id')->index('news_id');
+            $table->string('file_name', 300);
+            $table->dateTime('created_at');
+            $table->dateTime('updated_at');
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::dropIfExists('news_photo');
+    }
+};
