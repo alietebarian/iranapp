@@ -11,7 +11,7 @@ import com.ideabonyan.iranapp.R;
 /**
  * @author Hardik A Bhalodi
  */
-public class MyRadioButton extends android.support.v7.widget.AppCompatRadioButton {
+public class MyRadioButton extends androidx.appcompat.widget.AppCompatRadioButton {
 
 	private static final String TAG = "TextView";
 

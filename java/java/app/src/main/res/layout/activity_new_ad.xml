@@ -13,7 +13,7 @@
     tools:context="com.ideabonyan.iranapp.Activity.NewAdActivity"
     android:baselineAligned="false">
 
-    <android.support.design.widget.AppBarLayout
+    <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -25,7 +25,7 @@
             android:background="@color/colorPrimary"
             android:visibility="visible" />
 
-    </android.support.design.widget.AppBarLayout>
+    </com.google.android.material.appbar.AppBarLayout>
 
 
     <RelativeLayout
@@ -42,7 +42,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <android.support.v7.widget.CardView
+                <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
@@ -74,7 +74,7 @@
                             android:textSize="10sp"
                             android:visibility="invisible" />
 
-                        <android.support.design.widget.TextInputLayout
+                        <com.google.android.material.textfield.TextInputLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="5dp"
@@ -93,7 +93,7 @@
                                 android:hint="عنوان (اجباری)"
                                 android:paddingRight="8dp"
                                 android:textSize="14sp" />
-                        </android.support.design.widget.TextInputLayout>
+                        </com.google.android.material.textfield.TextInputLayout>
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -205,7 +205,7 @@
                             android:textSize="10sp"
                             android:visibility="invisible" />
 
-                        <android.support.design.widget.TextInputLayout
+                        <com.google.android.material.textfield.TextInputLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="5dp"
@@ -226,9 +226,9 @@
                                 android:paddingRight="8dp"
                                 android:paddingTop="10dp"
                                 android:textSize="14sp" />
-                        </android.support.design.widget.TextInputLayout>
+                        </com.google.android.material.textfield.TextInputLayout>
 
-                        <android.support.design.widget.TextInputLayout
+                        <com.google.android.material.textfield.TextInputLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="5dp"
@@ -249,7 +249,7 @@
                                 android:paddingRight="8dp"
                                 android:paddingTop="10dp"
                                 android:textSize="14sp" />
-                        </android.support.design.widget.TextInputLayout>
+                        </com.google.android.material.textfield.TextInputLayout>
 
 
                         <com.ideabonyan.iranapp.Components.MyTextView
@@ -264,7 +264,7 @@
                             android:textSize="10sp"
                             android:visibility="invisible" />
 
-                        <android.support.design.widget.TextInputLayout
+                        <com.google.android.material.textfield.TextInputLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="5dp"
@@ -285,7 +285,7 @@
                                 android:paddingRight="8dp"
                                 android:paddingTop="10dp"
                                 android:textSize="14sp" />
-                        </android.support.design.widget.TextInputLayout>
+                        </com.google.android.material.textfield.TextInputLayout>
                         <com.ideabonyan.iranapp.Components.MyTextView
                             android:id="@+id/txt_Dis_Danger"
                             android:layout_width="wrap_content"
@@ -298,7 +298,7 @@
                             android:textSize="10sp"
                             android:visibility="invisible" />
 
-                        <android.support.design.widget.TextInputLayout
+                        <com.google.android.material.textfield.TextInputLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="5dp"
@@ -321,7 +321,7 @@
                                 android:paddingRight="8dp"
                                 android:paddingTop="10dp"
                                 android:textSize="14sp" />
-                        </android.support.design.widget.TextInputLayout>
+                        </com.google.android.material.textfield.TextInputLayout>
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -388,7 +388,7 @@
                         </LinearLayout>
 
 
-                        <android.support.v7.widget.CardView
+                        <androidx.cardview.widget.CardView
                             android:id="@+id/newAdPlanDescription"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -488,9 +488,9 @@
                                 </LinearLayout>
                             </LinearLayout>
 
-                        </android.support.v7.widget.CardView>
+                        </androidx.cardview.widget.CardView>
 
-                        <android.support.v7.widget.CardView
+                        <androidx.cardview.widget.CardView
                             android:id="@+id/newAdCantUpdateTypeWarn"
                             android:visibility="gone"
                             android:layout_width="match_parent"
@@ -571,14 +571,14 @@
                                 </LinearLayout>
                             </LinearLayout>
 
-                        </android.support.v7.widget.CardView>
+                        </androidx.cardview.widget.CardView>
 
                     </LinearLayout>
 
-                </android.support.v7.widget.CardView>
+                </androidx.cardview.widget.CardView>
 
 
-                <android.support.v7.widget.CardView
+                <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="5dp"
@@ -603,7 +603,7 @@
                             android:text="کلمات کلیدی"
                             android:textColor="#fff" />
 
-                        <android.support.design.widget.TextInputLayout
+                        <com.google.android.material.textfield.TextInputLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="5dp"
@@ -622,7 +622,7 @@
                                 android:hint="کلمات را با کاما یا اینتر جدا کنید"
                                 android:paddingRight="8dp"
                                 android:textSize="14sp" />
-                        </android.support.design.widget.TextInputLayout>
+                        </com.google.android.material.textfield.TextInputLayout>
 
                         <com.ideabonyan.iranapp.Components.MyTextView
                             android:layout_width="match_parent"
@@ -635,10 +635,10 @@
 
                     </LinearLayout>
 
-                </android.support.v7.widget.CardView>
+                </androidx.cardview.widget.CardView>
 
 
-                <android.support.v7.widget.CardView
+                <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="5dp"
@@ -674,7 +674,7 @@
                             android:visibility="invisible" />
 
 
-                        <android.support.design.widget.TextInputLayout
+                        <com.google.android.material.textfield.TextInputLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="5dp"
@@ -693,9 +693,9 @@
                                 android:inputType="number"
                                 android:paddingRight="8dp"
                                 android:textSize="14sp" />
-                        </android.support.design.widget.TextInputLayout>
+                        </com.google.android.material.textfield.TextInputLayout>
 
-                        <android.support.design.widget.TextInputLayout
+                        <com.google.android.material.textfield.TextInputLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="5dp"
@@ -714,9 +714,9 @@
                                 android:inputType="number"
                                 android:paddingRight="8dp"
                                 android:textSize="14sp" />
-                        </android.support.design.widget.TextInputLayout>
+                        </com.google.android.material.textfield.TextInputLayout>
 
-                        <android.support.design.widget.TextInputLayout
+                        <com.google.android.material.textfield.TextInputLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="5dp"
@@ -735,10 +735,10 @@
                                 android:inputType="number"
                                 android:paddingRight="8dp"
                                 android:textSize="14sp" />
-                        </android.support.design.widget.TextInputLayout>
+                        </com.google.android.material.textfield.TextInputLayout>
 
 
-                        <android.support.design.widget.TextInputLayout
+                        <com.google.android.material.textfield.TextInputLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="5dp"
@@ -758,10 +758,10 @@
                                 android:paddingRight="8dp"
                                 android:paddingTop="10dp"
                                 android:textSize="14sp" />
-                        </android.support.design.widget.TextInputLayout>
+                        </com.google.android.material.textfield.TextInputLayout>
 
 
-                        <android.support.design.widget.TextInputLayout
+                        <com.google.android.material.textfield.TextInputLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="5dp"
@@ -779,9 +779,9 @@
                                 android:hint="آدرس تلگرام (اختیاری)"
                                 android:paddingRight="8dp"
                                 android:textSize="14sp" />
-                        </android.support.design.widget.TextInputLayout>
+                        </com.google.android.material.textfield.TextInputLayout>
 
-                        <android.support.design.widget.TextInputLayout
+                        <com.google.android.material.textfield.TextInputLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="5dp"
@@ -800,7 +800,7 @@
                                 android:hint="آدرس اینستاگرام (اختیاری)"
                                 android:paddingRight="8dp"
                                 android:textSize="14sp" />
-                        </android.support.design.widget.TextInputLayout>
+                        </com.google.android.material.textfield.TextInputLayout>
                         <com.ideabonyan.iranapp.Components.MyTextView
                             android:id="@+id/txt_emailWarn"
                             android:layout_width="wrap_content"
@@ -813,7 +813,7 @@
                             android:textSize="10sp"
                             android:visibility="invisible" />
 
-                        <android.support.design.widget.TextInputLayout
+                        <com.google.android.material.textfield.TextInputLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="5dp"
@@ -832,7 +832,7 @@
                                 android:hint="آدرس ایمیل (اختیاری)"
                                 android:paddingRight="8dp"
                                 android:textSize="14sp" />
-                        </android.support.design.widget.TextInputLayout>
+                        </com.google.android.material.textfield.TextInputLayout>
 
 
                         <LinearLayout
@@ -941,7 +941,7 @@
                             android:textSize="10sp"
                             android:visibility="invisible" />
 
-                        <android.support.design.widget.TextInputLayout
+                        <com.google.android.material.textfield.TextInputLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="5dp"
@@ -962,11 +962,11 @@
                                 android:paddingRight="8dp"
                                 android:paddingTop="10dp"
                                 android:textSize="14sp" />
-                        </android.support.design.widget.TextInputLayout>
+                        </com.google.android.material.textfield.TextInputLayout>
 
                     </LinearLayout>
 
-                </android.support.v7.widget.CardView>
+                </androidx.cardview.widget.CardView>
 
                 <com.ideabonyan.iranapp.Components.MyTextView
                     android:id="@+id/txt_mapError"
@@ -980,7 +980,7 @@
                     android:textSize="10sp"
                     android:visibility="invisible" />
 
-                <android.support.v7.widget.CardView
+                <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="5dp"
@@ -1053,10 +1053,10 @@
 
                     </LinearLayout>
 
-                </android.support.v7.widget.CardView>
+                </androidx.cardview.widget.CardView>
 
 
-                <android.support.v7.widget.CardView
+                <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="5dp"
@@ -1336,7 +1336,7 @@
 
                     </LinearLayout>
 
-                </android.support.v7.widget.CardView>
+                </androidx.cardview.widget.CardView>
 
 
                 <com.ideabonyan.iranapp.Components.MyTextView
@@ -1370,7 +1370,7 @@
                 </LinearLayout>
 
 
-                <android.support.v7.widget.CardView
+                <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="60dp"
@@ -1405,7 +1405,7 @@
 
                     </RelativeLayout>
 
-                </android.support.v7.widget.CardView>
+                </androidx.cardview.widget.CardView>
 
             </LinearLayout>
 

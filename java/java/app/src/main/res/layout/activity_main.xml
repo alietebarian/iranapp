@@ -10,7 +10,7 @@
 
     android:id="@+id/baseLayout">
 
-<android.support.design.widget.AppBarLayout
+<com.google.android.material.appbar.AppBarLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
     <include layout="@layout/toolbar"/>
@@ -18,7 +18,7 @@
         android:background="@color/colorPrimary"
         android:layout_width="match_parent"
         android:layout_height="1dp"/>
-</android.support.design.widget.AppBarLayout>
+</com.google.android.material.appbar.AppBarLayout>
 
     <!--<LinearLayout-->
         <!--android:layout_width="match_parent"-->
@@ -33,7 +33,7 @@
         android:layout_height="match_parent"
         android:layout_weight="1" />
 
-    <android.support.design.widget.AppBarLayout
+    <com.google.android.material.appbar.AppBarLayout
         android:elevation="5dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -196,6 +196,6 @@
             </LinearLayout>
         </LinearLayout>
 
-    </android.support.design.widget.AppBarLayout>
+    </com.google.android.material.appbar.AppBarLayout>
 
 </LinearLayout>

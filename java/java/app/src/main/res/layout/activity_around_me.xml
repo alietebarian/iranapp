@@ -16,7 +16,7 @@
     <!--android:layout_height="wrap_content"-->
     <!--android:elevation="10dp">-->
 
-    <!--<android.support.v7.widget.CardView-->
+    <!--<androidx.cardview.widget.CardView-->
     <!--android:clickable="true"-->
     <!--android:foreground="?selectableItemBackground"-->
     <!--android:layout_width="0dp"-->
@@ -38,9 +38,9 @@
     <!--android:src="@drawable/magnify"-->
     <!--android:tint="#757575" />-->
     <!--</LinearLayout>-->
-    <!--</android.support.v7.widget.CardView>-->
+    <!--</androidx.cardview.widget.CardView>-->
 
-    <!--<android.support.v7.widget.CardView-->
+    <!--<androidx.cardview.widget.CardView-->
     <!--android:layout_marginTop="10dp"-->
     <!--android:layout_marginBottom="10dp"-->
     <!--android:layout_marginRight="10dp"-->
@@ -82,7 +82,7 @@
 
     <!--</RelativeLayout>-->
 
-    <!--</android.support.v7.widget.CardView>-->
+    <!--</androidx.cardview.widget.CardView>-->
     <!--</LinearLayout>-->
 
     <!--<ImageView-->
@@ -115,7 +115,7 @@
         android:layout_centerHorizontal="true"
         android:indeterminateTint="@color/colorPrimary" />
 
-    <android.support.v7.widget.CardView
+    <androidx.cardview.widget.CardView
         app:cardElevation="10dp"
         android:layout_width="match_parent"
         app:cardUseCompatPadding="true"
@@ -182,8 +182,8 @@
                 android:indeterminateTint="@color/colorPrimary" />
         </LinearLayout>
 
-    </android.support.v7.widget.CardView>
-    <android.support.v7.widget.CardView
+    </androidx.cardview.widget.CardView>
+    <androidx.cardview.widget.CardView
         android:id="@+id/aroundMeNoAdCard"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -214,6 +214,6 @@
             android:textColor="#ffffff"
             android:visibility="gone" />
 
-    </android.support.v7.widget.CardView>
+    </androidx.cardview.widget.CardView>
 
 </RelativeLayout>

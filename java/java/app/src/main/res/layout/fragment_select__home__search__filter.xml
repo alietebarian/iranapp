@@ -1,4 +1,4 @@
-<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -63,7 +63,7 @@
                 android:orientation="vertical">
 
 
-                <android.support.v7.widget.CardView
+                <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
@@ -175,9 +175,9 @@
 
                         </LinearLayout>
                     </LinearLayout>
-                </android.support.v7.widget.CardView>
+                </androidx.cardview.widget.CardView>
 
-                <android.support.v7.widget.CardView
+                <androidx.cardview.widget.CardView
                     android:id="@+id/card_hommeh"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -269,9 +269,9 @@
 
                         </LinearLayout>
                     </LinearLayout>
-                </android.support.v7.widget.CardView>
+                </androidx.cardview.widget.CardView>
 
-                <android.support.v7.widget.CardView
+                <androidx.cardview.widget.CardView
                     android:id="@+id/card_type_person"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -363,9 +363,9 @@
 
                         </LinearLayout>
                     </LinearLayout>
-                </android.support.v7.widget.CardView>
+                </androidx.cardview.widget.CardView>
 
-                <android.support.v7.widget.CardView
+                <androidx.cardview.widget.CardView
                     android:id="@+id/card_room_num"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -457,9 +457,9 @@
 
                         </LinearLayout>
                     </LinearLayout>
-                </android.support.v7.widget.CardView>
+                </androidx.cardview.widget.CardView>
 
-                <android.support.v7.widget.CardView
+                <androidx.cardview.widget.CardView
                     android:id="@+id/card_type"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -551,9 +551,9 @@
 
 
                     </LinearLayout>
-                </android.support.v7.widget.CardView>
+                </androidx.cardview.widget.CardView>
 
-                <android.support.v7.widget.CardView
+                <androidx.cardview.widget.CardView
                     android:id="@+id/card_sanad_edari"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -643,9 +643,9 @@
 
 
                     </LinearLayout>
-                </android.support.v7.widget.CardView>
+                </androidx.cardview.widget.CardView>
 
-                <android.support.v7.widget.CardView
+                <androidx.cardview.widget.CardView
                     android:id="@+id/card_cost"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -782,7 +782,7 @@
                                     android:paddingBottom="10dp"
                                     android:paddingTop="10dp">
 
-                                    <android.support.design.widget.TextInputLayout
+                                    <com.google.android.material.textfield.TextInputLayout
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
                                         android:layout_marginLeft="5dp"
@@ -801,7 +801,7 @@
                                             android:inputType="number"
                                             android:paddingRight="8dp"
                                             android:textSize="14sp" />
-                                    </android.support.design.widget.TextInputLayout>
+                                    </com.google.android.material.textfield.TextInputLayout>
 
 
                                     <com.ideabonyan.iranapp.Components.MyTextView
@@ -821,7 +821,7 @@
                                     android:paddingBottom="10dp"
                                     android:paddingTop="10dp">
 
-                                    <android.support.design.widget.TextInputLayout
+                                    <com.google.android.material.textfield.TextInputLayout
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
                                         android:layout_marginLeft="5dp"
@@ -840,7 +840,7 @@
                                             android:inputType="number"
                                             android:paddingRight="8dp"
                                             android:textSize="14sp" />
-                                    </android.support.design.widget.TextInputLayout>
+                                    </com.google.android.material.textfield.TextInputLayout>
 
 
                                     <com.ideabonyan.iranapp.Components.MyTextView
@@ -857,10 +857,10 @@
 
 
                     </LinearLayout>
-                </android.support.v7.widget.CardView>
+                </androidx.cardview.widget.CardView>
 
 
-                <android.support.v7.widget.CardView
+                <androidx.cardview.widget.CardView
                     android:id="@+id/card_meter"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -935,7 +935,7 @@
                                 android:paddingBottom="10dp"
                                 android:paddingTop="10dp">
 
-                                <android.support.design.widget.TextInputLayout
+                                <com.google.android.material.textfield.TextInputLayout
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_marginLeft="5dp"
@@ -954,7 +954,7 @@
                                         android:inputType="number"
                                         android:paddingRight="8dp"
                                         android:textSize="14sp" />
-                                </android.support.design.widget.TextInputLayout>
+                                </com.google.android.material.textfield.TextInputLayout>
 
 
                                 <com.ideabonyan.iranapp.Components.MyTextView
@@ -974,7 +974,7 @@
                                 android:paddingBottom="10dp"
                                 android:paddingTop="10dp">
 
-                                <android.support.design.widget.TextInputLayout
+                                <com.google.android.material.textfield.TextInputLayout
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_marginLeft="5dp"
@@ -993,7 +993,7 @@
                                         android:inputType="number"
                                         android:paddingRight="8dp"
                                         android:textSize="14sp" />
-                                </android.support.design.widget.TextInputLayout>
+                                </com.google.android.material.textfield.TextInputLayout>
 
 
                                 <com.ideabonyan.iranapp.Components.MyTextView
@@ -1009,10 +1009,10 @@
                         </LinearLayout>
 
                     </LinearLayout>
-                </android.support.v7.widget.CardView>
+                </androidx.cardview.widget.CardView>
 
 
-                <android.support.v7.widget.CardView
+                <androidx.cardview.widget.CardView
                     android:id="@+id/card_ejare"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -1152,7 +1152,7 @@
                                     android:paddingBottom="10dp"
                                     android:paddingTop="10dp">
 
-                                    <android.support.design.widget.TextInputLayout
+                                    <com.google.android.material.textfield.TextInputLayout
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
                                         android:layout_marginLeft="5dp"
@@ -1171,7 +1171,7 @@
                                             android:inputType="number"
                                             android:paddingRight="8dp"
                                             android:textSize="14sp" />
-                                    </android.support.design.widget.TextInputLayout>
+                                    </com.google.android.material.textfield.TextInputLayout>
 
 
                                     <com.ideabonyan.iranapp.Components.MyTextView
@@ -1191,7 +1191,7 @@
                                     android:paddingBottom="10dp"
                                     android:paddingTop="10dp">
 
-                                    <android.support.design.widget.TextInputLayout
+                                    <com.google.android.material.textfield.TextInputLayout
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
                                         android:layout_marginLeft="5dp"
@@ -1210,7 +1210,7 @@
                                             android:inputType="number"
                                             android:paddingRight="8dp"
                                             android:textSize="14sp" />
-                                    </android.support.design.widget.TextInputLayout>
+                                    </com.google.android.material.textfield.TextInputLayout>
 
 
                                     <com.ideabonyan.iranapp.Components.MyTextView
@@ -1227,9 +1227,9 @@
 
 
                     </LinearLayout>
-                </android.support.v7.widget.CardView>
+                </androidx.cardview.widget.CardView>
 
-                <android.support.v7.widget.CardView
+                <androidx.cardview.widget.CardView
                     android:id="@+id/card_vadee"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -1363,7 +1363,7 @@
                                     android:paddingBottom="10dp"
                                     android:paddingTop="10dp">
 
-                                    <android.support.design.widget.TextInputLayout
+                                    <com.google.android.material.textfield.TextInputLayout
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
                                         android:layout_marginLeft="5dp"
@@ -1382,7 +1382,7 @@
                                             android:inputType="number"
                                             android:paddingRight="8dp"
                                             android:textSize="14sp" />
-                                    </android.support.design.widget.TextInputLayout>
+                                    </com.google.android.material.textfield.TextInputLayout>
 
 
                                     <com.ideabonyan.iranapp.Components.MyTextView
@@ -1402,7 +1402,7 @@
                                     android:paddingBottom="10dp"
                                     android:paddingTop="10dp">
 
-                                    <android.support.design.widget.TextInputLayout
+                                    <com.google.android.material.textfield.TextInputLayout
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
                                         android:layout_marginLeft="5dp"
@@ -1421,7 +1421,7 @@
                                             android:inputType="number"
                                             android:paddingRight="8dp"
                                             android:textSize="14sp" />
-                                    </android.support.design.widget.TextInputLayout>
+                                    </com.google.android.material.textfield.TextInputLayout>
 
 
                                     <com.ideabonyan.iranapp.Components.MyTextView
@@ -1439,9 +1439,9 @@
 
 
                     </LinearLayout>
-                </android.support.v7.widget.CardView>
+                </androidx.cardview.widget.CardView>
 
-                <android.support.v7.widget.CardView
+                <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
 
                     android:layout_height="wrap_content"
@@ -1578,7 +1578,7 @@
                         </LinearLayout>
 
                     </LinearLayout>
-                </android.support.v7.widget.CardView>
+                </androidx.cardview.widget.CardView>
 
 
                 <LinearLayout
@@ -1628,5 +1628,5 @@
         </ScrollView>
     </LinearLayout>
 
-</android.support.v7.widget.CardView>
+</androidx.cardview.widget.CardView>
 

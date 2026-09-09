@@ -33,7 +33,7 @@
                 app:sriv_left_bottom_corner_radius="7dp"
                 app:sriv_right_bottom_corner_radius="7dp"/>
             <!--</RelativeLayout>-->
-            <!--</android.support.v7.widget.CardView>-->
+            <!--</androidx.cardview.widget.CardView>-->
 
             <com.ideabonyan.iranapp.Components.MyTextView
                 android:layout_marginTop="5dp"

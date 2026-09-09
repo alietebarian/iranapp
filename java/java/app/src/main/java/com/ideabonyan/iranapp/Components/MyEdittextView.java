@@ -11,7 +11,7 @@ import com.ideabonyan.iranapp.R;
 /**
  * @author Hardik A Bhalodi
  */
-public class MyEdittextView extends android.support.v7.widget.AppCompatEditText {
+public class MyEdittextView extends androidx.appcompat.widget.AppCompatEditText {
 
 	private static final String TAG = "TextView";
 

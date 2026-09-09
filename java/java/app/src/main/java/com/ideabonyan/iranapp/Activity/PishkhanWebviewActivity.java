@@ -1,7 +1,7 @@
 package com.ideabonyan.iranapp.Activity;
 
-import android.support.transition.TransitionManager;
-import android.support.v7.app.AppCompatActivity;
+import androidx.transition.TransitionManager;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;

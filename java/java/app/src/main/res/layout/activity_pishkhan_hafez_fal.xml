@@ -11,7 +11,7 @@
     android:orientation="vertical"
     tools:context="com.ideabonyan.iranapp.Activity.PishkhanHafezFalActivity">
 
-    <android.support.design.widget.AppBarLayout
+    <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -21,7 +21,7 @@
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="@color/colorPrimary" />
-    </android.support.design.widget.AppBarLayout>
+    </com.google.android.material.appbar.AppBarLayout>
 
     <ProgressBar
         android:id="@+id/hafezFalProgressBar"
@@ -47,7 +47,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <android.support.v7.widget.CardView
+            <androidx.cardview.widget.CardView
                 app:cardCornerRadius="5dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -84,7 +84,7 @@
                         android:layout_height="wrap_content" />
                 </LinearLayout>
 
-            </android.support.v7.widget.CardView>
+            </androidx.cardview.widget.CardView>
 
             <RelativeLayout
                 android:layout_width="match_parent"

@@ -13,7 +13,7 @@
     android:orientation="vertical"
     tools:context="com.ideabonyan.iranapp.Activity.NewAdActivity">
 
-    <android.support.design.widget.AppBarLayout
+    <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -25,7 +25,7 @@
             android:background="@color/colorPrimary"
             android:visibility="visible" />
 
-    </android.support.design.widget.AppBarLayout>
+    </com.google.android.material.appbar.AppBarLayout>
 
 
     <ScrollView
@@ -39,7 +39,7 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <android.support.v7.widget.CardView
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
@@ -89,7 +89,7 @@
                                     android:orientation="horizontal">
 
 
-                                    <android.support.v7.widget.CardView
+                                    <androidx.cardview.widget.CardView
                                         android:id="@+id/card_pic3"
                                         android:layout_width="0dp"
                                         android:layout_height="wrap_content"
@@ -133,9 +133,9 @@
 
                                         </LinearLayout>
 
-                                    </android.support.v7.widget.CardView>
+                                    </androidx.cardview.widget.CardView>
 
-                                    <android.support.v7.widget.CardView
+                                    <androidx.cardview.widget.CardView
                                         android:id="@+id/card_pic2"
                                         app:cardBackgroundColor="#efefef"
                                         android:layout_width="0dp"
@@ -178,7 +178,7 @@
 
                                         </LinearLayout>
 
-                                    </android.support.v7.widget.CardView>
+                                    </androidx.cardview.widget.CardView>
                                 </LinearLayout>
                                 <LinearLayout
                                     android:layout_width="match_parent"
@@ -188,7 +188,7 @@
                                     android:layout_marginRight="5dp"
                                     android:orientation="horizontal">
 
-                                    <android.support.v7.widget.CardView
+                                    <androidx.cardview.widget.CardView
                                         android:id="@+id/card_pic5"
                                         android:layout_width="0dp"
                                         app:cardBackgroundColor="#efefef"
@@ -231,9 +231,9 @@
 
                                         </LinearLayout>
 
-                                    </android.support.v7.widget.CardView>
+                                    </androidx.cardview.widget.CardView>
 
-                                    <android.support.v7.widget.CardView
+                                    <androidx.cardview.widget.CardView
                                         android:id="@+id/card_pic4"
                                         android:layout_width="0dp"
                                         android:layout_height="wrap_content"
@@ -276,7 +276,7 @@
 
                                         </LinearLayout>
 
-                                    </android.support.v7.widget.CardView>
+                                    </androidx.cardview.widget.CardView>
 
                                 </LinearLayout>
                             </LinearLayout>
@@ -286,7 +286,7 @@
                                 android:layout_width="0dp"
                                 android:layout_height="match_parent"
                                 android:layout_weight="1">
-                                <android.support.v7.widget.CardView
+                                <androidx.cardview.widget.CardView
                                     android:id="@+id/card_pic1"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
@@ -328,7 +328,7 @@
 
                                     </LinearLayout>
 
-                                </android.support.v7.widget.CardView>
+                                </androidx.cardview.widget.CardView>
 
                             </LinearLayout>
                         </LinearLayout>
@@ -338,9 +338,9 @@
 
                     </LinearLayout>
                 </LinearLayout>
-            </android.support.v7.widget.CardView>
+            </androidx.cardview.widget.CardView>
 
-            <android.support.v7.widget.CardView
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
@@ -361,7 +361,7 @@
                         android:textColor="#fff" />
 
 
-                    <android.support.design.widget.TextInputLayout
+                    <com.google.android.material.textfield.TextInputLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="5dp"
@@ -379,9 +379,9 @@
                             android:hint="عنوان آگهی ( اجباری )"
                             android:paddingRight="8dp"
                             android:textSize="14sp" />
-                    </android.support.design.widget.TextInputLayout>
+                    </com.google.android.material.textfield.TextInputLayout>
 
-                    <android.support.design.widget.TextInputLayout
+                    <com.google.android.material.textfield.TextInputLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="5dp"
@@ -401,14 +401,14 @@
                             android:paddingRight="8dp"
                             android:paddingTop="10dp"
                             android:textSize="14sp" />
-                    </android.support.design.widget.TextInputLayout>
+                    </com.google.android.material.textfield.TextInputLayout>
 
 
                 </LinearLayout>
 
-            </android.support.v7.widget.CardView>
+            </androidx.cardview.widget.CardView>
 
-            <android.support.v7.widget.CardView
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
@@ -603,9 +603,9 @@
 
 
                 </LinearLayout>
-            </android.support.v7.widget.CardView>
+            </androidx.cardview.widget.CardView>
 
-            <android.support.v7.widget.CardView
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
@@ -625,7 +625,7 @@
                         android:text="اطلاعات شخصی"
                         android:textColor="#fff" />
 
-                    <android.support.design.widget.TextInputLayout
+                    <com.google.android.material.textfield.TextInputLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="5dp"
@@ -643,9 +643,9 @@
                             android:hint="نام و نام خانوادگی ( اجباری )"
                             android:paddingRight="8dp"
                             android:textSize="14sp" />
-                    </android.support.design.widget.TextInputLayout>
+                    </com.google.android.material.textfield.TextInputLayout>
 
-                    <android.support.design.widget.TextInputLayout
+                    <com.google.android.material.textfield.TextInputLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="5dp"
@@ -665,9 +665,9 @@
                             android:maxLength="11"
                             android:paddingRight="8dp"
                             android:textSize="14sp" />
-                    </android.support.design.widget.TextInputLayout>
+                    </com.google.android.material.textfield.TextInputLayout>
 
-                    <android.support.design.widget.TextInputLayout
+                    <com.google.android.material.textfield.TextInputLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="5dp"
@@ -688,13 +688,13 @@
 
                             android:paddingRight="8dp"
                             android:textSize="14sp" />
-                    </android.support.design.widget.TextInputLayout>
+                    </com.google.android.material.textfield.TextInputLayout>
 
                 </LinearLayout>
 
-            </android.support.v7.widget.CardView>
+            </androidx.cardview.widget.CardView>
 
-            <android.support.v7.widget.CardView
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
@@ -803,7 +803,7 @@
                         android:layout_height="wrap_content"
                         android:text="آدرس شما در برنامه نمایش داده نمی شود"/>
 
-                    <android.support.design.widget.TextInputLayout
+                    <com.google.android.material.textfield.TextInputLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="5dp"
@@ -824,9 +824,9 @@
                             android:paddingRight="8dp"
                             android:paddingTop="10dp"
                             android:textSize="14sp" />
-                    </android.support.design.widget.TextInputLayout>
+                    </com.google.android.material.textfield.TextInputLayout>
 
-                    <android.support.v7.widget.CardView
+                    <androidx.cardview.widget.CardView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="5dp"
@@ -899,10 +899,10 @@
 
                         </LinearLayout>
 
-                    </android.support.v7.widget.CardView>
+                    </androidx.cardview.widget.CardView>
 
                 </LinearLayout>
-            </android.support.v7.widget.CardView>
+            </androidx.cardview.widget.CardView>
             <LinearLayout
                 android:visibility="gone"
                 android:paddingBottom="10dp"
@@ -921,7 +921,7 @@
                     android:text="با قوانین و شرایط موافقم"/>
             </LinearLayout>
 
-            <android.support.v7.widget.CardView
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="60dp"
@@ -956,7 +956,7 @@
 
                 </RelativeLayout>
 
-            </android.support.v7.widget.CardView>
+            </androidx.cardview.widget.CardView>
 
         </LinearLayout>
 

@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-    <android.support.design.widget.AppBarLayout
+    <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -12,7 +12,7 @@
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="@color/colorPrimary"/>
-    </android.support.design.widget.AppBarLayout>
+    </com.google.android.material.appbar.AppBarLayout>
 
     <ProgressBar
         android:layout_marginTop="5dp"
@@ -41,7 +41,7 @@
             android:text="متاسفانه هیچ داده ای یافت نشد"/>
     </LinearLayout>
 
-    <android.support.v7.widget.RecyclerView
+    <androidx.recyclerview.widget.RecyclerView
         android:layout_weight="1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

@@ -10,7 +10,7 @@
     android:orientation="vertical"
     tools:context="com.ideabonyan.iranapp.Activity.PishkhanBookSearchActivity">
 
-    <android.support.design.widget.AppBarLayout
+    <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <include layout="@layout/toolbar_in_newad"/>
@@ -18,7 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="@color/colorPrimary"/>
-    </android.support.design.widget.AppBarLayout>
+    </com.google.android.material.appbar.AppBarLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -47,7 +47,7 @@
             android:layout_height="wrap_content" />
     </LinearLayout>
 
-    <android.support.v7.widget.RecyclerView
+    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/pishkhanBookRV"
         android:layout_marginTop="0dp"
         android:layout_width="match_parent"

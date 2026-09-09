@@ -9,7 +9,7 @@
     android:layoutDirection="ltr"
     tools:context="com.ideabonyan.iranapp.Activity.AdListActivity">
 
-    <android.support.design.widget.AppBarLayout
+    <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -18,7 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="@color/colorPrimary"/>
-    </android.support.design.widget.AppBarLayout>
+    </com.google.android.material.appbar.AppBarLayout>
 
     <ProgressBar
         android:id="@+id/adListProgressBar"
@@ -27,7 +27,7 @@
         android:layout_width="40dp"
         android:layout_height="40dp" />
 
-    <android.support.v7.widget.RecyclerView
+    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/adListRV"
         android:layout_marginRight="5dp"
         android:layout_marginLeft="5dp"

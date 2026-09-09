@@ -84,7 +84,7 @@
 
         <!--e81313-->
     </LinearLayout>
-    <android.support.v7.widget.CardView
+    <androidx.cardview.widget.CardView
         app:cardCornerRadius="25dp"
         app:cardBackgroundColor="#d60c0c"
         android:layout_alignParentRight="true"
@@ -102,6 +102,6 @@
             android:layout_height="match_parent"
             android:tint="#fff"/>
 
-    </android.support.v7.widget.CardView>
+    </androidx.cardview.widget.CardView>
 
 </RelativeLayout>

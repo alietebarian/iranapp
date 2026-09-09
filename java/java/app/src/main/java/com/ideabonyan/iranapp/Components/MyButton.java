@@ -11,7 +11,7 @@ import com.ideabonyan.iranapp.R;
 /**
  * @author Hardik A Bhalodi
  */
-public class MyButton extends android.support.v7.widget.AppCompatButton {
+public class MyButton extends androidx.appcompat.widget.AppCompatButton {
 
 	private static final String TAG = "TextView";
 

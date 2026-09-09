@@ -9,7 +9,7 @@
     android:orientation="vertical"
     tools:context="com.ideabonyan.iranapp.Activity.Show_Home_List">
 
-    <android.support.design.widget.AppBarLayout
+    <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -20,9 +20,9 @@
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="@color/colorPrimary" />
-    </android.support.design.widget.AppBarLayout>
+    </com.google.android.material.appbar.AppBarLayout>
 
-    <android.support.v4.widget.NestedScrollView
+    <androidx.core.widget.NestedScrollView
         android:id="@+id/nested"
         android:layout_weight="1"
         android:layout_width="match_parent"
@@ -35,7 +35,7 @@
             android:gravity="right"
             android:orientation="vertical">
 
-            <android.support.v7.widget.RecyclerView
+            <androidx.recyclerview.widget.RecyclerView
                 android:layout_marginTop="5dp"
                 android:id="@+id/rv_cat_Feed"
                 android:layout_width="match_parent"
@@ -47,7 +47,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
-            <android.support.v7.widget.RecyclerView
+            <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_add_Feed"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
@@ -61,7 +61,7 @@
                 android:text="متاسفانه هیچ داده ای یافت نشد"/>
 
         </LinearLayout>
-    </android.support.v4.widget.NestedScrollView>
+    </androidx.core.widget.NestedScrollView>
     <ProgressBar
         android:id="@+id/adListLoadMoreProgressBar"
         android:layout_alignParentBottom="true"

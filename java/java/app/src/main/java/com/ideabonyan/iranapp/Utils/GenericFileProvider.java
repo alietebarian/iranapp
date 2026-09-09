@@ -1,6 +1,6 @@
 package com.ideabonyan.iranapp.Utils;
 
-import android.support.v4.content.FileProvider;
+import androidx.core.content.FileProvider;
 
 /**
  * Created by AliReza on 11/13/2017.

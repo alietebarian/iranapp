@@ -1,7 +1,7 @@
 package com.ideabonyan.iranapp.Activity;
 
 import android.location.Location;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.transition.TransitionManager;
 import android.view.View;

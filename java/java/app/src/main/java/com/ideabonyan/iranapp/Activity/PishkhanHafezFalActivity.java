@@ -1,8 +1,8 @@
 package com.ideabonyan.iranapp.Activity;
 
 import android.media.MediaPlayer;
-import android.support.transition.TransitionManager;
-import android.support.v7.app.AppCompatActivity;
+import androidx.transition.TransitionManager;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Base64;
 import android.util.Log;

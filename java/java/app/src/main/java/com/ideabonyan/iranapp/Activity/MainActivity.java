@@ -12,19 +12,19 @@ import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.annotation.NonNull;
-import android.support.design.widget.NavigationView;
-import android.support.design.widget.Snackbar;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.content.ContextCompat;
-import android.support.v4.content.LocalBroadcastManager;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+import androidx.annotation.NonNull;
+import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.snackbar.Snackbar;
+import androidx.core.app.ActivityCompat;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.core.content.ContextCompat;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.TextUtils;
@@ -83,7 +83,7 @@ public class MainActivity extends AppCompatActivity implements Get_Insert_Edit_D
     // LOOKING FOR AD OR IF CITY IS PICKED
     ////////////////////////////////////
     static public VipAd vipAd = null;
-    static android.support.v4.app.FragmentTransaction fragmentTransaction;
+    static androidx.fragment.app.FragmentTransaction fragmentTransaction;
     int REQUEST_ID_MULTIPLE_PERMISSIONS = 0;
     LinearLayout menuBTN, favoritesBTN, pishkhanBTN, newsBTN, kasbokarBTN, lin_big;
     ImageView menuIMG, favoritesIMG, pishkhanIMG, newsIMG, kasbokarIMG;
@@ -99,7 +99,7 @@ public class MainActivity extends AppCompatActivity implements Get_Insert_Edit_D
     BroadcastReceiver mRegistrationBroadcastReceiver;
     boolean canExitNow = false;
 
-    public static void setFragment(Context context, android.support.v4.app.Fragment fragment, String tag, String s) {
+    public static void setFragment(Context context, androidx.fragment.app.Fragment fragment, String tag, String s) {
         fragmentManager = ((FragmentActivity) context).getSupportFragmentManager();
         fragmentTransaction = fragmentManager.beginTransaction();
 

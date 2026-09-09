@@ -11,7 +11,7 @@ import com.ideabonyan.iranapp.R;
 /**
  * @author Hardik A Bhalodi
  */
-public class MyCheckbox extends android.support.v7.widget.AppCompatCheckBox {
+public class MyCheckbox extends androidx.appcompat.widget.AppCompatCheckBox {
 
 	private static final String TAG = "TextView";
 

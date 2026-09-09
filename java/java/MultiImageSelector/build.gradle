@@ -1,12 +1,12 @@
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 26
-    buildToolsVersion '27.0.3'
+    namespace 'me.nereo.multi_image_selector'
+    compileSdk 35
 
     defaultConfig {
-        minSdkVersion 14
-        targetSdkVersion 26
+        minSdkVersion 24
+        targetSdkVersion 35
         versionCode 3
         versionName "1.2"
     }
@@ -21,6 +21,6 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation 'com.android.support:appcompat-v7:26.1.0'
-    implementation 'com.squareup.picasso:picasso:2.4.0'
+    implementation 'androidx.appcompat:appcompat:1.7.0'
+    implementation 'com.squareup.picasso:picasso:2.8'
 }

@@ -3,7 +3,7 @@ package com.ideabonyan.iranapp.Activity;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Handler;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.method.PasswordTransformationMethod;
 import android.view.View;

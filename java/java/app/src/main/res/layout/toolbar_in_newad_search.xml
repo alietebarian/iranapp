@@ -1,4 +1,4 @@
-<android.support.v7.widget.Toolbar
+<androidx.appcompat.widget.Toolbar
     android:layoutDirection="ltr"
     android:elevation="5dp"
     android:layout_width="match_parent"
@@ -51,4 +51,4 @@
 
     </RelativeLayout>
 
-</android.support.v7.widget.Toolbar>
+</androidx.appcompat.widget.Toolbar>
