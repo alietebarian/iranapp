@@ -19,9 +19,9 @@ import android.widget.TextView;
 
 import com.android.volley.Request;
 import com.android.volley.VolleyError;
-import com.daimajia.slider.library.Indicators.PagerIndicator;
-import com.daimajia.slider.library.SliderLayout;
-import com.daimajia.slider.library.SliderTypes.DefaultSliderView;
+import com.google.android.material.tabs.TabLayout;
+import androidx.viewpager2.widget.ViewPager2;
+import com.ideabonyan.iranapp.Utils.ImageSliderAdapter;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -54,8 +54,8 @@ public class Show_Job_Ad_Details extends AppCompatActivity implements OnMapReady
     TextView txt_tell1, txt_tell2;
     TextView showAdDescription;
     LinearLayout lin_tell2, lin_tell1;
-    SliderLayout showAdSliderLayout;
-    PagerIndicator showAdCustomIndicator;
+    ViewPager2 showAdSliderLayout;
+    TabLayout showAdCustomIndicator;
     boolean hasImage;
     CardView showAdMapCard;
     CollapsingToolbarLayout collapsingToolbarLayout;
@@ -137,9 +137,9 @@ public class Show_Job_Ad_Details extends AppCompatActivity implements OnMapReady
         lin_tell1 = (LinearLayout) findViewById(R.id.lin_tell1);
         lin_tell2 = (LinearLayout) findViewById(R.id.lin_tell2);
 
-        showAdSliderLayout = (SliderLayout) findViewById(R.id.showAdSliderLayout);
+        showAdSliderLayout = (ViewPager2) findViewById(R.id.showAdSliderLayout);
 
-        showAdCustomIndicator = (PagerIndicator) findViewById(R.id.showAdCustomIndicator);
+        showAdCustomIndicator = (TabLayout) findViewById(R.id.showAdCustomIndicator);
 
         showAdMapCard= (CardView) findViewById(R.id.showAdMapCard);
 
@@ -288,36 +288,22 @@ public class Show_Job_Ad_Details extends AppCompatActivity implements OnMapReady
             }
 
         }
+        ImageSliderAdapter sliderAdapter = new ImageSliderAdapter(R.drawable.place_holder_job);
+
         if (job.getPhotos().size() == 0) {
-
             hasImage = false;
-
-            DefaultSliderView textSliderView = new DefaultSliderView(Show_Job_Ad_Details.this);
-            textSliderView
-                    .image(R.drawable.place_holder_job);
-
-            showAdSliderLayout.addSlider(textSliderView);
-            showAdSliderLayout.stopAutoCycle();
-
+            sliderAdapter.showPlaceholderOnly();
         } else {
-
             hasImage = true;
 
+            java.util.List<String> urls = new java.util.ArrayList<>();
             for (int i = 0; i < job.getPhotos().size(); i++) {
-
-                DefaultSliderView textSliderView = new DefaultSliderView(Show_Job_Ad_Details.this);
-                textSliderView
-                        .image(job.getPhotos().get(i).getName());
-
-                showAdSliderLayout.addSlider(textSliderView);
+                urls.add(job.getPhotos().get(i).getName());
             }
-
-            showAdSliderLayout.setCustomIndicator(showAdCustomIndicator);
-
-            if (job.getPhotos().size() == 1) showAdSliderLayout.stopAutoCycle();
-//        sliderLayout.setPresetTransformer(SliderLayout.Transformer.Tablet);
-//        sliderLayout.setPresetIndicator(SliderLayout.PresetIndicators.Center_Top);
+            sliderAdapter.setImageUrls(urls);
         }
+
+        ImageSliderAdapter.attach(showAdSliderLayout, showAdCustomIndicator, sliderAdapter);
     }
 
     private void onclick() {
@@ -411,14 +397,14 @@ public class Show_Job_Ad_Details extends AppCompatActivity implements OnMapReady
                     progressbar.setVisibility(View.GONE);
 
                     if (jsonObject.getString("is_fav").equals("true")) {
-                        Picasso.with(Show_Job_Ad_Details.this)
+                        Picasso.get()
                                 .load(R.drawable.heart)
                                 .fit()
                                 .into(img_fac_icn);
                         ShowToast.success("آگهی مورد نظر با موفقیت به لیست علاقه مندی ها افزوده شد", Show_Job_Ad_Details.this);
 
                     } else {
-                        Picasso.with(Show_Job_Ad_Details.this)
+                        Picasso.get()
                                 .load(R.drawable.ic_favorite_border_black_24dp)
                                 .fit()
                                 .into(img_fac_icn);
@@ -433,13 +419,13 @@ public class Show_Job_Ad_Details extends AppCompatActivity implements OnMapReady
                 progressbar.setVisibility(View.GONE);
                 if (jsonObject.getString("status").equals("200")) {
                     if (jsonObject.getString("is_favorite").equals("true")){
-                        Picasso.with(Show_Job_Ad_Details.this)
+                        Picasso.get()
                                 .load(R.drawable.heart)
                                 .fit()
                                 .into(img_fac_icn);
 
                     }else{
-                        Picasso.with(Show_Job_Ad_Details.this)
+                        Picasso.get()
                                 .load(R.drawable.ic_favorite_border_black_24dp)
                                 .fit()
                                 .into(img_fac_icn);

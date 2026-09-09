@@ -73,24 +73,14 @@ import com.ideabonyan.iranapp.Utils.GPSTracker;
 import com.ideabonyan.iranapp.Utils.Get_Volley_Call_Back;
 import com.ideabonyan.iranapp.Utils.ShowToast;
 import com.ideabonyan.iranapp.Utils.StaticData;
-import com.theartofdev.edmodo.cropper.CropImage;
-import com.theartofdev.edmodo.cropper.CropImageView;
+import com.canhub.cropper.CropImage;
+import com.canhub.cropper.CropImageView;
 
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.entity.mime.MultipartEntity;
-import org.apache.http.entity.mime.content.FileBody;
-import org.apache.http.entity.mime.content.StringBody;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.util.EntityUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.File;
 import java.io.IOException;
-import java.nio.charset.Charset;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.ArrayList;
@@ -1142,7 +1132,7 @@ public class Add_New_Car_Add extends AppCompatActivity implements Get_Insert_Edi
             CropImage.ActivityResult result = CropImage.getActivityResult(data);
             if (resultCode == RESULT_OK) {
 
-                Uri resultUri = result.getUri();
+                Uri resultUri = result.getUriContent();
                 File myimageFile = new File(resultUri.toString());
 
                 try {
@@ -1206,151 +1196,148 @@ public class Add_New_Car_Add extends AppCompatActivity implements Get_Insert_Edi
                 handleInserUrl = StaticData.add_cae;
 
                 try {
-                    HttpClient client = new DefaultHttpClient();
-                    HttpPost post = new HttpPost(handleInserUrl);
-                    MultipartEntity reqEntity = new MultipartEntity();
+                    okhttp3.MultipartBody.Builder reqEntity = new okhttp3.MultipartBody.Builder().setType(okhttp3.MultipartBody.FORM);
 
                     String token = new UserSessionManager(Add_New_Car_Add.this).getLoginToken();
 //                    String token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjI3LCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwODAvZ2hvbGxhYy9wdWJsaWNfaHRtbC9hcGkvbG9naW4iLCJpYXQiOjE1MDgyMjI4MjQsImV4cCI6MTUwODgyNzYyNCwibmJmIjoxNTA4MjIyODI0LCJqdGkiOiJZcDhZWDhxZ3BhY1ZLYmJrIn0.2QojAogqfRL_TK8BYzh9mtL45UOwoGLJyUd--9aMClQ";
-                    post.addHeader("Authorization", "Bearer " + token);
 
-                    reqEntity.addPart("ads_title", new StringBody(edt_title.getText().toString(), "text/plain", Charset.forName("UTF-8")));
+                    reqEntity.addFormDataPart("ads_title", edt_title.getText().toString());
                     Log.v("params", "ads_title:" + edt_title.getText().toString());
-                    reqEntity.addPart("region_id", new StringBody(regions.get(spin_region.getSelectedItemPosition() - 1).getId(), "text/plain", Charset.forName("UTF-8")));
+                    reqEntity.addFormDataPart("region_id", regions.get(spin_region.getSelectedItemPosition() - 1).getId());
                     Log.v("params", "region_id:" + regions.get(spin_region.getSelectedItemPosition() - 1).getId());
 
-                    reqEntity.addPart("address", new StringBody(edt_address.getText().toString(), "text/plain", Charset.forName("UTF-8")));
+                    reqEntity.addFormDataPart("address", edt_address.getText().toString());
                     Log.v("params", "address:" + edt_address.getText().toString());
 
                     if (radio_person.isChecked()) {
-                        reqEntity.addPart("person_or_company", new StringBody("person", "text/plain", Charset.forName("UTF-8")));
+                        reqEntity.addFormDataPart("person_or_company", "person");
                         Log.v("person_or_company", "person");
                     } else {
-                        reqEntity.addPart("person_or_company", new StringBody("company", "text/plain", Charset.forName("UTF-8")));
+                        reqEntity.addFormDataPart("person_or_company", "company");
                         Log.v("person_or_company", "company");
                     }
                     if (radio_tavafoghi.isChecked()) {
-                        reqEntity.addPart("price", new StringBody("0", "text/plain", Charset.forName("UTF-8")));
+                        reqEntity.addFormDataPart("price", "0");
                         Log.v("params", "price:" + "0");
                     } else {
-                        reqEntity.addPart("price", new StringBody(edt_cost.getText().toString().replaceAll(",", ""), "text/plain", Charset.forName("UTF-8")));
+                        reqEntity.addFormDataPart("price", edt_cost.getText().toString().replaceAll(",", ""));
                         Log.v("params", "price:" + edt_cost.getText().toString().replaceAll(",", ""));
                     }
 
-//                    reqEntity.addPart("price", new StringBody(edt_cost.getText().toString().replaceAll(",", ""), "text/plain", Charset.forName("UTF-8")));
+//                    reqEntity.addFormDataPart("price", edt_cost.getText().toString().replaceAll(",", ""));
 //                    Log.v("params","price:"+edt_cost.getText().toString());
 
-                    reqEntity.addPart("telephone1", new StringBody(edt_phone1.getText().toString(), "text/plain", Charset.forName("UTF-8")));
+                    reqEntity.addFormDataPart("telephone1", edt_phone1.getText().toString());
                     Log.v("params", "telephone1:" + edt_phone1.getText().toString());
 
                     if (edt_phone2.getText().length() > 0) {
-                        reqEntity.addPart("telephone2", new StringBody(edt_phone2.getText().toString(), "text/plain", Charset.forName("UTF-8")));
+                        reqEntity.addFormDataPart("telephone2", edt_phone2.getText().toString());
                         Log.v("params", "telephone2:" + edt_phone2.getText().toString());
 
                     }
-                    reqEntity.addPart("ads_owner_name", new StringBody(edt_name.getText().toString(), "text/plain", Charset.forName("UTF-8")));
+                    reqEntity.addFormDataPart("ads_owner_name", edt_name.getText().toString());
                     Log.v("params", "ads_owner_name:" + edt_name.getText().toString());
 
-                    reqEntity.addPart("description", new StringBody(edt_dec.getText().toString(), "text/plain", Charset.forName("UTF-8")));
+                    reqEntity.addFormDataPart("description", edt_dec.getText().toString());
                     Log.v("params", "description:" + edt_dec.getText().toString());
 
                     if (ltLg != null) {
-                        reqEntity.addPart("latitude", new StringBody(ltLg.latitude + "", "text/plain", Charset.forName("UTF-8")));
+                        reqEntity.addFormDataPart("latitude", ltLg.latitude + "");
                         Log.v("params", "latitude:" + ltLg.latitude + "");
-                        reqEntity.addPart("longitude", new StringBody(ltLg.longitude + "", "text/plain", Charset.forName("UTF-8")));
+                        reqEntity.addFormDataPart("longitude", ltLg.longitude + "");
                         Log.v("params", "longitude:" + ltLg.longitude + "");
                     }
 
 
                     if (radio_new.isChecked()) {
-                        reqEntity.addPart("neworold", new StringBody("new", "text/plain", Charset.forName("UTF-8")));
+                        reqEntity.addFormDataPart("neworold", "new");
                         Log.v("params", "neworold:" + "new");
 
                     } else {
-                        reqEntity.addPart("neworold", new StringBody("old", "text/plain", Charset.forName("UTF-8")));
+                        reqEntity.addFormDataPart("neworold", "old");
                         Log.v("params", "neworold:" + "old");
 
                     }
                     if (spin_cat.getSelectedItemPosition() == 1) {
-                        reqEntity.addPart("type", new StringBody("khodro", "text/plain", Charset.forName("UTF-8")));
+                        reqEntity.addFormDataPart("type", "khodro");
                         Log.v("params", "type:" + "khodro");
 
-                        reqEntity.addPart("brand", new StringBody(brands.get(spin_brand.getSelectedItemPosition() - 1).getId(), "text/plain", Charset.forName("UTF-8")));
+                        reqEntity.addFormDataPart("brand", brands.get(spin_brand.getSelectedItemPosition() - 1).getId());
                         Log.v("params", "brand:" + brands.get(spin_brand.getSelectedItemPosition() - 1).getId());
 
                         if (spin_modell.getSelectedItemPosition() > 0) {
-                            reqEntity.addPart("model", new StringBody(modells.get(spin_modell.getSelectedItemPosition() - 1).getId(), "text/plain", Charset.forName("UTF-8")));
+                            reqEntity.addFormDataPart("model", modells.get(spin_modell.getSelectedItemPosition() - 1).getId());
                             Log.v("params", "model:" + modells.get(spin_modell.getSelectedItemPosition() - 1).getId());
 
                         }
-                        reqEntity.addPart("production_year", new StringBody(edt_year.getText().toString(), "text/plain", Charset.forName("UTF-8")));
+                        reqEntity.addFormDataPart("production_year", edt_year.getText().toString());
                         Log.v("params", "production_year:" + edt_year.getText().toString());
 
-                        reqEntity.addPart("kilometre", new StringBody(edt_kilometr.getText().toString(), "text/plain", Charset.forName("UTF-8")));
+                        reqEntity.addFormDataPart("kilometre", edt_kilometr.getText().toString());
                         Log.v("params", "kilometre:" + edt_kilometr.getText().toString());
 
                         if (spin_shasi.getSelectedItemPosition() == 1) {
-                            reqEntity.addPart("chassis_type", new StringBody("savari", "text/plain", Charset.forName("UTF-8")));
+                            reqEntity.addFormDataPart("chassis_type", "savari");
                             Log.v("params", "chassis_type:" + "savari");
 
                         } else if (spin_shasi.getSelectedItemPosition() == 2) {
-                            reqEntity.addPart("chassis_type", new StringBody("hachback", "text/plain", Charset.forName("UTF-8")));
+                            reqEntity.addFormDataPart("chassis_type", "hachback");
                             Log.v("params", "chassis_type:" + "hachback");
 
                         } else if (spin_shasi.getSelectedItemPosition() == 3) {
-                            reqEntity.addPart("chassis_type", new StringBody("shasiboland", "text/plain", Charset.forName("UTF-8")));
+                            reqEntity.addFormDataPart("chassis_type", "shasiboland");
                             Log.v("params", "chassis_type:" + "shasiboland");
 
                         } else if (spin_shasi.getSelectedItemPosition() == 4) {
-                            reqEntity.addPart("chassis_type", new StringBody("vanet", "text/plain", Charset.forName("UTF-8")));
+                            reqEntity.addFormDataPart("chassis_type", "vanet");
                             Log.v("params", "chassis_type:" + "vanet");
 
                         } else if (spin_shasi.getSelectedItemPosition() == 5) {
-                            reqEntity.addPart("chassis_type", new StringBody("krook", "text/plain", Charset.forName("UTF-8")));
+                            reqEntity.addFormDataPart("chassis_type", "krook");
                             Log.v("params", "chassis_type:" + "krook");
 
                         } else if (spin_shasi.getSelectedItemPosition() == 6) {
-                            reqEntity.addPart("chassis_type", new StringBody("van", "text/plain", Charset.forName("UTF-8")));
+                            reqEntity.addFormDataPart("chassis_type", "van");
                             Log.v("params", "chassis_type:" + "van");
 
                         } else if (spin_shasi.getSelectedItemPosition() == 7) {
-                            reqEntity.addPart("chassis_type", new StringBody("cupe", "text/plain", Charset.forName("UTF-8")));
+                            reqEntity.addFormDataPart("chassis_type", "cupe");
                             Log.v("params", "chassis_type:" + "cupe");
 
                         } else if (spin_shasi.getSelectedItemPosition() == 8) {
-                            reqEntity.addPart("chassis_type", new StringBody("station", "text/plain", Charset.forName("UTF-8")));
+                            reqEntity.addFormDataPart("chassis_type", "station");
                             Log.v("params", "chassis_type:" + "station");
 
                         } else if (spin_shasi.getSelectedItemPosition() == 9) {
-                            reqEntity.addPart("chassis_type", new StringBody("other", "text/plain", Charset.forName("UTF-8")));
+                            reqEntity.addFormDataPart("chassis_type", "other");
                             Log.v("params", "chassis_type:" + "other");
 
                         }
 
                     } else if (spin_cat.getSelectedItemPosition() == 2) {
-                        reqEntity.addPart("cylinder_volume", new StringBody(cylinder_volumes.get(spin_motor_weghit.getSelectedItemPosition() - 1).getId(), "text/plain", Charset.forName("UTF-8")));
+                        reqEntity.addFormDataPart("cylinder_volume", cylinder_volumes.get(spin_motor_weghit.getSelectedItemPosition() - 1).getId());
                         Log.v("params", "cylinder_volume:" + cylinder_volumes.get(spin_motor_weghit.getSelectedItemPosition() - 1).getId());
 
-                        reqEntity.addPart("type", new StringBody("motorcycle", "text/plain", Charset.forName("UTF-8")));
+                        reqEntity.addFormDataPart("type", "motorcycle");
                         Log.v("params", "type:" + "motorcycle");
 
-                        reqEntity.addPart("production_year", new StringBody(edt_year.getText().toString(), "text/plain", Charset.forName("UTF-8")));
+                        reqEntity.addFormDataPart("production_year", edt_year.getText().toString());
                         Log.v("params", "production_year:" + edt_year.getText().toString());
 
                     } else if (spin_cat.getSelectedItemPosition() == 3) {
-                        reqEntity.addPart("type", new StringBody("khodroclasic", "text/plain", Charset.forName("UTF-8")));
+                        reqEntity.addFormDataPart("type", "khodroclasic");
                         Log.v("params", "type:" + "khodroclasic");
 
                     } else if (spin_cat.getSelectedItemPosition() == 4) {
-                        reqEntity.addPart("type", new StringBody("khordrosorn", "text/plain", Charset.forName("UTF-8")));
+                        reqEntity.addFormDataPart("type", "khordrosorn");
                         Log.v("params", "type:" + "khordrosorn");
 
                     } else if (spin_cat.getSelectedItemPosition() == 5) {
-                        reqEntity.addPart("type", new StringBody("lavazem", "text/plain", Charset.forName("UTF-8")));
+                        reqEntity.addFormDataPart("type", "lavazem");
                         Log.v("params", "type:" + "lavazem");
 
                     } else if (spin_cat.getSelectedItemPosition() == 6) {
-                        reqEntity.addPart("type", new StringBody("other", "text/plain", Charset.forName("UTF-8")));
+                        reqEntity.addFormDataPart("type", "other");
                         Log.v("params", "type:" + "other");
 
                     }
@@ -1360,7 +1347,7 @@ public class Add_New_Car_Add extends AppCompatActivity implements Get_Insert_Edi
                         long time = System.currentTimeMillis();
                         if (bitmaps[i] != null) {
                             String pathTemp = Compress_image.reductImageSize(time + ".jpg", bitmaps[i]);
-                            reqEntity.addPart("photos[]", new FileBody(new File(pathTemp)));
+                            reqEntity.addFormDataPart("photos[]", new File(pathTemp).getName(), okhttp3.RequestBody.create(okhttp3.MediaType.parse("image/jpeg"), new File(pathTemp)));
                             Log.v("params", "photos[]:" + time + ".jpg");
 
                         }
@@ -1369,17 +1356,21 @@ public class Add_New_Car_Add extends AppCompatActivity implements Get_Insert_Edi
                         long time = System.currentTimeMillis();
 
                         String pathTemp = Compress_image.reductImageSize(time + ".jpg", bitmaps[0]);
-                        reqEntity.addPart("thumbnail_photo", new FileBody(new File(pathTemp)));
+                        reqEntity.addFormDataPart("thumbnail_photo", new File(pathTemp).getName(), okhttp3.RequestBody.create(okhttp3.MediaType.parse("image/jpeg"), new File(pathTemp)));
                         Log.v("params", "thumbnail_photo:" + time + ".jpg");
 
                     }
 //
 
 
-                    post.setEntity(reqEntity);
-                    HttpResponse response = client.execute(post);
-                    HttpEntity resEntity = response.getEntity();
-                    final String response_str = EntityUtils.toString(resEntity);
+                    okhttp3.Request request = new okhttp3.Request.Builder()
+                            .url(handleInserUrl)
+                            .header("Authorization", "Bearer " + token)
+                            .post(reqEntity.build())
+                            .build();
+                    okhttp3.Response response = new okhttp3.OkHttpClient().newCall(request).execute();
+                    okhttp3.ResponseBody resEntity = response.body();
+                    final String response_str = resEntity != null ? resEntity.string() : "";
                     if (resEntity != null) {
                         Log.i("RESPONSE", "-> " + response_str);
                         runOnUiThread(new Runnable() {

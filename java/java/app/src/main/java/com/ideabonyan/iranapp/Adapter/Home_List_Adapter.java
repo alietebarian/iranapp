@@ -50,7 +50,7 @@ public class Home_List_Adapter extends RecyclerView.Adapter<RecyclerView.ViewHol
 
         if (estatesList.get(position).getThumbnail_photo() != null && !estatesList.get(position).getThumbnail_photo().equals(null)
                 && !estatesList.get(position).getThumbnail_photo().equals("null") && !estatesList.get(position).getThumbnail_photo().equals("")) {
-            Picasso.with(context)
+            Picasso.get()
                     .load(estatesList.get(position).getThumbnail_photo())
 //                    .resize(200, 200)
                     .fit()
@@ -59,7 +59,7 @@ public class Home_List_Adapter extends RecyclerView.Adapter<RecyclerView.ViewHol
                     .placeholder(R.drawable.place_holder_home)
                     .into(holder.rvAdListImage);
         } else {
-            Picasso.with(context)
+            Picasso.get()
                     .load(R.drawable.place_holder_home)
 //                    .resize(200, 200)
                     .fit()

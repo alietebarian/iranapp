@@ -35,7 +35,7 @@ public class ThiedHelp extends Fragment {
     View view;
     private void holder() {
         img=view.findViewById(R.id.img);
-        Picasso.with(getActivity())
+        Picasso.get()
                 .load(R.drawable.h3)
                 .fit()
                 .into(img);

@@ -47,20 +47,20 @@ public class Job_List_Adapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 //        Log.v("size_photh", jobs.get(position).getPhotos().get(0).getName() + "");
         if (jobs.get(position).getThumbnail_photo() != null && !jobs.get(position).getThumbnail_photo().equals(null)
                 && !jobs.get(position).getThumbnail_photo().equals("null") && !jobs.get(position).getThumbnail_photo().equals("")) {
-            Picasso.with(context)
+            Picasso.get()
                     .load(jobs.get(position).getThumbnail_photo())
                     .fit()
                     .placeholder(R.drawable.place_holder_job)
                     .into(holder.rvAdListImage);
         } else {
             if (jobs.get(position).getPhotos().size() > 0) {
-                Picasso.with(context)
+                Picasso.get()
                         .load(jobs.get(position).getPhotos().get(0).getName())
                         .fit()
                         .placeholder(R.drawable.place_holder_job)
                         .into(holder.rvAdListImage);
             } else {
-                Picasso.with(context)
+                Picasso.get()
                         .load(R.drawable.place_holder_job)
                         .fit()
                         .centerCrop()

@@ -52,6 +52,8 @@ public class VipAdDialog extends DialogFragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
+        // The system recreates dialogs without going through setContext(), so bind it here.
+        this.context = context;
 //        mycommunicator = (cityPickerCommunicator) context;
     }
 
@@ -164,7 +166,7 @@ public class VipAdDialog extends DialogFragment {
     }
 
     private void fillTheView() {
-        Picasso.with(context)
+        Picasso.get()
                 .load(vipAd.getVip_ads_photo())
 //                .resize(1080,1920)
 //                .centerCrop()

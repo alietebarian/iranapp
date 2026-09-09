@@ -104,7 +104,7 @@ public class My_Car_List_Adapter extends RecyclerView.Adapter<RecyclerView.ViewH
         }
         if (vehiclesList.get(position).getThumbnail_photo() != null && !vehiclesList.get(position).getThumbnail_photo().equals(null)
                 && !vehiclesList.get(position).getThumbnail_photo().equals("null") && !vehiclesList.get(position).getThumbnail_photo().equals("")) {
-            Picasso.with(context)
+            Picasso.get()
                     .load(vehiclesList.get(position).getThumbnail_photo())
                     .resize(200, 200)
                     //.fit()
@@ -115,7 +115,7 @@ public class My_Car_List_Adapter extends RecyclerView.Adapter<RecyclerView.ViewH
         }
 //        else if (!(vehiclesList.get(position).getPhotosDatas() == null || vehiclesList.get(position).getPhotosDatas().size() == 0)) {
 
-//            Picasso.with(context)
+//            Picasso.get()
 //                    .load(vehiclesList.get(position).getPhotosDatas().get(0).getName())
 //                    .resize(200, 200)
 //                    //.fit()
@@ -125,7 +125,7 @@ public class My_Car_List_Adapter extends RecyclerView.Adapter<RecyclerView.ViewH
 //                    .into(holder.rvAdListImage);
 //        }
         else {
-            Picasso.with(context)
+            Picasso.get()
                     .load(R.drawable.place_holder_car)
                     .resize(200, 200)
                     //.fit()

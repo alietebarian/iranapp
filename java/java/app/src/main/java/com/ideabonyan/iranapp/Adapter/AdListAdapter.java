@@ -103,14 +103,14 @@ public class AdListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         ///put image
         if (datas.get(position).getPhotos() != null && datas.get(position).getPhotos().size() > 0) {
             if (datas.get(position).getPhotos().get(0) != null) {
-                Picasso.with(context)
+                Picasso.get()
                         .load(datas.get(position).getPhotos().get(0).getName())
                         .fit()
                         .centerCrop()
                         .placeholder(R.drawable.place_holder)
                         .into(holder.rvAdListImage);
             } else {
-                Picasso.with(context)
+                Picasso.get()
                         .load(R.drawable.place_holder)
                         .fit()
                         //  .placeholder(R.drawable.placeholder)
@@ -118,7 +118,7 @@ public class AdListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 
             }
         } else {
-            Picasso.with(context)
+            Picasso.get()
                     .load(R.drawable.place_holder)
                     .fit()
                     //  .placeholder(R.drawable.placeholder)

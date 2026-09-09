@@ -37,7 +37,7 @@ public class FirstHelp extends Fragment {
     View view;
     private void holder() {
         img=view.findViewById(R.id.img);
-        Picasso.with(getActivity())
+        Picasso.get()
                 .load(R.drawable.h1)
                 .fit()
                 .into(img);

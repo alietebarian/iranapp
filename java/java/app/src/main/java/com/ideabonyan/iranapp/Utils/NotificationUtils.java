@@ -39,11 +39,36 @@ public class NotificationUtils {
 
     private static String TAG = NotificationUtils.class.getSimpleName();
 
+    public static final String CHANNEL_ID = "iranapp_general";
+
     private Context mContext;
 
     public NotificationUtils(Context mContext) {
         this.mContext = mContext;
-//        Log.v("alireza","test");
+        createNotificationChannel();
+    }
+
+    /** Required from Android 8.0 (API 26): notifications posted without a channel are dropped. */
+    private void createNotificationChannel() {
+        if (android.os.Build.VERSION.SDK_INT < android.os.Build.VERSION_CODES.O) return;
+
+        NotificationManager manager =
+                (NotificationManager) mContext.getSystemService(Context.NOTIFICATION_SERVICE);
+        if (manager == null || manager.getNotificationChannel(CHANNEL_ID) != null) return;
+
+        android.app.NotificationChannel channel = new android.app.NotificationChannel(
+                CHANNEL_ID,
+                mContext.getString(R.string.app_name),
+                NotificationManager.IMPORTANCE_HIGH);
+        channel.enableVibration(true);
+        channel.setSound(
+                Uri.parse(ContentResolver.SCHEME_ANDROID_RESOURCE
+                        + "://" + mContext.getPackageName() + "/raw/notification"),
+                new android.media.AudioAttributes.Builder()
+                        .setContentType(android.media.AudioAttributes.CONTENT_TYPE_SONIFICATION)
+                        .setUsage(android.media.AudioAttributes.USAGE_NOTIFICATION)
+                        .build());
+        manager.createNotificationChannel(channel);
     }
 
     public void showNotificationMessage(String title, String message, String timeStamp, Intent intent) {
@@ -65,11 +90,11 @@ public class NotificationUtils {
                         mContext,
                         0,
                         intent,
-                        PendingIntent.FLAG_CANCEL_CURRENT
+                        PendingIntent.FLAG_CANCEL_CURRENT | PendingIntent.FLAG_IMMUTABLE
                 );
 
         final NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(
-                mContext);
+                mContext, CHANNEL_ID);
 
         final Uri alarmSound = Uri.parse(ContentResolver.SCHEME_ANDROID_RESOURCE
                 + "://" + mContext.getPackageName() + "/raw/notification");

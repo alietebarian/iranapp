@@ -42,12 +42,12 @@ public class NewsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>  
 
         if (datas.get(position).getPhotos() != null && datas.get(position).getPhotos().size() > 0) {
             if (datas.get(position).getPhotos().get(0) != null) {
-                Picasso.with(context)
+                Picasso.get()
                         .load(datas.get(position).getPhotos().get(0).getName())
                         .fit()
                         .into(holder.imageView);
             }else {
-                Picasso.with(context)
+                Picasso.get()
                         .load(R.drawable.place_holder)
                         .resize(200, 200)
                         //.fit()
@@ -58,7 +58,7 @@ public class NewsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>  
 
             }
         }else {
-            Picasso.with(context)
+            Picasso.get()
                     .load(R.drawable.place_holder)
                     .resize(200, 200)
                     //.fit()

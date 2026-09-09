@@ -81,24 +81,14 @@ import com.ideabonyan.iranapp.Utils.ShowToast;
 import com.ideabonyan.iranapp.Utils.StaticData;
 import com.ideabonyan.iranapp.Utils.Utilis;
 import com.squareup.picasso.Picasso;
-import com.theartofdev.edmodo.cropper.CropImage;
-import com.theartofdev.edmodo.cropper.CropImageView;
+import com.canhub.cropper.CropImage;
+import com.canhub.cropper.CropImageView;
 
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.entity.mime.MultipartEntity;
-import org.apache.http.entity.mime.content.FileBody;
-import org.apache.http.entity.mime.content.StringBody;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.util.EntityUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.File;
 import java.io.IOException;
-import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -265,7 +255,7 @@ public class NewAdActivity extends AppCompatActivity implements OnMapReadyCallba
 
             for (int i = 0; i < ad.getPhotos().size(); i++) {
                 imgs.get(i).setImageResource(R.drawable.image_in_newad);
-                Picasso.with(context)
+                Picasso.get()
                         .load(ad.getPhotos().get(i).getName())
                         .resize(500, 500)
                         .into(imgs.get(i));
@@ -1643,7 +1633,7 @@ public class NewAdActivity extends AppCompatActivity implements OnMapReadyCallba
             CropImage.ActivityResult result = CropImage.getActivityResult(data);
             if (resultCode == RESULT_OK) {
 
-                Uri resultUri = result.getUri();
+                Uri resultUri = result.getUriContent();
                 File myimageFile = new File(resultUri.toString());
 
                 try {
@@ -1837,54 +1827,50 @@ public class NewAdActivity extends AppCompatActivity implements OnMapReadyCallba
 
 
                 try {
-                    HttpClient client = new DefaultHttpClient();
-                    HttpPost post = new HttpPost(handleInserUrl);
-                    MultipartEntity reqEntity = new MultipartEntity();
+                    okhttp3.MultipartBody.Builder reqEntity = new okhttp3.MultipartBody.Builder().setType(okhttp3.MultipartBody.FORM);
 
                     String token = new UserSessionManager(NewAdActivity.this).getLoginToken();
 
-                    post.addHeader("Authorization", "Bearer " + token);
-//                    reqEntity.addPart("token", new StringBody(token));
-                    reqEntity.addPart("title", new StringBody(titleEdt.getText().toString().trim(), "text/plain", Charset.forName("UTF-8")));
-                    reqEntity.addPart("city_id", new StringBody(citiesObjectList.get(citySpnr.getSelectedItemPosition() - 1).getId()));
-                    reqEntity.addPart("sub_category_id", new StringBody(subCategoriesObjectList.get(subCatSpnr.getSelectedItemPosition() - 1).getId()));
-                    reqEntity.addPart("ads_plan_id", new StringBody("17"));
-                    reqEntity.addPart("mobile", new StringBody(phoneEdt.getText().toString().trim()));
-                    reqEntity.addPart("notes", new StringBody(descriptionEdt.getText().toString().trim(), "text/plain", Charset.forName("UTF-8")));
-                    reqEntity.addPart("ads_owner_name", new StringBody(ownerNameEdt.getText().toString().trim(), "text/plain", Charset.forName("UTF-8")));
+                    reqEntity.addFormDataPart("title", titleEdt.getText().toString().trim());
+                    reqEntity.addFormDataPart("city_id", citiesObjectList.get(citySpnr.getSelectedItemPosition() - 1).getId());
+                    reqEntity.addFormDataPart("sub_category_id", subCategoriesObjectList.get(subCatSpnr.getSelectedItemPosition() - 1).getId());
+                    reqEntity.addFormDataPart("ads_plan_id", "17");
+                    reqEntity.addFormDataPart("mobile", phoneEdt.getText().toString().trim());
+                    reqEntity.addFormDataPart("notes", descriptionEdt.getText().toString().trim());
+                    reqEntity.addFormDataPart("ads_owner_name", ownerNameEdt.getText().toString().trim());
                     if (discountEdt.getText().toString().trim().length() != 0 && Integer.parseInt(discountEdt.getText().toString().trim()) > 0) {
-                        reqEntity.addPart("discount", new StringBody(discountEdt.getText().toString().trim()));
-                        reqEntity.addPart("type", new StringBody("discount"));
+                        reqEntity.addFormDataPart("discount", discountEdt.getText().toString().trim());
+                        reqEntity.addFormDataPart("type", "discount");
                     } else {
-                        reqEntity.addPart("type", new StringBody("need"));
+                        reqEntity.addFormDataPart("type", "need");
                     }
                     if (ltLg != null) {
-                        reqEntity.addPart("latitude", new StringBody(ltLg.latitude + ""));
-                        reqEntity.addPart("longitude", new StringBody(ltLg.longitude + ""));
+                        reqEntity.addFormDataPart("latitude", ltLg.latitude + "");
+                        reqEntity.addFormDataPart("longitude", ltLg.longitude + "");
                     }
                     if (addressEdt.getText().toString().trim().length() != 0) {
-                        reqEntity.addPart("address", new StringBody(addressEdt.getText().toString().trim(), "text/plain", Charset.forName("UTF-8")));
+                        reqEntity.addFormDataPart("address", addressEdt.getText().toString().trim());
                     }
                     if (tel1Edt.getText().toString().trim().length() != 0) {
-                        reqEntity.addPart("tel1", new StringBody(tel1Edt.getText().toString().trim()));
+                        reqEntity.addFormDataPart("tel1", tel1Edt.getText().toString().trim());
                     }
                     if (tel2Edt.getText().toString().trim().length() != 0) {
-                        reqEntity.addPart("tel2", new StringBody(tel2Edt.getText().toString().trim()));
+                        reqEntity.addFormDataPart("tel2", tel2Edt.getText().toString().trim());
                     }
                     if (workingTimeEdt.getText().toString().trim().length() != 0) {
-                        reqEntity.addPart("working_time", new StringBody(workingTimeEdt.getText().toString().trim(), "text/plain", Charset.forName("UTF-8")));
+                        reqEntity.addFormDataPart("working_time", workingTimeEdt.getText().toString().trim());
                     }
                     if (linkEdt.getText().toString().trim().length() != 0) {
-                        reqEntity.addPart("link", new StringBody(linkEdt.getText().toString().trim(), "text/plain", Charset.forName("UTF-8")));
+                        reqEntity.addFormDataPart("link", linkEdt.getText().toString().trim());
                     }
                     if (telegramEdt.getText().toString().trim().length() != 0) {
-                        reqEntity.addPart("telegram", new StringBody(telegramEdt.getText().toString().trim(), "text/plain", Charset.forName("UTF-8")));
+                        reqEntity.addFormDataPart("telegram", telegramEdt.getText().toString().trim());
                     }
                     if (instagramEdt.getText().toString().trim().length() != 0) {
-                        reqEntity.addPart("instagram", new StringBody(instagramEdt.getText().toString().trim(), "text/plain", Charset.forName("UTF-8")));
+                        reqEntity.addFormDataPart("instagram", instagramEdt.getText().toString().trim());
                     }
                     if (edt_email.getText().toString().trim().length() != 0) {
-                        reqEntity.addPart("email", new StringBody(edt_email.getText().toString().trim(), "text/plain", Charset.forName("UTF-8")));
+                        reqEntity.addFormDataPart("email", edt_email.getText().toString().trim());
                     }
 
 
@@ -1894,7 +1880,8 @@ public class NewAdActivity extends AppCompatActivity implements OnMapReadyCallba
                             long time = System.currentTimeMillis();
                             if (bitmap != null) {
                                 String pathTemp = Compress_image.reductImageSize(time + ".jpg", bitmap);
-                                reqEntity.addPart("photos[]", new FileBody(new File(pathTemp)));
+                                File photoFile = new File(pathTemp);
+                                reqEntity.addFormDataPart("photos[]", photoFile.getName(), okhttp3.RequestBody.create(okhttp3.MediaType.parse("image/jpeg"), photoFile));
                             }
                         }
                     } else {
@@ -1904,17 +1891,18 @@ public class NewAdActivity extends AppCompatActivity implements OnMapReadyCallba
                             if (isImageChanged[i] != 0 && isImageChanged[i] != 3) {
                                 if (isImageChanged[i] == 2) { //Images have been removed
 //                                    Log.i("00000000000000", ad.getPhotos().get(i).getId());
-                                    reqEntity.addPart("ids_to_delete[]", new StringBody(ad.getPhotos().get(i).getId()));
+                                    reqEntity.addFormDataPart("ids_to_delete[]", ad.getPhotos().get(i).getId());
                                 } else if (isImageChanged[i] == 1) { //Images have been replaced
 //                                    Log.i("00000000000000", i+" it happened");
 //                                    Log.i("00000000000000", ad.getPhotos().get(i).getId());
-                                    reqEntity.addPart("photos_to_edit_id[]", new StringBody(ad.getPhotos().get(i).getId()));
+                                    reqEntity.addFormDataPart("photos_to_edit_id[]", ad.getPhotos().get(i).getId());
 
 //                                    for (int j = 0; j > bitmaps.length; j++) {
                                     long time = System.currentTimeMillis();
                                     if (bitmaps[i] != null) {
                                         String pathTemp = Compress_image.reductImageSize(time + ".jpg", bitmaps[i]);
-                                        reqEntity.addPart("photo_to_edit[]", new FileBody(new File(pathTemp)));
+                                        File photoFile = new File(pathTemp);
+                                        reqEntity.addFormDataPart("photo_to_edit[]", photoFile.getName(), okhttp3.RequestBody.create(okhttp3.MediaType.parse("image/jpeg"), photoFile));
                                         // i nullify it here so it wouldn't be in the list for the totally new images
                                         bitmaps[i] = null;
                                     }
@@ -1926,16 +1914,21 @@ public class NewAdActivity extends AppCompatActivity implements OnMapReadyCallba
                             long time = System.currentTimeMillis();
                             if (bitmap != null) {
                                 String pathTemp = Compress_image.reductImageSize(time + ".jpg", bitmap);
-                                reqEntity.addPart("new_photos[]", new FileBody(new File(pathTemp)));
+                                File photoFile = new File(pathTemp);
+                                reqEntity.addFormDataPart("new_photos[]", photoFile.getName(), okhttp3.RequestBody.create(okhttp3.MediaType.parse("image/jpeg"), photoFile));
                             }
                         }
                     }
 
 
-                    post.setEntity(reqEntity);
-                    HttpResponse response = client.execute(post);
-                    HttpEntity resEntity = response.getEntity();
-                    final String response_str = EntityUtils.toString(resEntity);
+                    okhttp3.Request request = new okhttp3.Request.Builder()
+                            .url(handleInserUrl)
+                            .header("Authorization", "Bearer " + token)
+                            .post(reqEntity.build())
+                            .build();
+                    okhttp3.Response response = new okhttp3.OkHttpClient().newCall(request).execute();
+                    okhttp3.ResponseBody resEntity = response.body();
+                    final String response_str = resEntity != null ? resEntity.string() : "";
                     if (resEntity != null) {
 //                        Log.i("RESPONSE", "-> " + response_str);
                         runOnUiThread(new Runnable() {

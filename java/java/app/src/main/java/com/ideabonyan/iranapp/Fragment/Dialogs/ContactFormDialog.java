@@ -44,6 +44,8 @@ public class ContactFormDialog extends DialogFragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
+        // The system recreates dialogs without going through setContext(), so bind it here.
+        this.context = context;
     }
 
     public void onStart() {

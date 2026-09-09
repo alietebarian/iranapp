@@ -47,9 +47,9 @@ import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.VolleyError;
-import com.daimajia.slider.library.Indicators.PagerIndicator;
-import com.daimajia.slider.library.SliderLayout;
-import com.daimajia.slider.library.SliderTypes.DefaultSliderView;
+import com.google.android.material.tabs.TabLayout;
+import androidx.viewpager2.widget.ViewPager2;
+import com.ideabonyan.iranapp.Utils.ImageSliderAdapter;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.PendingResult;
 import com.google.android.gms.common.api.ResultCallback;
@@ -106,8 +106,8 @@ public class ShowAdActivity extends AppCompatActivity implements UpdateAd, OnMap
     AppBarLayout appBarLayout, appBarLayout2;
     AdsToBeListed ad;
     View headerDevider;
-    SliderLayout sliderLayout;
-    PagerIndicator pagerIndicator;
+    ViewPager2 sliderLayout;
+    TabLayout pagerIndicator;
     RelativeLayout imageArea;
     NestedScrollView nestedScrollView;
     TextView discountAmountTXT, titleTXT, descriptionTXT, headerTXT;
@@ -276,8 +276,8 @@ public class ShowAdActivity extends AppCompatActivity implements UpdateAd, OnMap
 //        appBarLayout2 = (AppBarLayout) findViewById(R.id.showAdAppBar2);
         headerDevider = findViewById(R.id.showAdHeaderDevider);
 
-        sliderLayout = (SliderLayout) findViewById(R.id.showAdSliderLayout);
-        pagerIndicator = (PagerIndicator) findViewById(R.id.showAdCustomIndicator);
+        sliderLayout = (ViewPager2) findViewById(R.id.showAdSliderLayout);
+        pagerIndicator = (TabLayout) findViewById(R.id.showAdCustomIndicator);
         nestedScrollView = (NestedScrollView) findViewById(R.id.showAdNestedScroll);
         discountAmountTXT = (TextView) findViewById(R.id.showAdDiscountText);
         titleTXT = (TextView) findViewById(R.id.showAdTitle);
@@ -877,36 +877,22 @@ public class ShowAdActivity extends AppCompatActivity implements UpdateAd, OnMap
 
     private void runImageSlider() {
 
+        ImageSliderAdapter sliderAdapter = new ImageSliderAdapter();
+
         if (ad.getPhotos().size() == 0) {
-
             hasImage = false;
-
-            DefaultSliderView textSliderView = new DefaultSliderView(context);
-            textSliderView
-                    .image(R.drawable.place_holder);
-
-            sliderLayout.addSlider(textSliderView);
-            sliderLayout.stopAutoCycle();
-
+            sliderAdapter.showPlaceholderOnly();
         } else {
-
             hasImage = true;
 
+            java.util.List<String> urls = new java.util.ArrayList<>();
             for (int i = 0; i < ad.getPhotos().size(); i++) {
-
-                DefaultSliderView textSliderView = new DefaultSliderView(context);
-                textSliderView
-                        .image(ad.getPhotos().get(i).getName());
-
-                sliderLayout.addSlider(textSliderView);
+                urls.add(ad.getPhotos().get(i).getName());
             }
-
-            sliderLayout.setCustomIndicator(pagerIndicator);
-
-            if (ad.getPhotos().size() == 1) sliderLayout.stopAutoCycle();
-//        sliderLayout.setPresetTransformer(SliderLayout.Transformer.Tablet);
-//        sliderLayout.setPresetIndicator(SliderLayout.PresetIndicators.Center_Top);
+            sliderAdapter.setImageUrls(urls);
         }
+
+        ImageSliderAdapter.attach(sliderLayout, pagerIndicator, sliderAdapter);
     }
 
     @Override

@@ -90,7 +90,7 @@ public class PishkhanWeatherActivity extends AppCompatActivity implements Get_In
 
             JSONArray weatherArray = jsonObject.getJSONArray("weather");
             JSONObject weatherObject = weatherArray.getJSONObject(0);
-            Picasso.with(PishkhanWeatherActivity.this)
+            Picasso.get()
                     .load("http://openweathermap.org/img/w/" + weatherObject.getString("icon") + ".png")
 //                    .resize(200, 200)
                     .fit()

@@ -10,9 +10,9 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import com.daimajia.slider.library.Indicators.PagerIndicator;
-import com.daimajia.slider.library.SliderLayout;
-import com.daimajia.slider.library.SliderTypes.DefaultSliderView;
+import com.google.android.material.tabs.TabLayout;
+import androidx.viewpager2.widget.ViewPager2;
+import com.ideabonyan.iranapp.Utils.ImageSliderAdapter;
 import com.ideabonyan.iranapp.Models.NewsData;
 import com.ideabonyan.iranapp.R;
 
@@ -24,7 +24,7 @@ public class ShowNews extends AppCompatActivity {
     AppBarLayout appBarLayout;
     private Toolbar toolbar;
     View headerDevider;
-    SliderLayout sliderLayout;
+    ViewPager2 sliderLayout;
     TextView headerTXT, title, time, content;
     ImageButton backBTN;
 
@@ -61,7 +61,7 @@ public class ShowNews extends AppCompatActivity {
         collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.showNewsCollapsingToolbar);
         appBarLayout = (AppBarLayout) findViewById(R.id.showNewsAppBar);
         headerDevider = findViewById(R.id.showNewsHeaderDevider);
-        sliderLayout = (SliderLayout) findViewById(R.id.showNewsSliderLayout);
+        sliderLayout = (ViewPager2) findViewById(R.id.showNewsSliderLayout);
         backBTN = (ImageButton) findViewById(R.id.showNewsBackButton);
         headerTXT = (TextView) findViewById(R.id.headerTXT);
         title = (TextView) findViewById(R.id.showNewsTitle);
@@ -108,30 +108,20 @@ public class ShowNews extends AppCompatActivity {
 
 
 
+        ImageSliderAdapter sliderAdapter = new ImageSliderAdapter();
+
         if (news.getPhotos().size() == 0) {
-
-            DefaultSliderView textSliderView = new DefaultSliderView(ShowNews.this);
-            textSliderView
-                    .image(R.drawable.place_holder);
-
-            sliderLayout.addSlider(textSliderView);
-            sliderLayout.stopAutoCycle();
-
+            sliderAdapter.showPlaceholderOnly();
         } else {
-
+            java.util.List<String> urls = new java.util.ArrayList<>();
             for (int i = 0; i < news.getPhotos().size(); i++) {
-
-                DefaultSliderView textSliderView = new DefaultSliderView(ShowNews.this);
-                textSliderView
-                        .image(news.getPhotos().get(i).getName());
-
-                sliderLayout.addSlider(textSliderView);
+                urls.add(news.getPhotos().get(i).getName());
             }
-
-            sliderLayout.setCustomIndicator((PagerIndicator) findViewById(R.id.showNewsCustomIndicator));
-
-            if (news.getPhotos().size() == 1) sliderLayout.stopAutoCycle();
+            sliderAdapter.setImageUrls(urls);
         }
+
+        ImageSliderAdapter.attach(sliderLayout,
+                (TabLayout) findViewById(R.id.showNewsCustomIndicator), sliderAdapter);
 
 //        for (int i = 0; i < news.getPhotos().size(); i++){
 //
@@ -142,7 +132,7 @@ public class ShowNews extends AppCompatActivity {
 //            sliderLayout.addSlider(textSliderView);
 //        }
 //
-//        sliderLayout.setCustomIndicator((PagerIndicator) findViewById(R.id.showNewsCustomIndicator));
+//        sliderLayout.setCustomIndicator((TabLayout) findViewById(R.id.showNewsCustomIndicator));
 //
 //        if (news.getPhotos().size() == 1) sliderLayout.stopAutoCycle();
     }

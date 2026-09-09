@@ -2,29 +2,91 @@ package com.ideabonyan.iranapp.service;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.VolleyError;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
+import com.ideabonyan.iranapp.Interface.Get_Insert_Edit_Data;
 import com.ideabonyan.iranapp.Interface.NewNotificationCame;
+import com.ideabonyan.iranapp.UserData.User;
+import com.ideabonyan.iranapp.UserData.UserHelper;
+import com.ideabonyan.iranapp.UserData.UserSessionManager;
 import com.ideabonyan.iranapp.Utils.Config;
+import com.ideabonyan.iranapp.Utils.Get_Volley_Call_Back;
 import com.ideabonyan.iranapp.Utils.NotificationUtils;
+import com.ideabonyan.iranapp.Utils.StaticData;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
 
 
 /**
  * Created by Ravi Tamada on 08/08/16.
  * www.androidhive.info
  */
-public class MyFirebaseMessagingService extends FirebaseMessagingService {
+public class MyFirebaseMessagingService extends FirebaseMessagingService implements Get_Insert_Edit_Data {
 
     private static final String TAG = MyFirebaseMessagingService.class.getSimpleName();
 
     private NotificationUtils notificationUtils;
+    private UserSessionManager userSessionManager;
+
+    @Override
+    public void onNewToken(String token) {
+        super.onNewToken(token);
+        storeRegIdInPref(token);
+
+        Intent registrationComplete = new Intent(Config.REGISTRATION_COMPLETE);
+        registrationComplete.putExtra("token", token);
+        LocalBroadcastManager.getInstance(this).sendBroadcast(registrationComplete);
+    }
+
+    private void storeRegIdInPref(String token) {
+        SharedPreferences pref = getApplicationContext().getSharedPreferences(Config.SHARED_PREF, 0);
+        SharedPreferences.Editor editor = pref.edit();
+        editor.putString("regId", token);
+        userSessionManager = new UserSessionManager(getApplicationContext());
+        userSessionManager.setNotigy_code(token);
+        editor.apply();
+
+        checkForNotificationSettings(token);
+    }
+
+    private void checkForNotificationSettings(String token) {
+        if (!userSessionManager.getNotificationInfo().equals("2")) {
+            if (!token.equals("0")) {
+                String url = StaticData.NOTIFICATIONS_IF_NOT_LOGGED_IN + "?token=" + token;
+                Map<String, String> params = new HashMap<>();
+                Get_Volley_Call_Back.binddata(this);
+                Get_Volley_Call_Back.Call_Volley(getApplicationContext(), params, url, Request.Method.POST, 1);
+                userSessionManager.setNotificationStatus("1", "1");
+            }
+        }
+    }
+
+    @Override
+    public void on_volley_response(String response, int id) {
+        try {
+            JSONObject jsonObject = new JSONObject(response);
+            if (jsonObject.getString("status").equals("204")) {
+                userSessionManager.setNotificationInfo("2");
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void on_volley_error(VolleyError error, int id) {
+    }
 
     @Override
     public void onMessageReceived(final RemoteMessage remoteMessage) {

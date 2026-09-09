@@ -71,24 +71,14 @@ import com.ideabonyan.iranapp.Utils.Get_Volley_Call_Back;
 import com.ideabonyan.iranapp.Utils.ShowToast;
 import com.ideabonyan.iranapp.Utils.StaticData;
 import com.squareup.picasso.Picasso;
-import com.theartofdev.edmodo.cropper.CropImage;
-import com.theartofdev.edmodo.cropper.CropImageView;
+import com.canhub.cropper.CropImage;
+import com.canhub.cropper.CropImageView;
 
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.entity.mime.MultipartEntity;
-import org.apache.http.entity.mime.content.FileBody;
-import org.apache.http.entity.mime.content.StringBody;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.util.EntityUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.File;
 import java.io.IOException;
-import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -387,7 +377,7 @@ public class Edit_Job extends AppCompatActivity implements OnMapReadyCallback, G
 
         if (!(job.getThumbnail_photo() == null || job.getThumbnail_photo().equals(null) ||
                 job.getThumbnail_photo().equals("") || job.getThumbnail_photo().equals("null"))) {
-            Picasso.with(Edit_Job.this)
+            Picasso.get()
                     .load(job.getThumbnail_photo())
                     .fit()
 //                    .resizeDimen(16, 9)
@@ -405,7 +395,7 @@ public class Edit_Job extends AppCompatActivity implements OnMapReadyCallback, G
             imageViews.add(img_pic5);
             if (job.getPhotos().size() > 4) {
                 for (int i = 0; i < 4; i++) {
-                    Picasso.with(Edit_Job.this)
+                    Picasso.get()
                             .load(job.getPhotos().get(i).getName())
                             .fit()
                             .placeholder(R.drawable.place_holder)
@@ -413,7 +403,7 @@ public class Edit_Job extends AppCompatActivity implements OnMapReadyCallback, G
                 }
             } else {
                 for (int i = 0; i < job.getPhotos().size(); i++) {
-                    Picasso.with(Edit_Job.this)
+                    Picasso.get()
                             .load(job.getPhotos().get(i).getName())
                             .fit()
                             .placeholder(R.drawable.place_holder)
@@ -993,7 +983,7 @@ public class Edit_Job extends AppCompatActivity implements OnMapReadyCallback, G
             CropImage.ActivityResult result = CropImage.getActivityResult(data);
             if (resultCode == RESULT_OK) {
 
-                Uri resultUri = result.getUri();
+                Uri resultUri = result.getUriContent();
                 File myimageFile = new File(resultUri.toString());
 
                 try {
@@ -1083,101 +1073,98 @@ public class Edit_Job extends AppCompatActivity implements OnMapReadyCallback, G
 
 
                 try {
-                    HttpClient client = new DefaultHttpClient();
-                    HttpPost post = new HttpPost(handleInserUrl);
-                    MultipartEntity reqEntity = new MultipartEntity();
+                    okhttp3.MultipartBody.Builder reqEntity = new okhttp3.MultipartBody.Builder().setType(okhttp3.MultipartBody.FORM);
 
                     String token = new UserSessionManager(Edit_Job.this).getLoginToken();
 //                    String token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjI3LCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwODAvZ2hvbGxhYy9wdWJsaWNfaHRtbC9hcGkvbG9naW4iLCJpYXQiOjE1MDgyMjI4MjQsImV4cCI6MTUwODgyNzYyNCwibmJmIjoxNTA4MjIyODI0LCJqdGkiOiJZcDhZWDhxZ3BhY1ZLYmJrIn0.2QojAogqfRL_TK8BYzh9mtL45UOwoGLJyUd--9aMClQ";
-                    post.addHeader("Authorization", "Bearer " + token);
                     if (radio_person.isChecked()) {
-                        reqEntity.addPart("person_or_company", new StringBody("person", "text/plain", Charset.forName("UTF-8")));
+                        reqEntity.addFormDataPart("person_or_company", "person");
 //                        Log.v("person_or_company", "person");
                     } else {
-                        reqEntity.addPart("person_or_company", new StringBody("company", "text/plain", Charset.forName("UTF-8")));
+                        reqEntity.addFormDataPart("person_or_company", "company");
 //                        Log.v("person_or_company", "company");
                     }
-                    reqEntity.addPart("ads_title", new StringBody(edt_title.getText().toString(), "text/plain", Charset.forName("UTF-8")));
+                    reqEntity.addFormDataPart("ads_title", edt_title.getText().toString());
 //                    Log.v("params", "ads_title:" + edt_title.getText().toString());
-                    reqEntity.addPart("description", new StringBody(edt_dec.getText().toString(), "text/plain", Charset.forName("UTF-8")));
+                    reqEntity.addFormDataPart("description", edt_dec.getText().toString());
 //                    Log.v("params", "description:" + edt_dec.getText().toString());
 
 
-                    reqEntity.addPart("region_id", new StringBody(regions.get(spin_region.getSelectedItemPosition() - 1).getId(), "text/plain", Charset.forName("UTF-8")));
+                    reqEntity.addFormDataPart("region_id", regions.get(spin_region.getSelectedItemPosition() - 1).getId());
 //                    Log.v("params", "region_id:" + regions.get(spin_region.getSelectedItemPosition() - 1).getId());
 
-                    reqEntity.addPart("address", new StringBody(edt_address.getText().toString(), "text/plain", Charset.forName("UTF-8")));
+                    reqEntity.addFormDataPart("address", edt_address.getText().toString());
 //                    Log.v("params", "address:" + edt_address.getText().toString());
 
 
-                    reqEntity.addPart("telephone1", new StringBody(edt_phone1.getText().toString(), "text/plain", Charset.forName("UTF-8")));
+                    reqEntity.addFormDataPart("telephone1", edt_phone1.getText().toString());
 //                    Log.v("params", "telephone1:" + edt_phone1.getText().toString());
 
                     if (edt_phone2.getText().length() > 0) {
-                        reqEntity.addPart("telephone2", new StringBody(edt_phone2.getText().toString(), "text/plain", Charset.forName("UTF-8")));
+                        reqEntity.addFormDataPart("telephone2", edt_phone2.getText().toString());
 //                        Log.v("params", "telephone2:" + edt_phone2.getText().toString());
 
                     }
-                    reqEntity.addPart("ads_owner_name", new StringBody(edt_name.getText().toString(), "text/plain", Charset.forName("UTF-8")));
+                    reqEntity.addFormDataPart("ads_owner_name", edt_name.getText().toString());
 //                    Log.v("params", "ads_owner_name:" + edt_name.getText().toString());
 
-                    reqEntity.addPart("specialty", new StringBody(specialitiesList.get(spin_specialty.getSelectedItemPosition() - 1).getId(), "text/plain", Charset.forName("UTF-8")));
+                    reqEntity.addFormDataPart("specialty", specialitiesList.get(spin_specialty.getSelectedItemPosition() - 1).getId());
 //                    Log.v("params", "specialty:" + specialitiesList.get(spin_specialty.getSelectedItemPosition() - 1).getId());
 
 
                     if (ltLg != null) {
-                        reqEntity.addPart("latitude", new StringBody(ltLg.latitude + "", "text/plain", Charset.forName("UTF-8")));
+                        reqEntity.addFormDataPart("latitude", ltLg.latitude + "");
 //                        Log.v("params", "latitude:" + ltLg.latitude + "");
-                        reqEntity.addPart("longitude", new StringBody(ltLg.longitude + "", "text/plain", Charset.forName("UTF-8")));
+                        reqEntity.addFormDataPart("longitude", ltLg.longitude + "");
 //                        Log.v("params", "longitude:" + ltLg.longitude + "");
                     }
 
-//                    reqEntity.addPart("ads_owner_name", new StringBody(specialitiesList.get(spin_specialty.getSelectedItemPosition() - 1).getId(), "text/plain", Charset.forName("UTF-8")));
+//                    reqEntity.addFormDataPart("ads_owner_name", specialitiesList.get(spin_specialty.getSelectedItemPosition() - 1).getId());
 
                     if (spin_agremment_type.getSelectedItemPosition() == 1) {
-                        reqEntity.addPart("agremment_type", new StringBody("tamamvaght", "text/plain", Charset.forName("UTF-8")));
+                        reqEntity.addFormDataPart("agremment_type", "tamamvaght");
                     } else if (spin_agremment_type.getSelectedItemPosition() == 2) {
-                        reqEntity.addPart("agremment_type", new StringBody("parevaght", "text/plain", Charset.forName("UTF-8")));
+                        reqEntity.addFormDataPart("agremment_type", "parevaght");
                     } else if (spin_agremment_type.getSelectedItemPosition() == 3) {
-                        reqEntity.addPart("agremment_type", new StringBody("moshaveri", "text/plain", Charset.forName("UTF-8")));
+                        reqEntity.addFormDataPart("agremment_type", "moshaveri");
                     } else if (spin_agremment_type.getSelectedItemPosition() == 4) {
-                        reqEntity.addPart("agremment_type", new StringBody("projei", "text/plain", Charset.forName("UTF-8")));
+                        reqEntity.addFormDataPart("agremment_type", "projei");
                     }
 
                     if (spin_education_level.getSelectedItemPosition() == 1) {
-                        reqEntity.addPart("education_level", new StringBody("underdiploma", "text/plain", Charset.forName("UTF-8")));
+                        reqEntity.addFormDataPart("education_level", "underdiploma");
                     } else if (spin_education_level.getSelectedItemPosition() == 2) {
-                        reqEntity.addPart("education_level", new StringBody("diploma", "text/plain", Charset.forName("UTF-8")));
+                        reqEntity.addFormDataPart("education_level", "diploma");
                     } else if (spin_education_level.getSelectedItemPosition() == 3) {
-                        reqEntity.addPart("education_level", new StringBody("tact", "text/plain", Charset.forName("UTF-8")));
+                        reqEntity.addFormDataPart("education_level", "tact");
                     } else if (spin_education_level.getSelectedItemPosition() == 4) {
-                        reqEntity.addPart("education_level", new StringBody("expertise", "text/plain", Charset.forName("UTF-8")));
+                        reqEntity.addFormDataPart("education_level", "expertise");
                     } else if (spin_education_level.getSelectedItemPosition() == 5) {
-                        reqEntity.addPart("education_level", new StringBody("masterdegree", "text/plain", Charset.forName("UTF-8")));
+                        reqEntity.addFormDataPart("education_level", "masterdegree");
                     } else if (spin_education_level.getSelectedItemPosition() == 6) {
-                        reqEntity.addPart("education_level", new StringBody("doctoral", "text/plain", Charset.forName("UTF-8")));
+                        reqEntity.addFormDataPart("education_level", "doctoral");
                     }
 
                     if (spin_type.getSelectedItemPosition() == 1) {
-                        reqEntity.addPart("type", new StringBody("forsatshoghli", "text/plain", Charset.forName("UTF-8")));
+                        reqEntity.addFormDataPart("type", "forsatshoghli");
                     } else {
-                        reqEntity.addPart("type", new StringBody("karjoo", "text/plain", Charset.forName("UTF-8")));
+                        reqEntity.addFormDataPart("type", "karjoo");
 
                     }
 
                     for (int i = 0; i < photo_to_delete.size(); i++) {
-                        reqEntity.addPart("photo_to_delete[]", new StringBody(photo_to_delete.get(i), "text/plain", Charset.forName("UTF-8")));
+                        reqEntity.addFormDataPart("photo_to_delete[]", photo_to_delete.get(i));
 //                        Log.v("params", "photo_to_delete:" + photo_to_delete.get(i));
                     }
                     if (delete_thumbnail_photo == 1) {
-                        reqEntity.addPart("delete_thumbnail", new StringBody("1", "text/plain", Charset.forName("UTF-8")));
+                        reqEntity.addFormDataPart("delete_thumbnail", "1");
 
                     }
                     for (int i = 1; i < bitmaps.length; i++) {
                         long time = System.currentTimeMillis();
                         if (bitmaps[i] != null) {
                             String pathTemp = Compress_image.reductImageSize(time + ".jpg", bitmaps[i]);
-                            reqEntity.addPart("photos[]", new FileBody(new File(pathTemp)));
+                            reqEntity.addFormDataPart("photos[]", new File(pathTemp).getName(), okhttp3.RequestBody.create(okhttp3.MediaType.parse("image/jpeg"), new File(pathTemp)));
 //                            Log.v("params", "photos[]:" + time + ".jpg");
 
                         }
@@ -1186,17 +1173,21 @@ public class Edit_Job extends AppCompatActivity implements OnMapReadyCallback, G
                         long time = System.currentTimeMillis();
 
                         String pathTemp = Compress_image.reductImageSize(time + ".jpg", bitmaps[0]);
-                        reqEntity.addPart("thumbnail_photo", new FileBody(new File(pathTemp)));
+                        reqEntity.addFormDataPart("thumbnail_photo", new File(pathTemp).getName(), okhttp3.RequestBody.create(okhttp3.MediaType.parse("image/jpeg"), new File(pathTemp)));
 //                        Log.v("params", "thumbnail_photo:" + time + ".jpg");
 
                     }
 //
 
 
-                    post.setEntity(reqEntity);
-                    HttpResponse response = client.execute(post);
-                    HttpEntity resEntity = response.getEntity();
-                    final String response_str = EntityUtils.toString(resEntity);
+                    okhttp3.Request request = new okhttp3.Request.Builder()
+                            .url(handleInserUrl)
+                            .header("Authorization", "Bearer " + token)
+                            .post(reqEntity.build())
+                            .build();
+                    okhttp3.Response response = new okhttp3.OkHttpClient().newCall(request).execute();
+                    okhttp3.ResponseBody resEntity = response.body();
+                    final String response_str = resEntity != null ? resEntity.string() : "";
                     if (resEntity != null) {
 //                        Log.i("RESPONSE", "-> " + response_str);
                         runOnUiThread(new Runnable() {

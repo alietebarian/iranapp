@@ -72,24 +72,14 @@ import com.ideabonyan.iranapp.Utils.Get_Volley_Call_Back;
 import com.ideabonyan.iranapp.Utils.ShowToast;
 import com.ideabonyan.iranapp.Utils.StaticData;
 import com.squareup.picasso.Picasso;
-import com.theartofdev.edmodo.cropper.CropImage;
-import com.theartofdev.edmodo.cropper.CropImageView;
+import com.canhub.cropper.CropImage;
+import com.canhub.cropper.CropImageView;
 
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.entity.mime.MultipartEntity;
-import org.apache.http.entity.mime.content.FileBody;
-import org.apache.http.entity.mime.content.StringBody;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.util.EntityUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.File;
 import java.io.IOException;
-import java.nio.charset.Charset;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.ArrayList;
@@ -773,7 +763,7 @@ public class Edit_Home_Add extends AppCompatActivity implements OnMapReadyCallba
         }
         if (!(estates.getThumbnail_photo() == null || estates.getThumbnail_photo().equals(null) ||
                 estates.getThumbnail_photo().equals("") || estates.getThumbnail_photo().equals("null"))) {
-            Picasso.with(Edit_Home_Add.this)
+            Picasso.get()
                     .load(estates.getThumbnail_photo())
                     .fit()
 //                    .resizeDimen(16, 9)
@@ -790,7 +780,7 @@ public class Edit_Home_Add extends AppCompatActivity implements OnMapReadyCallba
             imageViews.add(img_pic5);
             if (estates.getPhotosDatas().size() > 4) {
                 for (int i = 0; i < 4; i++) {
-                    Picasso.with(Edit_Home_Add.this)
+                    Picasso.get()
                             .load(estates.getPhotosDatas().get(i).getName())
                             .fit()
                             .placeholder(R.drawable.place_holder)
@@ -798,7 +788,7 @@ public class Edit_Home_Add extends AppCompatActivity implements OnMapReadyCallba
                 }
             } else {
                 for (int i = 0; i < estates.getPhotosDatas().size(); i++) {
-                    Picasso.with(Edit_Home_Add.this)
+                    Picasso.get()
                             .load(estates.getPhotosDatas().get(i).getName())
                             .fit()
                             .placeholder(R.drawable.place_holder)
@@ -1017,7 +1007,7 @@ public class Edit_Home_Add extends AppCompatActivity implements OnMapReadyCallba
             CropImage.ActivityResult result = CropImage.getActivityResult(data);
             if (resultCode == RESULT_OK) {
 
-                Uri resultUri = result.getUri();
+                Uri resultUri = result.getUriContent();
                 File myimageFile = new File(resultUri.toString());
 
                 try {
@@ -1699,173 +1689,170 @@ public class Edit_Home_Add extends AppCompatActivity implements OnMapReadyCallba
                 Log.v("handleInserUrl", handleInserUrl);
 
                 try {
-                    HttpClient client = new DefaultHttpClient();
-                    HttpPost post = new HttpPost(handleInserUrl);
-                    MultipartEntity reqEntity = new MultipartEntity();
+                    okhttp3.MultipartBody.Builder reqEntity = new okhttp3.MultipartBody.Builder().setType(okhttp3.MultipartBody.FORM);
 
                     String token = new UserSessionManager(Edit_Home_Add.this).getLoginToken();
                     Log.v("token", token);
 //                    String token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjI3LCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwODAvZ2hvbGxhYy9wdWJsaWNfaHRtbC9hcGkvbG9naW4iLCJpYXQiOjE1MDgyMjI4MjQsImV4cCI6MTUwODgyNzYyNCwibmJmIjoxNTA4MjIyODI0LCJqdGkiOiJZcDhZWDhxZ3BhY1ZLYmJrIn0.2QojAogqfRL_TK8BYzh9mtL45UOwoGLJyUd--9aMClQ";
-                    post.addHeader("Authorization", "Bearer " + token);
 
-                    reqEntity.addPart("ads_title", new StringBody(edt_title.getText().toString(), "text/plain", Charset.forName("UTF-8")));
+                    reqEntity.addFormDataPart("ads_title", edt_title.getText().toString());
                     Log.v("params", "ads_title:" + edt_title.getText().toString());
-                    reqEntity.addPart("description", new StringBody(edt_dec.getText().toString(), "text/plain", Charset.forName("UTF-8")));
+                    reqEntity.addFormDataPart("description", edt_dec.getText().toString());
                     Log.v("params", "description:" + edt_dec.getText().toString());
 
-                    reqEntity.addPart("category_id", new StringBody(subcategory.get(spin_sub_cat.getSelectedItemPosition() - 1).getId(), "text/plain", Charset.forName("UTF-8")));
+                    reqEntity.addFormDataPart("category_id", subcategory.get(spin_sub_cat.getSelectedItemPosition() - 1).getId());
                     Log.v("params", "category_id:" + subcategory.get(spin_sub_cat.getSelectedItemPosition() - 1).getId());
 //alaki fild
-                    reqEntity.addPart("ejare_or_kharid", new StringBody("kharid", "text/plain", Charset.forName("UTF-8")));
+                    reqEntity.addFormDataPart("ejare_or_kharid", "kharid");
                     Log.v("params", "ejare_or_kharid:" + "kharid");
-                    reqEntity.addPart("type_karbari", new StringBody("maskooni", "text/plain", Charset.forName("UTF-8")));
+                    reqEntity.addFormDataPart("type_karbari", "maskooni");
                     Log.v("params", "type_karbari:" + "maskooni");
                     /// etmam
 
                     if (radio_person.isChecked()) {
-                        reqEntity.addPart("user_type", new StringBody("person", "text/plain", Charset.forName("UTF-8")));
+                        reqEntity.addFormDataPart("user_type", "person");
                         Log.v("params", "user_type:" + "person");
 
                     } else {
-                        reqEntity.addPart("user_type", new StringBody("moshaver_amlak", "text/plain", Charset.forName("UTF-8")));
+                        reqEntity.addFormDataPart("user_type", "moshaver_amlak");
                         Log.v("params", "user_type:" + "moshaver_amlak");
 
                     }
-                    reqEntity.addPart("ads_owner_name", new StringBody(edt_name.getText().toString(), "text/plain", Charset.forName("UTF-8")));
+                    reqEntity.addFormDataPart("ads_owner_name", edt_name.getText().toString());
                     Log.v("params", "ads_owner_name:" + edt_name.getText().toString());
 
-                    reqEntity.addPart("telephone1", new StringBody(edt_phone1.getText().toString(), "text/plain", Charset.forName("UTF-8")));
+                    reqEntity.addFormDataPart("telephone1", edt_phone1.getText().toString());
                     Log.v("params", "telephone1:" + edt_phone1.getText().toString());
 
                     if (edt_phone2.getText().length() > 0) {
-                        reqEntity.addPart("telephone2", new StringBody(edt_phone2.getText().toString(), "text/plain", Charset.forName("UTF-8")));
+                        reqEntity.addFormDataPart("telephone2", edt_phone2.getText().toString());
                         Log.v("params", "telephone2:" + edt_phone2.getText().toString());
 
                     }
 
-                    reqEntity.addPart("region_id", new StringBody(regions.get(spin_region.getSelectedItemPosition() - 1).getId(), "text/plain", Charset.forName("UTF-8")));
+                    reqEntity.addFormDataPart("region_id", regions.get(spin_region.getSelectedItemPosition() - 1).getId());
                     Log.v("params", "region_id:" + regions.get(spin_region.getSelectedItemPosition() - 1).getId());
 
-                    reqEntity.addPart("address", new StringBody(edt_address.getText().toString(), "text/plain", Charset.forName("UTF-8")));
+                    reqEntity.addFormDataPart("address", edt_address.getText().toString());
                     Log.v("params", "address:" + edt_address.getText().toString());
 
                     if (ltLg != null) {
-                        reqEntity.addPart("latitude", new StringBody(ltLg.latitude + "", "text/plain", Charset.forName("UTF-8")));
+                        reqEntity.addFormDataPart("latitude", ltLg.latitude + "");
                         Log.v("params", "latitude:" + ltLg.latitude + "");
-                        reqEntity.addPart("longitude", new StringBody(ltLg.longitude + "", "text/plain", Charset.forName("UTF-8")));
+                        reqEntity.addFormDataPart("longitude", ltLg.longitude + "");
                         Log.v("params", "longitude:" + ltLg.longitude + "");
                     }
                     if (radio_sell.isChecked()) {
-                        reqEntity.addPart("sell_or_buy", new StringBody("sell", "text/plain", Charset.forName("UTF-8")));
+                        reqEntity.addFormDataPart("sell_or_buy", "sell");
                         Log.v("params", "sell_or_buy:" + "sell");
                     } else {
-                        reqEntity.addPart("sell_or_buy", new StringBody("buy", "text/plain", Charset.forName("UTF-8")));
+                        reqEntity.addFormDataPart("sell_or_buy", "buy");
                         Log.v("params", "sell_or_buy:" + "buy");
                     }
                     if (spin_cat.getSelectedItemPosition() == 1) {
                         if (radio_tavafoghi.isChecked()) {
-                            reqEntity.addPart("price_kharid", new StringBody("0", "text/plain", Charset.forName("UTF-8")));
+                            reqEntity.addFormDataPart("price_kharid", "0");
                             Log.v("params", "price_kharid:" + "0");
                         } else if (radio_maghto.isChecked()) {
-                            reqEntity.addPart("price_kharid", new StringBody(edt_cost.getText().toString().replaceAll(",", ""), "text/plain", Charset.forName("UTF-8")));
+                            reqEntity.addFormDataPart("price_kharid", edt_cost.getText().toString().replaceAll(",", ""));
                             Log.v("params", "price_kharid:" + edt_cost.getText().toString().replaceAll(",", ""));
                         } else if (radio_moaveze.isChecked()) {
-                            reqEntity.addPart("price_kharid", new StringBody("-1", "text/plain", Charset.forName("UTF-8")));
+                            reqEntity.addFormDataPart("price_kharid", "-1");
                             Log.v("params", "price_kharid:" + "-1");
                         }
                         if (spin_sub_cat.getSelectedItemPosition()==3){
-                            reqEntity.addPart("rooms_count", new StringBody("0", "text/plain", Charset.forName("UTF-8")));
+                            reqEntity.addFormDataPart("rooms_count", "0");
                             Log.v("params", "rooms_count:" + "0");
 
                         }else{
-                            reqEntity.addPart("rooms_count", new StringBody(String.valueOf(spin_room_number.getSelectedItemPosition() - 1), "text/plain", Charset.forName("UTF-8")));
+                            reqEntity.addFormDataPart("rooms_count", String.valueOf(spin_room_number.getSelectedItemPosition() - 1));
                             Log.v("params", "rooms_count:" + edt_cost.getText().toString());
 
                         }
 
-                        reqEntity.addPart("meters", new StringBody(edt_meter.getText().toString(), "text/plain", Charset.forName("UTF-8")));
+                        reqEntity.addFormDataPart("meters", edt_meter.getText().toString());
                         Log.v("params", "meters:" + edt_meter.getText().toString());
 
                         if (radio_hast.isChecked()) {
-                            reqEntity.addPart("is_in_hoome", new StringBody("1", "text/plain", Charset.forName("UTF-8")));
+                            reqEntity.addFormDataPart("is_in_hoome", "1");
                             Log.v("params", "is_in_hoome:" + "1");
                         } else {
-                            reqEntity.addPart("is_in_hoome", new StringBody("0", "text/plain", Charset.forName("UTF-8")));
+                            reqEntity.addFormDataPart("is_in_hoome", "0");
                             Log.v("params", "is_in_hoome:" + "0");
                         }
 
 
                     } else if (spin_cat.getSelectedItemPosition() == 2 || spin_cat.getSelectedItemPosition() == 4) {
-                        reqEntity.addPart("rooms_count", new StringBody(String.valueOf(spin_room_number.getSelectedItemPosition() - 1), "text/plain", Charset.forName("UTF-8")));
+                        reqEntity.addFormDataPart("rooms_count", String.valueOf(spin_room_number.getSelectedItemPosition() - 1));
                         Log.v("params", "rooms_count:" + edt_cost.getText().toString());
 
-                        reqEntity.addPart("meters", new StringBody(edt_meter.getText().toString(), "text/plain", Charset.forName("UTF-8")));
+                        reqEntity.addFormDataPart("meters", edt_meter.getText().toString());
                         Log.v("params", "meters:" + edt_meter.getText().toString());
 
                         if (radio_hast.isChecked()) {
-                            reqEntity.addPart("is_in_hoome", new StringBody("1", "text/plain", Charset.forName("UTF-8")));
+                            reqEntity.addFormDataPart("is_in_hoome", "1");
                             Log.v("params", "is_in_hoome:" + "1");
                         } else {
-                            reqEntity.addPart("is_in_hoome", new StringBody("0", "text/plain", Charset.forName("UTF-8")));
+                            reqEntity.addFormDataPart("is_in_hoome", "0");
                             Log.v("params", "is_in_hoome:" + "0");
                         }
                         if (radio_tavafoghi_vadeae.isChecked()) {
-                            reqEntity.addPart("pre_pay_ejare", new StringBody("0", "text/plain", Charset.forName("UTF-8")));
+                            reqEntity.addFormDataPart("pre_pay_ejare", "0");
                             Log.v("params", "pre_pay_ejare:" + "0");
                         } else if (radio_maghto_vadeae.isChecked()) {
-                            reqEntity.addPart("pre_pay_ejare", new StringBody(edt_vadeae.getText().toString().replaceAll(",", ""), "text/plain", Charset.forName("UTF-8")));
+                            reqEntity.addFormDataPart("pre_pay_ejare", edt_vadeae.getText().toString().replaceAll(",", ""));
                             Log.v("params", "pre_pay_ejare:" + edt_vadeae.getText().toString());
                         } else if (radio_majani_vadeae.isChecked()) {
-                            reqEntity.addPart("pre_pay_ejare", new StringBody("-1", "text/plain", Charset.forName("UTF-8")));
+                            reqEntity.addFormDataPart("pre_pay_ejare", "-1");
                             Log.v("params", "pre_pay_ejare:" + "-1");
                         }
                         if (radio_tavafoghi_ejare.isChecked()) {
-                            reqEntity.addPart("monthly_price_ejare", new StringBody("0", "text/plain", Charset.forName("UTF-8")));
+                            reqEntity.addFormDataPart("monthly_price_ejare", "0");
                             Log.v("params", "monthly_price_ejare:" + "0");
                         } else if (radio_maghto_ejare.isChecked()) {
-                            reqEntity.addPart("monthly_price_ejare", new StringBody(edt_ejare.getText().toString().replaceAll(",", ""), "text/plain", Charset.forName("UTF-8")));
+                            reqEntity.addFormDataPart("monthly_price_ejare", edt_ejare.getText().toString().replaceAll(",", ""));
                             Log.v("params", "monthly_price_ejare:" + edt_ejare.getText().toString());
                         } else if (radio_majani_ejare.isChecked()) {
-                            reqEntity.addPart("monthly_price_ejare", new StringBody("-1", "text/plain", Charset.forName("UTF-8")));
+                            reqEntity.addFormDataPart("monthly_price_ejare", "-1");
                             Log.v("params", "monthly_price_ejare:" + "-1");
                         }
 
                     } else if (spin_cat.getSelectedItemPosition() == 3) {
                         if (radio_tavafoghi.isChecked()) {
-                            reqEntity.addPart("price_kharid", new StringBody("0", "text/plain", Charset.forName("UTF-8")));
+                            reqEntity.addFormDataPart("price_kharid", "0");
                             Log.v("params", "price_kharid:" + "0");
                         } else if (radio_maghto.isChecked()) {
-                            reqEntity.addPart("price_kharid", new StringBody(edt_cost.getText().toString().replaceAll(",", ""), "text/plain", Charset.forName("UTF-8")));
+                            reqEntity.addFormDataPart("price_kharid", edt_cost.getText().toString().replaceAll(",", ""));
                             Log.v("params", "price_kharid:" + edt_cost.getText().toString().replaceAll(",", ""));
                         } else if (radio_moaveze.isChecked()) {
-                            reqEntity.addPart("price_kharid", new StringBody("-1", "text/plain", Charset.forName("UTF-8")));
+                            reqEntity.addFormDataPart("price_kharid", "-1");
                             Log.v("params", "price_kharid:" + "-1");
                         }
-                        reqEntity.addPart("rooms_count", new StringBody(String.valueOf(spin_room_number.getSelectedItemPosition() - 1), "text/plain", Charset.forName("UTF-8")));
+                        reqEntity.addFormDataPart("rooms_count", String.valueOf(spin_room_number.getSelectedItemPosition() - 1));
                         Log.v("params", "rooms_count:" + String.valueOf(spin_room_number.getSelectedItemPosition() - 1));
 
-                        reqEntity.addPart("meters", new StringBody(edt_meter.getText().toString(), "text/plain", Charset.forName("UTF-8")));
+                        reqEntity.addFormDataPart("meters", edt_meter.getText().toString());
                         Log.v("params", "meters:" + edt_meter.getText().toString());
 
                         if (radio_darad.isChecked()) {
-                            reqEntity.addPart("sanad_edari", new StringBody("1", "text/plain", Charset.forName("UTF-8")));
+                            reqEntity.addFormDataPart("sanad_edari", "1");
                             Log.v("params", "sanad_edari:" + "1");
                         } else {
-                            reqEntity.addPart("sanad_edari", new StringBody("0", "text/plain", Charset.forName("UTF-8")));
+                            reqEntity.addFormDataPart("sanad_edari", "0");
                             Log.v("params", "sanad_edari:" + "0");
                         }
 
                         if (radio_hast.isChecked()) {
-                            reqEntity.addPart("is_in_hoome", new StringBody("1", "text/plain", Charset.forName("UTF-8")));
+                            reqEntity.addFormDataPart("is_in_hoome", "1");
                             Log.v("params", "is_in_hoome:" + "1");
                         } else {
-                            reqEntity.addPart("is_in_hoome", new StringBody("0", "text/plain", Charset.forName("UTF-8")));
+                            reqEntity.addFormDataPart("is_in_hoome", "0");
                             Log.v("params", "is_in_hoome:" + "0");
                         }
 
 
                     }else{
-                        reqEntity.addPart("meters", new StringBody("0", "text/plain", Charset.forName("UTF-8")));
+                        reqEntity.addFormDataPart("meters", "0");
                         Log.v("params", "meters:" + "0");
 
                     }
@@ -1875,7 +1862,7 @@ public class Edit_Home_Add extends AppCompatActivity implements OnMapReadyCallba
                         long time = System.currentTimeMillis();
                         if (bitmaps[i] != null) {
                             String pathTemp = Compress_image.reductImageSize(time + ".jpg", bitmaps[i]);
-                            reqEntity.addPart("photos[]", new FileBody(new File(pathTemp)));
+                            reqEntity.addFormDataPart("photos[]", new File(pathTemp).getName(), okhttp3.RequestBody.create(okhttp3.MediaType.parse("image/jpeg"), new File(pathTemp)));
                             Log.v("params", "photos[]:" + time + ".jpg");
 
                         }
@@ -1884,25 +1871,29 @@ public class Edit_Home_Add extends AppCompatActivity implements OnMapReadyCallba
                         long time = System.currentTimeMillis();
 
                         String pathTemp = Compress_image.reductImageSize(time + ".jpg", bitmaps[0]);
-                        reqEntity.addPart("thumbnail_photo", new FileBody(new File(pathTemp)));
+                        reqEntity.addFormDataPart("thumbnail_photo", new File(pathTemp).getName(), okhttp3.RequestBody.create(okhttp3.MediaType.parse("image/jpeg"), new File(pathTemp)));
                         Log.v("params", "thumbnail_photo:" + time + ".jpg");
 
                     }
                     for (int i = 0; i < photo_to_delete.size(); i++) {
-                        reqEntity.addPart("delete_photo[]", new StringBody(photo_to_delete.get(i), "text/plain", Charset.forName("UTF-8")));
+                        reqEntity.addFormDataPart("delete_photo[]", photo_to_delete.get(i));
 
                     }
                     if (delete_thumbnail_photo == 1) {
-                        reqEntity.addPart("delete_thumbnail_photo ", new StringBody("1", "text/plain", Charset.forName("UTF-8")));
+                        reqEntity.addFormDataPart("delete_thumbnail_photo ", "1");
 
                     }
 //
 
 
-                    post.setEntity(reqEntity);
-                    HttpResponse response = client.execute(post);
-                    HttpEntity resEntity = response.getEntity();
-                    final String response_str = EntityUtils.toString(resEntity);
+                    okhttp3.Request request = new okhttp3.Request.Builder()
+                            .url(handleInserUrl)
+                            .header("Authorization", "Bearer " + token)
+                            .post(reqEntity.build())
+                            .build();
+                    okhttp3.Response response = new okhttp3.OkHttpClient().newCall(request).execute();
+                    okhttp3.ResponseBody resEntity = response.body();
+                    final String response_str = resEntity != null ? resEntity.string() : "";
                     if (resEntity != null) {
 //                        Log.i("RESPONSE", "-> " + response_str);
                         runOnUiThread(new Runnable() {

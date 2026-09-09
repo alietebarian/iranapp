@@ -72,6 +72,8 @@ public class CityPickerDialogFragment extends DialogFragment implements Get_Inse
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
+        // The system recreates dialogs without going through setContext(), so bind it here.
+        this.context = context;
 //        mycommunicator = (cityPickerCommunicator) context;
     }
 

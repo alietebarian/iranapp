@@ -62,7 +62,7 @@ public class HomeSubCategoriesAdapter extends RecyclerView.Adapter<RecyclerView.
 
 
         if (!datas.get(position).getImage().equals("null") && !datas.get(position).getImage().equals("") && !datas.get(position).getImage().equals(null) && datas.get(position).getImage() != null) {
-            Picasso.with(context)
+            Picasso.get()
                     .load(datas.get(position).getImage())
 //                    .resize(100,100)
                     .fit()
@@ -70,7 +70,7 @@ public class HomeSubCategoriesAdapter extends RecyclerView.Adapter<RecyclerView.
                     .placeholder(R.drawable.place_holder)
                     .into(holder.pic);
         } else {
-            Picasso.with(context)
+            Picasso.get()
                     .load(R.drawable.place_holder)
 //                    .resize(99,99)
                     //.fit()

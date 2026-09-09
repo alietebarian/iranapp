@@ -19,9 +19,9 @@ import android.widget.TextView;
 
 import com.android.volley.Request;
 import com.android.volley.VolleyError;
-import com.daimajia.slider.library.Indicators.PagerIndicator;
-import com.daimajia.slider.library.SliderLayout;
-import com.daimajia.slider.library.SliderTypes.DefaultSliderView;
+import com.google.android.material.tabs.TabLayout;
+import androidx.viewpager2.widget.ViewPager2;
+import com.ideabonyan.iranapp.Utils.ImageSliderAdapter;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -56,8 +56,8 @@ public class Show_Home_Ad_Details extends AppCompatActivity implements OnMapRead
     TextView showAdDescription;
     LinearLayout lin_type, lin_sanad, lin_ejare, lin_vadeae, lin_cost, lin_erea, lin_type_person, lin_room_num, lin_meter;
     LinearLayout lin_tell2, lin_tell1;
-    SliderLayout showAdSliderLayout;
-    PagerIndicator showAdCustomIndicator;
+    ViewPager2 showAdSliderLayout;
+    TabLayout showAdCustomIndicator;
     boolean hasImage;
     CardView showAdMapCard;
     CollapsingToolbarLayout collapsingToolbarLayout;
@@ -136,9 +136,9 @@ public class Show_Home_Ad_Details extends AppCompatActivity implements OnMapRead
         lin_tell1 = (LinearLayout) findViewById(R.id.lin_tell1);
         lin_tell2 = (LinearLayout) findViewById(R.id.lin_tell2);
 
-        showAdSliderLayout = (SliderLayout) findViewById(R.id.showAdSliderLayout);
+        showAdSliderLayout = (ViewPager2) findViewById(R.id.showAdSliderLayout);
 
-        showAdCustomIndicator = (PagerIndicator) findViewById(R.id.showAdCustomIndicator);
+        showAdCustomIndicator = (TabLayout) findViewById(R.id.showAdCustomIndicator);
 
         showAdMapCard = (CardView) findViewById(R.id.showAdMapCard);
         img_fac_icn = findViewById(R.id.img_fac_icn);
@@ -428,36 +428,22 @@ public class Show_Home_Ad_Details extends AppCompatActivity implements OnMapRead
             }
 
         }
+        ImageSliderAdapter sliderAdapter = new ImageSliderAdapter(R.drawable.place_holder_home);
+
         if (estates.getPhotosDatas().size() == 0) {
-
             hasImage = false;
-
-            DefaultSliderView textSliderView = new DefaultSliderView(Show_Home_Ad_Details.this);
-            textSliderView
-                    .image(R.drawable.place_holder_home);
-
-            showAdSliderLayout.addSlider(textSliderView);
-            showAdSliderLayout.stopAutoCycle();
-
+            sliderAdapter.showPlaceholderOnly();
         } else {
-
             hasImage = true;
 
+            java.util.List<String> urls = new java.util.ArrayList<>();
             for (int i = 0; i < estates.getPhotosDatas().size(); i++) {
-
-                DefaultSliderView textSliderView = new DefaultSliderView(Show_Home_Ad_Details.this);
-                textSliderView
-                        .image(estates.getPhotosDatas().get(i).getName());
-
-                showAdSliderLayout.addSlider(textSliderView);
+                urls.add(estates.getPhotosDatas().get(i).getName());
             }
-
-            showAdSliderLayout.setCustomIndicator(showAdCustomIndicator);
-
-            if (estates.getPhotosDatas().size() == 1) showAdSliderLayout.stopAutoCycle();
-//        sliderLayout.setPresetTransformer(SliderLayout.Transformer.Tablet);
-//        sliderLayout.setPresetIndicator(SliderLayout.PresetIndicators.Center_Top);
+            sliderAdapter.setImageUrls(urls);
         }
+
+        ImageSliderAdapter.attach(showAdSliderLayout, showAdCustomIndicator, sliderAdapter);
     }
 
     private void fav_or_disfav() {
@@ -575,14 +561,14 @@ public class Show_Home_Ad_Details extends AppCompatActivity implements OnMapRead
                 if (jsonObject.getString("status").equals("200")) {
 
                     if (jsonObject.getString("is_fav").equals("true")) {
-                        Picasso.with(Show_Home_Ad_Details.this)
+                        Picasso.get()
                                 .load(R.drawable.heart)
                                 .fit()
                                 .into(img_fac_icn);
                         ShowToast.success("آگهی مورد نظر با موفقیت به لیست علاقه مندی ها افزوده شد", Show_Home_Ad_Details.this);
 
                     } else {
-                        Picasso.with(Show_Home_Ad_Details.this)
+                        Picasso.get()
                                 .load(R.drawable.ic_favorite_border_black_24dp)
                                 .fit()
                                 .into(img_fac_icn);
@@ -596,13 +582,13 @@ public class Show_Home_Ad_Details extends AppCompatActivity implements OnMapRead
                 progressbar.setVisibility(View.GONE);
                 if (jsonObject.getString("status").equals("200")) {
                     if (jsonObject.getString("is_favorite").equals("true")) {
-                        Picasso.with(Show_Home_Ad_Details.this)
+                        Picasso.get()
                                 .load(R.drawable.heart)
                                 .fit()
                                 .into(img_fac_icn);
 
                     } else {
-                        Picasso.with(Show_Home_Ad_Details.this)
+                        Picasso.get()
                                 .load(R.drawable.ic_favorite_border_black_24dp)
                                 .fit()
                                 .into(img_fac_icn);

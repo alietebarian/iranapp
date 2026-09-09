@@ -29,9 +29,9 @@ import android.widget.TextView;
 
 import com.android.volley.Request;
 import com.android.volley.VolleyError;
-import com.daimajia.slider.library.Indicators.PagerIndicator;
-import com.daimajia.slider.library.SliderLayout;
-import com.daimajia.slider.library.SliderTypes.DefaultSliderView;
+import com.google.android.material.tabs.TabLayout;
+import androidx.viewpager2.widget.ViewPager2;
+import com.ideabonyan.iranapp.Utils.ImageSliderAdapter;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -70,8 +70,8 @@ public class ShowCarActivity extends AppCompatActivity implements UpdateAd, OnMa
     public Vehicles vehicles;
     private Toolbar toolbar;
     View headerDevider;
-    SliderLayout sliderLayout;
-    PagerIndicator pagerIndicator;
+    ViewPager2 sliderLayout;
+    TabLayout pagerIndicator;
     RelativeLayout imageArea;
     NestedScrollView nestedScrollView;
     TextView titleTXT, descriptionTXT, headerTXT;
@@ -222,8 +222,8 @@ public class ShowCarActivity extends AppCompatActivity implements UpdateAd, OnMa
 //        appBarLayout2 = (AppBarLayout) findViewById(R.id.showAdAppBar2);
         headerDevider = findViewById(R.id.showAdHeaderDevider);
 
-        sliderLayout = (SliderLayout) findViewById(R.id.showAdSliderLayout);
-        pagerIndicator = (PagerIndicator) findViewById(R.id.showAdCustomIndicator);
+        sliderLayout = (ViewPager2) findViewById(R.id.showAdSliderLayout);
+        pagerIndicator = (TabLayout) findViewById(R.id.showAdCustomIndicator);
         nestedScrollView = (NestedScrollView) findViewById(R.id.showAdNestedScroll);
         titleTXT = (TextView) findViewById(R.id.showAdTitle);
         descriptionTXT = (TextView) findViewById(R.id.showAdDescription);
@@ -522,36 +522,22 @@ public class ShowCarActivity extends AppCompatActivity implements UpdateAd, OnMa
             }
 
         }
+        ImageSliderAdapter sliderAdapter = new ImageSliderAdapter(R.drawable.place_holder_car);
+
         if (vehicles.getPhotosDatas().size() == 0) {
-
             hasImage = false;
-
-            DefaultSliderView textSliderView = new DefaultSliderView(context);
-            textSliderView
-                    .image(R.drawable.place_holder_car);
-
-            sliderLayout.addSlider(textSliderView);
-            sliderLayout.stopAutoCycle();
-
+            sliderAdapter.showPlaceholderOnly();
         } else {
-
             hasImage = true;
 
+            java.util.List<String> urls = new java.util.ArrayList<>();
             for (int i = 0; i < vehicles.getPhotosDatas().size(); i++) {
-
-                DefaultSliderView textSliderView = new DefaultSliderView(context);
-                textSliderView
-                        .image(vehicles.getPhotosDatas().get(i).getName());
-
-                sliderLayout.addSlider(textSliderView);
+                urls.add(vehicles.getPhotosDatas().get(i).getName());
             }
-
-            sliderLayout.setCustomIndicator(pagerIndicator);
-
-            if (vehicles.getPhotosDatas().size() == 1) sliderLayout.stopAutoCycle();
-//        sliderLayout.setPresetTransformer(SliderLayout.Transformer.Tablet);
-//        sliderLayout.setPresetIndicator(SliderLayout.PresetIndicators.Center_Top);
+            sliderAdapter.setImageUrls(urls);
         }
+
+        ImageSliderAdapter.attach(sliderLayout, pagerIndicator, sliderAdapter);
     }
 
     @Override
@@ -636,14 +622,14 @@ public class ShowCarActivity extends AppCompatActivity implements UpdateAd, OnMa
                     progressbar.setVisibility(View.GONE);
 
                     if (jsonObject.getString("is_fav").equals("true")) {
-                        Picasso.with(ShowCarActivity.this)
+                        Picasso.get()
                                 .load(R.drawable.heart)
                                 .fit()
                                 .into(img_fac_icn);
                         ShowToast.success("آگهی مورد نظر با موفقیت به لیست علاقه مندی ها افزوده شد", ShowCarActivity.this);
 
                     } else {
-                        Picasso.with(ShowCarActivity.this)
+                        Picasso.get()
                                 .load(R.drawable.ic_favorite_border_black_24dp)
                                 .fit()
                                 .into(img_fac_icn);
@@ -657,13 +643,13 @@ public class ShowCarActivity extends AppCompatActivity implements UpdateAd, OnMa
                 progressbar.setVisibility(View.GONE);
                 if (jsonObject.getString("status").equals("200")) {
                     if (jsonObject.getString("is_favorite").equals("true")) {
-                        Picasso.with(ShowCarActivity.this)
+                        Picasso.get()
                                 .load(R.drawable.heart)
                                 .fit()
                                 .into(img_fac_icn);
 
                     } else {
-                        Picasso.with(ShowCarActivity.this)
+                        Picasso.get()
                                 .load(R.drawable.ic_favorite_border_black_24dp)
                                 .fit()
                                 .into(img_fac_icn);

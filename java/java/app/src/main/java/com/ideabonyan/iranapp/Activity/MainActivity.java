@@ -40,7 +40,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.android.volley.VolleyError;
-import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.ideabonyan.iranapp.Components.MyTextView;
 import com.ideabonyan.iranapp.Fragment.Dialogs.CityPickerDialogFragment;
@@ -601,11 +600,8 @@ public class MainActivity extends AppCompatActivity implements Get_Insert_Edit_D
         SharedPreferences pref = getApplicationContext().getSharedPreferences(Config.SHARED_PREF, 0);
         String regId = pref.getString("regId", null);
 
-        try {
-            Log.v("token", FirebaseInstanceId.getInstance().getToken());
-
-        } catch (Exception e) {
-        }
+        FirebaseMessaging.getInstance().getToken()
+                .addOnSuccessListener(token -> Log.v("token", token));
 
         Log.e("firebase", "Firebase reg id: " + regId);
 

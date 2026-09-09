@@ -35,7 +35,7 @@ public class SecondIntroPage extends Fragment {
 
     private void holder(View view){
         img_main=view.findViewById(R.id.img_main);
-        Picasso.with(getActivity())
+        Picasso.get()
                 .load(R.drawable.intro2)
                 .fit()
                 .centerCrop()

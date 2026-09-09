@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  TEMPORARY: Android 9+ blocks cleartext HTTP by default. iranapp.biz currently serves
+  only a self-signed hosting-provider certificate (CN=parspack), so HTTPS cannot be used
+  yet. Once a valid certificate is issued (cPanel AutoSSL / Let's Encrypt), switch
+  StaticData.DOMAIN to https:// and delete the matching entry below.
+-->
+<network-security-config>
+    <base-config cleartextTrafficPermitted="false" />
+
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="true">iranapp.biz</domain>
+        <domain includeSubdomains="true">asreesfahanapp.com</domain>
+        <domain includeSubdomains="true">api.wikiapi.ir</domain>
+        <domain includeSubdomains="true">openweathermap.org</domain>
+        <domain includeSubdomains="true">emrani.net</domain>
+        <domain includeSubdomains="true">iran-dev.ir</domain>
+        <domain includeSubdomains="true">irapi.ir</domain>
+    </domain-config>
+</network-security-config>

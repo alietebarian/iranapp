@@ -203,7 +203,7 @@ public class AroundMeActivity extends AppCompatActivity implements OnMapReadyCal
                 title.setText(ad.getTitle());
                 if (ad.getPhotos() != null && ad.getPhotos().size() > 0) {
                     if (ad.getPhotos().get(0) != null) {
-                        Picasso.with(AroundMeActivity.this)
+                        Picasso.get()
                                 .load(ad.getPhotos().get(0).getName())
                                 .resize(100, 100)
 //                                .centerCrop()
@@ -597,7 +597,7 @@ public class AroundMeActivity extends AppCompatActivity implements OnMapReadyCal
         for (AdsToBeListed ad : adData) {
             if (ad.getPhotos() != null && ad.getPhotos().size() > 0) {
                 if (ad.getPhotos().get(0) != null) {
-                    Picasso.with(AroundMeActivity.this)
+                    Picasso.get()
                             .load(ad.getPhotos().get(0).getName())
                             .resize(100, 100)
                             .fetch();
