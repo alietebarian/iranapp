@@ -18,16 +18,23 @@
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="25dp"
+        android:layout_height="wrap_content"
         android:elevation="5dp">
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tabs"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="@dimen/_32sdp"
             android:background="#fff"
             app:tabGravity="fill"
-            app:tabMode="fixed" />
+            app:tabIndicatorColor="@color/colorPrimary"
+            app:tabIndicatorFullWidth="false"
+            app:tabIndicatorHeight="2dp"
+            app:tabMode="fixed"
+            app:tabRippleColor="#14B71C1C"
+            app:tabSelectedTextColor="@color/colorPrimary"
+            app:tabTextAppearance="@style/KasbokarTabText"
+            app:tabTextColor="#8A94A0" />
 
     </com.google.android.material.appbar.AppBarLayout>
 

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Accent colours for the category tiles on the app's landing page.
+     Each one is paired with an ic_cat_* icon in HomeCategoriesAdapter. -->
+<resources>
+    <color name="cat_bg">#F4F5F7</color>
+    <color name="cat_title">#2B3440</color>
+
+    <color name="cat_restaurant">#E65100</color>
+    <color name="cat_store">#2E7D32</color>
+    <color name="cat_estate">#00838F</color>
+    <color name="cat_car">#1565C0</color>
+    <color name="cat_job">#4527A0</color>
+    <color name="cat_education">#0277BD</color>
+    <color name="cat_health">#C62828</color>
+    <color name="cat_beauty">#AD1457</color>
+    <color name="cat_sport">#00695C</color>
+    <color name="cat_digital">#283593</color>
+    <color name="cat_finance">#00796B</color>
+    <color name="cat_transport">#EF6C00</color>
+    <color name="cat_service">#455A64</color>
+    <color name="cat_travel">#0097A7</color>
+    <color name="cat_apparel">#6A1B9A</color>
+    <color name="cat_book">#6D4C41</color>
+    <color name="cat_media">#D81B60</color>
+    <color name="cat_eco">#558B2F</color>
+    <color name="cat_jewelry">#F9A825</color>
+    <color name="cat_legal">#5D4037</color>
+    <color name="cat_furniture">#795548</color>
+    <color name="cat_industry">#37474F</color>
+    <color name="cat_default">#B71C1C</color>
+</resources>
