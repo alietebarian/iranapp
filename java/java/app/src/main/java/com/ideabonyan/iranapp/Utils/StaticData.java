@@ -108,6 +108,7 @@ public class StaticData {
     static public String BOOK_SEARCH = "http://api.wikiapi.ir/book/api/v1/search.php";
 
     public static String getappverioncode=DOMAIN_WITH_API+"/app-version";
+    static public String INSTALL_STATS = DOMAIN_WITH_API + "/app-stats/installs";
 
 
     public static String download_link="https://cafebazaar.ir/app/com.ideabonyan.iranapp/";
