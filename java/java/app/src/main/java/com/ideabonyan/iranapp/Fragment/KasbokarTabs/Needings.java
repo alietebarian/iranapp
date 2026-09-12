@@ -128,6 +128,7 @@ public class Needings extends Fragment implements Get_Insert_Edit_Data, Location
                 SubcategoriesDialogFragment subcategoriesDialogFragment = new SubcategoriesDialogFragment();
                 subcategoriesDialogFragment.setContext(getActivity());
                 subcategoriesDialogFragment.setCategoryId(datas.get(position).getId());
+                subcategoriesDialogFragment.setCategoryName(datas.get(position).getName());
 //                subcategoriesDialogFragment.setAdType("need");
                 subcategoriesDialogFragment.show(getActivity().getSupportFragmentManager(), "ProvincePickerFragment");
             }

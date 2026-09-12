@@ -26,6 +26,7 @@ import com.ideabonyan.iranapp.Interface.Get_Insert_Edit_Data;
 import com.ideabonyan.iranapp.Models.HomeSubCategories;
 import com.ideabonyan.iranapp.R;
 import com.ideabonyan.iranapp.UserData.UserSessionManager;
+import com.ideabonyan.iranapp.Utils.CategoryIcons;
 import com.ideabonyan.iranapp.Utils.Get_Volley_Call_Back;
 import com.ideabonyan.iranapp.Utils.RecyclerItemClickListener;
 import com.ideabonyan.iranapp.Utils.StaticData;
@@ -51,6 +52,8 @@ public class SubcategoriesDialogFragment extends DialogFragment implements Get_I
     ProgressBar progressBar;
 
     String categoryId;
+    /** Icon family of the category this dialog was opened from; unmatched sub categories borrow it. */
+    CategoryIcons.Style parentStyle;
 //    String adType;
 
 //    public void setAdType(String adType) {
@@ -59,6 +62,10 @@ public class SubcategoriesDialogFragment extends DialogFragment implements Get_I
 
     public void setCategoryId(String categoryId) {
         this.categoryId = categoryId;
+    }
+
+    public void setCategoryName(String categoryName) {
+        this.parentStyle = CategoryIcons.of(categoryName);
     }
 
     public void setContext(Context context) {
@@ -156,7 +163,7 @@ public class SubcategoriesDialogFragment extends DialogFragment implements Get_I
     private void runRV() {
         progressBar.setVisibility(View.GONE);
 
-        HomeSubCategoriesAdapter adapter = new HomeSubCategoriesAdapter(data, context);
+        HomeSubCategoriesAdapter adapter = new HomeSubCategoriesAdapter(data, context, parentStyle);
         LinearLayoutManager layoutManager = new GridLayoutManager(context, 3, GridLayoutManager.VERTICAL, false);
         rv.setLayoutManager(layoutManager);
         rv.setAdapter(adapter);

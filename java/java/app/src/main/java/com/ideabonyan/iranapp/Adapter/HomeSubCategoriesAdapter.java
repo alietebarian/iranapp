@@ -1,31 +1,51 @@
 package com.ideabonyan.iranapp.Adapter;
 
 import android.content.Context;
-import androidx.recyclerview.widget.RecyclerView;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.ideabonyan.iranapp.Components.MyTextView;
 import com.ideabonyan.iranapp.Models.HomeSubCategories;
 import com.ideabonyan.iranapp.R;
-import com.joooonho.SelectableRoundedImageView;
+import com.ideabonyan.iranapp.Utils.CategoryIcons;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
 /**
+ * Sub categories grid, shown after tapping a category on the landing page. Each sub category
+ * gets the icon its name calls for, on the same glossy plate as the landing page; names that
+ * match nothing borrow the icon of the category they were opened from. See {@link CategoryIcons}.
+ *
  * Created by SIM on 7/24/2017.
  */
-
 public class HomeSubCategoriesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    List<HomeSubCategories> datas;
-    Context context;
+    /** Plate behind a server thumbnail, so an arbitrary picture stays visible on the white dialog. */
+    private static final int THUMBNAIL_PLATE = 0xFFEEF1F5;
+
+    private final List<HomeSubCategories> datas;
+    private final Context context;
+    private final CategoryIcons.Style parentStyle;
+    private final int plateSize;
 
     public HomeSubCategoriesAdapter(List<HomeSubCategories> datas, Context context) {
+        this(datas, context, null);
+    }
+
+    public HomeSubCategoriesAdapter(List<HomeSubCategories> datas, Context context,
+                                    CategoryIcons.Style parentStyle) {
         this.datas = datas;
         this.context = context;
+        this.parentStyle = parentStyle;
+        this.plateSize = context.getResources().getDimensionPixelSize(R.dimen._42sdp);
     }
 
     @Override
@@ -39,46 +59,29 @@ public class HomeSubCategoriesAdapter extends RecyclerView.Adapter<RecyclerView.
     public void onBindViewHolder(RecyclerView.ViewHolder viewHolder, int position) {
         final CellFeedViewHolder holder = (CellFeedViewHolder) viewHolder;
 
-        String color = "#00ffffff";
-//        if (position == 1) color = "#c62828";
-//        if (position == 2) color = "#AD1457";
-//        if (position == 3) color = "#6A1B9A";
-//        if (position == 4) color = "#00838F";
-//        if (position == 5) color = "#2E7D32";
-//        if (position == 6) color = "#9E9D24";
-//        if (position == 7) color = "#4E342E";
-//        if (position == 8) color = "#6A1B9A";
-//        if (position == 9) color = "#AD1457";
-//        if (position == 10) color = "#006064";
-//        if (position == 11) color = "#827717";
-//        if (position == 12) color = "#D84315";
-//        if (position == 13) color = "#37474F";
-//        if (position == 14) color = "#2E7D32";
-//        if (position == 15) color = "#1565C0";
-
-//        holder.pic.setBackgroundColor(Color.parseColor(datas.get(position).getImage()));
-//        holder.cv.setCardBackgroundColor(Color.parseColor(color));
         holder.text.setText(datas.get(position).getName());
 
+        Picasso.get().cancelRequest(holder.pic);
 
-        if (!datas.get(position).getImage().equals("null") && !datas.get(position).getImage().equals("") && !datas.get(position).getImage().equals(null) && datas.get(position).getImage() != null) {
+        CategoryIcons.Style style = CategoryIcons.ofSub(datas.get(position).getName(), parentStyle);
+
+        if (style == CategoryIcons.DEFAULT && HomeCategoriesAdapter.hasRemoteIcon(datas.get(position).getImage())) {
+            // Nothing matched and there is no parent to borrow from: use the uploaded thumbnail.
+            CategoryIcons.applyPlate(holder.plate, CategoryIcons.flatPlate(THUMBNAIL_PLATE, plateSize), Color.BLACK);
+            holder.pic.setImageTintList(null);
             Picasso.get()
                     .load(datas.get(position).getImage())
-//                    .resize(100,100)
                     .fit()
-//                    .resizeDimen(16, 9)
-                    .placeholder(R.drawable.place_holder)
+                    .centerInside()
+                    .placeholder(R.drawable.ic_cat_default)
                     .into(holder.pic);
-        } else {
-            Picasso.get()
-                    .load(R.drawable.place_holder)
-//                    .resize(99,99)
-                    //.fit()
-//                    .resizeDimen(16, 9)
-//                    .centerCrop()
-                    //  .placeholder(R.drawable.placeholder)
-                    .into(holder.pic);
+            return;
         }
+
+        int accent = CategoryIcons.accent(context, style);
+        CategoryIcons.applyPlate(holder.plate, CategoryIcons.glossyPlate(accent, plateSize), accent);
+        holder.pic.setImageTintList(ColorStateList.valueOf(Color.WHITE));
+        holder.pic.setImageResource(style.icon);
     }
 
     @Override
@@ -86,18 +89,18 @@ public class HomeSubCategoriesAdapter extends RecyclerView.Adapter<RecyclerView.
         return datas.size();
     }
 
-    private class CellFeedViewHolder extends RecyclerView.ViewHolder {
+    private static class CellFeedViewHolder extends RecyclerView.ViewHolder {
 
-        SelectableRoundedImageView pic;
-        MyTextView text;
-//        CardView cv;
+        final ImageView pic;
+        final MyTextView text;
+        final FrameLayout plate;
 
-        public CellFeedViewHolder(View view) {
+        CellFeedViewHolder(View view) {
             super(view);
 
-//            cv = (CardView) view.findViewById(R.id.rv_home_card_img);
-            pic = (SelectableRoundedImageView) view.findViewById(R.id.homeCategoriesImage);
+            pic = (ImageView) view.findViewById(R.id.homeCategoriesImage);
             text = (MyTextView) view.findViewById(R.id.homeCategoriesName);
+            plate = (FrameLayout) view.findViewById(R.id.homeCategoriesIconPlate);
         }
     }
 }

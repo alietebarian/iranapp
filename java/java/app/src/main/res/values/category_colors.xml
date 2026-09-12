@@ -35,5 +35,13 @@
     <color name="cat_apparel">#AB47BC</color>
     <color name="cat_beauty">#EC407A</color>
     <color name="cat_media">#D81B60</color>
+    <color name="cat_insurance">#26A69A</color>
+    <color name="cat_civic">#607D8B</color>
+    <color name="cat_wedding">#F06292</color>
+    <color name="cat_computer">#3D5AFE</color>
+    <color name="cat_mall">#7E57C2</color>
+    <color name="cat_fun">#FF7043</color>
+    <color name="cat_stationery">#5C6BC0</color>
+    <color name="cat_art">#E040FB</color>
     <color name="cat_default">#D32F2F</color>
 </resources>

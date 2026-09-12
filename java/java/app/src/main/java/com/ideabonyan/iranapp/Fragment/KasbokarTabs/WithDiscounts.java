@@ -126,6 +126,7 @@ public class WithDiscounts extends Fragment implements Get_Insert_Edit_Data3, Lo
                 SubcategoriesDialogFragment subcategoriesDialogFragment = new SubcategoriesDialogFragment();
                 subcategoriesDialogFragment.setContext(getActivity());
                 subcategoriesDialogFragment.setCategoryId(datas.get(position).getId());
+                subcategoriesDialogFragment.setCategoryName(datas.get(position).getName());
 //                subcategoriesDialogFragment.setAdType("discount");
                 subcategoriesDialogFragment.show(getActivity().getSupportFragmentManager(), "ProvincePickerFragment");
             }

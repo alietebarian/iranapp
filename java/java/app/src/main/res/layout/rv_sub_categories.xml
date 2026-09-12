@@ -24,16 +24,22 @@
             android:orientation="vertical"
             android:padding="3dp">
 
-            <com.joooonho.SelectableRoundedImageView
-                xmlns:app="http://schemas.android.com/apk/res-auto"
-                android:id="@+id/homeCategoriesImage"
-                android:layout_width="@dimen/_50sdp"
-                android:layout_height="@dimen/_50sdp"
-                android:scaleType="centerCrop"
-                app:sriv_left_top_corner_radius="7dp"
-                app:sriv_right_top_corner_radius="7dp"
-                app:sriv_left_bottom_corner_radius="7dp"
-                app:sriv_right_bottom_corner_radius="7dp"/>
+            <FrameLayout
+                android:id="@+id/homeCategoriesIconPlate"
+                android:layout_width="@dimen/_42sdp"
+                android:layout_height="@dimen/_42sdp"
+                android:layout_marginTop="4dp"
+                android:elevation="5dp">
+
+                <ImageView
+                    android:id="@+id/homeCategoriesImage"
+                    android:layout_width="@dimen/_22sdp"
+                    android:layout_height="@dimen/_22sdp"
+                    android:layout_gravity="center"
+                    android:contentDescription="@null"
+                    android:scaleType="fitCenter" />
+
+            </FrameLayout>
             <!--</androidx.cardview.widget.CardView>-->
 
             <com.ideabonyan.iranapp.Components.MyTextView
