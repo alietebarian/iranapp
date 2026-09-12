@@ -5,6 +5,7 @@ use App\Http\Controllers\AdsController;
 use App\Http\Controllers\AdsLikesController;
 use App\Http\Controllers\AdsPhotoController;
 use App\Http\Controllers\AdsPlanController;
+use App\Http\Controllers\AdsVideoController;
 use App\Http\Controllers\Auth\LoginController as AuthLoginController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CategoryController;
@@ -105,6 +106,8 @@ Route::group( [ 'prefix' => 'admin' ] , function () {
 
 		Route::get( '/ads/{ads}/photos' , [AdsPhotoController::class, 'showById'] )->name( 'showAdsPhotoById' );
 		Route::post( '/ads/{ads}/photos' , [AdsPhotoController::class, 'uploadInAdminPanel'] )->name( 'uploadPhotoInAdminPanel' );
+		Route::post( '/ads/{ads}/video' , [AdsVideoController::class, 'uploadInAdminPanel'] )->name( 'uploadAdsVideoInAdminPanel' );
+		Route::get( '/ads/{ads}/video/delete' , [AdsVideoController::class, 'deleteInAdminPanel'] )->name( 'deleteAdsVideoInAdminPanel' );
 		Route::get( '/ads/{ads}/vip/create' , [VipAdsController::class, 'showCreatePage'] )->name( 'showVipAdsCreatePage' );
 		Route::post( '/ads/{ads}/vip' , [VipAdsController::class, 'save'] )->name( 'saveVipAds' );
 		Route::get( '/ads/{vipAds}/vip/update' , [VipAdsController::class, 'showUpdatePage'] )->name( 'showVipAdsUpdatePage' );

@@ -32,7 +32,7 @@
                                         @foreach($provinces as $province)
                                             <optgroup label="استان {{ $province->name }}">
                                                 @php
-                                                    $cities = \App\Province::find($province->id)->city;
+                                                    $cities = \App\Models\Province::find($province->id)->city;
                                                 @endphp
                                                 @foreach($cities as $city)
                                                     <option {{ $city->id == request()->input('city_id') ? 'selected' : '' }} value="{{ $city->id }}">{{ $city->name }}</option>
@@ -159,9 +159,9 @@
                                                 <a href="{{ route('showAdsPhotoById' , $ad->id) }}"
                                                    class="text-primary">تصاویر آگهی</a><br>
                                                 @php
-                                                    $vipExists = \App\VipAds::where('ads_id' , $ad->id)->count();
+                                                    $vipExists = \App\Models\VipAds::where('ads_id' , $ad->id)->count();
                                                 if($vipExists){
-                                                $vip = \App\VipAds::where('ads_id' , $ad->id)->first();
+                                                $vip = \App\Models\VipAds::where('ads_id' , $ad->id)->first();
                                                 }
                                                 @endphp
                                                 @if($vipExists)
@@ -210,7 +210,7 @@
              aria-labelledby="myModalLabel"
              aria-hidden="true">
             @php
-                $plan = \App\AdsPlan::find($ad->ads_plan_id)->first();
+                $plan = \App\Models\AdsPlan::find($ad->ads_plan_id)->first();
             @endphp
             <div class="modal-dialog">
                 <div class="modal-content">

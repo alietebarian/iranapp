@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Colours of the app's landing page (the "دسته بندی ها" tab).
-     The cat_* accents are paired with the ic_cat_* icons in CategoryIcons; HomeCategoriesAdapter
-     turns each one into a lighter-to-darker gradient plate with a white glyph. -->
+<!-- Colours of the app's landing page (the "دسته بندی ها" tab) and of the sub category dialog.
+     Every icon uses the same plate and the same colour, so the grid reads as one formal set. -->
 <resources>
-    <!-- Dark page -->
+    <!-- Dark landing page -->
     <color name="home_bg_top">#1C2233</color>
     <color name="home_bg_bottom">#121620</color>
     <color name="home_tile">#222A3B</color>
@@ -12,36 +11,13 @@
     <color name="home_text_muted">#A9B2C3</color>
     <color name="home_accent">#FF5252</color>
 
-    <!-- Vivid accents, readable under a white glyph and bright enough on the dark page -->
-    <color name="cat_health">#E53935</color>
-    <color name="cat_transport">#F4511E</color>
-    <color name="cat_restaurant">#FB8C00</color>
-    <color name="cat_jewelry">#FFB300</color>
-    <color name="cat_service">#546E7A</color>
-    <color name="cat_industry">#78909C</color>
-    <color name="cat_legal">#8D6E63</color>
-    <color name="cat_book">#C0CA33</color>
-    <color name="cat_furniture">#BF7B45</color>
-    <color name="cat_eco">#7CB342</color>
-    <color name="cat_store">#43A047</color>
-    <color name="cat_sport">#00BFA5</color>
-    <color name="cat_finance">#00897B</color>
-    <color name="cat_estate">#00ACC1</color>
-    <color name="cat_travel">#29B6F6</color>
-    <color name="cat_car">#1E88E5</color>
-    <color name="cat_education">#3949AB</color>
-    <color name="cat_digital">#5E35B1</color>
-    <color name="cat_job">#8E24AA</color>
-    <color name="cat_apparel">#AB47BC</color>
-    <color name="cat_beauty">#EC407A</color>
-    <color name="cat_media">#D81B60</color>
-    <color name="cat_insurance">#26A69A</color>
-    <color name="cat_civic">#607D8B</color>
-    <color name="cat_wedding">#F06292</color>
-    <color name="cat_computer">#3D5AFE</color>
-    <color name="cat_mall">#7E57C2</color>
-    <color name="cat_fun">#FF7043</color>
-    <color name="cat_stationery">#5C6BC0</color>
-    <color name="cat_art">#E040FB</color>
-    <color name="cat_default">#D32F2F</color>
+    <!-- Category icons on the landing page -->
+    <color name="home_icon">#E6EBF3</color>
+    <color name="home_icon_plate">#283042</color>
+    <color name="home_icon_plate_stroke">#3A4558</color>
+
+    <!-- Sub category icons on the (white) sub category dialog -->
+    <color name="sub_icon">#2B3440</color>
+    <color name="sub_icon_plate">#F2F4F7</color>
+    <color name="sub_icon_plate_stroke">#DFE3EA</color>
 </resources>

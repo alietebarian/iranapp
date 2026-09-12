@@ -9,6 +9,6 @@ class Category extends Model
     protected $table = 'category';
     public $timestamps = false;
     public function subCategories(){
-        return $this->hasMany('App\SubCategory');
+        return $this->hasMany(SubCategory::class);
     }
 }

@@ -43,9 +43,21 @@
                                     @endif
                                 </div>
                                 <script>
+                                    // Cities come back sorted by name, so without this the alphabetically first
+                                    // city was preselected; the province's same-name center (e.g. اصفهان) is the default.
+                                    function normalizePlaceName(name) {
+                                        return String(name)
+                                            .replace(/ي/g, 'ی')
+                                            .replace(/ك/g, 'ک')
+                                            .replace(/^\s*استان\s+/, '')
+                                            .replace(/\s+/g, ' ')
+                                            .trim();
+                                    }
+
                                     $('#province').change(function () {
                                         var $this = $(this);
                                         var provinceId = $this.val();
+                                        var provinceName = normalizePlaceName($this.find('option:selected').text());
                                         $.ajax({
                                             type: 'get',
                                             url: '{{ URL::to('api/provinces/') }}/' + provinceId + '/cities',
@@ -53,9 +65,16 @@
                                             success: function (response) {
                                                 var list = response.list;
                                                 var cities = $('#cities');
+                                                var defaultCityId = null;
                                                 cities.html('');
                                                 for (var i = 0; i < list.length; i++) {
                                                     cities.append('<option value="' + list[i].id + '">' + list[i].name + '</option>');
+                                                    if (defaultCityId === null && normalizePlaceName(list[i].name) === provinceName) {
+                                                        defaultCityId = list[i].id;
+                                                    }
+                                                }
+                                                if (defaultCityId !== null) {
+                                                    cities.val(defaultCityId);
                                                 }
                                                 cities.selectpicker('render');
                                                 cities.selectpicker('refresh');
@@ -459,6 +478,7 @@
                         </div>
                         <div class="row">
                             <div class="col-xs-12">
+                                <p class="text-muted">پس از ثبت، به صفحه‌ی تصاویر و ویدیو آگهی منتقل می‌شوید تا فایل‌ها را آپلود کنید.</p>
                                 <button type="submit" class="btn btn-primary">ثبت آگهی</button>
                             </div>
                         </div>

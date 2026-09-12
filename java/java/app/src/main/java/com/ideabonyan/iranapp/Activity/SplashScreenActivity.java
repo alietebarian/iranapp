@@ -363,6 +363,7 @@ public class SplashScreenActivity extends AppCompatActivity implements Get_Inser
                 ad.setAds_owner_name(jsonObject.getString("ads_owner_name"));
                 List<PhotosData> photosData = PhotosData.Import(jsonObject.getJSONArray("photos"));
                 ad.setPhotos(photosData);
+                ad.setVideo_url(AdsToBeListed.parseVideoUrl(jsonObject));
                 startActivity(new Intent(SplashScreenActivity.this, MainActivity.class));
                 Intent intent = new Intent(SplashScreenActivity.this, ShowAdActivity.class);
                 intent.putExtra("ad", ad);

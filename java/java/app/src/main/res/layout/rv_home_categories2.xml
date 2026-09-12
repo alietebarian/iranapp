@@ -18,16 +18,14 @@
     android:paddingBottom="10dp">
 
     <FrameLayout
-        android:id="@+id/homeCategoriesIconPlate"
-        android:layout_width="@dimen/_48sdp"
-        android:layout_height="@dimen/_48sdp"
-        android:background="@drawable/bg_category_icon"
-        android:elevation="6dp">
+        android:layout_width="@dimen/_46sdp"
+        android:layout_height="@dimen/_46sdp"
+        android:background="@drawable/bg_icon_plate_dark">
 
         <ImageView
             android:id="@+id/homeCategoriesImage"
-            android:layout_width="@dimen/_25sdp"
-            android:layout_height="@dimen/_25sdp"
+            android:layout_width="@dimen/_22sdp"
+            android:layout_height="@dimen/_22sdp"
             android:layout_gravity="center"
             android:contentDescription="@null"
             android:scaleType="fitCenter" />

@@ -55,27 +55,43 @@ class AdsPhotoController extends Controller
         $data['max_photo_upload'] = $maximum_photo_to_upload;
         $available_uploading_photo = $maximum_photo_to_upload - $photos->count();
         $data['available_photo_to_upload'] = $available_uploading_photo;
+        $data['photo_formats'] = AdsPhoto::FORMATS;
+        $data['photo_max_mb'] = AdsPhoto::MAX_KB / 1024;
+        $data['video_url'] = Ads::videoUrl($ads->video);
+        $data['video_formats'] = Ads::VIDEO_FORMATS;
+        $data['video_max_bytes'] = Ads::maxVideoUploadBytes();
         return view('admin.ads_photo')->with($data);
     }
 
     public function uploadInAdminPanel(Request  $request , Ads $ads){
-        if($request->hasFile('photo')){
-            $photos = $request->photo;
-            foreach($photos as $photo){
-                $imgName = uniqid() . '.' . $photo->getClientOriginalExtension();
-                $photo->move(public_path('/ads_photo') , $imgName);
-                $imageToAddWatermark = Image::make(public_path('/ads_photo/') . '/' . $imgName);
-                $imageToAddWatermark->resize(440 , null , function($constraint){
-                    $constraint->aspectRatio();
-                });
-                $imageToAddWatermark->insert(public_path('/ads_photo/watermark2.png') , 'bottom-left' , 0 , 20);
-                $imageToAddWatermark->save();
+        $request->validate([
+            'photo' => 'required|array',
+            'photo.*' => 'file|mimes:' . implode(',' , AdsPhoto::FORMATS) . '|max:' . AdsPhoto::MAX_KB,
+        ] , [
+            'photo.required' => 'هیچ تصویری انتخاب نشده است.',
+            'photo.*.uploaded' => 'آپلود تصویر ناموفق بود؛ احتمالاً حجم فایل بیشتر از حد مجاز سرور است.',
+            'photo.*.mimes' => 'فرمت تصویر پشتیبانی نمی شود. فرمت های مجاز: ' . implode('، ' , AdsPhoto::FORMATS),
+            'photo.*.max' => 'حجم هر تصویر حداکثر ' . (AdsPhoto::MAX_KB / 1024) . ' مگابایت است.',
+        ]);
+        // The page only offers the free slots, but nothing stopped a request from sending more.
+        $available = AdsPlan::find($ads->ads_plan_id)->max_number_of_photos - $ads->photo()->count();
+        $photos = array_slice(array_values($request->file('photo')) , 0 , max(0 , $available));
+        foreach($photos as $photo){
+            // Name the file after its content rather than the client's name: a JPEG called
+            // '.jfif', or a file with no extension, leaves the encoder no format to save as.
+            $imgName = uniqid() . '.' . $photo->guessExtension();
+            $photo->move(public_path('/ads_photo') , $imgName);
+            $imageToAddWatermark = Image::make(public_path('/ads_photo/') . '/' . $imgName);
+            $imageToAddWatermark->resize(440 , null , function($constraint){
+                $constraint->aspectRatio();
+            });
+            $imageToAddWatermark->insert(public_path('/ads_photo/watermark2.png') , 'bottom-left' , 0 , 20);
+            $imageToAddWatermark->save();
 
-                $row = new AdsPhoto();
-                $row->file_name = $imgName;
-                $row->ads_id = $ads->id;
-                $row->save();
-            }
+            $row = new AdsPhoto();
+            $row->file_name = $imgName;
+            $row->ads_id = $ads->id;
+            $row->save();
         }
         $msg = new \stdClass();
         $msg->title = 'ثبت موفقیت آمیز';

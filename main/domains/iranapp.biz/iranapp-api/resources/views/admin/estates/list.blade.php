@@ -842,9 +842,9 @@
                                                class="text-primary">تصاویر آگهی</a>
                                             <br>
                                             @php
-                                                $vipExists = \App\VipAds::where('ads_id' , $ad->id)->count();
+                                                $vipExists = \App\Models\VipAds::where('ads_id' , $ad->id)->count();
                                             if($vipExists){
-                                            $vip = \App\VipAds::where('ads_id' , $ad->id)->first();
+                                            $vip = \App\Models\VipAds::where('ads_id' , $ad->id)->first();
                                             }
                                             @endphp
                                             @if($vipExists)

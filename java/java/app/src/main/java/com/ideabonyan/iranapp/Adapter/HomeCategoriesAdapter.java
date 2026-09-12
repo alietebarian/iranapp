@@ -2,13 +2,12 @@ package com.ideabonyan.iranapp.Adapter;
 
 import android.content.Context;
 import android.content.res.ColorStateList;
-import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.ideabonyan.iranapp.Components.MyTextView;
@@ -21,7 +20,7 @@ import java.util.List;
 
 /**
  * Categories grid of the landing page. See {@link CategoryIcons} for how a category name picks
- * its icon and accent colour, and for the glossy plate each icon sits on.
+ * its icon; every icon is drawn in the same colour on the same plate (rv_home_categories2).
  *
  * Created by SIM on 7/24/2017.
  */
@@ -29,12 +28,12 @@ public class HomeCategoriesAdapter extends RecyclerView.Adapter<RecyclerView.Vie
 
     private final List<HomeCategories> datas;
     private final Context context;
-    private final int plateSize;
+    private final ColorStateList iconTint;
 
     public HomeCategoriesAdapter(List<HomeCategories> datas, Context context) {
         this.datas = datas;
         this.context = context;
-        this.plateSize = context.getResources().getDimensionPixelSize(R.dimen._48sdp);
+        this.iconTint = ColorStateList.valueOf(ContextCompat.getColor(context, R.color.home_icon));
     }
 
     @Override
@@ -53,12 +52,9 @@ public class HomeCategoriesAdapter extends RecyclerView.Adapter<RecyclerView.Vie
         Picasso.get().cancelRequest(holder.pic);
 
         CategoryIcons.Style style = CategoryIcons.of(datas.get(position).getName());
-        int accent = CategoryIcons.accent(context, style);
 
         if (style == null && hasRemoteIcon(datas.get(position).getImage())) {
-            // Unknown category: show whatever thumbnail the admin uploaded, on a plain light plate
-            // so an arbitrary picture stays readable.
-            CategoryIcons.applyPlate(holder.plate, CategoryIcons.flatPlate(Color.WHITE, plateSize), Color.BLACK);
+            // Unknown category: show whatever thumbnail the admin uploaded, untinted.
             holder.pic.setImageTintList(null);
             Picasso.get()
                     .load(datas.get(position).getImage())
@@ -69,8 +65,7 @@ public class HomeCategoriesAdapter extends RecyclerView.Adapter<RecyclerView.Vie
             return;
         }
 
-        CategoryIcons.applyPlate(holder.plate, CategoryIcons.glossyPlate(accent, plateSize), accent);
-        holder.pic.setImageTintList(ColorStateList.valueOf(Color.WHITE));
+        holder.pic.setImageTintList(iconTint);
         holder.pic.setImageResource(style != null ? style.icon : CategoryIcons.DEFAULT.icon);
     }
 
@@ -87,14 +82,12 @@ public class HomeCategoriesAdapter extends RecyclerView.Adapter<RecyclerView.Vie
 
         final ImageView pic;
         final MyTextView text;
-        final FrameLayout plate;
 
         CellFeedViewHolder(View view) {
             super(view);
 
             pic = (ImageView) view.findViewById(R.id.homeCategoriesImage);
             text = (MyTextView) view.findViewById(R.id.homeCategoriesName);
-            plate = (FrameLayout) view.findViewById(R.id.homeCategoriesIconPlate);
         }
     }
 }

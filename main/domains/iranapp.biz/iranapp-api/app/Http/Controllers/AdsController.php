@@ -57,7 +57,8 @@ class AdsController extends Controller {
 			foreach ( $photos as $pindex => $prow ) {
 				$photos[ $pindex ]->file_name = URL::to( '/ads_photo' ) . '/' . $prow->file_name;
 			}
-			$list[ $index ]->photos = $photos;
+			$list[ $index ]->photos    = $photos;
+			$list[ $index ]->video_url = Ads::videoUrl( $row->video );
 		}
 		$province = City::find( $cityId )->province;
 
@@ -104,7 +105,8 @@ class AdsController extends Controller {
 			foreach ( $photos as $pindex => $prow ) {
 				$photos[ $pindex ]->file_name = URL::to( '/ads_photo' ) . '/' . $prow->file_name;
 			}
-			$latest[ $index ]->photos = $photos;
+			$latest[ $index ]->photos    = $photos;
+			$latest[ $index ]->video_url = Ads::videoUrl( $row->video );
 		}
 
 		return response()->json( [ 'status' => 200 , 'list' => $latest ] );
@@ -124,7 +126,8 @@ class AdsController extends Controller {
 			foreach ( $photos as $pindex => $prow ) {
 				$photos[ $pindex ]->file_name = URL::to( '/ads_photo' ) . '/' . $prow->file_name;
 			}
-			$discount[ $index ]->photos = $photos;
+			$discount[ $index ]->photos    = $photos;
+			$discount[ $index ]->video_url = Ads::videoUrl( $row->video );
 		}
 
 		return response()->json( [ 'status' => 200 , 'list' => $discount ] );
@@ -144,7 +147,8 @@ class AdsController extends Controller {
 			foreach ( $photos as $pindex => $prow ) {
 				$photos[ $pindex ]->file_name = URL::to( '/ads_photo' ) . '/' . $prow->file_name;
 			}
-			$needs[ $index ]->photos = $photos;
+			$needs[ $index ]->photos    = $photos;
+			$needs[ $index ]->video_url = Ads::videoUrl( $row->video );
 		}
 
 		return response()->json( [ 'status' => 200 , 'list' => $needs ] );
@@ -219,7 +223,8 @@ class AdsController extends Controller {
 			foreach ( $photos as $pindex => $prow ) {
 				$photos[ $pindex ]->file_name = URL::to( '/ads_photo' ) . '/' . $prow->file_name;
 			}
-			$adsCollection[ $index ]->photos = $photos;
+			$adsCollection[ $index ]->photos    = $photos;
+			$adsCollection[ $index ]->video_url = Ads::videoUrl( $row->video );
 		} );
 
 		return response()->json( [ 'status' => 200 , 'list' => $adsCollection ] );
@@ -326,6 +331,7 @@ class AdsController extends Controller {
 			$user                      = auth('sanctum')->user();
 			$ads[ $index ]->user_id    = $user->id;
 			$ads[ $index ]->photos     = $photos;
+			$ads[ $index ]->video_url  = Ads::videoUrl( $item->video );
 			$ads[ $index ]->created_at = jdf::jdate( 'j F Y' , Carbon::createFromFormat( 'Y-m-d H:i:s' , $item->created_at )->getTimestamp() );
 			$ads[ $index ]->updated_at = jdf::jdate( 'j F Y' , Carbon::createFromFormat( 'Y-m-d H:i:s' , $item->updated_at )->getTimestamp() );
 		} );
@@ -359,6 +365,7 @@ class AdsController extends Controller {
 				$photos[ $pindex ]->file_name = URL::to( '/ads_photo' ) . '/' . $prow->file_name;
 			} );
 			$ads[ $index ]->photos     = $photos;
+			$ads[ $index ]->video_url  = Ads::videoUrl( $row->video );
 			$ads[ $index ]->created_at = jdf::jdate( 'j F Y' , Carbon::createFromFormat( 'Y-m-d H:i:s' , $row->created_at )->getTimestamp() );
 			$ads[ $index ]->updated_at = jdf::jdate( 'j F Y' , Carbon::createFromFormat( 'Y-m-d H:i:s' , $row->updated_at )->getTimestamp() );
 		} );
@@ -376,7 +383,8 @@ class AdsController extends Controller {
 		$photos->each( function ( $item , $index ) use ( $photos ) {
 			$photos[ $index ]->file_name = URL::to( '/ads_photo' ) . '/' . $item->file_name;
 		} );
-		$adsItem->photos = $photos;
+		$adsItem->photos    = $photos;
+		$adsItem->video_url = Ads::videoUrl( $adsItem->video );
 
 		return response()->json( [ 'status' => 200 , 'ad' => $adsItem ] );
 	}
@@ -628,6 +636,7 @@ class AdsController extends Controller {
 		$data[ 'ads' ]              = $ads;
 		$data[ 'ad_plan' ]          = $ads->plan;
 		$data[ 'photos' ]           = AdsPhoto::where( 'ads_id' , $ads->id )->get();
+		$data[ 'video_url' ]        = Ads::videoUrl( $ads->video );
 
 		$data[ 'user_ads' ] = UserAds::where( 'ads_id' , $ads->id )
 		                             ->join( 'users' , 'users.id' , '=' , 'user_ads.user_id' )

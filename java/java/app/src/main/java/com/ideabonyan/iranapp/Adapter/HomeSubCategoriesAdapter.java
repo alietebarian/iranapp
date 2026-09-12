@@ -2,13 +2,12 @@ package com.ideabonyan.iranapp.Adapter;
 
 import android.content.Context;
 import android.content.res.ColorStateList;
-import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.ideabonyan.iranapp.Components.MyTextView;
@@ -21,20 +20,18 @@ import java.util.List;
 
 /**
  * Sub categories grid, shown after tapping a category on the landing page. Each sub category
- * gets the icon its name calls for, on the same glossy plate as the landing page; names that
- * match nothing borrow the icon of the category they were opened from. See {@link CategoryIcons}.
+ * gets the icon its name calls for, drawn like the landing page icons (one colour, one plate);
+ * names that match nothing borrow the icon of the category they were opened from. See
+ * {@link CategoryIcons}.
  *
  * Created by SIM on 7/24/2017.
  */
 public class HomeSubCategoriesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    /** Plate behind a server thumbnail, so an arbitrary picture stays visible on the white dialog. */
-    private static final int THUMBNAIL_PLATE = 0xFFEEF1F5;
-
     private final List<HomeSubCategories> datas;
     private final Context context;
     private final CategoryIcons.Style parentStyle;
-    private final int plateSize;
+    private final ColorStateList iconTint;
 
     public HomeSubCategoriesAdapter(List<HomeSubCategories> datas, Context context) {
         this(datas, context, null);
@@ -45,7 +42,7 @@ public class HomeSubCategoriesAdapter extends RecyclerView.Adapter<RecyclerView.
         this.datas = datas;
         this.context = context;
         this.parentStyle = parentStyle;
-        this.plateSize = context.getResources().getDimensionPixelSize(R.dimen._42sdp);
+        this.iconTint = ColorStateList.valueOf(ContextCompat.getColor(context, R.color.sub_icon));
     }
 
     @Override
@@ -67,7 +64,6 @@ public class HomeSubCategoriesAdapter extends RecyclerView.Adapter<RecyclerView.
 
         if (style == CategoryIcons.DEFAULT && HomeCategoriesAdapter.hasRemoteIcon(datas.get(position).getImage())) {
             // Nothing matched and there is no parent to borrow from: use the uploaded thumbnail.
-            CategoryIcons.applyPlate(holder.plate, CategoryIcons.flatPlate(THUMBNAIL_PLATE, plateSize), Color.BLACK);
             holder.pic.setImageTintList(null);
             Picasso.get()
                     .load(datas.get(position).getImage())
@@ -78,9 +74,7 @@ public class HomeSubCategoriesAdapter extends RecyclerView.Adapter<RecyclerView.
             return;
         }
 
-        int accent = CategoryIcons.accent(context, style);
-        CategoryIcons.applyPlate(holder.plate, CategoryIcons.glossyPlate(accent, plateSize), accent);
-        holder.pic.setImageTintList(ColorStateList.valueOf(Color.WHITE));
+        holder.pic.setImageTintList(iconTint);
         holder.pic.setImageResource(style.icon);
     }
 
@@ -93,14 +87,12 @@ public class HomeSubCategoriesAdapter extends RecyclerView.Adapter<RecyclerView.
 
         final ImageView pic;
         final MyTextView text;
-        final FrameLayout plate;
 
         CellFeedViewHolder(View view) {
             super(view);
 
             pic = (ImageView) view.findViewById(R.id.homeCategoriesImage);
             text = (MyTextView) view.findViewById(R.id.homeCategoriesName);
-            plate = (FrameLayout) view.findViewById(R.id.homeCategoriesIconPlate);
         }
     }
 }

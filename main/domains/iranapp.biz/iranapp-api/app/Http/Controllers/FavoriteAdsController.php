@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Ads;
 use App\Models\AdsPhoto;
 use App\Models\FavoriteAds;
 use App\Libraries\jdf;
@@ -65,6 +66,7 @@ class FavoriteAdsController extends Controller
                 $photos[$index]->file_name = URL::to('/ads_photo') . '/' . $photo->file_name;
             });
             $favAdsCollection[$adIndex]->photos = $photos;
+            $favAdsCollection[$adIndex]->video_url = Ads::videoUrl($ad->video);
             $favAdsCollection[$adIndex]->created_at = jdf::jdate('j F Y' , Carbon::createFromFormat('Y-m-d H:i:s' , $ad->created_at)->getTimestamp());
             $favAdsCollection[$adIndex]->updated_at = jdf::jdate('j F Y' , Carbon::createFromFormat('Y-m-d H:i:s' , $ad->updated_at)->getTimestamp());
             $favAdsCollection[$adIndex]->valid_since = jdf::jdate('j F Y' , Carbon::createFromFormat('Y-m-d' , $ad->valid_since)->getTimestamp());

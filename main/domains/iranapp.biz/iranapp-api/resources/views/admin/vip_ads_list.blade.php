@@ -101,7 +101,7 @@
              aria-labelledby="myModalLabel"
              aria-hidden="true">
             @php
-                $plan = \App\AdsPlan::find($ad->ads_plan_id)->first();
+                $plan = \App\Models\AdsPlan::find($ad->ads_plan_id)->first();
             @endphp
             <div class="modal-dialog">
                 <div class="modal-content">

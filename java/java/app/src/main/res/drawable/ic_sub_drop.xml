@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- Line icon (24 grid, 1.6 stroke, round caps). Tinted at runtime. -->
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
     android:width="24dp"
     android:height="24dp"
     android:viewportWidth="24"
     android:viewportHeight="24">
     <path
-        android:fillColor="#FF757575"
-        android:pathData="M12,2.5c-3,4 -6.5,7.8 -6.5,11.5 0,3.59 2.91,6.5 6.5,6.5s6.5,-2.91 6.5,-6.5c0,-3.7 -3.5,-7.5 -6.5,-11.5z" />
+        android:fillColor="#00000000"
+        android:strokeColor="#FF757575"
+        android:strokeWidth="1.6"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:pathData="M12,2.69 l5.66,5.66 a8,8 0 1,1 -11.31,0 z" />
 </vector>

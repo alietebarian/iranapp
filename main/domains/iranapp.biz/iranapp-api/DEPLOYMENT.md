@@ -32,7 +32,21 @@
 تا وقتی این کار انجام نشود اپ اندروید مجبور است روی HTTP بدون رمزنگاری کار کند،
 یعنی رمز عبور و توکن کاربران رمزنگاری‌نشده منتقل می‌شود.
 
-### ۳. حذف فایل افشاکننده (فوری)
+### ۳. محدودیت حجم آپلود (برای ویدیو آگهی)
+کد تا ۱۰۰ مگابایت ویدیو می‌پذیرد، ولی PHP معمولاً خیلی کمتر اجازه می‌دهد. در cPanel →
+**MultiPHP INI Editor** این مقادیر را ست کن:
+
+```
+upload_max_filesize = 100M
+post_max_size = 110M
+max_execution_time = 300
+max_input_time = 300
+```
+
+صفحه‌ی «تصاویر و ویدیو آگهی» در پنل ادمین سقف واقعی (کمترین این مقادیر) را نشان می‌دهد و
+فایل بزرگ‌تر را قبل از آپلود رد می‌کند.
+
+### ۴. حذف فایل افشاکننده (فوری)
 فایل `public_html/i.php` یک `phpinfo()` عمومی است و کل پیکربندی سرور را نشان می‌دهد.
 همین حالا حذفش کن.
 
@@ -95,6 +109,12 @@ storage/app/firebase/service-account.json
 php artisan migrate --path=database/migrations/*_create_personal_access_tokens_table.php
 ```
 
+قابلیت ویدیو آگهی هم یک ستون جدید (`ads.video`) لازم دارد:
+
+```bash
+php artisan migrate --path=database/migrations/2026_09_12_120000_add_video_to_ads_table.php
+```
+
 > برای نصب روی دیتابیس **خالی**، `php artisan migrate` کل ۴۷ جدول را می‌سازد.
 > این قابلیت در پروژه‌ی قدیمی وجود نداشت.
 
@@ -103,7 +123,8 @@ php artisan migrate --path=database/migrations/*_create_personal_access_tokens_t
 مسیر داخل آن را به `iranapp-api/` تغییر بده (**از فایل فعلی حتماً بک‌آپ بگیر**).
 
 پوشه‌های عکس (`ads_photo`, `news_photo`, `vip_ads_photo`) در `public_html` بمانند —
-کد همان مسیرها را استفاده می‌کند.
+کد همان مسیرها را استفاده می‌کند. ویدیوهای آگهی کنار آن‌ها در `ads_video` ذخیره می‌شوند؛
+این پوشه با اولین آپلود خودکار ساخته می‌شود، فقط باید برای PHP قابل نوشتن باشد.
 
 ### ۶. بهینه‌سازی برای production
 ```bash

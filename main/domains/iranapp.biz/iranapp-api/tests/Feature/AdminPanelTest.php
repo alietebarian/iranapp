@@ -4,7 +4,9 @@ namespace Tests\Feature;
 
 use App\Models\Admin;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use PhpOffice\PhpSpreadsheet\IOFactory;
 use PHPUnit\Framework\Attributes\DataProvider;
 use Tests\TestCase;
 
@@ -81,6 +83,7 @@ class AdminPanelTest extends TestCase
     {
         return [
             'ads list' => ['/admin/ads/list'],
+            'ads create' => ['/admin/ads/create'],
             'news' => ['/admin/news'],
             'categories' => ['/admin/categories'],
             'provinces' => ['/admin/provinces'],
@@ -98,5 +101,48 @@ class AdminPanelTest extends TestCase
         $admin = $this->makeAdmin();
 
         $this->actingAs($admin, 'admin')->get($uri)->assertOk();
+    }
+
+    public function test_user_mobiles_page_renders(): void
+    {
+        $admin = $this->makeAdmin();
+
+        $this->actingAs($admin, 'admin')
+            ->get(route('showUserMobileNumbersBank'))
+            ->assertOk()
+            ->assertSee(route('ExportUserMobilesInExcelFormat'), false);
+    }
+
+    /**
+     * Writes a real .xlsx through PhpSpreadsheet and reads it back, so a broken writer, a missing
+     * extension, mangled Persian text or a mobile number losing its leading zero all fail here.
+     */
+    public function test_user_mobiles_excel_export_downloads_a_real_xlsx(): void
+    {
+        $admin = $this->makeAdmin();
+        DB::table('users')->insert([
+            ['first_name' => 'علی', 'last_name' => 'رضایی', 'mobile' => '09121111111', 'password' => 'x', 'created_at' => now(), 'updated_at' => now()],
+            ['first_name' => 'مریم', 'last_name' => 'احمدی', 'mobile' => '09352222222', 'password' => 'x', 'created_at' => now(), 'updated_at' => now()],
+        ]);
+
+        $response = $this->actingAs($admin, 'admin')
+            ->get(route('ExportUserMobilesInExcelFormat'))
+            ->assertOk()
+            ->assertDownload('user_mobiles.xlsx');
+
+        $rows = IOFactory::load($response->baseResponse->getFile()->getPathname())
+            ->getActiveSheet()
+            ->toArray();
+
+        $this->assertSame([
+            ['نام', 'نام خانوادگی', 'تلفن همراه'],
+            ['علی', 'رضایی', '09121111111'],
+            ['مریم', 'احمدی', '09352222222'],
+        ], $rows);
+    }
+
+    public function test_user_mobiles_excel_export_is_closed_to_guests(): void
+    {
+        $this->get(route('ExportUserMobilesInExcelFormat'))->assertRedirect();
     }
 }

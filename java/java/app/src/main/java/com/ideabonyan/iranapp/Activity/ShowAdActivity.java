@@ -49,6 +49,13 @@ import com.android.volley.Request;
 import com.android.volley.VolleyError;
 import com.google.android.material.tabs.TabLayout;
 import androidx.viewpager2.widget.ViewPager2;
+import androidx.annotation.OptIn;
+import androidx.media3.common.MediaItem;
+import androidx.media3.common.PlaybackException;
+import androidx.media3.common.Player;
+import androidx.media3.common.util.UnstableApi;
+import androidx.media3.exoplayer.ExoPlayer;
+import androidx.media3.ui.PlayerView;
 import com.ideabonyan.iranapp.Utils.ImageSliderAdapter;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.PendingResult;
@@ -141,6 +148,12 @@ public class ShowAdActivity extends AppCompatActivity implements UpdateAd, OnMap
     GoogleMap gmap;
     private SimpleLocation location;
     private Toolbar toolbar;
+    static final int REQUEST_FULLSCREEN_VIDEO = 301;
+    CardView videoCard;
+    PlayerView videoPlayerView;
+    ExoPlayer videoPlayer;
+    long videoPosition = 0;
+    boolean videoPlayWhenReady = false;
 
     static public void bindData(RemoveAd rremoveAd) {
         removeAd = rremoveAd;
@@ -257,6 +270,19 @@ public class ShowAdActivity extends AppCompatActivity implements UpdateAd, OnMap
         location.endUpdates();
     }
 
+    // The player only exists while the screen is visible, so a hidden ad never holds a decoder.
+    @Override
+    protected void onStart() {
+        super.onStart();
+        initializeVideoPlayer();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        releaseVideoPlayer();
+    }
+
     private void initializer() {
         location = new SimpleLocation(ShowAdActivity.this);
 
@@ -309,6 +335,8 @@ public class ShowAdActivity extends AppCompatActivity implements UpdateAd, OnMap
         pendingIndicator = (TextView) findViewById(R.id.showAdPendingMessage);
         ownerArea = (CardView) findViewById(R.id.showAdAdOwnerArea);
         imageArea = (RelativeLayout) findViewById(R.id.showAdImageArea);
+        videoCard = findViewById(R.id.showAdVideoCard);
+        videoPlayerView = findViewById(R.id.showAdVideoPlayer);
     }
 
     private void smallStuff() {
@@ -869,6 +897,7 @@ public class ShowAdActivity extends AppCompatActivity implements UpdateAd, OnMap
             else ownerArea.setVisibility(View.GONE);
 
             runImageSlider();
+            setupVideo();
         } catch (Exception e) {
             e.printStackTrace();
             finish();
@@ -893,6 +922,56 @@ public class ShowAdActivity extends AppCompatActivity implements UpdateAd, OnMap
         }
 
         ImageSliderAdapter.attach(sliderLayout, pagerIndicator, sliderAdapter);
+    }
+
+    @OptIn(markerClass = UnstableApi.class)
+    private void setupVideo() {
+        if (!ad.hasVideo()) {
+            videoCard.setVisibility(View.GONE);
+            return;
+        }
+        videoCard.setVisibility(View.VISIBLE);
+        videoPlayerView.setFullscreenButtonClickListener(isFullScreen -> openFullscreenVideo());
+    }
+
+    private void initializeVideoPlayer() {
+        if (ad == null || !ad.hasVideo() || videoPlayer != null) return;
+
+        videoPlayer = new ExoPlayer.Builder(this).build();
+        videoPlayer.addListener(new Player.Listener() {
+            @Override
+            public void onPlayerError(@NonNull PlaybackException error) {
+                ShowToast.failure("پخش ویدیو امکان پذیر نیست", ShowAdActivity.this);
+            }
+        });
+        videoPlayerView.setPlayer(videoPlayer);
+        videoPlayer.setMediaItem(MediaItem.fromUri(ad.getVideo_url()), videoPosition);
+        videoPlayer.setPlayWhenReady(videoPlayWhenReady);
+        // Left idle until the viewer presses play (the controller prepares an idle player
+        // itself), so just opening an ad downloads none of the video.
+        if (videoPlayWhenReady || videoPosition > 0) videoPlayer.prepare();
+    }
+
+    private void releaseVideoPlayer() {
+        if (videoPlayer == null) return;
+
+        videoPosition = videoPlayer.getCurrentPosition();
+        videoPlayWhenReady = videoPlayer.getPlayWhenReady();
+        videoPlayerView.setPlayer(null);
+        videoPlayer.release();
+        videoPlayer = null;
+    }
+
+    private void openFullscreenVideo() {
+        long position = videoPosition;
+        if (videoPlayer != null) {
+            position = videoPlayer.getCurrentPosition();
+            videoPlayer.pause();
+        }
+        Intent intent = new Intent(this, VideoPlayerActivity.class);
+        intent.putExtra(VideoPlayerActivity.EXTRA_URL, ad.getVideo_url());
+        intent.putExtra(VideoPlayerActivity.EXTRA_POSITION, position);
+        startActivityForResult(intent, REQUEST_FULLSCREEN_VIDEO);
     }
 
     @Override
@@ -1132,6 +1211,14 @@ public class ShowAdActivity extends AppCompatActivity implements UpdateAd, OnMap
                     default: {
                         break;
                     }
+                }
+                break;
+            case REQUEST_FULLSCREEN_VIDEO:
+                // onStart has already rebuilt the player at the old position; continue from
+                // wherever fullscreen playback stopped.
+                if (data != null) {
+                    videoPosition = data.getLongExtra(VideoPlayerActivity.EXTRA_POSITION, videoPosition);
+                    if (videoPlayer != null) videoPlayer.seekTo(videoPosition);
                 }
                 break;
         }

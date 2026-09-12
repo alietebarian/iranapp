@@ -184,6 +184,7 @@ public class NotificationDialog extends DialogFragment implements Get_Insert_Edi
                 ad.setEmail(jsonObject.getString("email"));
                 List<PhotosData> photosData = PhotosData.Import(jsonObject.getJSONArray("photos"));
                 ad.setPhotos(photosData);
+                ad.setVideo_url(AdsToBeListed.parseVideoUrl(jsonObject));
 
                 TransitionManager.beginDelayedTransition(rootView);
                 progressBar.setVisibility(View.GONE);

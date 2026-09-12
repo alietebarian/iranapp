@@ -355,6 +355,45 @@
                 </RelativeLayout>
 
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/showAdVideoCard"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="15dp"
+                    android:visibility="gone"
+                    app:cardElevation="3dp"
+                    app:contentPadding="4dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <com.ideabonyan.iranapp.Components.MyTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="right"
+                            android:padding="5dp"
+                            android:text="ویدیو آگهی"
+                            android:textColor="#444" />
+
+                        <!-- ltr so the time bar runs left to right even though the app is RTL;
+                             texture_view so the card's rounded corners clip the video. -->
+                        <androidx.media3.ui.PlayerView
+                            android:id="@+id/showAdVideoPlayer"
+                            android:layout_width="match_parent"
+                            android:layout_height="220dp"
+                            android:background="#000"
+                            android:layoutDirection="ltr"
+                            app:resize_mode="fit"
+                            app:show_buffering="when_playing"
+                            app:surface_type="texture_view" />
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"

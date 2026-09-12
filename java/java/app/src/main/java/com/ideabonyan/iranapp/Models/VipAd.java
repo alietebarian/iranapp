@@ -49,9 +49,14 @@ public class VipAd {
     static String[] photos_created_at;
     static String[] photos_updated_at;
     static List<PhotosData> photos;
+    static String video_url;
 
     public static List<PhotosData> getPhotos() {
         return photos;
+    }
+
+    public static String getVideo_url() {
+        return video_url;
     }
 
 
@@ -189,6 +194,8 @@ public class VipAd {
 
         try {
 
+            // First, so a later getString failure can't leave the previous VIP ad's video behind.
+            vipAd.video_url = AdsToBeListed.parseVideoUrl(jsonObject);
             vipAd.vip_ads_id = jsonObject.getString("vip_ads_id");
             vipAd.vip_ads_photo = jsonObject.getString("vip_ads_photo");
             vipAd.id = jsonObject.getString("id");
@@ -253,6 +260,8 @@ public class VipAd {
 
         try {
 
+            // First, so a later getString failure can't leave the previous VIP ad's video behind.
+            vipAd.video_url = AdsToBeListed.parseVideoUrl(jsonObject);
             vipAd.vip_ads_id = jsonObject.getString("vip_ads_id");
             vipAd.vip_ads_photo = jsonObject.getString("vip_ads_photo");
             vipAd.id = jsonObject.getString("id");

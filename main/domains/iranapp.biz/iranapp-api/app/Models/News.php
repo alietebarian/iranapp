@@ -25,7 +25,7 @@ class News extends Model
     }
 
     public function photo(){
-        return $this->hasMany('App\NewsPhoto');
+        return $this->hasMany(NewsPhoto::class);
     }
 
     public function setCreatedAtFaAttribute($value){

@@ -14,10 +14,10 @@ class City extends Model
     public $timestamps = false;
 
     public function province(){
-        return $this->belongsTo('App\Province');
+        return $this->belongsTo(Province::class);
     }
 
     public function region(){
-        return $this->hasMany('App\Region');
+        return $this->hasMany(Region::class);
     }
 }

@@ -100,6 +100,8 @@ public class AdListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
             holder.rvAdListDiscountLayout.setVisibility(View.GONE);
         }
 
+        holder.rvAdListVideoBadge.setVisibility(datas.get(position).hasVideo() ? View.VISIBLE : View.GONE);
+
         ///put image
         if (datas.get(position).getPhotos() != null && datas.get(position).getPhotos().size() > 0) {
             if (datas.get(position).getPhotos().get(0) != null) {
@@ -134,7 +136,7 @@ public class AdListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 
     private class CellFeedViewHolder extends RecyclerView.ViewHolder {
         LinearLayout lin_phone_number;
-        ImageView rvAdListImage, pendingIdentifier;
+        ImageView rvAdListImage, pendingIdentifier, rvAdListVideoBadge;
         RelativeLayout rvAdListDiscountLayout;
         MyTextView rvAdListDiscountText, rvAdListTitle, rvAdListAddress, rvAdListNumber;
 
@@ -149,6 +151,7 @@ public class AdListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
             rvAdListAddress = (MyTextView) view.findViewById(R.id.rvAdListAddress);
             rvAdListNumber = (MyTextView) view.findViewById(R.id.rvAdListNumber);
             pendingIdentifier = (ImageView) view.findViewById(R.id.rvAdListPendingIdentifier);
+            rvAdListVideoBadge = view.findViewById(R.id.rvAdListVideoBadge);
         }
     }
 }

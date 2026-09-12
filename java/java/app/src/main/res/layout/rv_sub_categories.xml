@@ -25,16 +25,15 @@
             android:padding="3dp">
 
             <FrameLayout
-                android:id="@+id/homeCategoriesIconPlate"
                 android:layout_width="@dimen/_42sdp"
                 android:layout_height="@dimen/_42sdp"
                 android:layout_marginTop="4dp"
-                android:elevation="5dp">
+                android:background="@drawable/bg_icon_plate_light">
 
                 <ImageView
                     android:id="@+id/homeCategoriesImage"
-                    android:layout_width="@dimen/_22sdp"
-                    android:layout_height="@dimen/_22sdp"
+                    android:layout_width="@dimen/_20sdp"
+                    android:layout_height="@dimen/_20sdp"
                     android:layout_gravity="center"
                     android:contentDescription="@null"
                     android:scaleType="fitCenter" />

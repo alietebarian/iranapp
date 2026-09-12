@@ -12,6 +12,6 @@ class Province extends Model
         'name'
     ];
     public function city(){
-        return $this->hasMany('App\City');
+        return $this->hasMany(City::class);
     }
 }

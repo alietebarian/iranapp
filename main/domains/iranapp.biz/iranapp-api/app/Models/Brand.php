@@ -10,6 +10,6 @@ class Brand extends Model
     protected $table = 'brand';
 
     public function models(){
-        return $this->hasMany(\App\CarModel::class);
+        return $this->hasMany(CarModel::class);
     }
 }

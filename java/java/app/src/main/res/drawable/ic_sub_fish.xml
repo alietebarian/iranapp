@@ -1,14 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- Line icon (24 grid, 1.6 stroke, round caps). Tinted at runtime. -->
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
     android:width="24dp"
     android:height="24dp"
     android:viewportWidth="24"
     android:viewportHeight="24">
     <path
-        android:fillColor="#FF757575"
-        android:fillType="evenOdd"
-        android:pathData="M1.5,12c2,-3.7 5.2,-6 9,-6 3.8,0 6.3,2.2 7.5,6 -1.2,3.8 -3.7,6 -7.5,6 -3.8,0 -7,-2.3 -9,-6zM6,10a1,1 0 1,0 0,2a1,1 0 1,0 0,-2z" />
+        android:fillColor="#00000000"
+        android:strokeColor="#FF757575"
+        android:strokeWidth="1.6"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:pathData="M7,12 c1.5,-3.6 4.5,-6 8,-6 s6,2.4 7,6 c-1,3.6 -3.5,6 -7,6 s-6.5,-2.4 -8,-6 z" />
     <path
-        android:fillColor="#FF757575"
-        android:pathData="M17,12l5,-5v10z" />
+        android:fillColor="#00000000"
+        android:strokeColor="#FF757575"
+        android:strokeWidth="1.6"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:pathData="M7,12 L2.5,8 v8 z" />
+    <path
+        android:fillColor="#00000000"
+        android:strokeColor="#FF757575"
+        android:strokeWidth="1.6"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:pathData="M17.5,11 h0.01" />
+    <path
+        android:fillColor="#00000000"
+        android:strokeColor="#FF757575"
+        android:strokeWidth="1.6"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:pathData="M13,9 c-1,1.8 -1,4.2 0,6" />
 </vector>

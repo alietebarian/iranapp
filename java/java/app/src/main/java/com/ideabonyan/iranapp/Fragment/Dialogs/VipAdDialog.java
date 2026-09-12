@@ -153,6 +153,7 @@ public class VipAdDialog extends DialogFragment {
                 ad.setStatus(vipAd.getStatus());
                 ad.setAds_plan_id(vipAd.getAds_plan_id());
                 ad.setPhotos(vipAd.getPhotos());
+                ad.setVideo_url(vipAd.getVideo_url());
                 ad.setUser_id(vipAd.getUser_id());
                 ad.setMax_number_of_update(vipAd.getMax_number_of_update());
 

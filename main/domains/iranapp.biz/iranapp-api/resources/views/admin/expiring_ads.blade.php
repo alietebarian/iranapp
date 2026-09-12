@@ -113,9 +113,9 @@
                                                     <a href="{{ route('showAdsPhotoById' , $ad->id) }}"
                                                        class="text-primary">تصاویر آگهی</a><br>
                                                     @php
-                                                        $vipExists = \App\VipAds::where('ads_id' , $ad->id)->count();
+                                                        $vipExists = \App\Models\VipAds::where('ads_id' , $ad->id)->count();
                                                     if($vipExists){
-                                                    $vip = \App\VipAds::where('ads_id' , $ad->id)->first();
+                                                    $vip = \App\Models\VipAds::where('ads_id' , $ad->id)->first();
                                                     }
                                                     @endphp
                                                     @if($vipExists)
@@ -193,7 +193,7 @@
                  aria-labelledby="myModalLabel"
                  aria-hidden="true">
                 @php
-                    $plan = \App\AdsPlan::find($ad->ads_plan_id)->first();
+                    $plan = \App\Models\AdsPlan::find($ad->ads_plan_id)->first();
                 @endphp
                 <div class="modal-dialog">
                     <div class="modal-content">

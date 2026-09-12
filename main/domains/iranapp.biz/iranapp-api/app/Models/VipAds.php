@@ -88,6 +88,7 @@ class VipAds extends Model
             if($input->vip_ads_photo){
                 $input->vip_ads_photo = URL::to('/vip_ads_photo') . '/' . $input->vip_ads_photo ;
             }
+            $input->video_url = Ads::videoUrl($input->video);
             $input->created_at = jdf::jdate('j F Y' , Carbon::createFromFormat('Y-m-d H:i:s' , $input->created_at)->getTimestamp());
             $input->updated_at = jdf::jdate('j F Y' , Carbon::createFromFormat('Y-m-d H:i:s' , $input->updated_at)->getTimestamp());
             $input->valid_since = jdf::jdate('j F Y' , Carbon::createFromFormat('Y-m-d' , $input->valid_since)->getTimestamp());
@@ -115,6 +116,6 @@ class VipAds extends Model
     }
 
     public function ads(){
-        return $this->belongsTo('App\Ads');
+        return $this->belongsTo(Ads::class);
     }
 }

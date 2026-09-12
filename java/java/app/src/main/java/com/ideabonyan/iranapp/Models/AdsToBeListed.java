@@ -51,6 +51,7 @@ public class AdsToBeListed implements Serializable{
     String user_id;
     String max_number_of_update;
     List<PhotosData> photos;
+    String video_url;
 
 
     static public List<AdsToBeListed> Import(JSONObject jsonObject) throws JSONException {
@@ -111,6 +112,7 @@ public class AdsToBeListed implements Serializable{
             adsToBeListed.max_number_of_update = json.getString("max_number_of_update");
 
              adsToBeListed.photos = PhotosData.Import(json.getJSONArray("photos"));
+            adsToBeListed.video_url = parseVideoUrl(json);
 
             adsToBeListedList.add(adsToBeListed);
         }
@@ -421,6 +423,25 @@ public class AdsToBeListed implements Serializable{
 
     public void setAds_owner_name(String ads_owner_name) {
         this.ads_owner_name = ads_owner_name;
+    }
+
+    /** A missing key (older server) and JSON null both mean the ad has no video. */
+    public static String parseVideoUrl(JSONObject json) {
+        if (!json.has("video_url") || json.isNull("video_url")) return null;
+        String url = json.optString("video_url", "");
+        return url.isEmpty() ? null : url;
+    }
+
+    public String getVideo_url() {
+        return video_url;
+    }
+
+    public void setVideo_url(String video_url) {
+        this.video_url = video_url;
+    }
+
+    public boolean hasVideo() {
+        return video_url != null && !video_url.isEmpty();
     }
 }
 

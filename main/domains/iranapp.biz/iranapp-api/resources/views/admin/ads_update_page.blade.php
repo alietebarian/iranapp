@@ -58,7 +58,7 @@
                                 <script>
                                     $(document).ready(function () {
                                                 @php
-                                                    $province = \App\City::find($ads->city_id)->province;
+                                                    $province = \App\Models\City::find($ads->city_id)->province;
                                                 @endphp
                                         var provinceId = {{ $province->id }};
                                         $.ajax({
@@ -131,7 +131,7 @@
                             <script>
                                 $(document).ready(function () {
                                             @php
-                                                $category = \App\SubCategory::find($ads->sub_category_id)->category;
+                                                $category = \App\Models\SubCategory::find($ads->sub_category_id)->category;
                                             @endphp
                                     var categoryId = {{ $category->id }};
                                     $.ajax({
@@ -572,6 +572,23 @@
                                         </div>
                                     @endforeach
                                 </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <h1 style="font-size:14px;">ویدیو آگهی</h1>
+                                @if($video_url)
+                                    <video src="{{ $video_url }}" controls preload="metadata"
+                                           style="max-width:480px;width:100%;background:#000;"></video>
+                                    <br>
+                                    <a href="{{ route('deleteAdsVideoInAdminPanel' , $ads->id) }}"
+                                       onclick="return confirm('ویدیو این آگهی حذف شود؟');"
+                                       class="btn btn-danger btn-xs">حذف ویدیو</a>
+                                @else
+                                    <span class="text-muted">این آگهی ویدیو ندارد.</span>
+                                @endif
+                                <a href="{{ route('showAdsPhotoById' , $ads->id) }}"
+                                   class="btn btn-default btn-xs">{{ $video_url ? 'جایگزینی ویدیو' : 'افزودن ویدیو' }}</a>
                             </div>
                         </div>
                         <div class="row">

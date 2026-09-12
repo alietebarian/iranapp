@@ -107,6 +107,12 @@
         <activity
             android:name=".Activity.ShowAdActivity"
             android:screenOrientation="portrait" />
+        <!-- Handles rotation itself so turning the phone doesn't restart the video. -->
+        <activity
+            android:name=".Activity.VideoPlayerActivity"
+            android:configChanges="orientation|screenSize|screenLayout|smallestScreenSize|keyboardHidden"
+            android:screenOrientation="sensor"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
             android:name=".Activity.ShowNews"
             android:screenOrientation="portrait" />
