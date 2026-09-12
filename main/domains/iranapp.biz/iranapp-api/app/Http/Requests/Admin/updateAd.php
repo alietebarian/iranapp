@@ -2,11 +2,14 @@
 
 namespace App\Http\Requests\admin;
 
+use App\Http\Requests\Admin\Concerns\NormalizesSocialLinks;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
 
 class updateAd extends FormRequest
 {
+    use NormalizesSocialLinks;
+
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -39,8 +42,7 @@ class updateAd extends FormRequest
             'link' => 'nullable|string|max:500',
             'discount' => 'required_if:type,discount|max:300',
             'working_time' => 'nullable|string|max:500',
-            'telegram' => 'nullable|string',
-            'instagram' => 'nullable|string',
+            ...$this->socialLinkRules(),
             'notes' => 'nullable|string',
             'status' => 'required|in:pending,approved,rejected',
             'ads_plan_id' => 'required|exists:ads_plan,id',
@@ -72,6 +74,7 @@ class updateAd extends FormRequest
             'discount.required_if' => 'وارد کردن میزان تخفیف الزامی است.',
             'discount.max' => 'میزان تخفیف طولانی تر از حد مجاز است.',
             'working_time.max' => 'ساعت کاری طولانی تر از حد مجاز است.',
+            ...$this->socialLinkMessages(),
             'status.required' => 'انتخاب وضعیت آگهی الزامی است.',
             'status.in' => 'وضعیت آگهی تنها می تواند یکی از مقادیر رد شده، تایید شده یا در انتظار تایید را داشته باشد.',
             'ads_plan_id.required' => 'انتخاب پلن آگهی الزامی است.',
@@ -79,27 +82,5 @@ class updateAd extends FormRequest
             'user_id.required' => 'انتخاب کاربر الزامی است.',
             'user_id.exists' => 'کاربر انتخاب شده نامعتبر است.'
         ];
-    }
-
-    public function validate()
-    {
-        parent::validate();
-
-        $this->validateUrls();
-    }
-
-    public function validateUrls()
-    {
-        $arr = [];
-        if ($this->telegram) {
-            $arr['telegram'] = make_url_validate($this->telegram);
-        }
-        if ($this->instagram) {
-            $arr['instagram'] = make_url_validate($this->instagram);
-        }
-        if ($this->link) {
-            $arr['link'] = make_url_validate($this->link);
-        }
-        $this->request->add($arr);
     }
 }

@@ -257,7 +257,7 @@
                                 <div class="form-group">
                                     <label for="telegram">آدرس تلگرام:</label>
                                     <input type="text" value="{{ old('telegram') }}" name="telegram" id="telegram"
-                                           class="form-control">
+                                           class="form-control" placeholder="فقط آیدی، مثلاً iranapp یا @iranapp">
                                     @if($errors->has('telegram'))
                                         <b class="text-danger">{{ $errors->first('telegram') }}</b>
                                     @endif
@@ -267,7 +267,7 @@
                                 <div class="form-group">
                                     <label for="instagram">آدرس اینستاگرام:</label>
                                     <input type="text" value="{{ old('instagram') }}" name="instagram" id="instagram"
-                                           class="form-control">
+                                           class="form-control" placeholder="فقط آیدی، مثلاً iranapp یا @iranapp">
                                     @if($errors->has('instagram'))
                                         <b class="text-danger">{{ $errors->first('instagram') }}</b>
                                     @endif
@@ -496,12 +496,29 @@
             $('.js-example-basic-multiple').select2();
         });
 
+        // Search only once the admin pauses typing (delay) and has typed at least as many characters
+        // as the server requires; select2 also aborts a still-running request when a new one starts.
         $('#user').select2({
             placeholder: 'نام کاربر را انتخاب کنید',
+            minimumInputLength: 3,
+            language: {
+                inputTooShort: function (args) {
+                    return 'حداقل ' + (args.minimum - args.input.length) + ' حرف دیگر وارد کنید';
+                },
+                searching: function () {
+                    return 'در حال جستجو...';
+                },
+                noResults: function () {
+                    return 'کاربری یافت نشد';
+                },
+                errorLoading: function () {
+                    return 'خطا در دریافت نتایج';
+                }
+            },
             ajax: {
                 url: '{{ url()->to('/admin/ajax/users') }}',
                 dataType: 'json',
-                delay: 250,
+                delay: 600,
                 data: function (params) {
                     var query = {
                         q: params.term,
@@ -509,7 +526,6 @@
                     return query;
                 },
                 processResults: function (data) {
-                    console.log(data);
                     return {
 
                         results: $.map(data, function (item) {

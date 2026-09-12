@@ -352,14 +352,29 @@ class UserController extends Controller {
 		return response()->json( $users );
 	}
 
+	/**
+	 * Admin user picker (select2). Each word becomes a required prefix term ("+علی* +رضا*") so a
+	 * partially typed name matches; full-text operators are stripped and the term is bound, never
+	 * concatenated. Only the fields the picker shows are selected, so the User model's walletSum
+	 * append (one extra query per user) is not triggered.
+	 */
 	public function getUsersListViaAjax( Request $request ) {
-		$this->validate( $request , [
-			'q' => 'required|string|min:3'
+		$request->validate( [
+			'q' => 'required|string|min:3|max:100'
 		] );
-		$list = User::whereRaw( '(
-            MATCH(users.first_name , users.last_name) AGAINST("' . $request->q . '")
-        )' )
-		            ->get();
+
+		$terms = preg_split( '/\s+/u' , preg_replace( '/[+\-<>()~*"@]+/u' , ' ' , $request->q ) , -1 , PREG_SPLIT_NO_EMPTY );
+		if ( empty( $terms ) ) {
+			return response()->json( [] );
+		}
+		$search = implode( ' ' , array_map( fn ( $term ) => '+' . $term . '*' , $terms ) );
+
+		$list = DB::table( 'users' )
+		          ->select( 'id' , 'first_name' , 'last_name' )
+		          ->whereRaw( 'MATCH(first_name, last_name) AGAINST(? IN BOOLEAN MODE)' , [ $search ] )
+		          ->orderBy( 'first_name' )
+		          ->limit( 20 )
+		          ->get();
 
 		return response()->json( $list );
 	}

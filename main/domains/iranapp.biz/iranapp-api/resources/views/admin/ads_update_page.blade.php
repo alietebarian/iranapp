@@ -305,7 +305,7 @@
                                 <div class="form-group">
                                     <label for="telegram">آدرس تلگرام:</label>
                                     <input type="text" value="{{ $ads->telegram }}" name="telegram" id="telegram"
-                                           class="form-control">
+                                           class="form-control" placeholder="فقط آیدی، مثلاً iranapp یا @iranapp">
                                     @if($errors->has('telegram'))
                                         <b class="text-danger">{{ $errors->first('telegram') }}</b>
                                     @endif
@@ -315,7 +315,7 @@
                                 <div class="form-group">
                                     <label for="instagram">آدرس اینستاگرام:</label>
                                     <input type="text" value="{{ $ads->instagram }}" name="instagram" id="instagram"
-                                           class="form-control">
+                                           class="form-control" placeholder="فقط آیدی، مثلاً iranapp یا @iranapp">
                                     @if($errors->has('instagram'))
                                         <b class="text-danger">{{ $errors->first('instagram') }}</b>
                                     @endif
