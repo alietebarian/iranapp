@@ -523,29 +523,9 @@ class AdsController extends Controller {
 		$ads->save();
 		$ads->userAds()->attach( $request->user_id );
 
+		// Sent after the redirect reaches the browser; see SendAdPushNotification.
 		if ( $request->has( 'send_notification' ) && ( $ads->status == 'approved' ) ) {
-//            $fcm_tokens = DB::table('users')->where('users.send_ads_notifications' , '=' , 1)->pluck('fcm_token')->toArray();
-			$fcm_tokens = DB::table( 'notification_setting' )->where( 'send_ads_notifications' , '=' , 1 )
-			                ->where( 'notification_setting.city_id' , '=' , $ads->city_id )
-			                ->pluck( 'fcm_token' )->toArray();
-			if ( count( $fcm_tokens ) > 0 ) {
-				$downstreamResponse = \App\Libraries\PrNotification::sendToTokens( $fcm_tokens , 'ایران اپ' , $ads->title , [ 'status' => '0' , 'content_id' => $ads->id ] );
-
-				$downstreamResponse->numberFailure();
-				$downstreamResponse->numberModification();
-				$downstreamResponse->numberSuccess();
-
-				$subCategory = SubCategory::find( $ads->sub_category_id );
-				$category    = $subCategory->category;
-
-				$notification                    = new Notification();
-				$notification->category_id       = $category->id;
-				$notification->msg_text          = $ads->title;
-				$notification->successfully_sent = $downstreamResponse->numberSuccess();
-				$notification->failures_on_send  = $downstreamResponse->numberFailure();
-				$notification->save();
-			}
-
+			\App\Jobs\SendAdPushNotification::dispatchAfterResponse( $ads->id );
 		}
 
 		$msg        = new \stdClass();
@@ -694,30 +674,9 @@ class AdsController extends Controller {
 		$ads->save();
 		$ads->userAds()->sync( $request->user_id );
 
+		// Sent after the redirect reaches the browser; see SendAdPushNotification.
 		if ( $request->has( 'send_notification' ) && ( $ads->status == 'approved' ) ) {
-//            $fcm_tokens = DB::table('users')->where('users.send_ads_notifications' , '=' , 1)->pluck('fcm_token')->toArray();
-			$fcm_tokens = DB::table( 'notification_setting' )
-			                ->where( 'send_ads_notifications' , '=' , 1 )
-			                ->where( 'notification_setting.city_id' , '=' , $ads->city_id )
-			                ->pluck( 'fcm_token' )->toArray();
-			if ( count( $fcm_tokens ) > 0 ) {
-				$downstreamResponse = \App\Libraries\PrNotification::sendToTokens( $fcm_tokens , 'ایران اپ' , $ads->title , [ 'status' => '0' , 'content_id' => $ads->id ] );
-
-				$downstreamResponse->numberFailure();
-				$downstreamResponse->numberModification();
-				$downstreamResponse->numberSuccess();
-
-				$subCategory = SubCategory::find( $ads->sub_category_id );
-				$category    = $subCategory->category;
-
-				$notification                    = new Notification();
-				$notification->category_id       = $category->id;
-				$notification->msg_text          = $ads->title;
-				$notification->successfully_sent = $downstreamResponse->numberSuccess();
-				$notification->failures_on_send  = $downstreamResponse->numberFailure();
-				$notification->save();
-			}
-
+			\App\Jobs\SendAdPushNotification::dispatchAfterResponse( $ads->id );
 		}
 
 		$msg        = new \stdClass();

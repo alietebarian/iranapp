@@ -99,7 +99,7 @@ class PrNotification
             $this->numberFailures = $report->failures()->count();
 
             // Tokens the device no longer owns should not be retried forever.
-            $stale = $report->unknownTokens() + $report->invalidTokens();
+            $stale = array_merge($report->unknownTokens(), $report->invalidTokens());
             if (! empty($stale)) {
                 User::whereIn('fcm_token', $stale)->update(['fcm_token' => null]);
             }
@@ -136,7 +136,7 @@ class PrNotification
             $messaging = app(Messaging::class);
             $report = $messaging->sendMulticast($message, $tokens);
 
-            $stale = $report->unknownTokens() + $report->invalidTokens();
+            $stale = array_merge($report->unknownTokens(), $report->invalidTokens());
             if (! empty($stale)) {
                 User::whereIn('fcm_token', $stale)->update(['fcm_token' => null]);
             }
