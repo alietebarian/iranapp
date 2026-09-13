@@ -33,6 +33,9 @@ public final class CategoryIcons {
      * "خدمات سفر" before the generic services row, "مواد غذایی" before restaurants.
      */
     private static final Style[] STYLES = {
+            // The company page tile the app adds to the landing page itself (WithDiscounts).
+            new Style(R.drawable.ic_cat_about,
+                    "دربارهما", "ارتباطباما", "تماسباما"),
             new Style(R.drawable.ic_sub_shield,
                     "بیمه"),
             new Style(R.drawable.ic_sub_building,

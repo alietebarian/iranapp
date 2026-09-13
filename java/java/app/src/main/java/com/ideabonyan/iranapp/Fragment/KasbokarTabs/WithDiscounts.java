@@ -1,6 +1,7 @@
 package com.ideabonyan.iranapp.Fragment.KasbokarTabs;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import androidx.transition.TransitionManager;
 import androidx.fragment.app.Fragment;
@@ -12,13 +13,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.ideabonyan.iranapp.Activity.PishkhanWebviewActivity;
 import com.ideabonyan.iranapp.Adapter.HomeCategoriesAdapter;
 import com.ideabonyan.iranapp.Fragment.Dialogs.CityPickerDialogFragment;
 import com.ideabonyan.iranapp.Fragment.Dialogs.SubcategoriesDialogFragment;
@@ -35,6 +36,7 @@ import com.ideabonyan.iranapp.Utils.VolleySingleton;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
@@ -45,6 +47,11 @@ import java.util.Map;
  */
 public class WithDiscounts extends Fragment implements Get_Insert_Edit_Data3, LocationChange {
 
+    /**
+     * Id of the tile the app adds to the grid itself: it opens the company page
+     * (StaticData.ABOUT_COMPANY) instead of a sub category dialog.
+     */
+    private static final String ABOUT_TILE_ID = "about";
 
     public WithDiscounts() {
     }
@@ -53,7 +60,7 @@ public class WithDiscounts extends Fragment implements Get_Insert_Edit_Data3, Lo
     RecyclerView categoriesRV;
     ProgressBar progressBar;
     ViewGroup rootView;
-    RelativeLayout listEmptyText, rvArea;
+    View listEmptyText, rvArea;
     LinearLayout installStatsCard;
     TextView installStatsTotal, installStatsMonth, installStatsToday;
 
@@ -75,6 +82,9 @@ public class WithDiscounts extends Fragment implements Get_Insert_Edit_Data3, Lo
 
         if (!userSessionManager.getCityInfo().equals("0")) {
             getData();
+        } else {
+            // No city chosen yet, so there are no categories to load.
+            showOnlyAboutTile();
         }
         getInstallStats();
 
@@ -86,12 +96,15 @@ public class WithDiscounts extends Fragment implements Get_Insert_Edit_Data3, Lo
         categoriesRV = (RecyclerView) view.findViewById(R.id.kasbokarDiscountsRV);
         progressBar = (ProgressBar) view.findViewById(R.id.kasbokarDiscountsProgressBar);
         rootView = (ViewGroup) view.findViewById(R.id.kasbokarDiscounts);
-        listEmptyText = (RelativeLayout) view.findViewById(R.id.kasbokarDiscountsListEmptyDialog);
-        rvArea = (RelativeLayout) view.findViewById(R.id.kasbokarDiscountsRvArea);
+        listEmptyText = view.findViewById(R.id.kasbokarDiscountsListEmptyDialog);
+        rvArea = view.findViewById(R.id.kasbokarDiscountsRvArea);
         installStatsCard = (LinearLayout) view.findViewById(R.id.installStatsCard);
         installStatsTotal = (TextView) view.findViewById(R.id.installStatsTotal);
         installStatsMonth = (TextView) view.findViewById(R.id.installStatsMonth);
         installStatsToday = (TextView) view.findViewById(R.id.installStatsToday);
+
+        // Registered once: it reads the current datas on every click.
+        recyclerViewOnClickListener();
     }
 
 
@@ -137,30 +150,36 @@ public class WithDiscounts extends Fragment implements Get_Insert_Edit_Data3, Lo
         return String.format(Locale.US, "%,d", count);
     }
 
-    private void runRecyclerView() {
+    /**
+     * Shows the categories in datas followed by the «درباره ما» tile. The tile needs neither a
+     * city nor the server, so it is always the last tile of the grid; when the city has no ads the
+     * "no ads yet" message shows below it.
+     */
+    private void runRecyclerView(boolean cityHasNoAds) {
+        if (!isAdded()) return;
+
         TransitionManager.beginDelayedTransition(rootView);
 
-        if (datas.size() > 0) {
+        datas.add(new HomeCategories(ABOUT_TILE_ID, "درباره ما", null));
 
-            progressBar.setVisibility(View.GONE);
-            rvArea.setVisibility(View.VISIBLE);
-//            categoriesRV.setVisibility(View.VISIBLE);
+        progressBar.setVisibility(View.GONE);
+        rvArea.setVisibility(View.VISIBLE);
+        listEmptyText.setVisibility(cityHasNoAds ? View.VISIBLE : View.GONE);
 
-            categoriesRV.setNestedScrollingEnabled(false);
-            categoriesRV.setFocusable(false);
+        categoriesRV.setNestedScrollingEnabled(false);
+        categoriesRV.setFocusable(false);
 
-            LinearLayoutManager layoutManager = new GridLayoutManager(getActivity(), 3, GridLayoutManager.VERTICAL, false);
-            HomeCategoriesAdapter adapter = new HomeCategoriesAdapter(datas, getActivity());
-            categoriesRV.setLayoutManager(layoutManager);
-            categoriesRV.setAdapter(adapter);
-            adapter.notifyDataSetChanged();
+        LinearLayoutManager layoutManager = new GridLayoutManager(getActivity(), 3, GridLayoutManager.VERTICAL, false);
+        HomeCategoriesAdapter adapter = new HomeCategoriesAdapter(datas, getActivity());
+        categoriesRV.setLayoutManager(layoutManager);
+        categoriesRV.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
+    }
 
-            recyclerViewOnClickListener();
-        }
-        else {
-            progressBar.setVisibility(View.GONE);
-            listEmptyText.setVisibility(View.VISIBLE);
-        }
+    /** No categories could be shown (no city, or the request failed): the grid holds the tile alone. */
+    private void showOnlyAboutTile() {
+        datas = new ArrayList<>();
+        runRecyclerView(false);
     }
 
 
@@ -169,6 +188,12 @@ public class WithDiscounts extends Fragment implements Get_Insert_Edit_Data3, Lo
         categoriesRV.addOnItemTouchListener(new RecyclerItemClickListener(getActivity(), categoriesRV, new RecyclerItemClickListener.OnItemClickListener(){
             @Override
             public void onItemClick(View view, int position) {
+                if (ABOUT_TILE_ID.equals(datas.get(position).getId())) {
+                    PishkhanWebviewActivity.url = StaticData.ABOUT_COMPANY;
+                    startActivity(new Intent(getActivity(), PishkhanWebviewActivity.class));
+                    return;
+                }
+
                 SubcategoriesDialogFragment subcategoriesDialogFragment = new SubcategoriesDialogFragment();
                 subcategoriesDialogFragment.setContext(getActivity());
                 subcategoriesDialogFragment.setCategoryId(datas.get(position).getId());
@@ -195,16 +220,19 @@ public class WithDiscounts extends Fragment implements Get_Insert_Edit_Data3, Lo
             try {
                 JSONObject jsonObject = new JSONObject(response);
                 datas = HomeCategories.Categories(jsonObject);
-                runRecyclerView();
+                runRecyclerView(datas.isEmpty());
             } catch (JSONException e) {
                 e.printStackTrace();
+                showOnlyAboutTile();
             }
         }
     }
 
     @Override
     public void on_volley_error(VolleyError error, int id) {
-
+        if (id == 1) {
+            showOnlyAboutTile();
+        }
     }
 
     @Override

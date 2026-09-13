@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- One category tile on the landing page ("دسته بندی ها").
-     The icon plate gets its gradient, gloss and glow from HomeCategoriesAdapter.
+     The icon paints itself in the white-to-red gradient (GradientIconView).
      IDs homeCategoriesImage / homeCategoriesName are bound by HomeCategoriesAdapter. -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
@@ -22,7 +22,7 @@
         android:layout_height="@dimen/_46sdp"
         android:background="@drawable/bg_icon_plate_dark">
 
-        <ImageView
+        <com.ideabonyan.iranapp.Components.GradientIconView
             android:id="@+id/homeCategoriesImage"
             android:layout_width="@dimen/_22sdp"
             android:layout_height="@dimen/_22sdp"

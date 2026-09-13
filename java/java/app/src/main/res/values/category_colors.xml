@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Colours of the app's landing page (the "دسته بندی ها" tab) and of the sub category dialog.
-     Every icon uses the same plate and the same colour, so the grid reads as one formal set. -->
+     Every icon uses the same plate and the same colours, so the grid reads as one formal set. -->
 <resources>
     <!-- Dark landing page -->
     <color name="home_bg_top">#1C2233</color>
@@ -11,8 +11,9 @@
     <color name="home_text_muted">#A9B2C3</color>
     <color name="home_accent">#FF5252</color>
 
-    <!-- Category icons on the landing page -->
-    <color name="home_icon">#E6EBF3</color>
+    <!-- Category icons on the landing page: white fading into the accent red (GradientIconView) -->
+    <color name="home_icon_start">#FFFFFF</color>
+    <color name="home_icon_end">@color/home_accent</color>
     <color name="home_icon_plate">#283042</color>
     <color name="home_icon_plate_stroke">#3A4558</color>
 

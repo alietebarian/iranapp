@@ -421,7 +421,7 @@ public class ShowAdActivity extends AppCompatActivity implements UpdateAd, OnMap
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 Intent intent = new Intent(Intent.ACTION_DIAL);
-                                intent.setData(Uri.parse("tel:" + "۰۳۱۳۲۶۵۸۷۴۲"));
+                                intent.setData(Uri.parse("tel:" + "۰۹۱۳۱۰۹۴۴۰۶"));
                                 startActivity(intent);
 
                             }
@@ -859,7 +859,7 @@ public class ShowAdActivity extends AppCompatActivity implements UpdateAd, OnMap
 //                            @Override
 //                            public void onClick(DialogInterface dialog, int which) {
 //                                Intent intent = new Intent(Intent.ACTION_DIAL);
-//                                intent.setData(Uri.parse("tel:" + "۰۳۱۳۲۶۵۸۷۴۲"));
+//                                intent.setData(Uri.parse("tel:" + "۰۹۱۳۱۰۹۴۴۰۶"));
 //                                startActivity(intent);
 //
 //                            }

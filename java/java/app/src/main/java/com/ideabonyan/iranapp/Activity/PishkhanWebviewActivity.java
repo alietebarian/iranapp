@@ -2,6 +2,9 @@ package com.ideabonyan.iranapp.Activity;
 
 import androidx.transition.TransitionManager;
 import androidx.appcompat.app.AppCompatActivity;
+import android.content.ActivityNotFoundException;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
@@ -50,6 +53,24 @@ public class PishkhanWebviewActivity extends AppCompatActivity {
 
     private void runWebView() {
         webView.setWebViewClient(new WebViewClient(){
+            @Override
+            public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
+                Uri uri = request.getUrl();
+                String scheme = uri.getScheme();
+                if ("http".equalsIgnoreCase(scheme) || "https".equalsIgnoreCase(scheme)) {
+                    return false;
+                }
+
+                // tel:, sms:, mailto:, geo:, tg: ... (links of the company page) belong to other
+                // apps; the WebView itself can only show an error page for them.
+                try {
+                    startActivity(new Intent(Intent.ACTION_VIEW, uri));
+                } catch (ActivityNotFoundException e) {
+                    e.printStackTrace();
+                }
+                return true;
+            }
+
             @Override
             public void onPageFinished(WebView view, String url) {
                 super.onPageFinished(view, url);

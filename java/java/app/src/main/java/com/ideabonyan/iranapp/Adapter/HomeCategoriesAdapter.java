@@ -1,15 +1,13 @@
 package com.ideabonyan.iranapp.Adapter;
 
 import android.content.Context;
-import android.content.res.ColorStateList;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 
-import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.ideabonyan.iranapp.Components.GradientIconView;
 import com.ideabonyan.iranapp.Components.MyTextView;
 import com.ideabonyan.iranapp.Models.HomeCategories;
 import com.ideabonyan.iranapp.R;
@@ -20,7 +18,8 @@ import java.util.List;
 
 /**
  * Categories grid of the landing page. See {@link CategoryIcons} for how a category name picks
- * its icon; every icon is drawn in the same colour on the same plate (rv_home_categories2).
+ * its icon; every icon is drawn in the same white-to-red gradient on the same plate
+ * (rv_home_categories2, GradientIconView).
  *
  * Created by SIM on 7/24/2017.
  */
@@ -28,12 +27,10 @@ public class HomeCategoriesAdapter extends RecyclerView.Adapter<RecyclerView.Vie
 
     private final List<HomeCategories> datas;
     private final Context context;
-    private final ColorStateList iconTint;
 
     public HomeCategoriesAdapter(List<HomeCategories> datas, Context context) {
         this.datas = datas;
         this.context = context;
-        this.iconTint = ColorStateList.valueOf(ContextCompat.getColor(context, R.color.home_icon));
     }
 
     @Override
@@ -54,8 +51,8 @@ public class HomeCategoriesAdapter extends RecyclerView.Adapter<RecyclerView.Vie
         CategoryIcons.Style style = CategoryIcons.of(datas.get(position).getName());
 
         if (style == null && hasRemoteIcon(datas.get(position).getImage())) {
-            // Unknown category: show whatever thumbnail the admin uploaded, untinted.
-            holder.pic.setImageTintList(null);
+            // Unknown category: show whatever thumbnail the admin uploaded, in its own colours.
+            holder.pic.setGradientEnabled(false);
             Picasso.get()
                     .load(datas.get(position).getImage())
                     .fit()
@@ -65,7 +62,7 @@ public class HomeCategoriesAdapter extends RecyclerView.Adapter<RecyclerView.Vie
             return;
         }
 
-        holder.pic.setImageTintList(iconTint);
+        holder.pic.setGradientEnabled(true);
         holder.pic.setImageResource(style != null ? style.icon : CategoryIcons.DEFAULT.icon);
     }
 
@@ -80,13 +77,13 @@ public class HomeCategoriesAdapter extends RecyclerView.Adapter<RecyclerView.Vie
 
     private static class CellFeedViewHolder extends RecyclerView.ViewHolder {
 
-        final ImageView pic;
+        final GradientIconView pic;
         final MyTextView text;
 
         CellFeedViewHolder(View view) {
             super(view);
 
-            pic = (ImageView) view.findViewById(R.id.homeCategoriesImage);
+            pic = (GradientIconView) view.findViewById(R.id.homeCategoriesImage);
             text = (MyTextView) view.findViewById(R.id.homeCategoriesName);
         }
     }
