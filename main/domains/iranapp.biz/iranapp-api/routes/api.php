@@ -5,6 +5,7 @@ use App\Http\Controllers\AdsController;
 use App\Http\Controllers\AdsLikesController;
 use App\Http\Controllers\AdsPhotoController;
 use App\Http\Controllers\AdsPlanController;
+use App\Http\Controllers\AdsStatsController;
 use App\Http\Controllers\Auth\LoginController as AuthLoginController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CategoryController;
@@ -78,6 +79,7 @@ Route::group( [] , function () {
 		Route::post( '/notification-settings/create' , [NotificationSettingController::class, 'save'] )->name( 'saveFcmTokenOfUser' );
 		Route::put( '/notification-settings/update' , [NotificationSettingController::class, 'update'] );
 		Route::get( '/ads/{ads}/likes-and-dislikes' , [AdsLikesController::class, 'getLikesAndDislikesCount'] );
+		Route::post( '/ads/{ads}/views' , [AdsStatsController::class, 'recordView'] );
 		Route::group( [ 'prefix' => 'vehicles' ] , function () {
 			Route::get( '/brands' , [BrandController::class, 'showAllJson'] );
 			Route::get( '/ads' , [VehicleAdsController::class, 'getJson'] );
@@ -108,6 +110,7 @@ Route::group( [] , function () {
 		Route::post( '/ads/{ads}/likes' , [AdsLikesController::class, 'toggleLike'] );
 		Route::get( '/ads/{ads}/delete' , [AdsController::class, 'delete'] );
 		Route::post( '/ads/{ads}/update' , [AdsController::class, 'updateInApi'] );
+		Route::get( '/ads/{ads}/stats' , [AdsStatsController::class, 'show'] );
 		Route::put( '/users/notifications/setting' , [UserController::class, 'updateNotificationSetting'] )->name( 'updateUserNotificationSetting' );
 		Route::get( '/ads/{ads}/like/off' , [AdsLikesController::class, 'LikeOff'] )->name( 'LikeAdsOff' );
 		Route::post( '/vip-ads/favorite' , [VipAdsFavoriteController::class, 'saveJson'] );

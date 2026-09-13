@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Ad performance page: views, saves and likes of one of the user's own ads. -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f5f5f5"
+    android:layoutDirection="rtl"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="#fff"
+        android:elevation="5dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/adStatsBackButton"
+            android:layout_width="?attr/actionBarSize"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_arrow_back_black_24dp"
+            android:tint="@color/colorPrimary" />
+
+        <com.ideabonyan.iranapp.Components.MyTextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="عملکرد آگهی"
+            android:textColor="@color/colorPrimary"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="12dp">
+
+            <com.ideabonyan.iranapp.Components.MyTextView
+                android:id="@+id/adStatsAdTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:gravity="start"
+                android:textColor="@color/mildBlack"
+                android:textSize="16sp" />
+
+            <ProgressBar
+                android:id="@+id/adStatsProgressBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="40dp" />
+
+            <com.ideabonyan.iranapp.Components.MyTextView
+                android:id="@+id/adStatsRetryBTN"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="40dp"
+                android:background="?selectableItemBackground"
+                android:padding="12dp"
+                android:text="دریافت آمار انجام نشد. تلاش مجدد"
+                android:textColor="@color/colorPrimary"
+                android:textSize="15sp"
+                android:visibility="gone" />
+
+            <LinearLayout
+                android:id="@+id/adStatsLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    app:cardCornerRadius="6dp"
+                    app:cardElevation="2dp"
+                    app:contentPadding="14dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="36dp"
+                            android:layout_height="36dp"
+                            android:src="@drawable/ic_sub_eye"
+                            android:tint="#1E88E5" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="14dp"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <com.ideabonyan.iranapp.Components.MyTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="بازدید"
+                                android:textColor="@color/mildBlack"
+                                android:textSize="14sp" />
+
+                            <com.ideabonyan.iranapp.Components.MyTextView
+                                android:id="@+id/adStatsViewsWeek"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="#9e9e9e"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+
+                        <com.ideabonyan.iranapp.Components.MyTextView
+                            android:id="@+id/adStatsViews"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="#1E88E5"
+                            android:textSize="26sp" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    app:cardCornerRadius="6dp"
+                    app:cardElevation="2dp"
+                    app:contentPadding="14dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="36dp"
+                            android:layout_height="36dp"
+                            android:src="@drawable/ic_favorite_black_24dp"
+                            android:tint="#E91E63" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="14dp"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <com.ideabonyan.iranapp.Components.MyTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="ذخیره شده"
+                                android:textColor="@color/mildBlack"
+                                android:textSize="14sp" />
+
+                            <com.ideabonyan.iranapp.Components.MyTextView
+                                android:id="@+id/adStatsFavoritesWeek"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="#9e9e9e"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+
+                        <com.ideabonyan.iranapp.Components.MyTextView
+                            android:id="@+id/adStatsFavorites"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="#E91E63"
+                            android:textSize="26sp" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    app:cardCornerRadius="6dp"
+                    app:cardElevation="2dp"
+                    app:contentPadding="14dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="36dp"
+                            android:layout_height="36dp"
+                            android:src="@drawable/ic_thumb_up_black_24dp"
+                            android:tint="#4CAF50" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="14dp"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <com.ideabonyan.iranapp.Components.MyTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="لایک"
+                                android:textColor="@color/mildBlack"
+                                android:textSize="14sp" />
+
+                            <com.ideabonyan.iranapp.Components.MyTextView
+                                android:id="@+id/adStatsLikesWeek"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="#9e9e9e"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+
+                        <com.ideabonyan.iranapp.Components.MyTextView
+                            android:id="@+id/adStatsLikes"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="#4CAF50"
+                            android:textSize="26sp" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

@@ -47,6 +47,7 @@ import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
 import com.google.android.material.tabs.TabLayout;
 import androidx.viewpager2.widget.ViewPager2;
 import androidx.annotation.OptIn;
@@ -91,6 +92,7 @@ import com.ideabonyan.iranapp.Utils.Get_Volley_Call_Back;
 import com.ideabonyan.iranapp.Utils.Get_Volley_Call_Back2;
 import com.ideabonyan.iranapp.Utils.ShowToast;
 import com.ideabonyan.iranapp.Utils.StaticData;
+import com.ideabonyan.iranapp.Utils.VolleySingleton;
 import com.ideabonyan.iranapp.service.MyFirebaseMessagingService;
 
 import org.json.JSONException;
@@ -169,7 +171,23 @@ public class ShowAdActivity extends AppCompatActivity implements UpdateAd, OnMap
         smallStuff();
         fillInfo();
         doAppBarLayoutStuff();
+        if (savedInstanceState == null) recordView();
 
+    }
+
+    /**
+     * Counts this opening of the ad for its performance page. Fire-and-forget: it goes
+     * around Get_Volley_Call_Back so a failed count never shows the user an error. The
+     * server ignores the owner's own views, which is why the token is sent when there is one.
+     */
+    private void recordView() {
+        String token = StaticData.optionalTokenQuery(this);
+        String url = StaticData.DOMAIN_WITH_API + "/ads/" + ad.getId() + "/views"
+                + (token.isEmpty() ? "" : "?" + token.substring(1));
+        StringRequest request = new StringRequest(Request.Method.POST, url, response -> {
+        }, error -> {
+        });
+        VolleySingleton.GetInstance(this).AddToRequestQueue(request);
     }
 
     @Override
@@ -462,6 +480,12 @@ public class ShowAdActivity extends AppCompatActivity implements UpdateAd, OnMap
                     public boolean onMenuItemClick(MenuItem item) {
 
                         switch (item.getItemId()) {
+                            case R.id.showAdStats:
+                                Intent statsIntent = new Intent(ShowAdActivity.this, AdStatsActivity.class);
+                                statsIntent.putExtra(AdStatsActivity.EXTRA_AD_ID, ad.getId());
+                                statsIntent.putExtra(AdStatsActivity.EXTRA_AD_TITLE, ad.getTitle());
+                                startActivity(statsIntent);
+                                break;
                             case R.id.showAdUpdateAd:
                                 ////////////////////////////////
                                 Intent intent = new Intent(ShowAdActivity.this, NewAdActivity.class);
