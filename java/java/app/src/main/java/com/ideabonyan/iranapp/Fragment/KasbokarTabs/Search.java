@@ -38,6 +38,7 @@ import com.ideabonyan.iranapp.Models.AdsToBeListed;
 import com.ideabonyan.iranapp.Models.HomeSubCategories;
 import com.ideabonyan.iranapp.Models.ProvicesAndCities;
 import com.ideabonyan.iranapp.R;
+import com.ideabonyan.iranapp.UserData.UserHelper;
 import com.ideabonyan.iranapp.UserData.UserSessionManager;
 import com.ideabonyan.iranapp.Utils.Get_Volley_Call_Back2;
 import com.ideabonyan.iranapp.Utils.Get_Volley_Call_Back3;
@@ -463,6 +464,9 @@ public class Search extends Fragment implements RemoveAd, Get_Insert_Edit_Data, 
 
         }
         params.put("city_id",new UserSessionManager(getActivity()).getCityInfo());
+        if (UserHelper.LoadUserInfo(getActivity()).isLoggedIn()) {
+            params.put("token", new UserSessionManager(getActivity()).getLoginToken());
+        }
 
         if (adtypeSPNR.getSelectedItemPosition() == 1) {
             params.put("type","discount");

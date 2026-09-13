@@ -109,7 +109,8 @@ public class Newest extends Fragment implements RemoveAd,  LocationChange {
     private void getData() {
 
         String city = new UserSessionManager(getActivity()).getCityInfo();
-        String url = StaticData.NEWEST_ADS + "?city_id=" + city + "&offset=" + offset + "&limit=10";
+        String url = StaticData.NEWEST_ADS + "?city_id=" + city + "&offset=" + offset + "&limit=10"
+                + StaticData.optionalTokenQuery(getActivity());
         Log.v("url",url);
         Map<String, String> params = new HashMap<String, String>();
         Get_Volley_Call_Back.binddata(new Get_Insert_Edit_Data() {

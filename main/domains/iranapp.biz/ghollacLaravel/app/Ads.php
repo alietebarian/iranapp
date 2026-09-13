@@ -12,6 +12,15 @@ class Ads extends Model {
     ads_plan.price as plan_price , ads_plan.plan_title , ads_plan.interval_days as plan_interval_days , 
      ( select count(*) from ads_like where ads_like.ads_id = ads.id and like_type = "like" ) as likes,
      ( select count(*) from ads_like where ads_like.ads_id = ads.id and like_type = "dislike"  ) as dislikes';
+	/**
+	 * Net score of an ad: likes minus dislikes. Selected as `total_likes` so listings
+	 * can order by it, and so the client can show the same number it sorted on.
+	 */
+	const TOTAL_LIKES = '(
+        ( select count(*) from ads_like where ads_like.ads_id = ads.id and like_type = "like" )
+        -
+        ( select count(*) from ads_like where ads_like.ads_id = ads.id and like_type = "dislike" )
+    ) as total_likes';
 	protected $table = 'ads';
 	private $query;
 
@@ -35,6 +44,33 @@ class Ads extends Model {
 
 	public function getApproved() {
 		$this->query = $this->query->where( 'ads.status' , '=' , 'approved' );
+
+		return $this;
+	}
+
+	/**
+	 * Most liked first, newest first among ads with the same score.
+	 */
+	public function orderByLikes() {
+		$this->query = $this->query->addSelect( DB::raw( self::TOTAL_LIKES ) )
+		                           ->orderBy( 'total_likes' , 'desc' )
+		                           ->orderBy( 'ads.created_at' , 'desc' );
+
+		return $this;
+	}
+
+	/**
+	 * Adds the viewing user's own vote on each ad as `user_like_type` ("like", "dislike"
+	 * or null), so a list can render its like button in the right state without one
+	 * extra request per row. Null user (guest) still gets the column, always null.
+	 */
+	public function withUserLikeStatus( $userId ) {
+		if ( $userId ) {
+			$this->query = $this->query->addSelect( DB::raw( '( select like_type from ads_like
+                where ads_like.ads_id = ads.id and ads_like.user_id = ' . intval( $userId ) . ' limit 1 ) as user_like_type' ) );
+		} else {
+			$this->query = $this->query->addSelect( DB::raw( 'null as user_like_type' ) );
+		}
 
 		return $this;
 	}

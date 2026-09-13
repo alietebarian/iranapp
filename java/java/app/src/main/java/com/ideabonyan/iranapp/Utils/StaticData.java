@@ -3,6 +3,20 @@ package com.ideabonyan.iranapp.Utils;
 
 public class StaticData {
 
+    /**
+     * Public ad listings take a token optionally: with one the server also reports the
+     * viewer's own like on each ad, without one it simply returns them unvoted.
+     */
+    public static String optionalTokenQuery(android.content.Context context) {
+        com.ideabonyan.iranapp.UserData.User user =
+                com.ideabonyan.iranapp.UserData.UserHelper.LoadUserInfo(context);
+        if (!user.isLoggedIn()) return "";
+        String token = new com.ideabonyan.iranapp.UserData.UserSessionManager(context).getLoginToken();
+        if (token == null || token.isEmpty()) return "";
+        return "&token=" + token;
+    }
+
+
 //    public static String DOMAIN = "http://192.168.1.4/gollac/public_html";http://
     public static String DOMAIN = "http://iranapp.biz";
 //    public static String DOMAIN = "http://asreesfahanapp.com";

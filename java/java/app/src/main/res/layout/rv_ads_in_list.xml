@@ -155,6 +155,38 @@
                     </RelativeLayout>
 
                     <LinearLayout
+                        android:id="@+id/rvAdListLikeBTN"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="?selectableItemBackgroundBorderless"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:paddingBottom="4dp"
+                        android:paddingLeft="6dp"
+                        android:paddingRight="6dp"
+                        android:paddingTop="4dp">
+
+                        <ImageView
+                            android:id="@+id/rvAdListLikeIMG"
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:src="@drawable/ic_thumb_up_black_24dp"
+                            android:tint="#999999" />
+
+                        <com.ideabonyan.iranapp.Components.MyTextView
+                            android:id="@+id/rvAdListLikeCount"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="3dp"
+                            android:text="0"
+                            android:textColor="#999999"
+                            android:textSize="11sp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
                         android:id="@+id/lin_phone_number"
                         android:gravity="right|center_vertical"
                         android:orientation="horizontal"

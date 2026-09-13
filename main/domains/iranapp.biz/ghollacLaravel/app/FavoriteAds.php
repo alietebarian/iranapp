@@ -15,7 +15,9 @@ class FavoriteAds extends Model
     sub_category.name as sub_category_name , category.id as category_id , category.name as category_name , 
     ads_plan.num_of_stars , ads_plan.ordering_factor, ads_plan.max_number_of_photos,
     ads_plan.price as plan_price , ads_plan.plan_title , ads_plan.interval_days as plan_interval_days,
-    ads_plan.max_number_of_photos , ads_plan.num_of_updates as max_number_of_update
+    ads_plan.max_number_of_photos , ads_plan.num_of_updates as max_number_of_update,
+    ( select count(*) from ads_like where ads_like.ads_id = ads.id and like_type = "like" ) as likes,
+    ( select count(*) from ads_like where ads_like.ads_id = ads.id and like_type = "dislike" ) as dislikes
      ';
     public function __construct(array $attributes = [])
     {

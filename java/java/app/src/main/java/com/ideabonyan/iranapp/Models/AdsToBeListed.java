@@ -52,6 +52,10 @@ public class AdsToBeListed implements Serializable{
     String max_number_of_update;
     List<PhotosData> photos;
     String video_url;
+    int likes;
+    int dislikes;
+    /** "like", "dislike", or null when the viewer has not voted (or is a guest). */
+    String user_like_type;
 
 
     static public List<AdsToBeListed> Import(JSONObject jsonObject) throws JSONException {
@@ -113,6 +117,9 @@ public class AdsToBeListed implements Serializable{
 
              adsToBeListed.photos = PhotosData.Import(json.getJSONArray("photos"));
             adsToBeListed.video_url = parseVideoUrl(json);
+            adsToBeListed.likes = json.optInt("likes", 0);
+            adsToBeListed.dislikes = json.optInt("dislikes", 0);
+            adsToBeListed.user_like_type = parseUserLikeType(json);
 
             adsToBeListedList.add(adsToBeListed);
         }
@@ -442,6 +449,41 @@ public class AdsToBeListed implements Serializable{
 
     public boolean hasVideo() {
         return video_url != null && !video_url.isEmpty();
+    }
+
+    /** A missing key (older server) and JSON null both mean the viewer has not voted. */
+    public static String parseUserLikeType(JSONObject json) {
+        if (!json.has("user_like_type") || json.isNull("user_like_type")) return null;
+        String type = json.optString("user_like_type", "");
+        return type.isEmpty() || type.equals("null") ? null : type;
+    }
+
+    public int getLikes() {
+        return likes;
+    }
+
+    public void setLikes(int likes) {
+        this.likes = likes;
+    }
+
+    public int getDislikes() {
+        return dislikes;
+    }
+
+    public void setDislikes(int dislikes) {
+        this.dislikes = dislikes;
+    }
+
+    public String getUser_like_type() {
+        return user_like_type;
+    }
+
+    public void setUser_like_type(String user_like_type) {
+        this.user_like_type = user_like_type;
+    }
+
+    public boolean isLikedByUser() {
+        return "like".equals(user_like_type);
     }
 }
 

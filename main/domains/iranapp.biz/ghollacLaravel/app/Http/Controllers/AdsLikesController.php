@@ -29,24 +29,32 @@ class AdsLikesController extends Controller
             return response()->json(['status' => $e->getStatusCode() ,  'error' => 'token_absent']);
 
         }
+        $requestedType = $request->like_type;
+        if(!in_array($requestedType , ['like' , 'dislike'])){
+            return response()->json(['status' => 422 , 'error' => 'invalid_like_type']);
+        }
+
         $like = AdsLikes::where('user_id' , $user->id)->where('ads_id' , $ads->id)->first();
+        $currentType = null;
         if(!$like){
             $like = new AdsLikes();
             $like->user_id = $user->id;
             $like->ads_id = $ads->id;
-            $like->like_type = $request->like_type;
+            $like->like_type = $requestedType;
+            $like->save();
+            $currentType = $requestedType;
+        }elseif($like->like_type == $requestedType){
+            // Pressing the vote you already cast takes it back.
+            $like->delete();
         }else{
-            if($like->like_type == 'like'){
-                $like->like_type = 'dislike';
-            }else{
-                $like->like_type = 'like';
-            }
+            $like->like_type = $requestedType;
+            $like->save();
+            $currentType = $requestedType;
         }
-        $like->save();
         $likesCount = AdsLikes::where('ads_id' , $ads->id)->where('like_type' , 'like')->count();
         $dislikesCount = AdsLikes::where('ads_id' , $ads->id)->where('like_type' , 'dislike')->count();
 
-        return response()->json(['status' => 200 , 'like_type' => $like->like_type , 'likes_count' => $likesCount , 'dislikes_count' => $dislikesCount]);
+        return response()->json(['status' => 200 , 'like_type' => $currentType , 'likes_count' => $likesCount , 'dislikes_count' => $dislikesCount]);
     }
 
     public function getLikesAndDislikesCount(Request $request , Ads $ads){
@@ -68,9 +76,13 @@ class AdsLikesController extends Controller
         }
         $like = AdsLikes::where('like_type' , $request->like_type)->where('ads_id' , $ads->id)
             ->where('user_id' , $user->id)->first();
-        $like->delete();
+        if($like){
+            $like->delete();
+        }
+        $likesCount = AdsLikes::where('ads_id' , $ads->id)->where('like_type' , 'like')->count();
+        $dislikesCount = AdsLikes::where('ads_id' , $ads->id)->where('like_type' , 'dislike')->count();
 
-        return response()->json(['status' => 204]);
+        return response()->json(['status' => 200 , 'like_type' => null , 'likes_count' => $likesCount , 'dislikes_count' => $dislikesCount]);
     }
 
     public function xyz(Request $request){

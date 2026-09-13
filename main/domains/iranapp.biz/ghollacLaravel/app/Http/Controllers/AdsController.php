@@ -34,19 +34,30 @@ use Tymon\JWTAuth\Exceptions\TokenInvalidException;
 use Tymon\JWTAuth\Facades\JWTAuth;
 
 class AdsController extends Controller {
+	/**
+	 * Public listings accept a token but do not require one: signed-in users get their own
+	 * vote back on every row, guests just get null instead of being turned away.
+	 */
+	private function optionalUser() {
+		try {
+			return JWTAuth::parseToken()->authenticate();
+		} catch ( \Exception $e ) {
+			return null;
+		}
+	}
+
+	private function optionalUserId() {
+		$user = $this->optionalUser();
+
+		return $user ? $user->id : null;
+	}
+
 	public function getBySubCategoryId( Request $request , $cityId , $subCategoryId ) {
 		$ads  = new Ads();
-		$list = $ads->selectFields( Ads::FIELDS )->getApproved()->getValidAds()->getQuery();
+		$list = $ads->selectFields( Ads::FIELDS )->getApproved()->getValidAds()
+		            ->withUserLikeStatus( $this->optionalUserId() )->orderByLikes()->getQuery();
 		$list = $list->where( 'ads.sub_category_id' , '=' , $subCategoryId )
-		             ->addSelect( DB::raw( ' (
-                ( select count(*) from ads_like where ads_like.ads_id = ads.id and like_type = "like" )
-                -
-                ( select count(*) from ads_like where ads_like.ads_id = ads.id and like_type = "dislike" )
-            ) as total_likes' ) )
 		             ->where( 'ads.city_id' , '=' , $cityId )
-		             ->orderBy( 'ads_plan.ordering_factor' , 'asc' )
-		             ->orderBy( 'total_likes' , 'desc' )
-		             ->orderBy( 'ads.created_at' , 'desc' )
 		             ->selectRaw( 'ads.* , category.name as category_name , sub_category.name as sub_category_name , city.name as city_name , province.name as province_name , ads_plan.num_of_stars , ads_plan.ordering_factor , ads_plan.plan_title' );
 		if ( $request->has( 'type' ) && in_array( $request->type , [ 'discount' , 'need' ] ) ) {
 			$list = $list->where( 'ads.type' , '=' , $request->type );
@@ -102,6 +113,7 @@ class AdsController extends Controller {
 			->selectFields( Ads::FIELDS )
 			->getValidAds()
 			->getApproved()
+			->withUserLikeStatus( $this->optionalUserId() )
 			->getQuery()
 			->orderBy( 'ads.created_at' , 'desc' )
 			->where( 'ads.city_id' , '=' , $request->city_id )
@@ -123,8 +135,9 @@ class AdsController extends Controller {
 		$discount = $adsObj->selectFields( Ads::FIELDS )
 		                   ->getValidAds()
 		                   ->getApproved()
+		                   ->withUserLikeStatus( $this->optionalUserId() )
+		                   ->orderByLikes()
 		                   ->getQuery()
-		                   ->orderBy( 'ads.created_at' , 'desc' )
 		                   ->where( 'ads.type' , '=' , 'discount' )
 		                   ->get();
 		foreach ( $discount as $index => $row ) {
@@ -143,8 +156,9 @@ class AdsController extends Controller {
 		$needs  = $adsObj->selectFields( Ads::FIELDS )
 		                 ->getValidAds()
 		                 ->getApproved()
+		                 ->withUserLikeStatus( $this->optionalUserId() )
+		                 ->orderByLikes()
 		                 ->getQuery()
-		                 ->orderBy( 'ads.created_at' , 'desc' )
 		                 ->where( 'ads.type' , '=' , 'need' )
 		                 ->get();
 		foreach ( $needs as $index => $row ) {
@@ -203,6 +217,8 @@ class AdsController extends Controller {
 		$list = $ads->selectFields( Ads::FIELDS )
 		            ->getValidAds()
 		            ->getApproved()
+		            ->withUserLikeStatus( $this->optionalUserId() )
+		            ->orderByLikes()
 		            ->getQuery();
 		if ( $request->has( 'title' ) ) {
 			$list = $list->whereRaw( ' MATCH(ads.title , ads.address , ads.notes) AGAINST("' . $request->title . '" IN NATURAL LANGUAGE MODE) ' );
@@ -352,6 +368,8 @@ class AdsController extends Controller {
 		$adsObj = new UserAds();
 		$ads    = $adsObj->selectFields( UserAds::FIELDS )
 		                 ->getQuery()
+		                 ->addSelect( DB::raw( '( select like_type from ads_like
+                where ads_like.ads_id = ads.id and ads_like.user_id = ' . intval( $user->id ) . ' limit 1 ) as user_like_type' ) )
 		                 ->where( 'user_ads.user_id' , '=' , $user->id )
 		                 ->offset( $offset )->limit( $limit )
 		                 ->get();
@@ -380,6 +398,8 @@ class AdsController extends Controller {
 		$ads       = $adsObj->selectFields( Ads::FIELDS )
 		                    ->getApproved()
 		                    ->getValidAds()
+		                    ->withUserLikeStatus( $this->optionalUserId() )
+		                    ->orderByLikes()
 		                    ->getQuery()
 		                    ->addSelect( DB::raw( "( 6371 * acos( cos( radians(" . $latitude . ") ) * cos( radians( ads.latitude ) ) * cos( radians( ads.longitude ) - radians(" . $longitude . ") ) + sin( radians(" . $latitude . ") ) * sin( radians( ads.latitude ) ) ) ) AS distance" ) )
 		                    ->whereRaw( "( 6371 * acos( cos( radians(" . $latitude . ") ) * cos( radians( ads.latitude ) ) * cos( radians( ads.longitude ) - radians(" . $longitude . ") ) + sin( radians(" . $latitude . ") ) * sin( radians( ads.latitude ) ) ) ) < " . $radius );
@@ -407,6 +427,7 @@ class AdsController extends Controller {
 	public function getById( Request $request , $adsId ) {
 		$adsObj  = new Ads();
 		$adsItem = $adsObj->selectFields( Ads::FIELDS )
+		                  ->withUserLikeStatus( $this->optionalUserId() )
 		                  ->getQuery()
 		                  ->where( 'ads.id' , '=' , $adsId )
 		                  ->first();

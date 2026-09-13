@@ -7,6 +7,7 @@ use App\FavoriteAds;
 use App\Libraries\jdf;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\URL;
 use Tymon\JWTAuth\Exceptions\JWTException;
 use Tymon\JWTAuth\Exceptions\TokenExpiredException;
@@ -76,6 +77,8 @@ class FavoriteAdsController extends Controller
         }
         $favoriteAdsObj = new FavoriteAds();
         $favAds = $favoriteAdsObj->selectFields(FavoriteAds::FIELDS)
+            ->addSelect(DB::raw('( select like_type from ads_like
+                where ads_like.ads_id = ads.id and ads_like.user_id = ' . intval($user->id) . ' limit 1 ) as user_like_type'))
             ->where('users.id' , '=' , $user->id)
             ->where('ads.status' , '=' , 'approved')
             ->where('ads.valid_since' , '<=' , date('Y-m-d H:i:s' , time()))

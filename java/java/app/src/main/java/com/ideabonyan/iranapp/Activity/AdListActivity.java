@@ -92,7 +92,8 @@ public class AdListActivity extends AppCompatActivity implements RemoveAd, Get_I
         Bundle extras = getIntent().getExtras();
         String city = new UserSessionManager(AdListActivity.this).getCityInfo();
         String subCategory = extras.getString("subCategoryId");
-        String url = StaticData.DOMAIN_WITH_API + "/cities/" + city + "/subCategories/" + subCategory + "/ads" + "?offset=" + offset + "&limit=10";//?type=" + extras.getString("type");
+        String url = StaticData.DOMAIN_WITH_API + "/cities/" + city + "/subCategories/" + subCategory + "/ads" + "?offset=" + offset + "&limit=10"
+                + StaticData.optionalTokenQuery(AdListActivity.this);//?type=" + extras.getString("type");
         Log.v("url",url);
 
         Map<String, String> params = new HashMap<String, String>();
