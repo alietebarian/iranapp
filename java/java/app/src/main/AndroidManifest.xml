@@ -23,9 +23,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
+        <!-- SMS_RECEIVED is sent by the phone process (a different uid), so exported="false" blocks it.
+             BROADCAST_SMS is held only by the system, so other apps still can't send fake codes here. -->
         <receiver
             android:name=".Utils.SmsReceiver"
-            android:exported="false">
+            android:exported="true"
+            android:permission="android.permission.BROADCAST_SMS">
             <intent-filter>
                 <action android:name="android.provider.Telephony.SMS_RECEIVED"/>
             </intent-filter>

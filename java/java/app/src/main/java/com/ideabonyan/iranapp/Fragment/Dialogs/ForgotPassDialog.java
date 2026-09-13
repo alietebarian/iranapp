@@ -34,8 +34,6 @@ import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class ForgotPassDialog extends DialogFragment implements Get_Insert_Edit_Data {
 
@@ -65,7 +63,8 @@ public class ForgotPassDialog extends DialogFragment implements Get_Insert_Edit_
         dialog.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
         return dialog;
     }
-    public static final String OTP_REGEX = "[0-9]{1,6}";
+    // The server sends a 5-digit reset code (rand(10000, 99999)).
+    private static final int CODE_LENGTH = 5;
 
     @Nullable
     @Override
@@ -94,38 +93,35 @@ public class ForgotPassDialog extends DialogFragment implements Get_Insert_Edit_
     }
 
 
+    private final SmsListener smsListener = new SmsListener() {
+        @Override
+        public void messageReceived(String messageText) {
+            // Only while the code field is showing and no check is already in flight.
+            if (processState != 2 || !confirmCodeEDT.isEnabled()) return;
+
+            String otp = SmsReceiver.extractCode(messageText, CODE_LENGTH);
+            if (otp == null) return;
+
+            confirmCodeEDT.setText(otp);
+
+            confirmationCode = otp;
+            sendConfirmationCode();
+            doBTN.setVisibility(View.INVISIBLE);
+            progressBar.setVisibility(View.VISIBLE);
+            doBTN.setClickable(false);
+            confirmCodeEDT.setEnabled(false);
+        }
+    };
+
     private void smsRecive() {
-        SmsReceiver.bindListener(new SmsListener() {
-            @Override
-            public void messageReceived(String messageText) {
-                //From the received text string you may do string operations to get the required OTP
-                //It depends on your SMS format
-//                Log.e("Message",messageText);
-//                Toast.makeText(ConfirmationActivity.this,"Message: "+messageText,Toast.LENGTH_LONG).show();
+        SmsReceiver.bindListener(smsListener);
+        SmsReceiver.requestPermissionIfNeeded(getActivity());
+    }
 
-                // If your OTP is six digits number, you may use the below code
-
-                Pattern pattern = Pattern.compile(OTP_REGEX);
-                Matcher matcher = pattern.matcher(messageText);
-                String otp="";
-                while (matcher.find())
-                {
-                    otp = matcher.group();
-                }
-
-//                Toast.makeText(ConfirmationActivity.this,"OTP: "+ otp ,Toast.LENGTH_LONG).show();
-//                Log.d(TAG, "messageReceived: "+otp);
-                confirmCodeEDT.setText(String.valueOf(otp));
-
-                confirmationCode = confirmCodeEDT.getText().toString().trim();
-                sendConfirmationCode();
-                doBTN.setVisibility(View.INVISIBLE);
-                progressBar.setVisibility(View.VISIBLE);
-                doBTN.setClickable(false);
-                confirmCodeEDT.setEnabled(false);
-            }
-        });
-
+    @Override
+    public void onDestroyView() {
+        SmsReceiver.unbindListener(smsListener);
+        super.onDestroyView();
     }
 
 

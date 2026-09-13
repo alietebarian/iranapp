@@ -39,8 +39,6 @@ import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class ConfirmationActivity extends AppCompatActivity implements Get_Insert_Edit_Data {
 
@@ -54,7 +52,8 @@ public class ConfirmationActivity extends AppCompatActivity implements Get_Inser
     ProgressBar progressBar;
 
     boolean isResendActive = false;
-    public static final String OTP_REGEX = "[0-9]{1,6}";
+    // The server sends a 4-digit activation code (rand(1111, 9999)).
+    private static final int CODE_LENGTH = 4;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -73,33 +72,27 @@ public class ConfirmationActivity extends AppCompatActivity implements Get_Inser
         }
     }
 
+    private final SmsListener smsListener = new SmsListener() {
+        @Override
+        public void messageReceived(String messageText) {
+            String otp = SmsReceiver.extractCode(messageText, CODE_LENGTH);
+            if (otp == null) return;
+
+            codeEDT.setText(otp);
+            codeEDT.setSelection(otp.length());
+            doSendTheCode();
+        }
+    };
+
     private void smsRecive() {
-        SmsReceiver.bindListener(new SmsListener() {
-            @Override
-            public void messageReceived(String messageText) {
-                //From the received text string you may do string operations to get the required OTP
-                //It depends on your SMS format
-//                Log.e("Message",messageText);
-//                Toast.makeText(ConfirmationActivity.this,"Message: "+messageText,Toast.LENGTH_LONG).show();
+        SmsReceiver.bindListener(smsListener);
+        SmsReceiver.requestPermissionIfNeeded(this);
+    }
 
-                // If your OTP is six digits number, you may use the below code
-
-                Pattern pattern = Pattern.compile(OTP_REGEX);
-                Matcher matcher = pattern.matcher(messageText);
-                String otp="";
-                while (matcher.find())
-                {
-                    otp = matcher.group();
-                }
-
-//                Toast.makeText(ConfirmationActivity.this,"OTP: "+ otp ,Toast.LENGTH_LONG).show();
-//                Log.d(TAG, "messageReceived: "+otp);
-
-                codeEDT.setText(String.valueOf(otp));
-                doSendTheCode();
-            }
-        });
-
+    @Override
+    protected void onDestroy() {
+        SmsReceiver.unbindListener(smsListener);
+        super.onDestroy();
     }
 
     private void initializer() {
@@ -118,7 +111,7 @@ public class ConfirmationActivity extends AppCompatActivity implements Get_Inser
         sendCode.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (codeEDT.getText().toString().length() == 4){
+                if (codeEDT.getText().toString().length() == CODE_LENGTH){
                     doSendTheCode();
                 }else{
                     ShowToast.failure("لطفا در وارد نمودن کد دقت فرمایید",ConfirmationActivity.this);
