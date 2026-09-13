@@ -96,6 +96,14 @@ class AdminController extends Controller
             ->orderBy('created_at' , 'desc')
             ->get();
         $data['lastWeekRegisteredUsers'] = $lastWeekRegisteredUsers;
+        // "Today" means the Tehran calendar day; created_at is stored in the app
+        // timezone (UTC), so convert the day boundaries before querying.
+        $todayStart = Carbon::now('Asia/Tehran')->startOfDay()->setTimezone(config('app.timezone'));
+        $data['todayRegisteredUsersCount'] = DB::table('users')
+            ->where('created_at' , '>=' , $todayStart->toDateTimeString())
+            ->where('created_at' , '<' , $todayStart->copy()->addDay()->toDateTimeString())
+            ->count();
+        $data['todayJalaliDate'] = jdf::jdate('Y/n/j' , time() , '' , 'Asia/Tehran');
         return view('admin.dashboard')->with($data);
     }
 

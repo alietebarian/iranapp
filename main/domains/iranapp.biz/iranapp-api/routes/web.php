@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AdminNotificationController;
 use App\Http\Controllers\AdsController;
 use App\Http\Controllers\AdsLikesController;
 use App\Http\Controllers\AdsPhotoController;
@@ -141,6 +142,8 @@ Route::group( [ 'prefix' => 'admin' ] , function () {
 		Route::get( '/users/mobile-banks' , [UserController::class, 'showUserMobileBanks'] )->name( 'showUserMobileNumbersBank' );
 		Route::get( '/users/mobiles/excel/export' , [UserController::class, 'exportUserMobilesInExcelFormat'] )->name( 'ExportUserMobilesInExcelFormat' );
 		Route::get( '/ads/expiring' , [AdsController::class, 'showExpiringAds'] )->name( 'showExpiringAds' );
+		Route::get( '/notifications/{notification}/open' , [AdminNotificationController::class, 'open'] )->name( 'openAdminNotification' );
+		Route::post( '/notifications/read-all' , [AdminNotificationController::class, 'readAll'] )->name( 'readAllAdminNotifications' );
 
 
 		Route::get( '/estates/ads' , [EstateAdsController::class, 'showAllInAdmin'] )->name( 'showAllEstateAdsInAdminPanel' );

@@ -2,6 +2,12 @@
 
 namespace App\Providers;
 
+use App\Models\AdminNotification;
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\QueryException;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -25,5 +31,21 @@ class AppServiceProvider extends ServiceProvider
         if (config($firebaseTimeout) === null) {
             config([$firebaseTimeout => 10]);
         }
+
+        // The bell in the admin panel's top bar. No cron runs on the host, so ads coming up for
+        // expiry are picked up whenever an admin page is rendered.
+        View::composer('admin.master', function ($view) {
+            $notifications = new Collection();
+            if (Auth::guard('admin')->check()) {
+                try {
+                    AdminNotification::syncExpiringAds();
+                    $notifications = AdminNotification::unread();
+                } catch (QueryException $e) {
+                    // E.g. the admin_notifications migration has not been run: the panel must still open.
+                    Log::error('اعلان های پنل مدیریت بارگذاری نشد: ' . $e->getMessage());
+                }
+            }
+            $view->with('adminNotifications', $notifications);
+        });
     }
 }

@@ -142,6 +142,18 @@
 
                     </div> <!-- end col -->
 
+                    <div class="col-lg-6">
+                        <div class="card-box">
+                            <h4 class="m-t-0 m-b-20 header-title"><b>کاربران ثبت نام شده امروز</b></h4>
+
+                            <div class="widget-panel widget-style-2 bg-white m-b-0">
+                                <i class="ti-user text-success"></i>
+                                <h2 class="m-0 text-dark counter font-600">{{ $todayRegisteredUsersCount }}</h2>
+                                <div class="text-muted m-t-5">{{ $todayJalaliDate }}</div>
+                            </div>
+                        </div>
+                    </div> <!-- end col -->
+
                     <!-- CHAT -->
                 </div> <!-- end row -->
 

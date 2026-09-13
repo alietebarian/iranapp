@@ -745,12 +745,15 @@ class AdsController extends Controller {
 				$data[ 'filter_set' ] = 1;
 				$ads                  = $adsObj->selectFields( Ads::FIELDS )
 				                               ->getQuery();
+				// Tehran calendar days, both ends inclusive: an ad on its last day used to fall in
+				// neither "expired" nor any "expiring" range, and one exactly N days out was left out too.
+				$today = Carbon::now( 'Asia/Tehran' );
 				if ( $request->interval_days == 'expired' ) {
-					$ads = $ads->where( 'ads.valid_until' , '<' , Carbon::now()->toDateString() );
+					$ads = $ads->where( 'ads.valid_until' , '<' , $today->toDateString() );
 				} else {
 					$intervalDays = (int) $request->interval_days;
-					$ads          = $ads->where( 'ads.valid_until' , '>' , Carbon::now()->toDateString() )
-					                    ->where( 'ads.valid_until' , '<' , Carbon::now()->addDays( $intervalDays )->toDateString() );
+					$ads          = $ads->where( 'ads.valid_until' , '>=' , $today->toDateString() )
+					                    ->where( 'ads.valid_until' , '<=' , $today->copy()->addDays( $intervalDays )->toDateString() );
 
 				}
 

@@ -177,6 +177,51 @@
                         </li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right pull-right">
+                        @php($adminNotifications = $adminNotifications ?? collect())
+                        <li class="dropdown top-menu-item-xs">
+                            <a href="#" class="dropdown-toggle waves-effect waves-light" data-toggle="dropdown"
+                               aria-expanded="true"><i class="icon-bell"></i>
+                                @if($adminNotifications->count() > 0)
+                                    <span class="badge badge-xs badge-danger">{{ $adminNotifications->count() }}</span>
+                                @endif
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-lg">
+                                <li class="notifi-title">آگهی های در حال انقضاء</li>
+                                <li class="list-group slimscroll-noti notification-list">
+                                    @forelse($adminNotifications as $notification)
+                                        @php($daysLeft = $notification->daysLeft())
+                                        <a href="{{ route('openAdminNotification' , $notification->id) }}" class="list-group-item">
+                                            <h5 class="media-heading">{{ $notification->title }}</h5>
+                                            <p class="m-0">
+                                                <small class="{{ $daysLeft <= 3 ? 'text-danger' : 'text-warning' }}">
+                                                    @if($daysLeft < 0)
+                                                        منقضی شده
+                                                    @elseif($daysLeft == 0)
+                                                        امروز منقضی می شود
+                                                    @else
+                                                        {{ $daysLeft }} روز تا انقضاء
+                                                    @endif
+                                                </small>
+                                                <small class="text-muted">({{ \App\Libraries\jdf::jdate('j F Y' , \Carbon\Carbon::createFromFormat('Y-m-d' , $notification->valid_until)->getTimestamp()) }})</small>
+                                            </p>
+                                        </a>
+                                    @empty
+                                        <span class="list-group-item text-muted">اعلان جدیدی وجود ندارد</span>
+                                    @endforelse
+                                </li>
+                                @if($adminNotifications->count() > 0)
+                                    <li>
+                                        <form action="{{ route('readAllAdminNotifications') }}" method="post" class="m-0">
+                                            {{ csrf_field() }}
+                                            <button type="submit" class="list-group-item text-center"
+                                                    style="width: 100%; background: none;">
+                                                <small class="font-600">علامت گذاری همه به عنوان خوانده شده</small>
+                                            </button>
+                                        </form>
+                                    </li>
+                                @endif
+                            </ul>
+                        </li>
                         <li class="hidden-xs">
                             <a href="#" id="btn-fullscreen" class="waves-effect waves-light"><i
                                         class="icon-size-fullscreen"></i></a>
