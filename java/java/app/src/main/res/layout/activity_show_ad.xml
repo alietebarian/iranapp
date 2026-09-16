@@ -448,6 +448,79 @@
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
+                <!-- Opens a private chat with the ad's mobile number; hidden when the ad has none. -->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/showAdMessengersCard"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="5dp"
+                    app:contentPadding="4dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical">
+
+                        <LinearLayout
+                            android:id="@+id/showAdEitaaBTN"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="?selectableItemBackgroundBorderless"
+                            android:clickable="true"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:padding="6dp">
+
+                            <ImageView
+                                android:layout_width="34dp"
+                                android:layout_height="34dp"
+                                android:contentDescription="ایتا"
+                                android:src="@drawable/ic_eitaa" />
+
+                            <com.ideabonyan.iranapp.Components.MyTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="ایتا"
+                                android:textSize="9sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/showAdWhatsappBTN"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:background="?selectableItemBackgroundBorderless"
+                            android:clickable="true"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:padding="6dp">
+
+                            <ImageView
+                                android:layout_width="34dp"
+                                android:layout_height="34dp"
+                                android:contentDescription="واتساپ"
+                                android:src="@drawable/ic_whatsapp" />
+
+                            <com.ideabonyan.iranapp.Components.MyTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="واتساپ"
+                                android:textSize="9sp" />
+                        </LinearLayout>
+
+                        <com.ideabonyan.iranapp.Components.MyTextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="4dp"
+                            android:layout_weight="1"
+                            android:gravity="right"
+                            android:text="پیام به آگهی‌دهنده:"
+                            android:textColor="#555" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

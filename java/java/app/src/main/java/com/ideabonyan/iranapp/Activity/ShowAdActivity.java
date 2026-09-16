@@ -3,6 +3,7 @@ package com.ideabonyan.iranapp.Activity;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.ActivityNotFoundException;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentSender;
@@ -123,6 +124,8 @@ public class ShowAdActivity extends AppCompatActivity implements UpdateAd, OnMap
     LinearLayout shareBTN, favoriteBTN, downVoteBTN, upVoteBTN;
     RelativeLayout discountBTN;
     LinearLayout contactInfoBTN;
+    CardView messengersCard;
+    LinearLayout whatsappBTN, eitaaBTN;
     ImageButton backBTN, menuBTN;
     ImageButton backBTN2, menuBTN2;
     Context context;
@@ -151,6 +154,9 @@ public class ShowAdActivity extends AppCompatActivity implements UpdateAd, OnMap
     private SimpleLocation location;
     private Toolbar toolbar;
     static final int REQUEST_FULLSCREEN_VIDEO = 301;
+    // Eitaa (a Telegram fork) looks the account up by number and opens its private chat.
+    // Its https://eitaa.com links aren't verified app links, so on Android 12+ they open the browser.
+    static final String EITAA_PHONE_LINK = "et://resolve?phone=";
     CardView videoCard;
     PlayerView videoPlayerView;
     ExoPlayer videoPlayer;
@@ -333,6 +339,9 @@ public class ShowAdActivity extends AppCompatActivity implements UpdateAd, OnMap
         upVoteBTN = (LinearLayout) findViewById(R.id.showAdUpVoteBTN);
         discountBTN = (RelativeLayout) findViewById(R.id.showAdDiscountLayout);
         contactInfoBTN = (LinearLayout) findViewById(R.id.showAdContactUsBTN);
+        messengersCard = findViewById(R.id.showAdMessengersCard);
+        whatsappBTN = findViewById(R.id.showAdWhatsappBTN);
+        eitaaBTN = findViewById(R.id.showAdEitaaBTN);
         backBTN = (ImageButton) findViewById(R.id.newAdBackButton);
 //        backBTN2 = (ImageButton) findViewById(R.id.newAdBackButton2);
         menuBTN = (ImageButton) findViewById(R.id.showAdMenuBTN);
@@ -662,6 +671,21 @@ public class ShowAdActivity extends AppCompatActivity implements UpdateAd, OnMap
             }
         });
 
+        whatsappBTN.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // wa.me opens the chat with this number directly, in the app or on the web.
+                openMessengerChat(Uri.parse("https://wa.me/" + internationalMobile(ad.getMobile())), "واتساپ");
+            }
+        });
+
+        eitaaBTN.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openMessengerChat(Uri.parse(EITAA_PHONE_LINK + internationalMobile(ad.getMobile())), "ایتا");
+            }
+        });
+
 
         /////////////////////////////
         //      FAVORITE BTN
@@ -920,11 +944,40 @@ public class ShowAdActivity extends AppCompatActivity implements UpdateAd, OnMap
                 ownerNameTXT.setText(ad.getAds_owner_name());
             else ownerArea.setVisibility(View.GONE);
 
+            if (internationalMobile(ad.getMobile()) == null) messengersCard.setVisibility(View.GONE);
+
             runImageSlider();
             setupVideo();
         } catch (Exception e) {
             e.printStackTrace();
             finish();
+        }
+    }
+
+    /**
+     * Turns the ad's mobile as the owner typed it (09..., 9..., +98..., 0098..., Persian digits)
+     * into the digits-only international form messenger links expect, e.g. 989121234567.
+     * Returns null when there is no usable number.
+     */
+    static String internationalMobile(String mobile) {
+        if (mobile == null) return null;
+        StringBuilder digits = new StringBuilder();
+        for (int i = 0; i < mobile.length(); i++) {
+            int digit = Character.digit(mobile.charAt(i), 10); // also maps Persian and Arabic digits
+            if (digit >= 0) digits.append(digit);
+        }
+        String number = digits.toString();
+        if (number.startsWith("00")) number = number.substring(2);
+        else if (number.startsWith("0")) number = "98" + number.substring(1);
+        else if (number.length() == 10 && number.startsWith("9")) number = "98" + number;
+        return number.length() >= 10 ? number : null;
+    }
+
+    private void openMessengerChat(Uri uri, String messengerName) {
+        try {
+            startActivity(new Intent(Intent.ACTION_VIEW, uri));
+        } catch (ActivityNotFoundException e) {
+            Toast.makeText(this, messengerName + " روی گوشی شما نصب نیست", Toast.LENGTH_SHORT).show();
         }
     }
 
