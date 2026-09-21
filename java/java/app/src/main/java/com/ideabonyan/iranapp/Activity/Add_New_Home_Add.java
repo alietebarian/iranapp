@@ -63,6 +63,7 @@ import com.ideabonyan.iranapp.Fragment.Dialogs.Show_Rouls_Dialog;
 import com.ideabonyan.iranapp.Interface.Get_Insert_Edit_Data;
 import com.ideabonyan.iranapp.Models.Home_Category;
 import com.ideabonyan.iranapp.Models.ProvicesAndCities;
+import com.ideabonyan.iranapp.BuildConfig;
 import com.ideabonyan.iranapp.R;
 import com.ideabonyan.iranapp.UserData.UserHelper;
 import com.ideabonyan.iranapp.UserData.UserSessionManager;
@@ -133,6 +134,8 @@ public class Add_New_Home_Add extends AppCompatActivity implements OnMapReadyCal
     ScrollView scrollView;
     ImageView newAdMapOverlay;
     LinearLayout lin_accept_roul;
+    CheckBox chk_accept_roul;
+    View txt_show_rouls;
     String picpath;
     Bitmap bitmap1;
     Bitmap[] bitmaps = new Bitmap[5];
@@ -258,6 +261,8 @@ public class Add_New_Home_Add extends AppCompatActivity implements OnMapReadyCal
     private void holder() {
         lin_accept_roul = findViewById(R.id.lin_accept_roul);
         lin_accept_roul.setVisibility(View.VISIBLE);
+        chk_accept_roul = findViewById(R.id.chk_accept_roul);
+        txt_show_rouls = findViewById(R.id.txt_show_rouls);
 
         scrollView = findViewById(R.id.scrollView);
 
@@ -592,7 +597,7 @@ public class Add_New_Home_Add extends AppCompatActivity implements OnMapReadyCal
     }
 
     private void onclick() {
-        lin_accept_roul.setOnClickListener(new View.OnClickListener() {
+        txt_show_rouls.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Show_Rouls_Dialog show_rouls_dialog = new Show_Rouls_Dialog("قوانین", getString(R.string.rouls));
@@ -1350,6 +1355,9 @@ public class Add_New_Home_Add extends AppCompatActivity implements OnMapReadyCal
         if (i > 0) {
             ShowToast.failure(message, Add_New_Home_Add.this);
             return false;
+        } else if (!chk_accept_roul.isChecked()) {
+            ShowToast.failure("برای ثبت آگهی باید با قوانین و مقررات موافقت کنید", Add_New_Home_Add.this);
+            return false;
         } else {
             return true;
         }
@@ -1378,6 +1386,11 @@ public class Add_New_Home_Add extends AppCompatActivity implements OnMapReadyCal
                     okhttp3.MultipartBody.Builder reqEntity = new okhttp3.MultipartBody.Builder().setType(okhttp3.MultipartBody.FORM);
 
                     String token = new UserSessionManager(Add_New_Home_Add.this).getLoginToken();
+
+                    // Legal record of the consent the user gave before submitting.
+                    reqEntity.addFormDataPart("terms_accepted", chk_accept_roul.isChecked() ? "1" : "0");
+                    reqEntity.addFormDataPart("terms_version", StaticData.TERMS_VERSION);
+                    reqEntity.addFormDataPart("app_version", BuildConfig.VERSION_NAME);
 //                    String token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjI3LCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwODAvZ2hvbGxhYy9wdWJsaWNfaHRtbC9hcGkvbG9naW4iLCJpYXQiOjE1MDgyMjI4MjQsImV4cCI6MTUwODgyNzYyNCwibmJmIjoxNTA4MjIyODI0LCJqdGkiOiJZcDhZWDhxZ3BhY1ZLYmJrIn0.2QojAogqfRL_TK8BYzh9mtL45UOwoGLJyUd--9aMClQ";
 
 

@@ -73,7 +73,6 @@
             android:orientation="vertical">
 
             <LinearLayout
-                android:visibility="gone"
                 android:id="@+id/lin_descount"
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
@@ -95,7 +94,27 @@
             </LinearLayout>
 
             <LinearLayout
-                android:visibility="gone"
+                android:id="@+id/lin_home"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="5dp"
+                android:background="#0097A7"
+                android:clickable="true"
+                android:foreground="?selectableItemBackgroundBorderless"
+                android:gravity="center">
+
+                <com.ideabonyan.iranapp.Components.MyTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="آگهی املاک"
+                    android:textColor="#fff"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
                 android:id="@+id/lin_car"
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
@@ -117,13 +136,13 @@
             </LinearLayout>
 
             <LinearLayout
-                android:layout_marginBottom="10dp"
                 android:id="@+id/lin_job"
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="5dp"
+                android:layout_marginBottom="15dp"
                 android:background="#0097A7"
                 android:clickable="true"
                 android:foreground="?selectableItemBackgroundBorderless"
@@ -133,29 +152,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="آگهی استخدام"
-                    android:textColor="#fff"
-                    android:textSize="16sp" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:visibility="gone"
-                android:id="@+id/lin_home"
-                android:layout_width="match_parent"
-                android:layout_height="45dp"
-                android:layout_marginBottom="15dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginTop="5dp"
-                android:background="#0097A7"
-                android:clickable="true"
-                android:foreground="?selectableItemBackgroundBorderless"
-                android:gravity="center">
-
-                <com.ideabonyan.iranapp.Components.MyTextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="آگهی املاک"
                     android:textColor="#fff"
                     android:textSize="16sp" />
 

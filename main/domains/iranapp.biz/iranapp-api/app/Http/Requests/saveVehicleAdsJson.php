@@ -5,6 +5,7 @@ namespace App\Http\Requests;
 use App\Models\Brand;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
+use App\Support\TermsConsent;
 
 class saveVehicleAdsJson extends FormRequest
 {
@@ -50,7 +51,7 @@ class saveVehicleAdsJson extends FormRequest
             'kilometre' => 'nullable|numeric',
             'production_year' => 'nullable|numeric',
             'neworold' => 'required|string|in:new,old',
-        ];
+        ] + TermsConsent::rules();
     }
 
     public function messages()
@@ -79,7 +80,7 @@ class saveVehicleAdsJson extends FormRequest
             'neworold.in' => 'انتخاب نو یا کارکرده تنها میتواند یکی از مقادیر نو یا کارکرده را داشته باشد.',
             'cylinder_volume.numeric' => 'حجم موتور نامعتبر است.',
             'cylinder_volume.exists' => 'حجم موتور نامعتبر است.'
-        ];
+        ] + TermsConsent::messages();
     }
 
 

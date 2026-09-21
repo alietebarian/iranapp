@@ -44,6 +44,7 @@ import com.google.firebase.messaging.FirebaseMessaging;
 import com.ideabonyan.iranapp.Components.MyTextView;
 import com.ideabonyan.iranapp.Fragment.Dialogs.CityPickerDialogFragment;
 import com.ideabonyan.iranapp.Fragment.Dialogs.NotificationDialog;
+import com.ideabonyan.iranapp.Fragment.Dialogs.Select_Add_Type_Dialog;
 import com.ideabonyan.iranapp.Fragment.Dialogs.VipAdDialog;
 import com.ideabonyan.iranapp.Fragment.Fav.Fav_Host;
 import com.ideabonyan.iranapp.Fragment.KasbokarFragment;
@@ -328,11 +329,9 @@ public class MainActivity extends AppCompatActivity implements Get_Insert_Edit_D
 
 
                         } else {
-//
-                            Intent i = new Intent(MainActivity.this, NewAdActivity.class);
-                            startActivity(i);
-//                            Select_Add_Type_Dialog select_add_type_dialog=new Select_Add_Type_Dialog();
-//                            select_add_type_dialog.show(getFragmentManager(),"select_add_type_dialog");
+
+                            Select_Add_Type_Dialog select_add_type_dialog = new Select_Add_Type_Dialog();
+                            select_add_type_dialog.show(getSupportFragmentManager(), "select_add_type_dialog");
                         }
                         break;
 

@@ -21,6 +21,7 @@ use App\Models\VipAds;
 use Carbon\Carbon;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
+use App\Support\TermsConsent;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\URL;
 use App\Libraries\Image;
@@ -236,6 +237,7 @@ class AdsController extends Controller {
 		} catch ( \Throwable $exception ) {
 			return response()->json( [ 'status' => 401 , 'error' => 'token_invalid' ] );
 		}
+		$request->validate( TermsConsent::rules() , TermsConsent::messages() );
 		$ads        = new Ads();
 		$ads->title = $request->title;
 		if ( $request->has( 'latitude' ) ) {
@@ -270,6 +272,7 @@ class AdsController extends Controller {
 		$ads->status         = 'pending';
 		$success             = $ads->save();
 		$ads->userAds()->sync( $user->id );
+		TermsConsent::record( TermsConsent::TYPE_BUSINESS , $ads->id , $user->id , $request );
 
 		if ( $request->hasFile( 'photos' ) ) {
 			$photos = $request->photos;

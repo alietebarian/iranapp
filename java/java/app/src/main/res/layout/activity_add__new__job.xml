@@ -905,20 +905,34 @@
             </androidx.cardview.widget.CardView>
             <LinearLayout
                 android:visibility="gone"
-                android:paddingBottom="10dp"
-                android:foreground="?attr/selectableItemBackgroundBorderless"
-                android:clickable="true"
                 android:id="@+id/lin_accept_roul"
-                android:paddingTop="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center">
-                <com.ideabonyan.iranapp.Components.MyTextView
-                    android:textSize="16sp"
-                    android:textColor="#03A9F4"
+                android:gravity="center"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp">
+
+                <com.ideabonyan.iranapp.Components.MyCheckbox
+                    android:id="@+id/chk_accept_roul"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="با قوانین و شرایط موافقم"/>
+                    android:buttonTint="@color/colorPrimary"
+                    android:checked="false"
+                    android:text="با تمامی قوانین و مقررات موافقم"
+                    android:textColor="#444"
+                    android:textSize="15sp" />
+
+                <com.ideabonyan.iranapp.Components.MyTextView
+                    android:id="@+id/txt_show_rouls"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:clickable="true"
+                    android:paddingLeft="6dp"
+                    android:paddingRight="6dp"
+                    android:text="(مشاهده قوانین)"
+                    android:textColor="#03A9F4"
+                    android:textSize="15sp" />
             </LinearLayout>
 
             <androidx.cardview.widget.CardView

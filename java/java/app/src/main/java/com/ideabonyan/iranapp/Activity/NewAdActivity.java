@@ -68,6 +68,7 @@ import com.ideabonyan.iranapp.Models.AdPlans;
 import com.ideabonyan.iranapp.Models.AdsToBeListed;
 import com.ideabonyan.iranapp.Models.HomeSubCategories;
 import com.ideabonyan.iranapp.Models.ProvicesAndCities;
+import com.ideabonyan.iranapp.BuildConfig;
 import com.ideabonyan.iranapp.R;
 import com.ideabonyan.iranapp.UserData.UserHelper;
 import com.ideabonyan.iranapp.UserData.UserSessionManager;
@@ -111,6 +112,8 @@ public class NewAdActivity extends AppCompatActivity implements OnMapReadyCallba
     AdPlans adPlans;
     LinearLayout lin_remove_map_loc;
     LinearLayout lin_accept_roul;
+    MyCheckbox chk_accept_roul;
+    View txt_show_rouls;
     ImageButton backInToolbar;
     ViewGroup rootView;
     MyCheckbox showMap;
@@ -276,7 +279,9 @@ public class NewAdActivity extends AppCompatActivity implements OnMapReadyCallba
         lin_remove_map_loc.setVisibility(View.VISIBLE);
 
         lin_accept_roul = findViewById(R.id.lin_accept_roul);
-        lin_accept_roul.setVisibility(View.VISIBLE);
+        lin_accept_roul.setVisibility(isItNewAd ? View.VISIBLE : View.GONE);
+        chk_accept_roul = findViewById(R.id.chk_accept_roul);
+        txt_show_rouls = findViewById(R.id.txt_show_rouls);
 
         rootView = (ViewGroup) findViewById(R.id.newAd);
         backInToolbar = (ImageButton) findViewById(R.id.newAdBackButton);
@@ -391,7 +396,7 @@ public class NewAdActivity extends AppCompatActivity implements OnMapReadyCallba
             }
         });
 
-        lin_accept_roul.setOnClickListener(new View.OnClickListener() {
+        txt_show_rouls.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Show_Rouls_Dialog show_rouls_dialog = new Show_Rouls_Dialog("قوانین", getString(R.string.rouls));
@@ -1805,6 +1810,11 @@ public class NewAdActivity extends AppCompatActivity implements OnMapReadyCallba
         }
 
 
+        if (isItNewAd && !chk_accept_roul.isChecked()) {
+            ShowToast.failure("برای ثبت آگهی باید با قوانین و مقررات موافقت کنید", NewAdActivity.this);
+            errorCount++;
+        }
+
         if (errorCount != 0) majorWarnAtBottom.setVisibility(View.VISIBLE);
         else majorWarnAtBottom.setVisibility(View.GONE);
 
@@ -1830,6 +1840,11 @@ public class NewAdActivity extends AppCompatActivity implements OnMapReadyCallba
                     okhttp3.MultipartBody.Builder reqEntity = new okhttp3.MultipartBody.Builder().setType(okhttp3.MultipartBody.FORM);
 
                     String token = new UserSessionManager(NewAdActivity.this).getLoginToken();
+
+                    // Legal record of the consent the user gave before submitting.
+                    reqEntity.addFormDataPart("terms_accepted", chk_accept_roul.isChecked() ? "1" : "0");
+                    reqEntity.addFormDataPart("terms_version", StaticData.TERMS_VERSION);
+                    reqEntity.addFormDataPart("app_version", BuildConfig.VERSION_NAME);
 
                     reqEntity.addFormDataPart("title", titleEdt.getText().toString().trim());
                     reqEntity.addFormDataPart("city_id", citiesObjectList.get(citySpnr.getSelectedItemPosition() - 1).getId());

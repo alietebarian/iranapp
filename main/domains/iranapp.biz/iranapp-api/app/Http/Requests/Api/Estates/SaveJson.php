@@ -4,6 +4,7 @@ namespace App\Http\Requests\Api\Estates;
 
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
+use App\Support\TermsConsent;
 
 class SaveJson extends FormRequest
 {
@@ -47,7 +48,7 @@ class SaveJson extends FormRequest
             'description' => 'nullable|string',
             'latitude' => 'nullable|numeric',
             'longitude' => 'nullable|numeric',
-        ];
+        ] + TermsConsent::rules();
     }
 
     public function messages()
@@ -75,7 +76,7 @@ class SaveJson extends FormRequest
             'telephone2.max' => 'تلفن تماس 2 طولانی تر از حد مجاز است.',
             'latitude.numeric' => 'عرض جغرافیایی باید عددی باشد.',
             'longitude.numeric' => 'طول جغرافیایی باید عددی باشد.',
-        ];
+        ] + TermsConsent::messages();
     }
 
     public function formatErrors(Validator $validator)

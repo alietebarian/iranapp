@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Admin;
 
 use App\Models\Brand;
+use App\Support\AdPublishDuration;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -45,7 +46,7 @@ class UpdateVehicleAdsRequest extends FormRequest
             'kilometre' => 'nullable|numeric',
             'production_year' => 'nullable|numeric',
             'neworold' => 'required|string|in:new,old',
-        ];
+        ] + AdPublishDuration::rules();
     }
 
     public function messages()
@@ -76,7 +77,7 @@ class UpdateVehicleAdsRequest extends FormRequest
             'cylinder_volume.numeric' => 'حجم موتور نامعتبر است.',
             'cylinder_volume.exists' => 'حجم موتور نامعتبر است.',
 
-        ];
+        ] + AdPublishDuration::messages();
     }
 
     public function withValidator($validator){

@@ -4,6 +4,7 @@ namespace App\Http\Requests\Api\Employs;
 
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
+use App\Support\TermsConsent;
 
 class SaveJson extends FormRequest
 {
@@ -44,7 +45,7 @@ class SaveJson extends FormRequest
             'specialty' => 'required|numeric|exists:employs_ads_specialty,id',
             'agremment_type' => 'required|string|in:tamamvaght,parevaght,moshaveri,projei',
             'education_level' => 'required|string|in:underdiploma,diploma,tact,expertise,masterdegree,doctoral',
-        ];
+        ] + TermsConsent::rules();
     }
 
     public function messages()
@@ -71,7 +72,7 @@ class SaveJson extends FormRequest
             'education_level.required' => 'وارد کردن میزان تحصیلات الزامی است.',
             'education_level.in' => 'انتخاب میزان تحصیلات تنها میتواند یکی از مقادیر زیردیپلم، دیپلم، کاردانی، کارشناسی، کارشناسی ارشد یا دکتری و بالاتر را داشته باشد.',
 
-        ];
+        ] + TermsConsent::messages();
     }
 
     public function formatErrors(Validator $validator)

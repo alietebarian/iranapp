@@ -18,6 +18,8 @@ use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
+use App\Support\AdPublishDuration;
+use App\Support\TermsConsent;
 use Illuminate\Support\Facades\DB;
 use App\Libraries\Image;
 
@@ -433,6 +435,9 @@ class EstateAdsController extends Controller
 
     public function update(Request $request, EstateAds $ads)
     {
+        // An approved ad must always carry a deliberate run length, never an inherited default.
+        $request->validate(AdPublishDuration::rules(), AdPublishDuration::messages());
+
         $ads->ads_title = $request->ads_title;
         $ads->region_id = $request->region_id;
         if ($request->hasFile('thumbnail_photo')) {
@@ -586,6 +591,7 @@ class EstateAdsController extends Controller
             $ads->longitude = $request->longitude;
         }else
             $ads->longitude = null;
+        AdPublishDuration::applyTo($ads, $request);
         $ads->save();
 
         $msg = new \stdClass();
@@ -622,6 +628,8 @@ class EstateAdsController extends Controller
         $ads->user_id = $user->id;
         $ads->address = $request->address;
         $ads->user_type = $request->user_type;
+        // Ads created from the app always wait for an admin to approve them.
+        $ads->status = 'pending';
         if ($parentCategory->id == 1) {
             $subCategory_id = $request->category_id;
             $ads->category_id = $subCategory_id;
@@ -684,6 +692,7 @@ class EstateAdsController extends Controller
         $ads->valid_since = Carbon::now()->toDateString();
         $ads->valid_until = Carbon::now()->addYear(1)->toDateString();
         $ads->save();
+        TermsConsent::record(TermsConsent::TYPE_ESTATE, $ads->id, $user->id, $request);
         if ($request->hasFile('photos')) {
             $photos = $request->photos;
             foreach ($photos as $photo) {

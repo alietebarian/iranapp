@@ -244,6 +244,8 @@
                                     @endif
                                 </div>
                             </div>
+                            @include('admin.publish_duration_fields')
+                            @include('admin.terms_acceptance_box', ['adType' => \App\Support\TermsConsent::TYPE_ESTATE])
                             <div class="col-xs-12 col-md-6">
                                 <div class="form-group">
                                     <label for="ads_owner_name">نام صاحب آگهی:</label>

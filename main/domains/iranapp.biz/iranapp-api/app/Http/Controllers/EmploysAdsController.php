@@ -17,6 +17,8 @@ use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
+use App\Support\AdPublishDuration;
+use App\Support\TermsConsent;
 use Illuminate\Support\Facades\DB;
 use App\Libraries\Image;
 
@@ -168,6 +170,9 @@ class EmploysAdsController extends Controller
 
     public function update(Request $request, EmploysAds $ads)
     {
+        // An approved ad must always carry a deliberate run length, never an inherited default.
+        $request->validate(AdPublishDuration::rules(), AdPublishDuration::messages());
+
         $ads->ads_title = $request->ads_title;
         $ads->region_id = $request->region_id;
         if ($request->hasFile('thumbnail_photo')) {
@@ -203,6 +208,7 @@ class EmploysAdsController extends Controller
         $ads->agremment_type = $request->agremment_type;
         $ads->education_level = $request->education_level;
         $ads->person_or_company = $request->person_or_company;
+        AdPublishDuration::applyTo($ads, $request);
         $ads->type = $request->type;
         $ads->save();
 
@@ -281,6 +287,7 @@ class EmploysAdsController extends Controller
         $ads->valid_since = Carbon::now()->toDateString();
         $ads->valid_until = Carbon::now()->addYear(1)->toDateString();
         $ads->save();
+        TermsConsent::record(TermsConsent::TYPE_EMPLOY, $ads->id, $user->id, $request);
 
         if($request->hasFile('photos')){
             $photosArr = $request->photos;

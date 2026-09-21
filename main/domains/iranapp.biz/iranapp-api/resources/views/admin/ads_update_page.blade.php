@@ -341,6 +341,7 @@
                                     @endif
                                 </div>
                             </div>
+                            @include('admin.terms_acceptance_box', ['adType' => \App\Support\TermsConsent::TYPE_BUSINESS])
                             <div class="col-xs-12 col-md-6">
                                 <div class="form-group">
                                     <label for="ads_plan_id">پلن آگهی:</label>

@@ -127,5 +127,12 @@ public class StaticData {
     static public String INSTALL_STATS = DOMAIN_WITH_API + "/app-stats/installs";
 
 
+    /**
+     * Wording of the rules the user is shown before submitting an ad (R.string.rouls).
+     * Sent with every new ad and stored server-side as the legal record of what was accepted;
+     * bump it here and in App\Support\TermsConsent whenever that text changes.
+     */
+    public static String TERMS_VERSION = "1.0";
+
     public static String download_link="https://cafebazaar.ir/app/com.ideabonyan.iranapp/";
 }

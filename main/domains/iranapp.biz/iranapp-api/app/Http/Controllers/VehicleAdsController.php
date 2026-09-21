@@ -18,6 +18,8 @@ use App\Models\VehicleAdsPhoto;
 use Carbon\Carbon;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
+use App\Support\AdPublishDuration;
+use App\Support\TermsConsent;
 use Illuminate\Support\Facades\DB;
 use App\Libraries\Image;
 
@@ -265,6 +267,7 @@ class VehicleAdsController extends Controller
         $ads->cylinder_volume = $request->cylinder_volume;
         $ads->chassis_type = $request->chassis_type;
         $ads->person_or_company = $request->person_or_company;
+        AdPublishDuration::applyTo($ads, $request);
         $ads->save();
 
         $msg = new \stdClass();
@@ -352,6 +355,7 @@ class VehicleAdsController extends Controller
         $adsObj->valid_since = Carbon::now()->toDateString();
         $adsObj->valid_until = Carbon::now()->addYear(1)->toDateString();
         $adsObj->save();
+        TermsConsent::record(TermsConsent::TYPE_VEHICLE, $adsObj->id, $user->id, $request);
 
         if ($request->hasFile('photos')) {
             foreach ($request->photos as $photo) {
