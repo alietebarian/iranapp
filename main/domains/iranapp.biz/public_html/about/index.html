@@ -6,12 +6,10 @@
     <meta name="theme-color" content="#1C2233">
     <title>درباره ایران آپ</title>
     <!--
-      Static company page of iranapp.biz (address, resumes, licenses, contact), opened by the
+      Static company page of iranapp.biz (licenses, registrations and contact), opened by the
       «درباره ما» tile on the landing page of the app (StaticData.ABOUT_COMPANY).
-      Colours follow the app's landing page (res/values/category_colors.xml) and the icons use the
-      same white-to-red gradient as the category icons.
-
-      Every value that still has to be filled in is marked with a TODO comment.
+      Colours follow the landing page of the app (res/values/category_colors.xml) and the icons use
+      the same white-to-red gradient as the category icons.
     -->
     <style>
         @font-face {
@@ -51,11 +49,12 @@
         }
 
         a { color: inherit; text-decoration: none; }
+        [hidden] { display: none !important; }
 
         .page {
             max-width: 640px;
             margin: 0 auto;
-            padding: 24px 16px 32px;
+            padding: 22px 16px 28px;
         }
 
         .sprite { position: absolute; width: 0; height: 0; overflow: hidden; }
@@ -76,47 +75,62 @@
             align-items: center;
             justify-content: center;
             flex: none;
-            width: 40px;
-            height: 40px;
+            width: 38px;
+            height: 38px;
             border-radius: 50%;
             background: var(--plate);
             border: 1px solid var(--plate-stroke);
         }
+        .plate .i { width: 19px; height: 19px; }
 
         /* Header */
-        .hero { text-align: center; padding: 8px 0 20px; }
-        .hero .plate { width: 64px; height: 64px; margin-bottom: 10px; }
-        .hero .plate .i { width: 30px; height: 30px; }
-        .eyebrow { margin: 0; color: var(--muted); font-size: 12px; direction: ltr; }
-        h1 { margin: 0 0 10px; font-size: 26px; font-weight: normal; line-height: 1.6; }
+        .hero { text-align: center; padding: 4px 0 22px; }
+        .logo {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 84px;
+            height: 84px;
+            margin-bottom: 14px;
+            border-radius: 50%;
+            background: #fff;
+            box-shadow: 0 0 0 1px var(--plate-stroke), 0 10px 28px rgba(255, 82, 82, .22);
+        }
+        .logo img { width: 54px; height: 54px; display: block; }
+        h1 { margin: 0; font-size: 25px; font-weight: normal; line-height: 1.6; }
         h1::after {
             content: "";
             display: block;
-            width: 28px;
+            width: 30px;
             height: 3px;
-            margin: 6px auto 0;
+            margin: 8px auto 0;
             border-radius: 2px;
             background: var(--accent);
         }
-        .lead { margin: 0 auto; max-width: 30em; color: var(--muted); font-size: 13px; }
+        .lead { margin: 10px auto 0; max-width: 28em; color: var(--muted); font-size: 13px; }
 
-        .chips {
+        .trust {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
             gap: 8px;
+            margin-top: 16px;
         }
-        .chips a {
-            padding: 4px 14px;
+        .trust span {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 5px 12px;
             border-radius: 999px;
             background: var(--tile);
             border: 1px solid var(--tile-stroke);
-            font-size: 12px;
+            font-size: 11.5px;
+            color: var(--muted);
         }
-        .chips a:active { border-color: var(--accent); }
+        .trust .i { width: 14px; height: 14px; }
 
         /* Sections */
-        .section { margin-top: 28px; scroll-margin-top: 12px; }
+        .section { margin-top: 26px; }
         .section-title {
             display: flex;
             align-items: center;
@@ -126,37 +140,46 @@
             font-weight: normal;
         }
         .section-title .plate { width: 34px; height: 34px; }
-        .section-title .i { width: 18px; height: 18px; }
-        .section-note { margin: -6px 0 12px; color: var(--muted); font-size: 12px; }
+        .section-title .i { width: 17px; height: 17px; }
 
         .card {
             background: var(--tile);
             border: 1px solid var(--tile-stroke);
             border-radius: 16px;
-            padding: 14px 16px;
         }
-        .card p { margin: 0; }
-        .card p + p { margin-top: 8px; }
+        .card.text { padding: 14px 16px; }
+        .card.text p { margin: 0; }
+        .card.text p + p { margin-top: 10px; }
         .muted { color: var(--muted); }
 
-        /* Rows of label / value, used by address and contact */
-        .card.rows { padding: 0; overflow: hidden; }
+        /* One line of the licenses / contact lists */
         .row {
             display: flex;
             align-items: center;
             gap: 12px;
-            padding: 12px 16px;
+            padding: 13px 16px;
+            width: 100%;
         }
         .row + .row { border-top: 1px solid var(--tile-stroke); }
-        .row .plate { width: 36px; height: 36px; }
-        .row .plate .i { width: 18px; height: 18px; }
         .row-body { flex: 1; min-width: 0; }
-        .label { display: block; color: var(--muted); font-size: 11.5px; line-height: 1.6; }
-        .value { display: block; font-size: 14px; line-height: 1.7; overflow-wrap: anywhere; }
-        a.row:active { background: rgba(255, 255, 255, .05); }
+        .label { display: block; color: var(--muted); font-size: 11.5px; line-height: 1.7; }
+        .value { display: block; font-size: 13.5px; line-height: 1.8; overflow-wrap: anywhere; }
+        .num {
+            display: inline-block;
+            margin-right: 4px;
+            padding: 1px 10px;
+            border-radius: 999px;
+            background: rgba(255, 82, 82, .12);
+            border: 1px solid rgba(255, 82, 82, .22);
+            color: var(--accent);
+            font-size: 12px;
+            letter-spacing: .4px;
+        }
+        a.row:active, .row[data-copy]:active { background: rgba(255, 255, 255, .05); }
+        .row[data-copy] { cursor: pointer; }
         .chev {
-            width: 18px;
-            height: 18px;
+            width: 17px;
+            height: 17px;
             flex: none;
             fill: none;
             stroke: var(--muted);
@@ -165,60 +188,24 @@
             stroke-linejoin: round;
         }
 
-        .btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            margin: 2px 16px 14px;
-            padding: 9px;
-            border-radius: 12px;
-            background: var(--accent);
-            color: #fff;
-            font-size: 13px;
-        }
-        .btn .i { stroke: #fff; width: 18px; height: 18px; }
-        .btn:active { opacity: .85; }
-
-        /* Resumes */
-        .timeline { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
-        .item-head {
-            display: flex;
-            align-items: baseline;
-            justify-content: space-between;
-            gap: 10px;
-            margin-bottom: 4px;
-        }
-        .item h3 { margin: 0; font-size: 14.5px; font-weight: normal; }
-        .item p { color: var(--muted); font-size: 13px; }
-        .tag {
-            flex: none;
-            padding: 0 10px;
+        /* "Copied" toast */
+        .toast {
+            position: fixed;
+            left: 50%;
+            bottom: 26px;
+            transform: translate(-50%, 10px);
+            padding: 8px 18px;
             border-radius: 999px;
-            background: rgba(255, 82, 82, .12);
-            color: var(--accent);
-            font-size: 11px;
-            line-height: 22px;
+            background: var(--plate);
+            border: 1px solid var(--plate-stroke);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, .45);
+            font-size: 12.5px;
+            opacity: 0;
+            transition: opacity .18s, transform .18s;
         }
+        .toast.show { opacity: 1; transform: translate(-50%, 0); }
 
-        /* Licenses */
-        .licenses {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-            gap: 10px;
-        }
-        .license {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 4px;
-            text-align: center;
-        }
-        .license h3 { margin: 6px 0 0; font-size: 13.5px; font-weight: normal; line-height: 1.7; }
-        .license .muted { font-size: 11.5px; line-height: 1.7; }
-        .license a { margin-top: auto; padding-top: 6px; color: var(--accent); font-size: 12px; }
-
-        footer { margin-top: 32px; text-align: center; color: var(--muted); font-size: 11.5px; }
+        footer { margin-top: 28px; text-align: center; color: var(--muted); font-size: 11.5px; }
     </style>
 </head>
 <body>
@@ -231,158 +218,118 @@
             <stop offset="1" stop-color="#FF5252"/>
         </linearGradient>
     </defs>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M4.5 12.5 9.5 17.5 19.5 7"/></symbol>
     <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v5.5M12 7.8h.01"/></symbol>
-    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.4"/></symbol>
-    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7.5V12l3 2"/></symbol>
-    <symbol id="i-hash" viewBox="0 0 24 24"><path d="M9.5 4 8 20M16 4l-1.5 16M4.5 9h15M4 15h15"/></symbol>
-    <symbol id="i-nav" viewBox="0 0 24 24"><path d="M12 3 4.5 20.5 12 17l7.5 3.5z"/></symbol>
-    <symbol id="i-briefcase" viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8.5 7V5.5A1.5 1.5 0 0 1 10 4h4a1.5 1.5 0 0 1 1.5 1.5V7M3 12.5h18"/></symbol>
     <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3l7.5 3v5.5c0 4.6-3.2 8.3-7.5 9.5-4.3-1.2-7.5-4.9-7.5-9.5V6z"/><path d="M8.8 12.2l2.2 2.2 4.2-4.4"/></symbol>
-    <symbol id="i-doc" viewBox="0 0 24 24"><path d="M7 3h7l5 5v11a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></symbol>
+    <symbol id="i-badge" viewBox="0 0 24 24"><circle cx="12" cy="9" r="5.5"/><path d="M8.5 13.6 7 21l5-2.4L17 21l-1.5-7.4"/></symbol>
+    <symbol id="i-building" viewBox="0 0 24 24"><path d="M4 21V6.5a1.5 1.5 0 0 1 1-1.4l7-2.4a1 1 0 0 1 1.3 1V21M4 21h16M13.3 9H19a1 1 0 0 1 1 1v11"/><path d="M7.5 8.5h2M7.5 12h2M7.5 15.5h2M16 13h1M16 16.5h1"/></symbol>
+    <symbol id="i-book" viewBox="0 0 24 24"><path d="M4 5.5A1.5 1.5 0 0 1 5.5 4H11v16H5.5A1.5 1.5 0 0 1 4 18.5z"/><path d="M20 5.5A1.5 1.5 0 0 0 18.5 4H13v16h5.5a1.5 1.5 0 0 0 1.5-1.5z"/></symbol>
     <symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 4h3.5l1.7 4.3-2.2 1.4a11 11 0 0 0 6.3 6.3l1.4-2.2L20 15.5V19a1.5 1.5 0 0 1-1.6 1.5C10.6 20 4 13.4 3.5 5.6A1.5 1.5 0 0 1 5 4z"/></symbol>
     <symbol id="i-sms" viewBox="0 0 24 24"><path d="M5 4h14a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H9.5L5 20.5V17a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/><path d="M8 9.5h8M8 12.5h5"/></symbol>
-    <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 6.5 12 13l8.5-6.5"/></symbol>
-    <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z"/></symbol>
     <symbol id="i-instagram" viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.2 6.8h.01"/></symbol>
-    <symbol id="i-telegram" viewBox="0 0 24 24"><path d="M21 4 3 11l6 2.2L18 7l-7 7.5V20l3.3-3.6L18 19z"/></symbol>
+    <symbol id="i-send" viewBox="0 0 24 24"><path d="M21 4 3 11l6 2.2L18 7l-7 7.5V20l3.3-3.6L18 19z"/></symbol>
+    <symbol id="i-hash" viewBox="0 0 24 24"><path d="M9.5 4 8 20M16 4l-1.5 16M4.5 9h15M4 15h15"/></symbol>
+    <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z"/></symbol>
     <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 4v11M7.5 10.5 12 15l4.5-4.5M5 20h14"/></symbol>
     <symbol id="i-chev" viewBox="0 0 24 24"><path d="M14.5 6 8.5 12l6 6"/></symbol>
+    <symbol id="i-copy" viewBox="0 0 24 24"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M15 6.5A2.5 2.5 0 0 0 12.5 4h-6A2.5 2.5 0 0 0 4 6.5v6A2.5 2.5 0 0 0 6.5 15"/></symbol>
 </svg>
 
 <main class="page">
 
     <header class="hero">
-        <span class="plate"><svg class="i"><use href="#i-info"/></svg></span>
-        <p class="eyebrow">iranapp.biz</p>
+        <span class="logo"><img src="img/logo.png" alt="ایران آپ" width="54" height="54"></span>
         <h1>ایران آپ</h1>
-        <p class="lead">
-            اپلیکیشنی برای دسترسی سریع و آسان به اصناف، خدمات و اماکن اطراف شما و ارتباط مستقیم
-            خریدار و فروشنده.
-        </p>
+        <p class="lead">راهنمای هوشمند اصناف، خدمات و اماکن شهر شما</p>
+        <div class="trust">
+            <span><svg class="i"><use href="#i-check"/></svg>پروانه کسب</span>
+            <span><svg class="i"><use href="#i-check"/></svg>ثبت شرکت</span>
+            <span><svg class="i"><use href="#i-check"/></svg>مجوز ارشاد</span>
+        </div>
     </header>
 
-    <nav class="chips" aria-label="بخش‌های صفحه">
-        <a href="#address">آدرس</a>
-        <a href="#resume">رزومه‌ها</a>
-        <a href="#licenses">مجوزها</a>
-        <a href="#contact">ارتباط با ما</a>
-    </nav>
-
-    <section class="section" id="about">
+    <section class="section">
         <h2 class="section-title"><span class="plate"><svg class="i"><use href="#i-info"/></svg></span>درباره ما</h2>
-        <div class="card">
+        <div class="card text">
             <p>
-                در ایران آپ هر صنف یک صفحه کامل دارد: گالری تصاویر، توضیحات شغلی، نقشه محل، محصولات و
-                خدمات، راه‌های تماس سریع و لینک وب‌سایت و شبکه‌های اجتماعی. کسب‌وکار مورد نیازتان را بر
-                اساس صنف، محل و نام جستجو کنید و با چند کلیک ساده از آدرس‌ها و اطلاعات غلط و پیچیده رها
-                شوید.
+                ایران آپ اپلیکیشنی برای دسترسی سریع و آسان به اصناف، خدمات و اماکن اطراف شما و ارتباط
+                مستقیم خریدار و فروشنده است. هر صنف یک صفحه کامل دارد: گالری تصاویر، توضیحات شغلی،
+                نقشه محل، محصولات و خدمات، راه‌های تماس سریع و لینک وب‌سایت و شبکه‌های اجتماعی.
             </p>
-            <p class="muted">در ایران آپ خرید به صورت مستقیم انجام نمی‌شود و تراکنش مالی امکان‌پذیر نیست.</p>
+            <p class="muted">
+                در ایران آپ خرید به صورت مستقیم انجام نمی‌شود و تراکنش مالی امکان‌پذیر نیست.
+            </p>
         </div>
     </section>
 
-    <section class="section" id="address">
-        <h2 class="section-title"><span class="plate"><svg class="i"><use href="#i-pin"/></svg></span>آدرس</h2>
-        <div class="card rows">
+    <section class="section">
+        <h2 class="section-title"><span class="plate"><svg class="i"><use href="#i-shield"/></svg></span>مجوزها و ثبت‌ها</h2>
+        <div class="card">
             <div class="row">
-                <span class="plate"><svg class="i"><use href="#i-pin"/></svg></span>
-                <div class="row-body">
-                    <span class="label">نشانی دفتر مرکزی</span>
-                    <!-- TODO: full address -->
-                    <span class="value">«استان، شهر، خیابان، کوچه، پلاک، واحد»</span>
-                </div>
-            </div>
-            <div class="row">
-                <span class="plate"><svg class="i"><use href="#i-hash"/></svg></span>
-                <div class="row-body">
-                    <span class="label">کد پستی</span>
-                    <!-- TODO: postal code -->
-                    <span class="value"><bdi>«کد پستی ۱۰ رقمی»</bdi></span>
-                </div>
+                <span class="plate"><svg class="i"><use href="#i-badge"/></svg></span>
+                <span class="row-body">
+                    <span class="label">پروانه کسب</span>
+                    <span class="value">اتحادیه فناوری اطلاعات رایانه</span>
+                </span>
             </div>
             <div class="row">
-                <span class="plate"><svg class="i"><use href="#i-clock"/></svg></span>
-                <div class="row-body">
-                    <span class="label">ساعات پاسخگویی</span>
-                    <!-- TODO: working hours -->
-                    <span class="value">«روزها و ساعات کاری»</span>
-                </div>
+                <span class="plate"><svg class="i"><use href="#i-badge"/></svg></span>
+                <span class="row-body">
+                    <span class="label">پروانه کسب</span>
+                    <span class="value">کانون آگهی تبلیغات</span>
+                </span>
             </div>
-            <!-- TODO: put the address (or "lat,lng" of the office) after q=, URL encoded.
-                 geo: opens the map apps of the phone (Neshan, Balad, Google Maps). -->
-            <a class="btn" href="geo:0,0?q=">
-                <svg class="i"><use href="#i-nav"/></svg>
-                مسیریابی روی نقشه
-            </a>
-        </div>
-    </section>
-
-    <section class="section" id="resume">
-        <h2 class="section-title"><span class="plate"><svg class="i"><use href="#i-briefcase"/></svg></span>رزومه‌ها</h2>
-        <p class="section-note">بخشی از پروژه‌ها و سوابق کاری ما</p>
-        <ol class="timeline">
-            <li class="card item">
-                <div class="item-head">
-                    <h3>اپلیکیشن ایران آپ</h3>
-                    <!-- TODO: check the year -->
-                    <span class="tag">۱۳۹۶ تاکنون</span>
-                </div>
-                <p>
-                    راهنمای هوشمند اصناف و آگهی‌های مسکن، خودرو و استخدام، همراه با پیشخوان خدمات
-                    (فال حافظ، آب‌وهوا، جستجوی کتاب و نتایج زنده فوتبال)؛ منتشرشده در کافه‌بازار.
-                </p>
-            </li>
-            <!-- TODO: one <li> per project / record. Copy this block and fill it in. -->
-            <li class="card item">
-                <div class="item-head">
-                    <h3>«عنوان پروژه یا سابقه»</h3>
-                    <span class="tag">«سال»</span>
-                </div>
-                <p>«کارفرما و توضیح کوتاه کار انجام‌شده»</p>
-            </li>
-            <li class="card item">
-                <div class="item-head">
-                    <h3>«عنوان پروژه یا سابقه»</h3>
-                    <span class="tag">«سال»</span>
-                </div>
-                <p>«کارفرما و توضیح کوتاه کار انجام‌شده»</p>
-            </li>
-        </ol>
-    </section>
-
-    <section class="section" id="licenses">
-        <h2 class="section-title"><span class="plate"><svg class="i"><use href="#i-shield"/></svg></span>مجوزهای شرکت</h2>
-        <!-- TODO: one .license card per license the company actually holds, e.g. ثبت شرکت
-             (روزنامه رسمی)، نماد اعتماد الکترونیکی، نشان ساماندهی، عضویت نظام صنفی رایانه‌ای.
-             Put the scan of each license in about/img/ and point "مشاهده تصویر مجوز" to it
-             (or remove that link). The eNamad badge code can be pasted into a card as is. -->
-        <div class="licenses">
-            <div class="card license">
-                <span class="plate"><svg class="i"><use href="#i-doc"/></svg></span>
-                <h3>«عنوان مجوز»</h3>
-                <span class="muted">«مرجع صادرکننده»</span>
-                <span class="muted">شماره: <bdi>«شماره مجوز»</bdi></span>
-                <a href="img/license-1.jpg">مشاهده تصویر مجوز</a>
+            <div class="row" data-copy="54916">
+                <span class="plate"><svg class="i"><use href="#i-building"/></svg></span>
+                <span class="row-body">
+                    <span class="label">ثبت شرکت</span>
+                    <span class="value">شماره ثبت <span class="num"><bdi dir="ltr">54916</bdi></span></span>
+                </span>
+                <svg class="chev"><use href="#i-copy"/></svg>
             </div>
-            <div class="card license">
-                <span class="plate"><svg class="i"><use href="#i-doc"/></svg></span>
-                <h3>«عنوان مجوز»</h3>
-                <span class="muted">«مرجع صادرکننده»</span>
-                <span class="muted">شماره: <bdi>«شماره مجوز»</bdi></span>
-                <a href="img/license-2.jpg">مشاهده تصویر مجوز</a>
+            <div class="row" data-copy="1-1-718196-63-5-1">
+                <span class="plate"><svg class="i"><use href="#i-book"/></svg></span>
+                <span class="row-body">
+                    <span class="label">مجوز فعالیت از وزارت فرهنگ و ارشاد اسلامی</span>
+                    <span class="value">شماره مجوز <span class="num"><bdi dir="ltr">1-1-718196-63-5-1</bdi></span></span>
+                </span>
+                <svg class="chev"><use href="#i-copy"/></svg>
             </div>
         </div>
     </section>
 
-    <section class="section" id="contact">
+    <section class="section">
         <h2 class="section-title"><span class="plate"><svg class="i"><use href="#i-phone"/></svg></span>ارتباط با ما</h2>
-        <div class="card rows">
-            <!-- TODO: office phone, in both href (tel:+98...) and the visible text -->
-            <a class="row" href="tel:">
+        <div class="card">
+            <a class="row" href="tel:09380052014">
                 <span class="plate"><svg class="i"><use href="#i-phone"/></svg></span>
                 <span class="row-body">
-                    <span class="label">تلفن</span>
-                    <span class="value"><bdi>«شماره تلفن»</bdi></span>
+                    <span class="label">شماره تماس</span>
+                    <span class="value"><bdi>09380052014</bdi></span>
+                </span>
+                <svg class="chev"><use href="#i-chev"/></svg>
+            </a>
+            <a class="row" href="tel:09131094406">
+                <span class="plate"><svg class="i"><use href="#i-phone"/></svg></span>
+                <span class="row-body">
+                    <span class="label">شماره تماس</span>
+                    <span class="value"><bdi>09131094406</bdi></span>
+                </span>
+                <svg class="chev"><use href="#i-chev"/></svg>
+            </a>
+            <a class="row" href="https://instagram.com/iranianappes">
+                <span class="plate"><svg class="i"><use href="#i-instagram"/></svg></span>
+                <span class="row-body">
+                    <span class="label">اینستاگرام</span>
+                    <span class="value"><bdi>@iranianappes</bdi></span>
+                </span>
+                <svg class="chev"><use href="#i-chev"/></svg>
+            </a>
+            <a class="row" href="https://eitaa.com/iranapp">
+                <span class="plate"><svg class="i"><use href="#i-send"/></svg></span>
+                <span class="row-body">
+                    <span class="label">کانال ایتا</span>
+                    <span class="value"><bdi>@iranapp</bdi></span>
                 </span>
                 <svg class="chev"><use href="#i-chev"/></svg>
             </a>
@@ -394,15 +341,14 @@
                 </span>
                 <svg class="chev"><use href="#i-chev"/></svg>
             </a>
-            <!-- TODO: email, in both href and the visible text -->
-            <a class="row" href="mailto:">
-                <span class="plate"><svg class="i"><use href="#i-mail"/></svg></span>
+            <div class="row" data-copy="8157834911">
+                <span class="plate"><svg class="i"><use href="#i-hash"/></svg></span>
                 <span class="row-body">
-                    <span class="label">ایمیل</span>
-                    <span class="value"><bdi>«آدرس ایمیل»</bdi></span>
+                    <span class="label">کد پستی</span>
+                    <span class="value"><bdi dir="ltr">8157834911</bdi></span>
                 </span>
-                <svg class="chev"><use href="#i-chev"/></svg>
-            </a>
+                <svg class="chev"><use href="#i-copy"/></svg>
+            </div>
             <a class="row" href="http://iranapp.biz">
                 <span class="plate"><svg class="i"><use href="#i-globe"/></svg></span>
                 <span class="row-body">
@@ -411,24 +357,6 @@
                 </span>
                 <svg class="chev"><use href="#i-chev"/></svg>
             </a>
-            <!-- TODO: uncomment the pages the company has and put their links in.
-            <a class="row" href="https://instagram.com/«نام کاربری»">
-                <span class="plate"><svg class="i"><use href="#i-instagram"/></svg></span>
-                <span class="row-body">
-                    <span class="label">اینستاگرام</span>
-                    <span class="value"><bdi>@«نام کاربری»</bdi></span>
-                </span>
-                <svg class="chev"><use href="#i-chev"/></svg>
-            </a>
-            <a class="row" href="https://t.me/«نام کاربری»">
-                <span class="plate"><svg class="i"><use href="#i-telegram"/></svg></span>
-                <span class="row-body">
-                    <span class="label">تلگرام</span>
-                    <span class="value"><bdi>@«نام کاربری»</bdi></span>
-                </span>
-                <svg class="chev"><use href="#i-chev"/></svg>
-            </a>
-            -->
             <a class="row" href="https://cafebazaar.ir/app/com.ideabonyan.iranapp/?l=fa">
                 <span class="plate"><svg class="i"><use href="#i-download"/></svg></span>
                 <span class="row-body">
@@ -443,5 +371,54 @@
     <footer>ایران آپ · <bdi>iranapp.biz</bdi></footer>
 
 </main>
+
+<div class="toast" id="toast" hidden>کپی شد</div>
+
+<script>
+    // Tap a number (company registration, license, postal code) to copy it.
+    (function () {
+        var toast = document.getElementById('toast'), timer;
+
+        function show() {
+            toast.hidden = false;
+            // Lets the browser paint the hidden state first, so the fade actually runs.
+            requestAnimationFrame(function () { toast.classList.add('show'); });
+            clearTimeout(timer);
+            timer = setTimeout(function () {
+                toast.classList.remove('show');
+                setTimeout(function () { toast.hidden = true; }, 200);
+            }, 1400);
+        }
+
+        function legacyCopy(text) {
+            var field = document.createElement('textarea');
+            field.value = text;
+            field.setAttribute('readonly', '');
+            field.style.position = 'fixed';
+            field.style.top = '-1000px';
+            document.body.appendChild(field);
+            field.select();
+            try {
+                if (document.execCommand('copy')) show();
+            } catch (e) {
+                // Nothing to do: the number stays on the screen to be read.
+            }
+            document.body.removeChild(field);
+        }
+
+        function copy(text) {
+            // The site is served over plain HTTP, where navigator.clipboard is usually missing.
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(text).then(show, function () { legacyCopy(text); });
+            } else {
+                legacyCopy(text);
+            }
+        }
+
+        Array.prototype.forEach.call(document.querySelectorAll('[data-copy]'), function (el) {
+            el.addEventListener('click', function () { copy(el.getAttribute('data-copy')); });
+        });
+    })();
+</script>
 </body>
 </html>
