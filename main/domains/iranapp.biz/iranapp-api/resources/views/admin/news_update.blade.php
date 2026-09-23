@@ -6,6 +6,14 @@
             <div class="container">
                 <div class="card-box">
                     <h1 style="font-size:14px;font-weight: bold;" class="text-pink">ویرایش خبر</h1>
+                    @if($news->publish_at)
+                        <p class="text-muted">
+                            زمان انتشار در اپلیکیشن: <b>{{ \App\Support\NewsPublishTime::format($news->publish_at) }}</b>
+                            @if(\Carbon\Carbon::parse($news->publish_at, config('app.timezone'))->isFuture())
+                                <span class="label label-warning">در انتظار انتشار</span>
+                            @endif
+                        </p>
+                    @endif
                     <form action="{{ route('updateNewsInAdminPanel' , $news->id) }}" method="post">
                         {{ csrf_field() }}
                         <input type="hidden" name="_method" value="PUT">

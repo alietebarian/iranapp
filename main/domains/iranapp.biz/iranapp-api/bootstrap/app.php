@@ -17,6 +17,7 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->web(append: [
             \App\Http\Middleware\ConvertArabicLettersToPersian::class,
             \App\Http\Middleware\convertFarsiNumbers::class,
+            \App\Http\Middleware\ReleaseScheduledNews::class,
         ]);
         $middleware->api(prepend: [
             \App\Http\Middleware\AcceptTokenQueryParameter::class,
@@ -32,6 +33,7 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->api(append: [
             \App\Http\Middleware\ConvertArabicLettersToPersian::class,
             \App\Http\Middleware\convertFarsiNumbers::class,
+            \App\Http\Middleware\ReleaseScheduledNews::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {

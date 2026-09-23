@@ -23,6 +23,7 @@
                                                         <th>#</th>
                                                         <th>عنوان خبر</th>
                                                         <th>متن خبر</th>
+                                                        <th>زمان انتشار</th>
                                                         <th style="width:120px;">اختیارات</th>
                                                     </thead>
                                                     <tbody>
@@ -31,6 +32,12 @@
                                                             <th scope="row">{{ $row->id }}</th>
                                                             <td>{{ $row->title }}</td>
                                                             <td>{{ \Illuminate\Support\Str::limit($row->passage, 200) }}</td>
+                                                            <td>
+                                                                {{ \App\Support\NewsPublishTime::format($row->publish_at ?? $row->created_at) }}
+                                                                @if($row->publish_at && \Carbon\Carbon::parse($row->publish_at, config('app.timezone'))->isFuture())
+                                                                    <br><span class="label label-warning">در انتظار انتشار</span>
+                                                                @endif
+                                                            </td>
                                                             <td>
                                                                 <a style="display:block;"
                                                                    href="{{ route('deleteNewsInAdminPanel' , $row->id) }}"

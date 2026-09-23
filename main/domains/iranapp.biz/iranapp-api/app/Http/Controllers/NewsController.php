@@ -7,6 +7,7 @@ use App\Libraries\jdf;
 use App\Models\News;
 use App\Models\NewsPhoto;
 use App\Models\Notification;
+use App\Support\NewsPublishTime;
 use Carbon\Carbon;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
@@ -24,14 +25,17 @@ class NewsController extends Controller
             $offset = 0;
             $limit = 1;
         }
-        $news = DB::table('news')->orderBy('created_at' , 'desc')->offset($offset)->limit($limit)->get();
+        $news = News::wherePublished(DB::table('news'))
+            ->orderByRaw('COALESCE(publish_at, created_at) desc')->orderBy('id', 'desc')
+            ->offset($offset)->limit($limit)->get();
 //        $news = News::orderBy('created_at' , 'desc')->offset($offset)->limit($limit)->get();
         foreach($news as $newsIndex =>  $row){
             $photos = NewsPhoto::where('news_id' , $row->id)->get();
             foreach($photos as $index => $value){
                 $photos[$index]->file_name = URL::to('/news_photo') . '/' . $value->file_name;
             }
-            $news[$newsIndex]->created_at = jdf::jdate('j F Y H:i:s' , Carbon::createFromFormat('Y-m-d H:i:s' , $row->created_at)->getTimestamp());
+            // A scheduled item is dated by when it appeared in the app, not when the admin wrote it.
+            $news[$newsIndex]->created_at = jdf::jdate('j F Y H:i:s' , Carbon::createFromFormat('Y-m-d H:i:s' , $row->publish_at ?? $row->created_at)->getTimestamp());
             $news[$newsIndex]->updated_at = jdf::jdate('j F Y H:i:s' , Carbon::createFromFormat('Y-m-d H:i:s' , $row->updated_at)->getTimestamp());
             $news[$newsIndex]->photos = $photos;
         }
@@ -40,7 +44,7 @@ class NewsController extends Controller
 
     public function showAllInAdminPanel(Request $request)
     {
-        $news = DB::table('news')->orderBy('created_at', 'desc')->get();
+        $news = DB::table('news')->orderByRaw('COALESCE(publish_at, created_at) desc')->orderBy('id', 'desc')->get();
         $data['news'] = $news;
         return view('admin.news_list')->with($data);
     }
@@ -65,7 +69,10 @@ class NewsController extends Controller
 
     public function getById(Request $request, News $news)
     {
-        $createdAtTimestamp = Carbon::createFromFormat('Y-m-d H:i:s', $news->created_at)->getTimestamp();
+        if (! News::wherePublished(News::query())->whereKey($news->id)->exists()) {
+            return response()->json(['status' => 404, 'error' => 'news_not_found'], 404);
+        }
+        $createdAtTimestamp = Carbon::createFromFormat('Y-m-d H:i:s', $news->publish_at ?? $news->created_at)->getTimestamp();
         $updatedAtTimestamp = Carbon::createFromFormat('Y-m-d H:i:s', $news->updated_at)->getTimestamp();
         $news->created_at_fa = jdf::jdate('j F Y', $createdAtTimestamp);
         $news->updated_at_fa = jdf::jdate('j F Y', $updatedAtTimestamp);
@@ -87,10 +94,14 @@ class NewsController extends Controller
         $news = new News();
         $news->title = $request->title;
         $news->passage = $request->news_text;
+        $publishAt = NewsPublishTime::fromRequest($request);
+        $news->publish_at = ($publishAt ?? Carbon::now(config('app.timezone')))->format('Y-m-d H:i:s');
+        // A scheduled item's notification waits for News::releaseDueNotifications().
+        $news->notify_on_publish = $publishAt !== null && $request->has('send_notification');
         $news->save();
-        if ($request->has('send_notification')) {
-            $fcm_tokens = DB::table('users')->where('users.send_news_notifications', '=', 1)->pluck('fcm_token')->toArray();
-            event(new \App\Events\Admin\News\Store($fcm_tokens, $news));
+        if ($publishAt === null && $request->has('send_notification')) {
+            // Sent after the redirect reaches the browser; see SendNewsPushNotification.
+            \App\Jobs\SendNewsPushNotification::dispatchAfterResponse($news->id);
         }
 //        if($request->has('send_notification')){
 ////            $fcm_tokens = DB::table('users')->where('users.send_news_notifications' , '=' , 1)->pluck('fcm_token')->toArray();
@@ -129,7 +140,9 @@ class NewsController extends Controller
 
         $msg = new \stdClass();
         $msg->title = 'ثبت موفقیت آمیز خبر';
-        $msg->msg = 'خبر با موفقیت ثبت شد.';
+        $msg->msg = $publishAt === null
+            ? 'خبر با موفقیت ثبت شد.'
+            : 'خبر با موفقیت ثبت شد و در تاریخ ' . NewsPublishTime::format($news->publish_at) . ' در اپلیکیشن منتشر می شود.';
         return redirect()->route('showNewsListInAdminPanel')->with('success_msg', $msg);
     }
 
