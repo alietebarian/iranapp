@@ -229,8 +229,8 @@ public class MainActivity extends AppCompatActivity implements Get_Insert_Edit_D
 
         context = MainActivity.this;
         setFragment(MainActivity.this, new KasbokarFragment(), "Kasbokar", "Kasbokar");
-        kasbokarIMG.setColorFilter(ContextCompat.getColor(context, R.color.colorPrimary));
-        kasbokarTXT.setTextColor(ContextCompat.getColor(context, R.color.colorPrimary));
+        kasbokarIMG.setColorFilter(ContextCompat.getColor(context, R.color.home_nav_selected));
+        kasbokarTXT.setTextColor(ContextCompat.getColor(context, R.color.home_nav_selected));
 
 //        setSupportActionBar(toolbar);
     }
@@ -460,19 +460,19 @@ public class MainActivity extends AppCompatActivity implements Get_Insert_Edit_D
             public void onClick(View v) {
                 setFragment(MainActivity.this, new MenuFragment(), "Menu", "Menu");
 
-                menuIMG.setColorFilter(ContextCompat.getColor(context, R.color.colorPrimary));
-                favoritesIMG.setColorFilter(ContextCompat.getColor(context, R.color.colorToolbarDefault));
-                pishkhanIMG.setColorFilter(ContextCompat.getColor(context, R.color.colorToolbarDefault));
-                newsIMG.setColorFilter(ContextCompat.getColor(context, R.color.colorToolbarDefault));
-                kasbokarIMG.setColorFilter(ContextCompat.getColor(context, R.color.colorToolbarDefault));
+                menuIMG.setColorFilter(ContextCompat.getColor(context, R.color.home_nav_selected));
+                favoritesIMG.setColorFilter(ContextCompat.getColor(context, R.color.home_nav_icon));
+                pishkhanIMG.setColorFilter(ContextCompat.getColor(context, R.color.home_nav_icon));
+                newsIMG.setColorFilter(ContextCompat.getColor(context, R.color.home_nav_icon));
+                kasbokarIMG.setColorFilter(ContextCompat.getColor(context, R.color.home_nav_icon));
 
-                menuTXT.setTextColor(ContextCompat.getColor(context, R.color.colorPrimary));
-                favoritesTXT.setTextColor(ContextCompat.getColor(context, R.color.colorToolbarDefault));
-                pishkhanTXT.setTextColor(ContextCompat.getColor(context, R.color.colorToolbarDefault));
-                pishkhanTXT2.setTextColor(ContextCompat.getColor(context, R.color.colorToolbarDefault));
-                pishkhanTXT1.setTextColor(ContextCompat.getColor(context, R.color.colorToolbarDefault));
-                newsTXT.setTextColor(ContextCompat.getColor(context, R.color.colorToolbarDefault));
-                kasbokarTXT.setTextColor(ContextCompat.getColor(context, R.color.colorToolbarDefault));
+                menuTXT.setTextColor(ContextCompat.getColor(context, R.color.home_nav_selected));
+                favoritesTXT.setTextColor(ContextCompat.getColor(context, R.color.home_nav_icon));
+                pishkhanTXT.setTextColor(ContextCompat.getColor(context, R.color.home_nav_icon));
+                pishkhanTXT2.setTextColor(ContextCompat.getColor(context, R.color.home_nav_icon));
+                pishkhanTXT1.setTextColor(ContextCompat.getColor(context, R.color.home_nav_icon));
+                newsTXT.setTextColor(ContextCompat.getColor(context, R.color.home_nav_icon));
+                kasbokarTXT.setTextColor(ContextCompat.getColor(context, R.color.home_nav_icon));
             }
         });
 
@@ -482,19 +482,19 @@ public class MainActivity extends AppCompatActivity implements Get_Insert_Edit_D
                 setFragment(MainActivity.this, new Fav_Host(), "Favorites", "Favorites");
 //                setFragment(MainActivity.this, new Car(), "job", "Favorites");
 //
-                menuIMG.setColorFilter(ContextCompat.getColor(context, R.color.colorToolbarDefault));
-                favoritesIMG.setColorFilter(ContextCompat.getColor(context, R.color.colorPrimary));
-                pishkhanIMG.setColorFilter(ContextCompat.getColor(context, R.color.colorToolbarDefault));
-                newsIMG.setColorFilter(ContextCompat.getColor(context, R.color.colorToolbarDefault));
-                kasbokarIMG.setColorFilter(ContextCompat.getColor(context, R.color.colorToolbarDefault));
+                menuIMG.setColorFilter(ContextCompat.getColor(context, R.color.home_nav_icon));
+                favoritesIMG.setColorFilter(ContextCompat.getColor(context, R.color.home_nav_selected));
+                pishkhanIMG.setColorFilter(ContextCompat.getColor(context, R.color.home_nav_icon));
+                newsIMG.setColorFilter(ContextCompat.getColor(context, R.color.home_nav_icon));
+                kasbokarIMG.setColorFilter(ContextCompat.getColor(context, R.color.home_nav_icon));
 
-                menuTXT.setTextColor(ContextCompat.getColor(context, R.color.colorToolbarDefault));
-                favoritesTXT.setTextColor(ContextCompat.getColor(context, R.color.colorPrimary));
-                pishkhanTXT.setTextColor(ContextCompat.getColor(context, R.color.colorToolbarDefault));
-                pishkhanTXT2.setTextColor(ContextCompat.getColor(context, R.color.colorToolbarDefault));
-                pishkhanTXT1.setTextColor(ContextCompat.getColor(context, R.color.colorToolbarDefault));
-                newsTXT.setTextColor(ContextCompat.getColor(context, R.color.colorToolbarDefault));
-                kasbokarTXT.setTextColor(ContextCompat.getColor(context, R.color.colorToolbarDefault));
+                menuTXT.setTextColor(ContextCompat.getColor(context, R.color.home_nav_icon));
+                favoritesTXT.setTextColor(ContextCompat.getColor(context, R.color.home_nav_selected));
+                pishkhanTXT.setTextColor(ContextCompat.getColor(context, R.color.home_nav_icon));
+                pishkhanTXT2.setTextColor(ContextCompat.getColor(context, R.color.home_nav_icon));
+                pishkhanTXT1.setTextColor(ContextCompat.getColor(context, R.color.home_nav_icon));
+                newsTXT.setTextColor(ContextCompat.getColor(context, R.color.home_nav_icon));
+                kasbokarTXT.setTextColor(ContextCompat.getColor(context, R.color.home_nav_icon));
             }
         });
 
@@ -503,19 +503,19 @@ public class MainActivity extends AppCompatActivity implements Get_Insert_Edit_D
             public void onClick(View v) {
                 setFragment(MainActivity.this, new Home_Host(), "Pishkhan", "Pishkhan");
 
-                menuIMG.setColorFilter(ContextCompat.getColor(context, R.color.colorToolbarDefault));
-                favoritesIMG.setColorFilter(ContextCompat.getColor(context, R.color.colorToolbarDefault));
-                pishkhanIMG.setColorFilter(ContextCompat.getColor(context, R.color.colorPrimary));
-                newsIMG.setColorFilter(ContextCompat.getColor(context, R.color.colorToolbarDefault));
-                kasbokarIMG.setColorFilter(ContextCompat.getColor(context, R.color.colorToolbarDefault));
+                menuIMG.setColorFilter(ContextCompat.getColor(context, R.color.home_nav_icon));
+                favoritesIMG.setColorFilter(ContextCompat.getColor(context, R.color.home_nav_icon));
+                pishkhanIMG.setColorFilter(ContextCompat.getColor(context, R.color.home_nav_selected));
+                newsIMG.setColorFilter(ContextCompat.getColor(context, R.color.home_nav_icon));
+                kasbokarIMG.setColorFilter(ContextCompat.getColor(context, R.color.home_nav_icon));
 
-                menuTXT.setTextColor(ContextCompat.getColor(context, R.color.colorToolbarDefault));
-                favoritesTXT.setTextColor(ContextCompat.getColor(context, R.color.colorToolbarDefault));
-                pishkhanTXT.setTextColor(ContextCompat.getColor(context, R.color.colorPrimary));
-                pishkhanTXT2.setTextColor(ContextCompat.getColor(context, R.color.colorPrimary));
-                pishkhanTXT1.setTextColor(ContextCompat.getColor(context, R.color.colorPrimary));
-                newsTXT.setTextColor(ContextCompat.getColor(context, R.color.colorToolbarDefault));
-                kasbokarTXT.setTextColor(ContextCompat.getColor(context, R.color.colorToolbarDefault));
+                menuTXT.setTextColor(ContextCompat.getColor(context, R.color.home_nav_icon));
+                favoritesTXT.setTextColor(ContextCompat.getColor(context, R.color.home_nav_icon));
+                pishkhanTXT.setTextColor(ContextCompat.getColor(context, R.color.home_nav_selected));
+                pishkhanTXT2.setTextColor(ContextCompat.getColor(context, R.color.home_nav_selected));
+                pishkhanTXT1.setTextColor(ContextCompat.getColor(context, R.color.home_nav_selected));
+                newsTXT.setTextColor(ContextCompat.getColor(context, R.color.home_nav_icon));
+                kasbokarTXT.setTextColor(ContextCompat.getColor(context, R.color.home_nav_icon));
             }
         });
 
@@ -524,19 +524,19 @@ public class MainActivity extends AppCompatActivity implements Get_Insert_Edit_D
             public void onClick(View v) {
                 setFragment(MainActivity.this, new NewsFragment(), "News", "News");
 
-                menuIMG.setColorFilter(ContextCompat.getColor(context, R.color.colorToolbarDefault));
-                favoritesIMG.setColorFilter(ContextCompat.getColor(context, R.color.colorToolbarDefault));
-                pishkhanIMG.setColorFilter(ContextCompat.getColor(context, R.color.colorToolbarDefault));
-                newsIMG.setColorFilter(ContextCompat.getColor(context, R.color.colorPrimary));
-                kasbokarIMG.setColorFilter(ContextCompat.getColor(context, R.color.colorToolbarDefault));
+                menuIMG.setColorFilter(ContextCompat.getColor(context, R.color.home_nav_icon));
+                favoritesIMG.setColorFilter(ContextCompat.getColor(context, R.color.home_nav_icon));
+                pishkhanIMG.setColorFilter(ContextCompat.getColor(context, R.color.home_nav_icon));
+                newsIMG.setColorFilter(ContextCompat.getColor(context, R.color.home_nav_selected));
+                kasbokarIMG.setColorFilter(ContextCompat.getColor(context, R.color.home_nav_icon));
 
-                menuTXT.setTextColor(ContextCompat.getColor(context, R.color.colorToolbarDefault));
-                favoritesTXT.setTextColor(ContextCompat.getColor(context, R.color.colorToolbarDefault));
-                pishkhanTXT.setTextColor(ContextCompat.getColor(context, R.color.colorToolbarDefault));
-                pishkhanTXT2.setTextColor(ContextCompat.getColor(context, R.color.colorToolbarDefault));
-                pishkhanTXT1.setTextColor(ContextCompat.getColor(context, R.color.colorToolbarDefault));
-                newsTXT.setTextColor(ContextCompat.getColor(context, R.color.colorPrimary));
-                kasbokarTXT.setTextColor(ContextCompat.getColor(context, R.color.colorToolbarDefault));
+                menuTXT.setTextColor(ContextCompat.getColor(context, R.color.home_nav_icon));
+                favoritesTXT.setTextColor(ContextCompat.getColor(context, R.color.home_nav_icon));
+                pishkhanTXT.setTextColor(ContextCompat.getColor(context, R.color.home_nav_icon));
+                pishkhanTXT2.setTextColor(ContextCompat.getColor(context, R.color.home_nav_icon));
+                pishkhanTXT1.setTextColor(ContextCompat.getColor(context, R.color.home_nav_icon));
+                newsTXT.setTextColor(ContextCompat.getColor(context, R.color.home_nav_selected));
+                kasbokarTXT.setTextColor(ContextCompat.getColor(context, R.color.home_nav_icon));
             }
         });
 
@@ -545,19 +545,19 @@ public class MainActivity extends AppCompatActivity implements Get_Insert_Edit_D
             public void onClick(View v) {
                 setFragment(MainActivity.this, new KasbokarFragment(), "Kasbokar", "Kasbokar");
 
-                menuIMG.setColorFilter(ContextCompat.getColor(context, R.color.colorToolbarDefault));
-                favoritesIMG.setColorFilter(ContextCompat.getColor(context, R.color.colorToolbarDefault));
-                pishkhanIMG.setColorFilter(ContextCompat.getColor(context, R.color.colorToolbarDefault));
-                newsIMG.setColorFilter(ContextCompat.getColor(context, R.color.colorToolbarDefault));
-                kasbokarIMG.setColorFilter(ContextCompat.getColor(context, R.color.colorPrimary));
+                menuIMG.setColorFilter(ContextCompat.getColor(context, R.color.home_nav_icon));
+                favoritesIMG.setColorFilter(ContextCompat.getColor(context, R.color.home_nav_icon));
+                pishkhanIMG.setColorFilter(ContextCompat.getColor(context, R.color.home_nav_icon));
+                newsIMG.setColorFilter(ContextCompat.getColor(context, R.color.home_nav_icon));
+                kasbokarIMG.setColorFilter(ContextCompat.getColor(context, R.color.home_nav_selected));
 
-                menuTXT.setTextColor(ContextCompat.getColor(context, R.color.colorToolbarDefault));
-                favoritesTXT.setTextColor(ContextCompat.getColor(context, R.color.colorToolbarDefault));
-                pishkhanTXT.setTextColor(ContextCompat.getColor(context, R.color.colorToolbarDefault));
-                pishkhanTXT2.setTextColor(ContextCompat.getColor(context, R.color.colorToolbarDefault));
-                pishkhanTXT1.setTextColor(ContextCompat.getColor(context, R.color.colorToolbarDefault));
-                newsTXT.setTextColor(ContextCompat.getColor(context, R.color.colorToolbarDefault));
-                kasbokarTXT.setTextColor(ContextCompat.getColor(context, R.color.colorPrimary));
+                menuTXT.setTextColor(ContextCompat.getColor(context, R.color.home_nav_icon));
+                favoritesTXT.setTextColor(ContextCompat.getColor(context, R.color.home_nav_icon));
+                pishkhanTXT.setTextColor(ContextCompat.getColor(context, R.color.home_nav_icon));
+                pishkhanTXT2.setTextColor(ContextCompat.getColor(context, R.color.home_nav_icon));
+                pishkhanTXT1.setTextColor(ContextCompat.getColor(context, R.color.home_nav_icon));
+                newsTXT.setTextColor(ContextCompat.getColor(context, R.color.home_nav_icon));
+                kasbokarTXT.setTextColor(ContextCompat.getColor(context, R.color.home_nav_selected));
             }
         });
     }

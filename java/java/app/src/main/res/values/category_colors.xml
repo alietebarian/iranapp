@@ -1,21 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Colours of the app's landing page (the "دسته بندی ها" tab) and of the sub category dialog.
-     Every icon uses the same plate and the same colours, so the grid reads as one formal set. -->
+     Every icon uses the same plate, so the grid reads as one formal set. The page is the darkest
+     surface, the tiles sit above it and the icon plates are the lightest, so they stay apart. -->
 <resources>
     <!-- Dark landing page -->
-    <color name="home_bg_top">#1C2233</color>
-    <color name="home_bg_bottom">#121620</color>
-    <color name="home_tile">#222A3B</color>
-    <color name="home_tile_stroke">#2C3547</color>
+    <color name="home_bg_top">#131826</color>
+    <color name="home_bg_bottom">#090C14</color>
+    <color name="home_tile">#1A2030</color>
+    <color name="home_tile_stroke">#2A3245</color>
     <color name="home_text">#EEF1F6</color>
     <color name="home_text_muted">#A9B2C3</color>
     <color name="home_accent">#FF5252</color>
 
+    <!-- Header, tab strip and bottom bar of the landing page -->
+    <color name="home_bar">#151B29</color>
+    <color name="home_bar_stroke">#262E40</color>
+    <color name="home_nav_icon">#8D98AC</color>
+    <color name="home_nav_selected">@color/home_accent</color>
+
     <!-- Category icons on the landing page: white fading into the accent red (GradientIconView) -->
     <color name="home_icon_start">#FFFFFF</color>
     <color name="home_icon_end">@color/home_accent</color>
-    <color name="home_icon_plate">#283042</color>
-    <color name="home_icon_plate_stroke">#3A4558</color>
+    <color name="home_icon_plate">#3C4760</color>
+    <color name="home_icon_plate_stroke">#55617C</color>
 
     <!-- Sub category icons on the (white) sub category dialog -->
     <color name="sub_icon">#2B3440</color>
