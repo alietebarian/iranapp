@@ -119,8 +119,6 @@ public class StaticData {
     static public String CURRENCY_LINK = DOMAIN + "/currencies";
     static public String LIVE_SCORES = DOMAIN + "/football";
     static public String PERSIAN_GULF_LEAGUE = DOMAIN + "/gulf";
-    // Static page (public_html/about/): address, resumes, licenses and contact of the company.
-    static public String ABOUT_COMPANY = DOMAIN + "/about/";
     static public String BOOK_SEARCH = "http://api.wikiapi.ir/book/api/v1/search.php";
 
     public static String getappverioncode=DOMAIN_WITH_API+"/app-version";

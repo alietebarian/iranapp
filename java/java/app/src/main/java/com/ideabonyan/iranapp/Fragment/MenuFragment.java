@@ -29,6 +29,7 @@ import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.location.LocationSettingsRequest;
 import com.google.android.gms.location.LocationSettingsResult;
 import com.google.android.gms.location.LocationSettingsStatusCodes;
+import com.ideabonyan.iranapp.Activity.AboutActivity;
 import com.ideabonyan.iranapp.Activity.AroundMeActivity;
 import com.ideabonyan.iranapp.Activity.ConfirmationActivity;
 import com.ideabonyan.iranapp.Activity.DashboardActivity;
@@ -134,8 +135,7 @@ public class MenuFragment extends Fragment {
         contactUsBTN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Show_Rouls_Dialog show_rouls_dialog = new Show_Rouls_Dialog("درباره ما", getString(R.string.about_us));
-                show_rouls_dialog.show(getChildFragmentManager(), "show_rouls_dialog");
+                startActivity(new Intent(getActivity(), AboutActivity.class));
             }
         });
         termsBTN.setOnClickListener(new View.OnClickListener() {

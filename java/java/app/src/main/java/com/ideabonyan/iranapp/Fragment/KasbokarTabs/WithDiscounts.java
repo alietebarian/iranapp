@@ -19,7 +19,7 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import com.ideabonyan.iranapp.Activity.PishkhanWebviewActivity;
+import com.ideabonyan.iranapp.Activity.AboutActivity;
 import com.ideabonyan.iranapp.Adapter.HomeCategoriesAdapter;
 import com.ideabonyan.iranapp.Fragment.Dialogs.CityPickerDialogFragment;
 import com.ideabonyan.iranapp.Fragment.Dialogs.SubcategoriesDialogFragment;
@@ -49,7 +49,7 @@ public class WithDiscounts extends Fragment implements Get_Insert_Edit_Data3, Lo
 
     /**
      * Id of the tile the app adds to the grid itself: it opens the company page
-     * (StaticData.ABOUT_COMPANY) instead of a sub category dialog.
+     * (AboutActivity) instead of a sub category dialog.
      */
     private static final String ABOUT_TILE_ID = "about";
 
@@ -189,8 +189,7 @@ public class WithDiscounts extends Fragment implements Get_Insert_Edit_Data3, Lo
             @Override
             public void onItemClick(View view, int position) {
                 if (ABOUT_TILE_ID.equals(datas.get(position).getId())) {
-                    PishkhanWebviewActivity.url = StaticData.ABOUT_COMPANY;
-                    startActivity(new Intent(getActivity(), PishkhanWebviewActivity.class));
+                    startActivity(new Intent(getActivity(), AboutActivity.class));
                     return;
                 }
 
