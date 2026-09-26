@@ -124,6 +124,7 @@ public class StaticData {
     static public String BOOK_SEARCH = "http://api.wikiapi.ir/book/api/v1/search.php";
 
     public static String getappverioncode=DOMAIN_WITH_API+"/app-version";
+    // GET: the install counts shown on the landing page. POST: InstallTracker reporting this install.
     static public String INSTALL_STATS = DOMAIN_WITH_API + "/app-stats/installs";
     // Electronic contract (منو > دیگر > قرارداد الکترونیک): current state + wording, and submission.
     static public String E_CONTRACT_CURRENT = DOMAIN_WITH_API + "/e-contracts/current";

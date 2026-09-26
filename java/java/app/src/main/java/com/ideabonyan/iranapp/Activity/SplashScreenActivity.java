@@ -43,6 +43,7 @@ import com.ideabonyan.iranapp.Utils.Get_Volley_Call_Back;
 import com.ideabonyan.iranapp.Utils.Get_Volley_Call_Back2;
 import com.ideabonyan.iranapp.Utils.NotificationUtils;
 import com.ideabonyan.iranapp.Utils.ShowToast;
+import com.ideabonyan.iranapp.Utils.InstallTracker;
 import com.ideabonyan.iranapp.Utils.StaticData;
 
 import org.json.JSONException;
@@ -71,6 +72,8 @@ public class SplashScreenActivity extends AppCompatActivity implements Get_Inser
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
+        // Counts this installation once (and reports version changes); see InstallTracker.
+        InstallTracker.report(this);
         checkAndRequestPermissions();
         userSessionManager = new UserSessionManager(SplashScreenActivity.this);
         if (userSessionManager.getProvinceInfo().equals("0") || userSessionManager.getCityInfo().equals("0")) {

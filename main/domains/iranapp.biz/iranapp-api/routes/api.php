@@ -48,6 +48,7 @@ use Illuminate\Support\Facades\Route;
 Route::group( [] , function () {
 		Route::get( '/app-version' , [CommonController::class, 'appVersionShow'] );
 		Route::get( '/app-stats/installs' , [CommonController::class, 'installStats'] );
+		Route::post( '/app-stats/installs' , [CommonController::class, 'registerInstall'] )->middleware( 'throttle:20,1' );
 		Route::post( '/register' , [UserController::class, 'register'] );
 		Route::put( '/users/verify-token/regenerate' , [UserController::class, 'reGenerateVerifyToken'] );
 		Route::post( '/verify-and-login' , [UserController::class, 'verifyAndLogin'] );

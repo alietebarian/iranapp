@@ -309,6 +309,10 @@
                         </ul>
                     </li>
                     <li>
+                        <a href="{{ route('showInstallReportInAdminPanel') }}" class="waves-effect"><i class="ti-bar-chart"></i>
+                            <span> گزارش نصب ها </span></a>
+                    </li>
+                    <li>
                         <a href="{{ route('showEContractsInAdminPanel') }}" class="waves-effect"><i class="ti-write"></i>
                             <span> قراردادهای الکترونیک </span>
                             @if(($pendingEContracts ?? 0) > 0)
