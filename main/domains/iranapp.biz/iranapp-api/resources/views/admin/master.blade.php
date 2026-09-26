@@ -308,6 +308,14 @@
                             <li><a href="{{ route('showUserMobileNumbersBank') }}">بانک تلفن همراه کاربران</a></li>
                         </ul>
                     </li>
+                    <li>
+                        <a href="{{ route('showEContractsInAdminPanel') }}" class="waves-effect"><i class="ti-write"></i>
+                            <span> قراردادهای الکترونیک </span>
+                            @if(($pendingEContracts ?? 0) > 0)
+                                <span class="label label-danger pull-right">{{ $pendingEContracts }}</span>
+                            @endif
+                        </a>
+                    </li>
                     <li class="has_sub">
                         <a href="javascript:void(0);" class="waves-effect"><i class="ti-home"></i> <span> آگهی های ویژه املاک </span>
                             <span class="menu-arrow"></span> </a>

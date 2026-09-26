@@ -195,6 +195,7 @@ public class ConfirmationActivity extends AppCompatActivity implements Get_Inser
                                         String token = userObject.getString("jwt_token");
                                         String send_news_notifications = userObject.getString("send_news_notifications");
                                         String send_ads_notifications = userObject.getString("send_ads_notifications");
+                                        new UserSessionManager(ConfirmationActivity.this).setUserRole(userObject.optString("role", "normal"));
                                         doLogIn(user.getuser_id(), user.getFirstname(), user.getLastname(), mobile, token, send_news_notifications, send_ads_notifications);
                                         break;
 

@@ -29,5 +29,6 @@ public class UserHelper {
 	{
 		UserSessionManager userSessionManager=new UserSessionManager(context);
 		userSessionManager.setUser(null,null,null,null,null);
+		userSessionManager.setUserRole(null);
 	}
 }

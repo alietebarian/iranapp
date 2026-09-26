@@ -18,6 +18,7 @@ import android.widget.TextView;
 
 import com.android.volley.Request;
 import com.android.volley.VolleyError;
+import com.ideabonyan.iranapp.Activity.EContractActivity;
 import com.ideabonyan.iranapp.Activity.ShowAdActivity;
 import com.ideabonyan.iranapp.Activity.ShowNews;
 import com.ideabonyan.iranapp.Interface.Get_Insert_Edit_Data;
@@ -42,7 +43,9 @@ public class NotificationDialog extends DialogFragment implements Get_Insert_Edi
     TextView title, header;
     ProgressBar progressBar;
     ViewGroup rootView;
-    String adStatusId = "0", newsStatusId = "1", userinfo = "10";
+    // eContractStatusId: the admin approved or rejected the user's electronic contract
+    // (App\Jobs\SendEContractReviewPushNotification::PUSH_STATUS on the server).
+    String adStatusId = "0", newsStatusId = "1", userinfo = "10", eContractStatusId = "20";
 
     AdsToBeListed ad;
     NewsData newsData;
@@ -100,6 +103,12 @@ public class NotificationDialog extends DialogFragment implements Get_Insert_Edi
             header.setText("یک خبر جدید");
             String url = StaticData.SINGLE_NEWS + contentId;
             getData(url, 1);
+        }else if (status.equals(eContractStatusId)){
+            header.setText("قرارداد الکترونیک");
+            show.setText("مشاهده");
+            progressBar.setVisibility(View.GONE);
+            show.setVisibility(View.VISIBLE);
+            show.setClickable(true);
         }else if (status.equals(userinfo)){
             header.setText("معرفی کاربر جدید");
             show.setText("تایید");
@@ -123,6 +132,9 @@ public class NotificationDialog extends DialogFragment implements Get_Insert_Edi
                     Intent intent = new Intent(getActivity(), ShowNews.class);
                     ShowNews.news = newsData;
                     startActivity(intent);
+                }else if (status.equals(eContractStatusId)){
+                    startActivity(new Intent(getActivity(), EContractActivity.class));
+                    dismiss();
                 }else if (status.equals(userinfo)){
                     dismiss();
 

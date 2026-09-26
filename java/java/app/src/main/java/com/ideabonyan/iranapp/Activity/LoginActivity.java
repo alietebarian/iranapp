@@ -189,6 +189,7 @@ public class LoginActivity extends AppCompatActivity {
                                         String send_news_notifications = userObject.getString("send_news_notifications");
                                         String send_ads_notifications = userObject.getString("send_ads_notifications");
                                         String is_mobile_verified = userObject.getString("is_mobile_verified");
+                                        new UserSessionManager(LoginActivity.this).setUserRole(userObject.optString("role", "normal"));
 
                                         doLogIn(id, name, family, numberInJson, token, send_news_notifications, send_ads_notifications,is_mobile_verified);
                                         break;

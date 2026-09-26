@@ -13,6 +13,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\CommonController;
 use App\Http\Controllers\CylinderVolumesController;
+use App\Http\Controllers\EContractController;
 use App\Http\Controllers\EmploysAdsController;
 use App\Http\Controllers\EmploysAdsPhotoController;
 use App\Http\Controllers\EmploysAdsSpecialityController;
@@ -196,6 +197,11 @@ Route::group( [ 'prefix' => 'admin' ] , function () {
 		Route::put( '/specialities/{speciality}' , [EmploysAdsSpecialityController::class, 'updateInAdminPanel'] )->name( 'updateSpecialityInAdminPanel' );
 		Route::get( '/business/refers' , [UserAdsNotificationController::class, 'index'] )->name( 'business.refers.index' );
 		Route::get( '/business/refers/{item}/delete' , [UserAdsNotificationController::class, 'destroy'] )->name( 'business.refers.destroy' );
+
+		Route::get( '/e-contracts' , [EContractController::class, 'showListInAdminPanel'] )->name( 'showEContractsInAdminPanel' );
+		Route::get( '/e-contracts/{contract}' , [EContractController::class, 'showInAdminPanel'] )->name( 'showEContractInAdminPanel' );
+		Route::put( '/e-contracts/{contract}/approve' , [EContractController::class, 'approve'] )->name( 'approveEContract' );
+		Route::put( '/e-contracts/{contract}/reject' , [EContractController::class, 'reject'] )->name( 'rejectEContract' );
 
 		Route::get( '/refers/users/search' , [UserController::class, 'searchNames'] )->name( 'searchNamesOfUsers' );
 

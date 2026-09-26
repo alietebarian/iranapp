@@ -12,6 +12,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\CommonController;
 use App\Http\Controllers\CylinderVolumesController;
+use App\Http\Controllers\EContractController;
 use App\Http\Controllers\EmploysAdsController;
 use App\Http\Controllers\EmploysAdsPhotoController;
 use App\Http\Controllers\EmploysAdsSpecialityController;
@@ -146,6 +147,8 @@ Route::group( [] , function () {
 		Route::get( '/users/vehicle-ads/favorites' , [VipAdsFavoriteController::class, 'getUserVehicleAds'] );
 		Route::get( '/users/estate-ads/favorites' , [VipAdsFavoriteController::class, 'getUserEstateAds'] );
 		Route::get( '/users/employs-ads/favorites' , [VipAdsFavoriteController::class, 'getUserEmployAds'] );
+		Route::get( '/e-contracts/current' , [EContractController::class, 'current'] );
+		Route::post( '/e-contracts' , [EContractController::class, 'submit'] );
 
 	} );
 	/*-------------------------------------------API visitor-----------------------------------------------------*/

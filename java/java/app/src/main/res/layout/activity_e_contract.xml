@@ -1,0 +1,455 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#eee"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:orientation="vertical"
+    tools:context="com.ideabonyan.iranapp.Activity.EContractActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <include layout="@layout/toolbar_in_newad" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorPrimary" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <ProgressBar
+        android:id="@+id/eContractLoading"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="-5dp"
+        android:layout_marginTop="-5dp"
+        android:indeterminate="true"
+        android:indeterminateTint="@color/colorPrimary"
+        android:visibility="gone" />
+
+    <!-- Shown when the contract could not be loaded. -->
+    <LinearLayout
+        android:id="@+id/eContractError"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <com.ideabonyan.iranapp.Components.MyTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="20dp"
+            android:text="دریافت اطلاعات قرارداد ممکن نشد.\nلطفا اتصال اینترنت خود را بررسی کنید."
+            android:textColor="#616161" />
+
+        <com.ideabonyan.iranapp.Components.MyButton
+            android:id="@+id/eContractRetryBTN"
+            android:layout_width="160dp"
+            android:layout_height="45dp"
+            android:background="@drawable/login_sign_up_btn"
+            android:text="تلاش دوباره"
+            android:textColor="#fff" />
+    </LinearLayout>
+
+    <ScrollView
+        android:id="@+id/eContractScroll"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layoutDirection="rtl"
+            android:orientation="vertical"
+            android:paddingBottom="20dp">
+
+            <!-- ======== Status of an already submitted contract ======== -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/eContractStatusCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:visibility="gone"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="3dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <com.ideabonyan.iranapp.Components.MyTextView
+                        android:id="@+id/eContractStatusTitle"
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:background="@color/colorPrimary"
+                        android:gravity="center"
+                        android:textColor="#fff" />
+
+                    <com.ideabonyan.iranapp.Components.MyTextView
+                        android:id="@+id/eContractStatusText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="start"
+                        android:lineSpacingExtra="4dp"
+                        android:padding="12dp"
+                        android:textColor="#444"
+                        android:textSize="14sp" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- ======== Contract header: logo, title, date ======== -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="3dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical"
+                    android:padding="12dp">
+
+                    <ImageView
+                        android:layout_width="170dp"
+                        android:layout_height="50dp"
+                        android:contentDescription="ایران اپ"
+                        android:src="@drawable/iran_app_logo1"
+                        app:tint="@color/colorPrimary" />
+
+                    <com.ideabonyan.iranapp.Components.MyTextView
+                        android:id="@+id/eContractTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="قرارداد همکاری"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="18sp" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginBottom="8dp"
+                        android:layout_marginTop="8dp"
+                        android:background="#e0e0e0" />
+
+                    <com.ideabonyan.iranapp.Components.MyTextView
+                        android:id="@+id/eContractDate"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="start"
+                        android:textColor="#444"
+                        android:textSize="14sp" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- ======== Form (new contract, or correcting a rejected one) ======== -->
+            <LinearLayout
+                android:id="@+id/eContractForm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="3dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:paddingBottom="10dp">
+
+                        <com.ideabonyan.iranapp.Components.MyTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="35dp"
+                            android:background="@color/colorPrimary"
+                            android:gravity="center"
+                            android:text="مشخصات طرف دوم قرارداد"
+                            android:textColor="#fff" />
+
+                        <com.ideabonyan.iranapp.Components.MyTextView
+                            style="@style/EContractLabel"
+                            android:text="نوع کسب و کار" />
+
+                        <RadioGroup
+                            android:id="@+id/eContractBusinessTypeGroup"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="8dp"
+                            android:layout_marginRight="8dp"
+                            android:orientation="horizontal" />
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            style="@style/EContractInputLayout">
+
+                            <com.ideabonyan.iranapp.Components.MyEdittextView
+                                android:id="@+id/eContractBusinessName"
+                                style="@style/EContractInput"
+                                android:hint="نام شرکت / موسسه / مجموعه / فروشگاه"
+                                android:maxLength="200" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.ideabonyan.iranapp.Components.MyTextView
+                            style="@style/EContractLabel"
+                            android:text="مدیریت" />
+
+                        <RadioGroup
+                            android:id="@+id/eContractManagerTitleGroup"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="8dp"
+                            android:layout_marginRight="8dp"
+                            android:orientation="horizontal" />
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            style="@style/EContractInputLayout">
+
+                            <com.ideabonyan.iranapp.Components.MyEdittextView
+                                android:id="@+id/eContractManagerName"
+                                style="@style/EContractInput"
+                                android:hint="نام و نام خانوادگی مدیر"
+                                android:maxLength="200" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            style="@style/EContractInputLayout">
+
+                            <com.ideabonyan.iranapp.Components.MyEdittextView
+                                android:id="@+id/eContractNationalCode"
+                                style="@style/EContractInput"
+                                android:hint="کد ملی (10 رقم)"
+                                android:inputType="number"
+                                android:maxLength="10" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            style="@style/EContractInputLayout">
+
+                            <com.ideabonyan.iranapp.Components.MyEdittextView
+                                android:id="@+id/eContractPhone"
+                                style="@style/EContractInput"
+                                android:hint="تلفن ثابت با کد شهر (مثلا 03132123456)"
+                                android:inputType="phone"
+                                android:maxLength="11" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            style="@style/EContractInputLayout">
+
+                            <com.ideabonyan.iranapp.Components.MyEdittextView
+                                android:id="@+id/eContractMobile"
+                                style="@style/EContractInput"
+                                android:hint="شماره همراه (09xxxxxxxxx)"
+                                android:inputType="phone"
+                                android:maxLength="11" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            style="@style/EContractInputLayout">
+
+                            <com.ideabonyan.iranapp.Components.MyEdittextView
+                                android:id="@+id/eContractAddress"
+                                style="@style/EContractInput"
+                                android:layout_height="100dp"
+                                android:gravity="top|start"
+                                android:hint="آدرس کامل"
+                                android:inputType="textMultiLine"
+                                android:maxLength="1000"
+                                android:paddingTop="10dp" />
+                        </com.google.android.material.textfield.TextInputLayout>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="3dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:paddingBottom="10dp">
+
+                        <com.ideabonyan.iranapp.Components.MyTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="35dp"
+                            android:background="@color/colorPrimary"
+                            android:gravity="center"
+                            android:text="موضوع، مدت و تخفیف"
+                            android:textColor="#fff" />
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            style="@style/EContractInputLayout">
+
+                            <com.ideabonyan.iranapp.Components.MyEdittextView
+                                android:id="@+id/eContractSubject"
+                                style="@style/EContractInput"
+                                android:hint="خدمات / محصولات (مثلا: پوشاک مردانه)"
+                                android:maxLength="255" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.ideabonyan.iranapp.Components.MyTextView
+                            style="@style/EContractLabel"
+                            android:text="تاریخ شروع قرارداد" />
+
+                        <com.ideabonyan.iranapp.Components.MyTextView
+                            android:id="@+id/eContractStartDate"
+                            style="@style/EContractPicker" />
+
+                        <com.ideabonyan.iranapp.Components.MyTextView
+                            style="@style/EContractLabel"
+                            android:text="مدت قرارداد" />
+
+                        <com.ideabonyan.iranapp.Components.MyTextView
+                            android:id="@+id/eContractDuration"
+                            style="@style/EContractPicker" />
+
+                        <com.ideabonyan.iranapp.Components.MyTextView
+                            android:id="@+id/eContractEndDate"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginTop="4dp"
+                            android:gravity="start"
+                            android:textColor="@color/hotText"
+                            android:textSize="13sp" />
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            style="@style/EContractInputLayout">
+
+                            <com.ideabonyan.iranapp.Components.MyEdittextView
+                                android:id="@+id/eContractDiscount"
+                                style="@style/EContractInput"
+                                android:hint="درصد تخفیف برای کاربران ایران اپ (1 تا 100)"
+                                android:inputType="number"
+                                android:maxLength="3" />
+                        </com.google.android.material.textfield.TextInputLayout>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
+
+            <!-- ======== The full contract: live preview while filling, stored text afterwards ======== -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="3dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <com.ideabonyan.iranapp.Components.MyTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:background="@color/colorPrimary"
+                        android:gravity="center"
+                        android:text="متن کامل قرارداد"
+                        android:textColor="#fff" />
+
+                    <com.ideabonyan.iranapp.Components.MyTextView
+                        android:id="@+id/eContractTextHint"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="12dp"
+                        android:layout_marginRight="12dp"
+                        android:layout_marginTop="8dp"
+                        android:gravity="start"
+                        android:text="اطلاعاتی که وارد می کنید به رنگ قرمز در متن قرارداد نمایش داده می شود."
+                        android:textColor="#9e9e9e"
+                        android:textSize="12sp" />
+
+                    <com.ideabonyan.iranapp.Components.MyTextView
+                        android:id="@+id/eContractText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="start"
+                        android:justificationMode="inter_word"
+                        android:lineSpacingExtra="6dp"
+                        android:padding="12dp"
+                        android:textColor="#333"
+                        android:textDirection="rtl"
+                        android:textIsSelectable="true"
+                        android:textSize="14sp" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- ======== Accept + submit ======== -->
+            <LinearLayout
+                android:id="@+id/eContractSubmitBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <com.ideabonyan.iranapp.Components.MyCheckbox
+                    android:id="@+id/eContractAcceptChk"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="10dp"
+                    android:buttonTint="@color/colorPrimary"
+                    android:text="متن قرارداد را به طور کامل مطالعه کرده ام و با تمامی شرایط آن موافقم"
+                    android:textColor="#444"
+                    android:textSize="14sp" />
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="10dp"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="5dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <com.ideabonyan.iranapp.Components.MyButton
+                            android:id="@+id/eContractSubmitBTN"
+                            android:layout_width="match_parent"
+                            android:layout_height="60dp"
+                            android:background="@drawable/login_sign_up_btn"
+                            android:foreground="?android:attr/selectableItemBackground"
+                            android:text="ارسال درخواست قرارداد"
+                            android:textColor="#fff" />
+
+                        <ProgressBar
+                            android:id="@+id/eContractSubmitProgress"
+                            android:layout_width="35dp"
+                            android:layout_height="35dp"
+                            android:layout_centerInParent="true"
+                            android:elevation="10dp"
+                            android:indeterminateTint="#fff"
+                            android:visibility="gone" />
+                    </RelativeLayout>
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

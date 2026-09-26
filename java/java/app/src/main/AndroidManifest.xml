@@ -165,6 +165,9 @@
         <activity android:name=".Activity.Job_Search" />
         <activity android:name=".Activity.HelpActivity" />
         <activity
+            android:name=".Activity.EContractActivity"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
             android:name=".Activity.AdStatsActivity"
             android:screenOrientation="portrait" />
         <activity android:name=".Activity.SelectLoginOrRegiser"></activity>

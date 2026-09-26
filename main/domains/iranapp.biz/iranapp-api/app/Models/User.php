@@ -11,6 +11,10 @@ class User extends Authenticatable
 {
     use HasApiTokens, Notifiable;
 
+    /** Everyone starts as a regular user; an approved electronic contract makes them pro. */
+    const ROLE_NORMAL = 'normal';
+    const ROLE_PRO = 'pro';
+
     protected $fillable = [
         'first_name',
         'last_name',
@@ -21,6 +25,8 @@ class User extends Authenticatable
         'remember_token',
         'is_mobile_verified',
         'type',
+        'role',
+        'pro_since',
         'fcm_token',
         'forget_password_token',
         'send_news_notifications',
@@ -42,7 +48,18 @@ class User extends Authenticatable
             'is_mobile_verified' => 'integer',
             'send_news_notifications' => 'integer',
             'send_ads_notifications' => 'integer',
+            'pro_since' => 'datetime',
         ];
+    }
+
+    public function isPro(): bool
+    {
+        return $this->role === self::ROLE_PRO;
+    }
+
+    public function eContracts()
+    {
+        return $this->hasMany(EContract::class, 'user_id');
     }
 
     public function wallet()

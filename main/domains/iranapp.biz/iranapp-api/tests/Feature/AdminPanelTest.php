@@ -64,6 +64,29 @@ class AdminPanelTest extends TestCase
         $this->assertGuest('admin');
     }
 
+    /**
+     * Regression: controllers flash stdClass messages, but the JSON session serializer hands them
+     * back as arrays on the next request, and the pop-up template read ->title from them, taking
+     * down the login page after a failed login (and every page after a success/error message).
+     * Within one test the session is never re-read from storage, so the array is put in directly.
+     */
+    public function test_login_page_renders_a_flashed_error_that_came_back_as_an_array(): void
+    {
+        $this->withSession(['error_msg' => ['title' => 'خطا در ورود به سیستم', 'msg' => 'اطلاعات ورود به سیستم نادرست است.']])
+            ->get('/admin/login')
+            ->assertOk()
+            ->assertSee('اطلاعات ورود به سیستم نادرست است.');
+    }
+
+    public function test_admin_page_renders_a_flashed_success_that_came_back_as_an_array(): void
+    {
+        $this->actingAs($this->makeAdmin(), 'admin')
+            ->withSession(['success_msg' => ['title' => 'ثبت موفقیت آمیز', 'msg' => 'کاربر مورد نظر با موفقیت ثبت شد.']])
+            ->get('/admin/users')
+            ->assertOk()
+            ->assertSee('کاربر مورد نظر با موفقیت ثبت شد.');
+    }
+
     public function test_dashboard_is_closed_to_guests(): void
     {
         $this->get('/admin/dashboard')->assertRedirect();

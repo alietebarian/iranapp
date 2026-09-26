@@ -37,6 +37,7 @@
                                     <th>#</th>
                                     <th>نام کامل</th>
                                     <th>تلفن همراه</th>
+                                    <th>نقش</th>
                                     <th>احراز هویت با تلفن همراه</th>
                                     <th>ارسال اخبار با نوتیفیکیشن</th>
                                     <th>ارسال آگهی ها با نوتیفیکیشن</th>
@@ -49,6 +50,13 @@
                                         <td>{{ $user->id }}</td>
                                         <td>{{ $user->first_name }} {{ $user->last_name }}</td>
                                         <td>{{ $user->mobile }}</td>
+                                        <td>
+                                            @if(($user->role ?? 'normal') == 'pro')
+                                                <span class="label label-success">کاربر پرو</span>
+                                            @else
+                                                <span class="label label-default">کاربر عادی</span>
+                                            @endif
+                                        </td>
                                         <td>{{ $user->is_mobile_verified == 1 ? 'بله' : 'خیر' }}</td>
                                         <td>{{ $user->send_news_notifications == 1 ? 'بله' : 'خیر' }}</td>
                                         <td>{{ $user->send_ads_notifications == 1 ? 'بله' : 'خیر' }}</td>

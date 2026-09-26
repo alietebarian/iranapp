@@ -125,6 +125,9 @@ public class StaticData {
 
     public static String getappverioncode=DOMAIN_WITH_API+"/app-version";
     static public String INSTALL_STATS = DOMAIN_WITH_API + "/app-stats/installs";
+    // Electronic contract (منو > دیگر > قرارداد الکترونیک): current state + wording, and submission.
+    static public String E_CONTRACT_CURRENT = DOMAIN_WITH_API + "/e-contracts/current";
+    static public String E_CONTRACT_SUBMIT = DOMAIN_WITH_API + "/e-contracts";
 
 
     /**

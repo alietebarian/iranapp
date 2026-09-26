@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Models\AdminNotification;
+use App\Models\EContract;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\Auth;
@@ -46,6 +47,17 @@ class AppServiceProvider extends ServiceProvider
                 }
             }
             $view->with('adminNotifications', $notifications);
+
+            // Badge next to "قراردادهای الکترونیک" in the sidebar.
+            $pendingEContracts = 0;
+            if (Auth::guard('admin')->check()) {
+                try {
+                    $pendingEContracts = EContract::where('status', EContract::STATUS_PENDING)->count();
+                } catch (QueryException $e) {
+                    Log::error('تعداد قراردادهای الکترونیک بارگذاری نشد: ' . $e->getMessage());
+                }
+            }
+            $view->with('pendingEContracts', $pendingEContracts);
         });
     }
 }

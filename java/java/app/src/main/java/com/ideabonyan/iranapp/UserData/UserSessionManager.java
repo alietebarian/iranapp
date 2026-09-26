@@ -36,6 +36,7 @@ public class UserSessionManager {
     private String notificationInfo = "notificationInfo";
     private String dont_show_new_version = "dont_show_new_version";
     private String showIntroPage = "showIntroPage";
+    private String userRole = "userRole";
 
     public UserSessionManager() {
         // TOD Auto-generated constructor stub
@@ -288,6 +289,23 @@ public class UserSessionManager {
         Editor editor = sharePre.edit();
         editor.putString(this.fistSee, fistSee);
         editor.apply();
+    }
+
+
+    ////////////////////////////////////////
+    ////    USER ROLE ("normal", or "pro" once an electronic contract is approved)
+    ////////////////////////////////////////
+    public String getUserRole() {
+        return sharePre.getString(userRole, "normal");
+    }
+
+    public void setUserRole(String role) {
+        editor.putString(userRole, role);
+        editor.apply();
+    }
+
+    public boolean isPro() {
+        return "pro".equals(getUserRole());
     }
 
 }
