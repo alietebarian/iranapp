@@ -138,8 +138,12 @@ public class Get_Volley_Call_Back {
                 } catch (NullPointerException e) {
                     e.printStackTrace();
                     myGet_insert_edit_data.on_volley_error(error, id);
-                    ShowToast.failure("لطفا نحوه ی اتصال به اینترنت دستگاه خود را بررسی نمایید",
-                            (Activity) context);
+                    // MyFirebaseMessagingService calls this with the application context; there
+                    // is no screen to show a toast on, and casting it to Activity crashed the app.
+                    if (context instanceof Activity) {
+                        ShowToast.failure("لطفا نحوه ی اتصال به اینترنت دستگاه خود را بررسی نمایید",
+                                (Activity) context);
+                    }
                 }
             }
         }) {
