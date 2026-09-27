@@ -7,6 +7,7 @@
                 <div class="card-box">
                     <h1 style="font-size:14px;font-weight: bold;" class="text-pink">ثبت آگهی</h1>
                     <form id="form-to-validate" action="{{ route('saveAdsInAdminPanel') }}" method="post">
+                        {{ csrf_field() }}
                         <div class="row">
                             <div class="col-xs-12 col-md-6">
                                 <div class="form-group">

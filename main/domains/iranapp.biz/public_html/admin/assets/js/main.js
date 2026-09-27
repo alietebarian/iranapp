@@ -29,14 +29,8 @@ $('#form-to-validate').validate({
         link: {
             url: true
         },
-        telegram: {
-            required: false,
-            url: true
-        },
-        instagram: {
-            required: false,
-            url: true
-        },
+        // telegram / instagram: no client-side rule — a bare username (with or without @) is
+        // accepted and turned into a link by the server (App\Support\SocialLinks).
         status: {
             required: true
         },
@@ -71,12 +65,6 @@ $('#form-to-validate').validate({
         },
         link: {
             url: 'لینک نامعتبر است.'
-        },
-        telegram: {
-            url: 'آدرس تلگرام نامعتبر است.'
-        },
-        instagram: {
-            url: 'آدرس اینستاگرام نامعتبر است.'
         },
         status: {
             required: 'انتخاب وضعیت آگهی الزامی است.'
@@ -119,14 +107,8 @@ $('#update-form-to-validate').validate({
         link: {
             url: true
         },
-        telegram: {
-            required: false,
-            url: true
-        },
-        instagram: {
-            required: false,
-            url: true
-        },
+        // telegram / instagram: no client-side rule — a bare username (with or without @) is
+        // accepted and turned into a link by the server (App\Support\SocialLinks).
         status: {
             required: true
         },
@@ -161,12 +143,6 @@ $('#update-form-to-validate').validate({
         },
         link: {
             url: 'لینک نامعتبر است.'
-        },
-        telegram: {
-            url: 'آدرس تلگرام نامعتبر است.'
-        },
-        instagram: {
-            url: 'آدرس اینستاگرام نامعتبر است.'
         },
         status: {
             required: 'انتخاب وضعیت آگهی الزامی است.'
