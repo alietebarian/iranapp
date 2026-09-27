@@ -45,7 +45,8 @@ public class NotificationDialog extends DialogFragment implements Get_Insert_Edi
     ViewGroup rootView;
     // eContractStatusId: the admin approved or rejected the user's electronic contract
     // (App\Jobs\SendEContractReviewPushNotification::PUSH_STATUS on the server).
-    String adStatusId = "0", newsStatusId = "1", userinfo = "10", eContractStatusId = "20";
+    // birthdayStatusId: today is the user's birthday (App\Jobs\SendBirthdayPushNotifications::PUSH_STATUS).
+    String adStatusId = "0", newsStatusId = "1", userinfo = "10", eContractStatusId = "20", birthdayStatusId = "30";
 
     AdsToBeListed ad;
     NewsData newsData;
@@ -106,6 +107,12 @@ public class NotificationDialog extends DialogFragment implements Get_Insert_Edi
         }else if (status.equals(eContractStatusId)){
             header.setText("قرارداد الکترونیک");
             show.setText("مشاهده");
+            progressBar.setVisibility(View.GONE);
+            show.setVisibility(View.VISIBLE);
+            show.setClickable(true);
+        }else if (status.equals(birthdayStatusId)){
+            header.setText("تولدت مبارک 🎂");
+            show.setText("ممنونم");
             progressBar.setVisibility(View.GONE);
             show.setVisibility(View.VISIBLE);
             show.setClickable(true);

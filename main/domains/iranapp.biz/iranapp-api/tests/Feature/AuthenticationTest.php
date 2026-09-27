@@ -104,6 +104,7 @@ class AuthenticationTest extends TestCase
             'last_name' => 'رضایی',
             'mobile' => '09121111111',
             'password' => 'secret123',
-        ])->assertJsonPath('status', 400);
+            'birth_date' => '1380/05/12',
+        ])->assertJsonPath('status', 400)->assertJsonStructure(['errors' => ['mobile']]);
     }
 }

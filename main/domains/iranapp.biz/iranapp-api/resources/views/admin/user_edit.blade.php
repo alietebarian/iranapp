@@ -24,6 +24,12 @@
                             </div>
                             <div class="col-xs-12">
                                 <div class="form-group">
+                                    <label for="birth_date">تاریخ تولد:</label>
+                                    <input type="text" value="{{ $user->birth_date ? \App\Support\JalaliDate::fromTimestamp($user->birth_date->format('Y-m-d') . ' 12:00:00') : 'ثبت نشده' }}" id="birth_date" class="form-control" readonly>
+                                </div>
+                            </div>
+                            <div class="col-xs-12">
+                                <div class="form-group">
                                     <label for="password">رمز عبور:</label>
                                     <input type="password" name="password"  id="password" class="form-control">
                                 </div>

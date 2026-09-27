@@ -126,6 +126,38 @@
                             </com.google.android.material.textfield.TextInputLayout>
 
                             <com.ideabonyan.iranapp.Components.MyTextView
+                                android:id="@+id/signupBirthDateWarnTXT"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="-15dp"
+                                android:gravity="left"
+                                android:text="لطفا تاریخ تولد خود را انتخاب کنید"
+                                android:textColor="#df0404"
+                                android:textSize="10sp"
+                                android:visibility="gone" />
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <!-- Picked from a Jalali date dialog, never typed. -->
+                                <com.ideabonyan.iranapp.Components.MyEdittextView
+                                    android:id="@+id/signupBirthDateEDT"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="50dp"
+                                    android:layout_marginBottom="10dp"
+                                    android:background="@drawable/edittext_background"
+                                    android:clickable="true"
+                                    android:cursorVisible="false"
+                                    android:focusable="false"
+                                    android:gravity="center_vertical|right"
+                                    android:hint="تاریخ تولد"
+                                    android:inputType="none"
+                                    android:paddingRight="8dp"
+                                    android:textSize="15sp" />
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <com.ideabonyan.iranapp.Components.MyTextView
                                 android:id="@+id/signupNumberWarnTXT"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"

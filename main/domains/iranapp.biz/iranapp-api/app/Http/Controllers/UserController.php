@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Admin\SaveNewUser;
 use App\Models\User;
+use App\Support\Birthdays;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -22,7 +23,13 @@ class UserController extends Controller {
 			'first_name' => 'required|string|max:200' ,
 			'last_name'  => 'required|string|max:200' ,
 			'mobile'     => 'required|string|max:200|unique:users,mobile' ,
-			'password'   => 'required|string'
+			'password'   => 'required|string' ,
+			// Jalali, e.g. "1380/05/12"; asked from new users only, existing users stay without it.
+			'birth_date' => [ 'required' , 'string' , function ( $attribute , $value , $fail ) {
+				if ( ! Birthdays::parseBirthDate( $value ) ) {
+					$fail( 'تاریخ تولد نامعتبر است.' );
+				}
+			} ]
 		] , [
 			'first_name.required' => 'وارد کردن نام الزامی است.' ,
 			'first_name.string'   => 'نام نامعتبر است.' ,
@@ -35,7 +42,9 @@ class UserController extends Controller {
 			'mobile.max'          => 'تلفن همراه طولانی تر از حد مجاز است.' ,
 			'mobile.unique'       => 'تلفن همراه وارد شده از قبل ثبت شده است.' ,
 			'password.required'   => 'رمز عبور الزامی است.' ,
-			'password.string'     => 'رمز عبور نامعتبر است.'
+			'password.string'     => 'رمز عبور نامعتبر است.' ,
+			'birth_date.required' => 'وارد کردن تاریخ تولد الزامی است.' ,
+			'birth_date.string'   => 'تاریخ تولد نامعتبر است.'
 		] );
 		if ( $validator->fails() ) {
 			return response()->json( [ 'status' => 400 , 'errors' => $validator->errors( $request->all() ) ] );
@@ -43,6 +52,7 @@ class UserController extends Controller {
 		$user               = new User();
 		$user->first_name   = $request->first_name;
 		$user->last_name    = $request->last_name;
+		$user->birth_date   = Birthdays::parseBirthDate( $request->birth_date );
 		$user->mobile       = $request->mobile;
 		$user->password     = Hash::make( $request->password );
 		$user->verify_token = rand( 1111 , 9999 );

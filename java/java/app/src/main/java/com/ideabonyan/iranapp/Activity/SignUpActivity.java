@@ -14,6 +14,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.widget.LinearLayout;
+import android.widget.NumberPicker;
 import android.widget.ProgressBar;
 
 import com.android.volley.AuthFailureError;
@@ -31,25 +32,30 @@ import com.ideabonyan.iranapp.R;
 import com.ideabonyan.iranapp.UserData.User;
 import com.ideabonyan.iranapp.UserData.UserHelper;
 import com.ideabonyan.iranapp.UserData.UserSessionManager;
+import com.ideabonyan.iranapp.Utils.JalaliDate;
 import com.ideabonyan.iranapp.Utils.MySingleton;
 import com.ideabonyan.iranapp.Utils.ShowToast;
 import com.ideabonyan.iranapp.Utils.StaticData;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
 public class SignUpActivity extends AppCompatActivity {
 
-    MyTextView nameWarn, familyWarn, numberWarn, passWarn, passAgainWarn;
-    MyEdittextView nameEDT, familyEDT, numberEDT;
+    MyTextView nameWarn, familyWarn, birthDateWarn, numberWarn, passWarn, passAgainWarn;
+    MyEdittextView nameEDT, familyEDT, birthDateEDT, numberEDT;
     CustomEditText passEDT, passAgainEDT;
     MyButton signUp;
     LinearLayout login, contentView;
     UserSessionManager userSessionManager;
     ProgressBar progressBar;
+    /** Jalali {year, month, day}; null until the user picks it. */
+    int[] birthDate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,12 +72,14 @@ public class SignUpActivity extends AppCompatActivity {
     private void initializer() {
         nameEDT = (MyEdittextView) findViewById(R.id.signupNameEDT);
         familyEDT = (MyEdittextView) findViewById(R.id.signupFamilyEDT);
+        birthDateEDT = (MyEdittextView) findViewById(R.id.signupBirthDateEDT);
         numberEDT = (MyEdittextView) findViewById(R.id.signupNumberEDT);
         passEDT = (CustomEditText) findViewById(R.id.signupPassEDT);
         passAgainEDT = (CustomEditText) findViewById(R.id.signupPassAgainEDT);
 
         nameWarn = (MyTextView) findViewById(R.id.signupNameWarningTXT);
         familyWarn = (MyTextView) findViewById(R.id.signupFamilyWarning);
+        birthDateWarn = (MyTextView) findViewById(R.id.signupBirthDateWarnTXT);
         numberWarn = (MyTextView) findViewById(R.id.signupNumberWarnTXT);
         passWarn = (MyTextView) findViewById(R.id.signupPassWarnTXT);
         passAgainWarn = (MyTextView) findViewById(R.id.signupPassAgainWarnTXT);
@@ -105,6 +113,7 @@ public class SignUpActivity extends AppCompatActivity {
             public void onClick(View v) {
                 nameWarn.setVisibility(View.GONE);
                 familyWarn.setVisibility(View.GONE);
+                birthDateWarn.setVisibility(View.GONE);
                 numberWarn.setVisibility(View.GONE);
                 passWarn.setVisibility(View.GONE);
                 passAgainWarn.setVisibility(View.GONE);
@@ -114,17 +123,20 @@ public class SignUpActivity extends AppCompatActivity {
                 number = numberEDT.getText().toString();
                 pass = passEDT.getText().toString();
                 passAgain = passAgainEDT.getText().toString();
-                if (name.length() > 2 && family.length() > 2 && number.length() == 11 && pass.length() > 5 && pass.equals(passAgain)) {
+                if (name.length() > 2 && family.length() > 2 && birthDate != null && number.length() == 11 && pass.length() > 5 && pass.equals(passAgain)) {
                     doSignUp();
                 } else {
                     if (name.length() < 3) nameWarn.setVisibility(View.VISIBLE);
                     if (family.length() < 3) familyWarn.setVisibility(View.VISIBLE);
+                    if (birthDate == null) birthDateWarn.setVisibility(View.VISIBLE);
                     if (number.length() != 11) numberWarn.setVisibility(View.VISIBLE);
                     if (pass.length() < 6) passWarn.setVisibility(View.VISIBLE);
                     if (!pass.equals(passAgain)) passAgainWarn.setVisibility(View.VISIBLE);
                 }
             }
         });
+
+        birthDateEDT.setOnClickListener(v -> showBirthDatePicker());
 
 
         passEDT.setDrawableClickListener(new DrawableClickListener() {
@@ -230,7 +242,12 @@ public class SignUpActivity extends AppCompatActivity {
                                         break;
 
                                     case "400":
-                                        ShowToast.failure("شما قبلا با این شماره ثبت نام کرده اید ، لطفا وارد حساب کاربری خود شوید", SignUpActivity.this);
+                                        JSONObject errors = jsonObject.optJSONObject("errors");
+                                        if (errors == null || errors.has("mobile")) {
+                                            ShowToast.failure("شما قبلا با این شماره ثبت نام کرده اید ، لطفا وارد حساب کاربری خود شوید", SignUpActivity.this);
+                                        } else {
+                                            ShowToast.failure(firstError(errors), SignUpActivity.this);
+                                        }
                                         break;
                                 }
                             }
@@ -266,6 +283,7 @@ public class SignUpActivity extends AppCompatActivity {
                 Map<String, String> params = new HashMap<String, String>();
                 params.put("first_name", name);
                 params.put("last_name", family);
+                params.put("birth_date", JalaliDate.format(birthDate));
                 params.put("mobile", number);
                 params.put("password", password);
                 params.put("fcm_token", userSessionManager.getNotigy_code());
@@ -277,6 +295,69 @@ public class SignUpActivity extends AppCompatActivity {
         MySingleton mySingleton = new MySingleton(SignUpActivity.this);
         mySingleton.getInstance(SignUpActivity.this).addToRequestQueue(stringRequest);
 
+    }
+
+
+    /** The first message of a Laravel validation error object, e.g. {"birth_date": ["..."]}. */
+    private static String firstError(JSONObject errors) {
+        Iterator<String> keys = errors.keys();
+        if (keys.hasNext()) {
+            JSONArray messages = errors.optJSONArray(keys.next());
+            if (messages != null && messages.length() > 0) return messages.optString(0);
+        }
+        return "لطفا اطلاعات وارد شده را بررسی کنید";
+    }
+
+    /** Jalali day / month / year wheels, the same way EContractActivity picks the start date. */
+    private void showBirthDatePicker() {
+        final int[] today = JalaliDate.today();
+        int[] initial = birthDate != null ? birthDate : new int[]{today[0] - 25, 1, 1};
+
+        final NumberPicker year = new NumberPicker(this);
+        final NumberPicker month = new NumberPicker(this);
+        final NumberPicker day = new NumberPicker(this);
+
+        year.setMinValue(1300);
+        year.setMaxValue(today[0]);
+        year.setValue(initial[0]);
+        year.setWrapSelectorWheel(false);
+        month.setMinValue(1);
+        month.setMaxValue(12);
+        month.setDisplayedValues(JalaliDate.MONTH_NAMES);
+        month.setValue(initial[1]);
+        day.setMinValue(1);
+        day.setMaxValue(JalaliDate.monthLength(initial[0], initial[1]));
+        day.setValue(initial[2]);
+
+        NumberPicker.OnValueChangeListener clampDay = (picker, oldVal, newVal) ->
+                day.setMaxValue(JalaliDate.monthLength(year.getValue(), month.getValue()));
+        year.setOnValueChangedListener(clampDay);
+        month.setOnValueChangedListener(clampDay);
+
+        LinearLayout row = new LinearLayout(this);
+        row.setOrientation(LinearLayout.HORIZONTAL);
+        row.setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
+        row.setPadding(20, 30, 20, 10);
+        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 1f);
+        row.addView(day, lp);
+        row.addView(month, new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 1.4f));
+        row.addView(year, lp);
+
+        new AlertDialog.Builder(this)
+                .setTitle("تاریخ تولد")
+                .setView(row)
+                .setPositiveButton("تایید", (dialog, which) -> {
+                    int[] picked = {year.getValue(), month.getValue(), day.getValue()};
+                    if (JalaliDate.compare(picked, today) >= 0) {
+                        ShowToast.failure("تاریخ تولد باید پیش از امروز باشد", SignUpActivity.this);
+                        return;
+                    }
+                    birthDate = picked;
+                    birthDateEDT.setText(picked[2] + " " + JalaliDate.MONTH_NAMES[picked[1] - 1] + " " + picked[0]);
+                    birthDateWarn.setVisibility(View.GONE);
+                })
+                .setNegativeButton("انصراف", null)
+                .show();
     }
 
 

@@ -18,6 +18,7 @@ class User extends Authenticatable
     protected $fillable = [
         'first_name',
         'last_name',
+        'birth_date',
         'mobile',
         'email',
         'verify_token',
@@ -49,6 +50,7 @@ class User extends Authenticatable
             'send_news_notifications' => 'integer',
             'send_ads_notifications' => 'integer',
             'pro_since' => 'datetime',
+            'birth_date' => 'date:Y-m-d',
         ];
     }
 

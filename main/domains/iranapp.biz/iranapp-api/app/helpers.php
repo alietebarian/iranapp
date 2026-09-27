@@ -1,7 +1,7 @@
 <?php
 
 use Carbon\Carbon;
-use GuzzleHttp\Client;
+use Illuminate\Support\Facades\Http;
 
 if ( ! function_exists( 'make_url_validate' ) ) {
 	function make_url_validate( $url ) {
@@ -85,7 +85,7 @@ if ( ! function_exists( 'send_sms' ) ) {
 		$token2 ? $url = "https://api.kavenegar.com/v1/" . config( 'app.kaveh_negar.api_key' ) . "/verify/lookup.json?receptor=" . $number . "&token=" . $token . "&token2=" . $token2 . "&token10=" . $token10 . "&token20=" . $token20 . "&template=" . $templateName
 			: $url = "https://api.kavenegar.com/v1/" . config( 'app.kaveh_negar.api_key' ) . "/verify/lookup.json?receptor=" . $number . "&token=" . $token . "&template=" . $templateName;
 
-		$client = new Client();
-		$res    = $client->get( $url );
+		// Through the Http facade so tests can fake it; throws on failure as the Guzzle call did.
+		$res = Http::get( $url )->throw();
 	}
 }

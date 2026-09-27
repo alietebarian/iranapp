@@ -18,6 +18,7 @@ return Application::configure(basePath: dirname(__DIR__))
             \App\Http\Middleware\ConvertArabicLettersToPersian::class,
             \App\Http\Middleware\convertFarsiNumbers::class,
             \App\Http\Middleware\ReleaseScheduledNews::class,
+            \App\Http\Middleware\SendBirthdayGreetings::class,
         ]);
         $middleware->api(prepend: [
             \App\Http\Middleware\AcceptTokenQueryParameter::class,
@@ -34,6 +35,7 @@ return Application::configure(basePath: dirname(__DIR__))
             \App\Http\Middleware\ConvertArabicLettersToPersian::class,
             \App\Http\Middleware\convertFarsiNumbers::class,
             \App\Http\Middleware\ReleaseScheduledNews::class,
+            \App\Http\Middleware\SendBirthdayGreetings::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {

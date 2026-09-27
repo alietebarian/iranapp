@@ -115,6 +115,13 @@ php artisan migrate --path=database/migrations/*_create_personal_access_tokens_t
 php artisan migrate --path=database/migrations/2026_09_12_120000_add_video_to_ads_table.php
 ```
 
+تاریخ تولد کاربران (برای تبریک تولد روزانه) ستون `users.birth_date` را لازم دارد. پیش از انتشار نسخه‌ی
+جدید اپ اجرا شود، چون از آن به بعد `/api/register` بدون تاریخ تولد ثبت نام را رد می‌کند:
+
+```bash
+php artisan migrate --path=database/migrations/2026_09_27_130000_add_birth_date_to_users_table.php
+```
+
 > برای نصب روی دیتابیس **خالی**، `php artisan migrate` کل ۴۷ جدول را می‌سازد.
 > این قابلیت در پروژه‌ی قدیمی وجود نداشت.
 
