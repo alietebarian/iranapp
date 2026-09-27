@@ -7,4 +7,9 @@
     <color name="mildBlack">#616161</color>
 
     <color name="hotText">#00796B</color>
+
+    <!-- Pro users (approved electronic contract): their ads' tag and the categories' pro section. -->
+    <color name="pro_badge_background">#FFF8E1</color>
+    <color name="pro_badge_accent">#F9A825</color>
+    <color name="pro_badge_text">#8D5B00</color>
 </resources>

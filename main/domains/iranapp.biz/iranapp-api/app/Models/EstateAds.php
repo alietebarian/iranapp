@@ -11,7 +11,8 @@ class EstateAds extends Model
     private $query;
     const FIELDS = 'estates_ads.* , region.name as region_name , city.id as city_id , city.name as city_name,
     province.id as province_id , province.name as province_name , users.first_name as user_first_name , users.last_name as user_last_name,
-    estate_categories.id as category_id , estate_categories.name as category_name , estate_categories.parent_id as category_parent_id';
+    estate_categories.id as category_id , estate_categories.name as category_name , estate_categories.parent_id as category_parent_id ,
+    ' . User::IS_PRO_FIELD;
 
     public function __construct(array $attributes = [])
     {

@@ -39,6 +39,8 @@ public class Show_Home_List extends AppCompatActivity implements Get_Insert_Edit
     RecyclerView rv_cat_Feed, rv_add_Feed;
     ProgressBar adListProgressBar, adListLoadMoreProgressBar;
     public  String cat_id;
+    /** The category's "کاربران پرو" section: every estate category, pro users' ads only. */
+    boolean proOnly;
     String sub_cat_id="0";
     List<Home_Category> sub_cat;
     LinearLayoutManager layoutManager;
@@ -65,10 +67,16 @@ int code=1000545;
 
     private void holder() {
         cat_id=getIntent().getStringExtra("cat_id");
+        proOnly = getIntent().getBooleanExtra(StaticData.EXTRA_PRO_ONLY, false);
         txt_no_val = (TextView) findViewById(R.id.txt_no_val);
         estatesList = new ArrayList<>();
         backInToolbar = (ImageButton) findViewById(R.id.newAdBackButton);
         btn_search=findViewById(R.id.btn_search);
+        if (proOnly) {
+            ((TextView) findViewById(R.id.headerTXT)).setText(R.string.pro_users_section);
+            // The search screen has no pro filter, so it would leave this section.
+            btn_search.setVisibility(View.GONE);
+        }
 
         rv_cat_Feed = (RecyclerView) findViewById(R.id.rv_cat_Feed);
         rv_add_Feed = (RecyclerView) findViewById(R.id.rv_add_Feed);
@@ -165,7 +173,9 @@ int code=1000545;
             sub_cat = new ArrayList<>();
 
 
-        if (cat_id.equals("1") ) {//home sell.
+        if (proOnly) {
+            // No subcategory chips: pro users' ads of every estate category are listed at once.
+        } else if (cat_id.equals("1") ) {//home sell.
             sub_cat.add(new Home_Category("6", "آپارتمان", "1"));
             sub_cat.add(new Home_Category("7", "خانه و ویلا", "1"));
             sub_cat.add(new Home_Category("8", "زمین و کلنگی", "1"));
@@ -216,7 +226,9 @@ int code=1000545;
     private void get_all_data() {
         String city = new UserSessionManager(Show_Home_List.this).getCityInfo();
         String url = StaticData.estates + "/city/" + city + "/ads" + "?offset=" + first + "&limit=10";
-        if (is_last_page) {
+        if (proOnly) {
+            url += "&pro_only=1";
+        } else if (is_last_page) {
             url += "&category_id=" + sub_cat_id;
         } else {
             url += "&category_id=" + cat_id;

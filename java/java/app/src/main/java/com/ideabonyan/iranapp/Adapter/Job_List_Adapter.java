@@ -39,6 +39,7 @@ public class Job_List_Adapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         final Job_List_Adapter.CellFeedViewHolder holder = (Job_List_Adapter.CellFeedViewHolder) viewHolder;
 
         holder.rvAdListTitle.setText(jobs.get(position).getAds_title());
+        holder.proBadge.setVisibility(jobs.get(position).isPro() ? View.VISIBLE : View.GONE);
 
         holder.rvAdListAddress.setText(jobs.get(position).getCity_name() + "،" + jobs.get(position).getRegion_name()
                 + " / " + jobs.get(position).getElapsed_time());
@@ -102,6 +103,7 @@ public class Job_List_Adapter extends RecyclerView.Adapter<RecyclerView.ViewHold
     private class CellFeedViewHolder extends RecyclerView.ViewHolder {
 
         ImageView rvAdListImage, pendingIdentifier;
+        View proBadge;
         MyTextView rvAdListTitle, rvAdListAddress;
         TextView txt_cost;
 
@@ -112,6 +114,7 @@ public class Job_List_Adapter extends RecyclerView.Adapter<RecyclerView.ViewHold
             rvAdListTitle = (MyTextView) view.findViewById(R.id.rvAdListTitle);
             rvAdListAddress = (MyTextView) view.findViewById(R.id.rvAdListAddress);
             pendingIdentifier = (ImageView) view.findViewById(R.id.rvAdListPendingIdentifier);
+            proBadge = view.findViewById(R.id.rvAdListProBadge);
 
             txt_cost = (TextView) view.findViewById(R.id.txt_cost);
         }

@@ -10,7 +10,8 @@ class VehicleAds extends Model
     protected $table = 'vehicles_ads';
     const FIELDS = 'vehicles_ads.* , region.id as region_id , region.name as region_name , city.id as city_id , city.name as city_name ,
     province.id as province_id , province.name as province_name , users.first_name as user_first_name , users.last_name as user_last_name , brand.name as brand,
-    model.name as model_name , vehicles_cylinder_volume.id as cylinder_volume_id , vehicles_cylinder_volume.value as cylinder_volume';
+    model.name as model_name , vehicles_cylinder_volume.id as cylinder_volume_id , vehicles_cylinder_volume.value as cylinder_volume ,
+    ' . User::IS_PRO_FIELD;
     private $dbQuery;
 
     public function __construct(array $attributes = [])

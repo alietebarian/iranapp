@@ -10,11 +10,12 @@ import android.widget.LinearLayout;
 
 import com.ideabonyan.iranapp.Activity.Show_Home_List;
 import com.ideabonyan.iranapp.R;
+import com.ideabonyan.iranapp.Utils.StaticData;
 
 public class Home extends Fragment {
 
     View view;
-    LinearLayout lin_sell_home, ejare_home, forosh_edari, ejare_edari, khadamar_home;
+    LinearLayout lin_sell_home, ejare_home, forosh_edari, ejare_edari, khadamar_home, lin_pro;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -32,9 +33,18 @@ public class Home extends Fragment {
         forosh_edari = (LinearLayout) view.findViewById(R.id.forosh_edari);
         ejare_edari = (LinearLayout) view.findViewById(R.id.ejare_edari);
         khadamar_home = (LinearLayout) view.findViewById(R.id.khadamar_home);
+        lin_pro = (LinearLayout) view.findViewById(R.id.lin_pro);
     }
 
     private void onclick() {
+        lin_pro.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(getActivity(),Show_Home_List.class);
+                intent.putExtra(StaticData.EXTRA_PRO_ONLY, true);
+                startActivity(intent);
+            }
+        });
         lin_sell_home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

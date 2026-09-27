@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Shown on an ad in the vehicle / estate / employ lists when its owner is a pro user. -->
+<com.ideabonyan.iranapp.Components.MyTextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rvAdListProBadge"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="5dp"
+    android:layout_marginRight="5dp"
+    android:layout_marginTop="5dp"
+    android:background="@drawable/bg_pro_badge"
+    android:drawableRight="@drawable/ic_pro_user"
+    android:drawablePadding="3dp"
+    android:drawableTint="@color/pro_badge_accent"
+    android:gravity="center_vertical"
+    android:paddingLeft="8dp"
+    android:paddingRight="5dp"
+    android:paddingTop="1dp"
+    android:paddingBottom="1dp"
+    android:text="@string/pro_user_badge"
+    android:textColor="@color/pro_badge_text"
+    android:textSize="10sp"
+    android:visibility="gone" />

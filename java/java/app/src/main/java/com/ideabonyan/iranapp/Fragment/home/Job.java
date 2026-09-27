@@ -11,13 +11,14 @@ import android.widget.LinearLayout;
 
 import com.ideabonyan.iranapp.Activity.Show_Job_list;
 import com.ideabonyan.iranapp.R;
+import com.ideabonyan.iranapp.Utils.StaticData;
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class Job extends Fragment {
 
-    LinearLayout lin_both, lin_employe, lin_worker;
+    LinearLayout lin_both, lin_employe, lin_worker, lin_pro;
     View view;
 
     public Job() {
@@ -38,11 +39,21 @@ public class Job extends Fragment {
         lin_both = (LinearLayout) view.findViewById(R.id.lin_both);
         lin_employe = (LinearLayout) view.findViewById(R.id.lin_employe);
         lin_worker = (LinearLayout) view.findViewById(R.id.lin_worker);
+        lin_pro = (LinearLayout) view.findViewById(R.id.lin_pro);
 
 
     }
 
     private void onclick() {
+        lin_pro.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Show_Job_list.type=null;
+                Intent intent=new Intent(getActivity(),Show_Job_list.class);
+                intent.putExtra(StaticData.EXTRA_PRO_ONLY, true);
+                startActivity(intent);
+            }
+        });
 
         lin_both.setOnClickListener(new View.OnClickListener() {
             @Override

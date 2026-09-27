@@ -15,6 +15,21 @@ class User extends Authenticatable
     const ROLE_NORMAL = 'normal';
     const ROLE_PRO = 'pro';
 
+    /**
+     * Selected by the vehicle / estate / employ ad lists (their FIELDS join `users` as the ad
+     * owner) so the app can tag ads posted by pro users. 1 or 0.
+     */
+    const IS_PRO_FIELD = "CASE WHEN users.role = 'pro' THEN 1 ELSE 0 END as is_pro";
+
+    /**
+     * Narrows one of those ad-list queries to ads posted by pro users when the app opens the
+     * "کاربران پرو" section of a category (`pro_only=1`).
+     */
+    public static function filterProOwners($query, $request)
+    {
+        return $request->boolean('pro_only') ? $query->where('users.role', '=', self::ROLE_PRO) : $query;
+    }
+
     protected $fillable = [
         'first_name',
         'last_name',

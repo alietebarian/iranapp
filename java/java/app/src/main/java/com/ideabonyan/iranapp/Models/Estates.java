@@ -49,6 +49,8 @@ public class Estates implements Serializable {
     private String province_name;
     private String user_first_name;
     private String user_last_name;
+    /** The ad was posted by a pro user (approved electronic contract). */
+    private boolean is_pro;
     private String category_name;
     private String elapsed_time;
     private String fa_created_at;
@@ -367,6 +369,14 @@ public class Estates implements Serializable {
         this.user_last_name = user_last_name;
     }
 
+    public boolean isPro() {
+        return is_pro;
+    }
+
+    public void setPro(boolean is_pro) {
+        this.is_pro = is_pro;
+    }
+
     public String getCategory_name() {
         return category_name;
     }
@@ -468,6 +478,7 @@ public class Estates implements Serializable {
                 estates1.setProvince_name(province_name);
                 estates1.setUser_first_name(user_first_name);
                 estates1.setUser_last_name(user_last_name);
+                estates1.setPro(Vehicles.isProOwner(jsonObject));
                 estates1.setCategory_name(category_name);
                 estates1.setElapsed_time(elapsed_time);
                 estates1.setFa_created_at(fa_created_at);

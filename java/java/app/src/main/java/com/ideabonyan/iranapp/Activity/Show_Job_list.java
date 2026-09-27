@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.android.volley.Request;
 import com.android.volley.VolleyError;
@@ -33,6 +34,8 @@ import java.util.Map;
 public class Show_Job_list extends AppCompatActivity implements Get_Insert_Edit_Data {
     List<Job> jobs;
     public static String type;
+    /** The category's "کاربران پرو" section: both types, pro users' ads only. */
+    boolean proOnly;
     ProgressBar progressbar, progressBar1;
     LinearLayout lin_no_row;
     RecyclerView rvFeed;
@@ -56,6 +59,12 @@ public class Show_Job_list extends AppCompatActivity implements Get_Insert_Edit_
     private void hoder() {
         backInToolbar = (ImageButton) findViewById(R.id.newAdBackButton);
         btn_search = (ImageButton) findViewById(R.id.btn_search);
+        proOnly = getIntent().getBooleanExtra(StaticData.EXTRA_PRO_ONLY, false);
+        if (proOnly) {
+            ((TextView) findViewById(R.id.headerTXT)).setText(R.string.pro_users_section);
+            // The search screen has no pro filter, so it would leave this section.
+            btn_search.setVisibility(View.GONE);
+        }
 
         jobs = new ArrayList<>();
         first = 0;
@@ -140,6 +149,9 @@ public class Show_Job_list extends AppCompatActivity implements Get_Insert_Edit_
 
         } else {
             url = StaticData.employs + "/cities/" + city + "/ads" + "?type=" + type+ "&offset=" + first + "&limit=10";
+        }
+        if (proOnly) {
+            url += "&pro_only=1";
         }
         if (first == 0) {
             progressbar.setVisibility(View.VISIBLE);

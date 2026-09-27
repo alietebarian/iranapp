@@ -232,6 +232,7 @@ class EmploysAdsController extends Controller
         if($request->has('type') && in_array($request->type , ['karjoo' , 'forsatshoghli'])){
             $list = $list->where('employs_ads.type' , '=' , $request->type);
         }
+        $list = User::filterProOwners($list, $request);
         $offset = $request->has('offset') ? $request->offset :  0;
         $limit = $request->has('limit') ? $request->limit : 1;
         $list = $list->offset($offset)->limit($limit)->get();
@@ -442,6 +443,7 @@ class EmploysAdsController extends Controller
         if($request->has('agreement_type')){
             $list = $list->where('employs_ads.agremment_type' , '=' , $request->agreement_type);
         }
+        $list = User::filterProOwners($list, $request);
         $offset = $request->has('offset') ? $request->offset : 0;
         $limit = $request->has('limit') ? $request->limit : 1;
         $list = $list->offset($offset)->limit($limit)->get();

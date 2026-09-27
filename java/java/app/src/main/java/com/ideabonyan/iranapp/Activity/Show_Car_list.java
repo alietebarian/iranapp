@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.android.volley.Request;
 import com.android.volley.VolleyError;
@@ -33,6 +34,8 @@ import java.util.Map;
 public class Show_Car_list extends AppCompatActivity implements Get_Insert_Edit_Data {
     List<Vehicles> vehiclesList;
     public String type;
+    /** The category's "کاربران پرو" section: every type, pro users' ads only. */
+    boolean proOnly;
     ProgressBar progressbar,progressBar1;
     LinearLayout lin_no_row;
     RecyclerView rvFeed;
@@ -54,8 +57,14 @@ public class Show_Car_list extends AppCompatActivity implements Get_Insert_Edit_
     }
     private void hoder() {
         type=getIntent().getStringExtra("type");
+        proOnly = getIntent().getBooleanExtra(StaticData.EXTRA_PRO_ONLY, false);
         backInToolbar = (ImageButton) findViewById(R.id.newAdBackButton);
         btn_search=findViewById(R.id.btn_search);
+        if (proOnly) {
+            ((TextView) findViewById(R.id.headerTXT)).setText(R.string.pro_users_section);
+            // The search screen has no pro filter, so it would leave this section.
+            btn_search.setVisibility(View.GONE);
+        }
         vehiclesList=new ArrayList<>();
         first=0;
         progressbar = (ProgressBar)  findViewById(R.id.progressbar);
@@ -134,7 +143,11 @@ public class Show_Car_list extends AppCompatActivity implements Get_Insert_Edit_
 
         String url = null;
         try {
-            url = StaticData.get_car + "?type=" + type + "&city_id=" + city+ "&offset=" + first + "&limit=10";
+            if (proOnly) {
+                url = StaticData.get_car + "?pro_only=1&city_id=" + city + "&offset=" + first + "&limit=10";
+            } else {
+                url = StaticData.get_car + "?type=" + type + "&city_id=" + city+ "&offset=" + first + "&limit=10";
+            }
         } catch (Exception e) {
             e.printStackTrace();
             finish();

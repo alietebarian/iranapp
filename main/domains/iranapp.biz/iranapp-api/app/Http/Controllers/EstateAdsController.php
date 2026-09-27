@@ -726,6 +726,7 @@ class EstateAdsController extends Controller
         if ($request->has('category_id')) {
             $adsList = $adsList->whereRaw('(estates_ads.category_id = ' . $request->category_id . ' or estate_categories.parent_id = ' . $request->category_id . ')');
         }
+        $adsList = User::filterProOwners($adsList, $request);
         $adsList = $adsList->get();
         foreach ($adsList as $index => $row) {
             $photos = EstateAdsPhoto::where('estates_ads_id', $row->id)->get();
@@ -930,6 +931,7 @@ class EstateAdsController extends Controller
                 or estate_categories.parent_id = ' . $request->category_id . '
             )');
         }
+        $ads = User::filterProOwners($ads, $request);
         $offset = $request->has('offset') ? $request->offset : 0;
         $limit = $request->has('limit') ? $request->limit : 1;
 

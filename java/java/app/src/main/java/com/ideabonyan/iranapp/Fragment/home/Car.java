@@ -11,13 +11,14 @@ import android.widget.LinearLayout;
 
 import com.ideabonyan.iranapp.Activity.Show_Car_list;
 import com.ideabonyan.iranapp.R;
+import com.ideabonyan.iranapp.Utils.StaticData;
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class Car extends Fragment {
 
-    LinearLayout lin_car_part, lin_havey_car, lin_classic_car, lin_motor, lin_car, lin_other;
+    LinearLayout lin_car_part, lin_havey_car, lin_classic_car, lin_motor, lin_car, lin_other, lin_pro;
     View view;
 
     public Car() {
@@ -41,10 +42,19 @@ public class Car extends Fragment {
         lin_motor = (LinearLayout) view.findViewById(R.id.lin_motor);
         lin_car = (LinearLayout) view.findViewById(R.id.lin_car);
         lin_other = (LinearLayout) view.findViewById(R.id.lin_other);
+        lin_pro = (LinearLayout) view.findViewById(R.id.lin_pro);
 
     }
 
     private void onclick() {
+        lin_pro.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(getActivity(),Show_Car_list.class);
+                intent.putExtra(StaticData.EXTRA_PRO_ONLY, true);
+                startActivity(intent);
+            }
+        });
 
         lin_car_part.setOnClickListener(new View.OnClickListener() {
             @Override

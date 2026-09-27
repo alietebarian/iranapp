@@ -110,6 +110,12 @@ public class StaticData {
     static public String employs =DOMAIN_WITH_API + "/employs";
     static public String get_fav_job =DOMAIN_WITH_API + "/users/employs-ads/favorites";
 
+    /**
+     * Intent extra (boolean) for Show_Car_list / Show_Home_List / Show_Job_list: list only ads of
+     * pro users — the "کاربران پرو" section of each category. Sent to the server as pro_only=1.
+     */
+    public static final String EXTRA_PRO_ONLY = "pro_only";
+
 
     /////////////
 

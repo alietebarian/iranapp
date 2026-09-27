@@ -269,4 +269,7 @@
  ]]>
 
     </string>
+    <!-- Pro users (approved electronic contract) in the vehicle / estate / employ categories. -->
+    <string name="pro_user_badge">کاربر پرو</string>
+    <string name="pro_users_section">کاربران پرو</string>
 </resources>

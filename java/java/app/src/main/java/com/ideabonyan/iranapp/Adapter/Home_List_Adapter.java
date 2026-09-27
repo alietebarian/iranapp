@@ -39,6 +39,7 @@ public class Home_List_Adapter extends RecyclerView.Adapter<RecyclerView.ViewHol
         final Home_List_Adapter.CellFeedViewHolder holder = (Home_List_Adapter.CellFeedViewHolder) viewHolder;
 
         holder.rvAdListTitle.setText(estatesList.get(position).getAds_title());
+        holder.proBadge.setVisibility(estatesList.get(position).isPro() ? View.VISIBLE : View.GONE);
 
         holder.rvAdListAddress.setText(estatesList.get(position).getCity_name() + "،" + estatesList.get(position).getRegion_name()
                 + " / " + estatesList.get(position).getElapsed_time());
@@ -164,6 +165,7 @@ public class Home_List_Adapter extends RecyclerView.Adapter<RecyclerView.ViewHol
     private class CellFeedViewHolder extends RecyclerView.ViewHolder {
 
         ImageView rvAdListImage, pendingIdentifier;
+        View proBadge;
         MyTextView rvAdListTitle, rvAdListAddress;
         TextView txt_cost, txt_vadeae, txt_ejare;
 
@@ -176,6 +178,7 @@ public class Home_List_Adapter extends RecyclerView.Adapter<RecyclerView.ViewHol
             txt_ejare = (MyTextView) view.findViewById(R.id.txt_ejare);
             txt_vadeae = (MyTextView) view.findViewById(R.id.txt_vadeae);
             pendingIdentifier = (ImageView) view.findViewById(R.id.rvAdListPendingIdentifier);
+            proBadge = view.findViewById(R.id.rvAdListProBadge);
             txt_cost = (TextView) view.findViewById(R.id.txt_cost);
         }
     }

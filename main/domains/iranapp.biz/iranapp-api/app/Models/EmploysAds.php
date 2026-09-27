@@ -11,7 +11,8 @@ class EmploysAds extends Model
     private $query;
     const FIELDS = 'employs_ads.* , region.name as region_name , city.id as city_id , city.name as city_name,
     province.id as province_id , province.name as province_name , users.first_name as user_first_name , users.last_name as user_last_name , 
-    employs_ads_specialty.name as specialty  ,employs_ads_specialty.id as specialty_id';
+    employs_ads_specialty.name as specialty  ,employs_ads_specialty.id as specialty_id ,
+    ' . User::IS_PRO_FIELD;
 
     public function __construct(array $attributes = [])
     {

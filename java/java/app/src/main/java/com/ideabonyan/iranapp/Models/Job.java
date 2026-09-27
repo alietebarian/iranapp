@@ -41,6 +41,8 @@ public class Job implements Serializable {
     private String province_name;
     private String user_first_name;
     private String user_last_name;
+    /** The ad was posted by a pro user (approved electronic contract). */
+    private boolean is_pro;
     private String specialty;
     private String fa_created_at;
     private String elapsed_time;
@@ -282,6 +284,14 @@ public class Job implements Serializable {
         this.user_last_name = user_last_name;
     }
 
+    public boolean isPro() {
+        return is_pro;
+    }
+
+    public void setPro(boolean is_pro) {
+        this.is_pro = is_pro;
+    }
+
     public String getSpecialty() {
         return specialty;
     }
@@ -384,6 +394,7 @@ public class Job implements Serializable {
                 job.setProvince_name(province_name);
                 job.setUser_first_name(user_first_name);
                 job.setUser_last_name(user_last_name);
+                job.setPro(Vehicles.isProOwner(jsonObject));
                 job.setSpecialty(specialty);
                 job.setPhotos(photosDatas);
                 job.setFa_created_at(fa_created_at);

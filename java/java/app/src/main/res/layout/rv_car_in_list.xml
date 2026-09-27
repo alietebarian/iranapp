@@ -62,6 +62,8 @@
                     android:textColor="@color/colorPrimary"
                     android:textSize="14sp" />
 
+                <include layout="@layout/include_pro_badge" />
+
                 <com.ideabonyan.iranapp.Components.MyTextView
                     android:id="@+id/txt_cost"
                     android:gravity="right"

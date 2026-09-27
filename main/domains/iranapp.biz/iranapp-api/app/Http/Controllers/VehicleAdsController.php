@@ -297,6 +297,7 @@ class VehicleAdsController extends Controller
         if ($request->has('brand_id')) {
             $query = $query->where('vehicles_ads.brand_id', '=', $request->brand_id);
         }
+        $query = User::filterProOwners($query, $request);
         $offset = $request->has('offset') ? $request->offset : 0;
         $limit = $request->has('limit') ? $request->limit : 1;
         $list = $query->offset($offset)->limit($limit)->get();
@@ -545,6 +546,7 @@ class VehicleAdsController extends Controller
             }
         }
         $list = $list->where('vehicles_ads.status' , '=' , 'approved');
+        $list = User::filterProOwners($list, $request);
         $offset = $request->has('offset') ? $request->offset : 0;
         $limit = $request->has('limit') ? $request->limit : 1;
         $list = $list->offset($offset)->limit($limit)->get();

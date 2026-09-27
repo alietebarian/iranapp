@@ -45,6 +45,8 @@ public class Vehicles implements Serializable {
     private String region_name;
     private String user_last_name;
     private String user_first_name;
+    /** The ad was posted by a pro user (approved electronic contract). */
+    private boolean is_pro;
     private String model_id;
     private String model_name;
     private String passed_time;
@@ -116,6 +118,14 @@ public class Vehicles implements Serializable {
 
     public void setUser_last_name(String user_last_name) {
         this.user_last_name = user_last_name;
+    }
+
+    public boolean isPro() {
+        return is_pro;
+    }
+
+    public void setPro(boolean is_pro) {
+        this.is_pro = is_pro;
     }
 
     public String getRegion_name() {
@@ -455,6 +465,7 @@ public class Vehicles implements Serializable {
                 vehicles.setBrand(brand);
                 vehicles.setUser_last_name(user_last_name);
                 vehicles.setUser_first_name(user_first_name);
+                vehicles.setPro(isProOwner(jsonObject1));
 
                 vehiclesList.add(vehicles);
             }
@@ -463,5 +474,10 @@ public class Vehicles implements Serializable {
         }
         return vehiclesList;
     }
-}
 
+    /** The server sends is_pro = 1 when the ad's owner is a pro user; older servers omit it. */
+    static boolean isProOwner(JSONObject row) {
+        String value = row.optString("is_pro", "0");
+        return value.equals("1") || value.equals("true");
+    }
+}

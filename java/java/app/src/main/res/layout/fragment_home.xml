@@ -232,9 +232,9 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
+        <!-- Pro users' (approved electronic contract) ads of this category; their ads also stay in the sections above, tagged. -->
         <LinearLayout
-            android:visibility="invisible"
-            android:id="@+id/lin_other"
+            android:id="@+id/lin_pro"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -249,7 +249,7 @@
                     android:layout_width="@dimen/_63sdp"
                     android:layout_height="@dimen/_63sdp"
                     android:scaleType="fitXY"
-                    android:src="#f44336"
+                    android:src="@color/pro_badge_accent"
                     app:sriv_left_bottom_corner_radius="4dp"
                     app:sriv_left_top_corner_radius="4dp"
                     app:sriv_right_bottom_corner_radius="4dp"
@@ -257,17 +257,13 @@
 
                 <ImageView
                     android:tint="#fff"
-                    android:src="@drawable/other_car"
+                    android:src="@drawable/ic_pro_user"
                     android:elevation="1dp"
                     android:layout_gravity="center"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
                     />
-                <!--</RelativeLayout>-->
-                <!--</androidx.cardview.widget.CardView>-->
             </FrameLayout>
-            <!--</RelativeLayout>-->
-            <!--</androidx.cardview.widget.CardView>-->
 
             <com.ideabonyan.iranapp.Components.MyTextView
                 android:layout_width="match_parent"
@@ -278,7 +274,7 @@
                 android:ellipsize="end"
                 android:gravity="center_horizontal"
                 android:maxLines="1"
-                android:text="سایر وسایل نقلیه"
+                android:text="@string/pro_users_section"
                 android:textColor="#37474F"
                 android:textSize="12sp" />
 

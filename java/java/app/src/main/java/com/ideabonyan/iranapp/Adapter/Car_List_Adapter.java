@@ -39,6 +39,7 @@ public class Car_List_Adapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         final Car_List_Adapter.CellFeedViewHolder holder = (Car_List_Adapter.CellFeedViewHolder) viewHolder;
 
         holder.rvAdListTitle.setText(vehiclesList.get(position).getAds_title());
+        holder.proBadge.setVisibility(vehiclesList.get(position).isPro() ? View.VISIBLE : View.GONE);
 
        holder.rvAdListAddress.setText(vehiclesList.get(position).getCity_name()+"،"+vehiclesList.get(position).getRegion_name()
        +" / "+vehiclesList.get(position).getPassed_time());
@@ -100,6 +101,7 @@ public class Car_List_Adapter extends RecyclerView.Adapter<RecyclerView.ViewHold
     private class CellFeedViewHolder extends RecyclerView.ViewHolder {
 
         ImageView rvAdListImage, pendingIdentifier;
+        View proBadge;
         MyTextView  rvAdListTitle, rvAdListAddress;
         TextView txt_cost;
 
@@ -110,6 +112,7 @@ public class Car_List_Adapter extends RecyclerView.Adapter<RecyclerView.ViewHold
             rvAdListTitle = (MyTextView) view.findViewById(R.id.rvAdListTitle);
             rvAdListAddress = (MyTextView) view.findViewById(R.id.rvAdListAddress);
             pendingIdentifier = (ImageView) view.findViewById(R.id.rvAdListPendingIdentifier);
+            proBadge = view.findViewById(R.id.rvAdListProBadge);
 
             txt_cost= (TextView) view.findViewById(R.id.txt_cost);
         }
