@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- A membership card awaiting review or past its expiry date. -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <corners android:radius="14dp" />
+    <gradient
+        android:centerX="75%"
+        android:centerY="30%"
+        android:endColor="#616161"
+        android:gradientRadius="420"
+        android:startColor="#9e9e9e"
+        android:type="radial" />
+</shape>

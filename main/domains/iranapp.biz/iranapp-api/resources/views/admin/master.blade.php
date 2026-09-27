@@ -320,6 +320,14 @@
                             @endif
                         </a>
                     </li>
+                    <li>
+                        <a href="{{ route('showMembershipCardsInAdminPanel') }}" class="waves-effect"><i class="ti-id-badge"></i>
+                            <span> کارت عضویت </span>
+                            @if(($pendingMembershipCards ?? 0) > 0)
+                                <span class="label label-danger pull-right">{{ $pendingMembershipCards }}</span>
+                            @endif
+                        </a>
+                    </li>
                     <li class="has_sub">
                         <a href="javascript:void(0);" class="waves-effect"><i class="ti-home"></i> <span> آگهی های ویژه املاک </span>
                             <span class="menu-arrow"></span> </a>

@@ -30,6 +30,12 @@ public class PishkhanWebviewActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        // The page is handed over in a static field, which is empty when Android restores this
+        // screen after killing the app in the background.
+        if (url == null) {
+            finish();
+            return;
+        }
         setContentView(R.layout.activity_pishkhan_age_calculator);
 
         initializer();

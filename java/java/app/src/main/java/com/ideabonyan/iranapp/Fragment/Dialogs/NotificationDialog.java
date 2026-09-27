@@ -19,6 +19,7 @@ import android.widget.TextView;
 import com.android.volley.Request;
 import com.android.volley.VolleyError;
 import com.ideabonyan.iranapp.Activity.EContractActivity;
+import com.ideabonyan.iranapp.Activity.MembershipCardActivity;
 import com.ideabonyan.iranapp.Activity.ShowAdActivity;
 import com.ideabonyan.iranapp.Activity.ShowNews;
 import com.ideabonyan.iranapp.Interface.Get_Insert_Edit_Data;
@@ -46,7 +47,10 @@ public class NotificationDialog extends DialogFragment implements Get_Insert_Edi
     // eContractStatusId: the admin approved or rejected the user's electronic contract
     // (App\Jobs\SendEContractReviewPushNotification::PUSH_STATUS on the server).
     // birthdayStatusId: today is the user's birthday (App\Jobs\SendBirthdayPushNotifications::PUSH_STATUS).
-    String adStatusId = "0", newsStatusId = "1", userinfo = "10", eContractStatusId = "20", birthdayStatusId = "30";
+    // membershipCardStatusId: the admin approved or rejected the user's membership card
+    // (App\Jobs\SendMembershipCardReviewPushNotification::PUSH_STATUS).
+    String adStatusId = "0", newsStatusId = "1", userinfo = "10", eContractStatusId = "20", birthdayStatusId = "30",
+            membershipCardStatusId = "40";
 
     AdsToBeListed ad;
     NewsData newsData;
@@ -77,6 +81,13 @@ public class NotificationDialog extends DialogFragment implements Get_Insert_Edi
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        if (savedInstanceState != null) {
+            // Android re-created this dialog after killing the app in the background, but the data it
+            // was opened with (constructor/setters/static listeners) is gone: close it instead of crashing.
+            dismissAllowingStateLoss();
+            return null;
+        }
+
         view = inflater.inflate(R.layout.dialog_notification_interceptor, null);
 
         show = (Button) view.findViewById(R.id.notificationDialogShowBTN);
@@ -106,6 +117,12 @@ public class NotificationDialog extends DialogFragment implements Get_Insert_Edi
             getData(url, 1);
         }else if (status.equals(eContractStatusId)){
             header.setText("قرارداد الکترونیک");
+            show.setText("مشاهده");
+            progressBar.setVisibility(View.GONE);
+            show.setVisibility(View.VISIBLE);
+            show.setClickable(true);
+        }else if (status.equals(membershipCardStatusId)){
+            header.setText("کارت عضویت");
             show.setText("مشاهده");
             progressBar.setVisibility(View.GONE);
             show.setVisibility(View.VISIBLE);
@@ -141,6 +158,9 @@ public class NotificationDialog extends DialogFragment implements Get_Insert_Edi
                     startActivity(intent);
                 }else if (status.equals(eContractStatusId)){
                     startActivity(new Intent(getActivity(), EContractActivity.class));
+                    dismiss();
+                }else if (status.equals(membershipCardStatusId)){
+                    startActivity(new Intent(getActivity(), MembershipCardActivity.class));
                     dismiss();
                 }else if (status.equals(userinfo)){
                     dismiss();

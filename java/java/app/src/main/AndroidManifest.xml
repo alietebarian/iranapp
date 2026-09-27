@@ -179,6 +179,9 @@
             android:name=".Activity.EContractActivity"
             android:windowSoftInputMode="adjustResize" />
         <activity
+            android:name=".Activity.MembershipCardActivity"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
             android:name=".Activity.AdStatsActivity"
             android:screenOrientation="portrait" />
         <activity android:name=".Activity.SelectLoginOrRegiser"></activity>

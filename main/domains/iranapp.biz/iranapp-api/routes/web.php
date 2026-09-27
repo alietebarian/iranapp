@@ -15,6 +15,7 @@ use App\Http\Controllers\CommonController;
 use App\Http\Controllers\CylinderVolumesController;
 use App\Http\Controllers\EContractController;
 use App\Http\Controllers\InstallReportController;
+use App\Http\Controllers\MembershipCardController;
 use App\Http\Controllers\EmploysAdsController;
 use App\Http\Controllers\EmploysAdsPhotoController;
 use App\Http\Controllers\EmploysAdsSpecialityController;
@@ -205,6 +206,11 @@ Route::group( [ 'prefix' => 'admin' ] , function () {
 		Route::get( '/e-contracts/{contract}' , [EContractController::class, 'showInAdminPanel'] )->name( 'showEContractInAdminPanel' );
 		Route::put( '/e-contracts/{contract}/approve' , [EContractController::class, 'approve'] )->name( 'approveEContract' );
 		Route::put( '/e-contracts/{contract}/reject' , [EContractController::class, 'reject'] )->name( 'rejectEContract' );
+
+		Route::get( '/membership-cards' , [MembershipCardController::class, 'showListInAdminPanel'] )->name( 'showMembershipCardsInAdminPanel' );
+		Route::get( '/membership-cards/{card}' , [MembershipCardController::class, 'showInAdminPanel'] )->name( 'showMembershipCardInAdminPanel' );
+		Route::put( '/membership-cards/{card}/approve' , [MembershipCardController::class, 'approve'] )->name( 'approveMembershipCard' );
+		Route::put( '/membership-cards/{card}/reject' , [MembershipCardController::class, 'reject'] )->name( 'rejectMembershipCard' );
 
 		Route::get( '/refers/users/search' , [UserController::class, 'searchNames'] )->name( 'searchNamesOfUsers' );
 

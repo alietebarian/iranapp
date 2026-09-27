@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Models\AdminNotification;
 use App\Models\EContract;
+use App\Models\MembershipCard;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\Auth;
@@ -58,6 +59,17 @@ class AppServiceProvider extends ServiceProvider
                 }
             }
             $view->with('pendingEContracts', $pendingEContracts);
+
+            // Badge next to "کارت عضویت" in the sidebar.
+            $pendingMembershipCards = 0;
+            if (Auth::guard('admin')->check()) {
+                try {
+                    $pendingMembershipCards = MembershipCard::where('status', MembershipCard::STATUS_PENDING)->count();
+                } catch (QueryException $e) {
+                    Log::error('تعداد درخواست های کارت عضویت بارگذاری نشد: ' . $e->getMessage());
+                }
+            }
+            $view->with('pendingMembershipCards', $pendingMembershipCards);
         });
     }
 }

@@ -133,6 +133,8 @@ public class StaticData {
     // Electronic contract (منو > دیگر > قرارداد الکترونیک): current state + wording, and submission.
     static public String E_CONTRACT_CURRENT = DOMAIN_WITH_API + "/e-contracts/current";
     static public String E_CONTRACT_SUBMIT = DOMAIN_WITH_API + "/e-contracts";
+    // Membership card (منو > دیگر > کارت عضویت): GET the user's card, POST a (corrected) request.
+    static public String MEMBERSHIP_CARD = DOMAIN_WITH_API + "/membership-card";
 
 
     /**

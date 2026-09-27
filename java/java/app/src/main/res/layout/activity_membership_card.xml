@@ -1,0 +1,413 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#eee"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:orientation="vertical"
+    tools:context="com.ideabonyan.iranapp.Activity.MembershipCardActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <include layout="@layout/toolbar_in_newad" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorPrimary" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <!-- Page title, always at the top. -->
+    <com.ideabonyan.iranapp.Components.MyTextView
+        android:id="@+id/membershipPageTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/gradient_header"
+        android:gravity="center"
+        android:paddingBottom="10dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="10dp"
+        android:text="کارت هدیه معرفی به مراکز طرف قرارداد"
+        android:textColor="#fff"
+        android:textSize="16sp" />
+
+    <ProgressBar
+        android:id="@+id/membershipLoading"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="-5dp"
+        android:layout_marginTop="-5dp"
+        android:indeterminate="true"
+        android:indeterminateTint="@color/colorPrimary"
+        android:visibility="gone" />
+
+    <!-- Shown when the card could not be loaded. -->
+    <LinearLayout
+        android:id="@+id/membershipError"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <com.ideabonyan.iranapp.Components.MyTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="20dp"
+            android:text="دریافت اطلاعات کارت عضویت ممکن نشد.\nلطفا اتصال اینترنت خود را بررسی کنید."
+            android:textColor="#616161" />
+
+        <com.ideabonyan.iranapp.Components.MyButton
+            android:id="@+id/membershipRetryBTN"
+            android:layout_width="160dp"
+            android:layout_height="45dp"
+            android:background="@drawable/login_sign_up_btn"
+            android:text="تلاش دوباره"
+            android:textColor="#fff" />
+    </LinearLayout>
+
+    <ScrollView
+        android:id="@+id/membershipScroll"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layoutDirection="rtl"
+            android:orientation="vertical"
+            android:paddingBottom="20dp">
+
+            <!-- ======== Status of a request already sent ======== -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/membershipStatusCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:visibility="gone"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="3dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <com.ideabonyan.iranapp.Components.MyTextView
+                        android:id="@+id/membershipStatusTitle"
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:background="@color/colorPrimary"
+                        android:gravity="center"
+                        android:textColor="#fff" />
+
+                    <com.ideabonyan.iranapp.Components.MyTextView
+                        android:id="@+id/membershipStatusText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="start"
+                        android:lineSpacingExtra="4dp"
+                        android:padding="12dp"
+                        android:textColor="#444"
+                        android:textSize="14sp" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- ======== The card itself (pending, approved or expired) ======== -->
+            <LinearLayout
+                android:id="@+id/membershipCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="12dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/bg_membership_card"
+                android:elevation="6dp"
+                android:orientation="vertical"
+                android:paddingBottom="16dp"
+                android:paddingLeft="18dp"
+                android:paddingRight="18dp"
+                android:paddingTop="12dp"
+                android:visibility="gone">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:layout_width="110dp"
+                        android:layout_height="34dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:contentDescription="ایران اپ"
+                        android:scaleType="fitStart"
+                        android:src="@drawable/iran_app_logo1"
+                        app:tint="#fff" />
+
+                    <com.ideabonyan.iranapp.Components.MyTextView
+                        android:id="@+id/membershipCardStamp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/bg_membership_card_stamp"
+                        android:paddingBottom="2dp"
+                        android:paddingLeft="8dp"
+                        android:paddingRight="8dp"
+                        android:paddingTop="2dp"
+                        android:textColor="#fff"
+                        android:textSize="12sp"
+                        android:visibility="gone" />
+
+                    <com.ideabonyan.iranapp.Components.MyTextView
+                        android:id="@+id/membershipCardLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:text="کارت عضویت"
+                        android:textColor="#fff"
+                        android:textSize="14sp" />
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginTop="8dp"
+                    android:background="#59ffffff" />
+
+                <com.ideabonyan.iranapp.Components.MyTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="شماره سریال"
+                    android:textColor="#ccffffff"
+                    android:textSize="12sp" />
+
+                <!-- Latin digits, left to right, like the number on a bank card. -->
+                <TextView
+                    android:id="@+id/membershipCardSerial"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:fontFamily="monospace"
+                    android:gravity="center"
+                    android:letterSpacing="0.08"
+                    android:textColor="#fff"
+                    android:textDirection="ltr"
+                    android:textSize="21sp"
+                    android:textStyle="bold" />
+
+                <com.ideabonyan.iranapp.Components.MyTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="start"
+                    android:text="اعضا"
+                    android:textColor="#ccffffff"
+                    android:textSize="12sp" />
+
+                <com.ideabonyan.iranapp.Components.MyTextView
+                    android:id="@+id/membershipCardMembers"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:gravity="start"
+                    android:lineSpacingExtra="4dp"
+                    android:textColor="#fff"
+                    android:textDirection="rtl"
+                    android:textSize="15sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <com.ideabonyan.iranapp.Components.MyTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="start"
+                            android:text="تاریخ عضویت"
+                            android:textColor="#ccffffff"
+                            android:textSize="12sp" />
+
+                        <com.ideabonyan.iranapp.Components.MyTextView
+                            android:id="@+id/membershipCardDate"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="start"
+                            android:textColor="#fff"
+                            android:textSize="15sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <com.ideabonyan.iranapp.Components.MyTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="end"
+                            android:text="اعتبار تا"
+                            android:textColor="#ccffffff"
+                            android:textSize="12sp" />
+
+                        <com.ideabonyan.iranapp.Components.MyTextView
+                            android:id="@+id/membershipCardExpiry"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="end"
+                            android:textColor="#fff"
+                            android:textSize="15sp" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- ======== Form (new request, or correcting a rejected one) ======== -->
+            <LinearLayout
+                android:id="@+id/membershipForm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="3dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:paddingBottom="10dp">
+
+                        <com.ideabonyan.iranapp.Components.MyTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="35dp"
+                            android:background="@color/colorPrimary"
+                            android:gravity="center"
+                            android:text="درخواست کارت عضویت"
+                            android:textColor="#fff" />
+
+                        <com.ideabonyan.iranapp.Components.MyTextView
+                            style="@style/EContractLabel"
+                            android:text="تاریخ عضویت" />
+
+                        <com.ideabonyan.iranapp.Components.MyTextView
+                            android:id="@+id/membershipFormDate"
+                            style="@style/EContractPicker"
+                            android:clickable="false"
+                            android:focusable="false"
+                            android:foreground="@null"
+                            android:textColor="#757575" />
+
+                        <com.ideabonyan.iranapp.Components.MyTextView
+                            android:id="@+id/membershipFormExpiry"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginTop="4dp"
+                            android:gravity="start"
+                            android:textColor="@color/hotText"
+                            android:textSize="13sp" />
+
+                        <com.ideabonyan.iranapp.Components.MyTextView
+                            style="@style/EContractLabel"
+                            android:text="شماره سریال" />
+
+                        <com.ideabonyan.iranapp.Components.MyTextView
+                            android:id="@+id/membershipFormSerial"
+                            style="@style/EContractPicker"
+                            android:clickable="false"
+                            android:focusable="false"
+                            android:foreground="@null"
+                            android:textColor="#757575" />
+
+                        <com.ideabonyan.iranapp.Components.MyTextView
+                            android:id="@+id/membershipMembersLabel"
+                            style="@style/EContractLabel"
+                            android:text="نام اعضا (حداقل 1 و حداکثر 6 نفر)" />
+
+                        <LinearLayout
+                            android:id="@+id/membershipMembers"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical" />
+
+                        <com.ideabonyan.iranapp.Components.MyButton
+                            android:id="@+id/membershipAddMemberBTN"
+                            android:layout_width="wrap_content"
+                            android:layout_height="40dp"
+                            android:layout_gravity="start"
+                            android:layout_marginRight="5dp"
+                            android:layout_marginTop="8dp"
+                            android:background="?android:attr/selectableItemBackground"
+                            android:drawableRight="@drawable/ic_add_black_24dp"
+                            android:drawablePadding="4dp"
+                            android:drawableTint="@color/colorPrimary"
+                            android:paddingLeft="8dp"
+                            android:paddingRight="8dp"
+                            android:text="افزودن عضو"
+                            android:textColor="@color/colorPrimary" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="10dp"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="5dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <com.ideabonyan.iranapp.Components.MyButton
+                            android:id="@+id/membershipSubmitBTN"
+                            android:layout_width="match_parent"
+                            android:layout_height="60dp"
+                            android:background="@drawable/login_sign_up_btn"
+                            android:foreground="?android:attr/selectableItemBackground"
+                            android:text="ثبت درخواست کارت عضویت"
+                            android:textColor="#fff" />
+
+                        <ProgressBar
+                            android:id="@+id/membershipSubmitProgress"
+                            android:layout_width="35dp"
+                            android:layout_height="35dp"
+                            android:layout_centerInParent="true"
+                            android:elevation="10dp"
+                            android:indeterminateTint="#fff"
+                            android:visibility="gone" />
+                    </RelativeLayout>
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

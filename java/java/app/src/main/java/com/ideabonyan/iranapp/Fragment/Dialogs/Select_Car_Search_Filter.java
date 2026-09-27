@@ -87,6 +87,10 @@ public class Select_Car_Search_Filter extends DialogFragment implements Get_Inse
     TextView txt_newst, txt_lowest, txt_highest;
     String type;
     int statous = 0;
+    /** Used by Android when it re-creates the dialog; see onCreateView. */
+    public Select_Car_Search_Filter() {
+    }
+
 
     public Select_Car_Search_Filter(String type) {
         // Required empty public constructor
@@ -110,6 +114,13 @@ public class Select_Car_Search_Filter extends DialogFragment implements Get_Inse
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        if (savedInstanceState != null) {
+            // Android re-created this dialog after killing the app in the background, but the data it
+            // was opened with (constructor/setters/static listeners) is gone: close it instead of crashing.
+            dismissAllowingStateLoss();
+            return null;
+        }
+
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_select__car__search__filter, container, false);
         holder();

@@ -74,6 +74,10 @@ public class Select_Home_Search_Filter extends DialogFragment implements Get_Ins
     RadioButton radio_maghto_vadeae, radio_all_vadeae, radio_majani_vadeae, radio_tavafoghi_vadeae;
     String cat_id1,sub_cat_id1;
     boolean sub_cat_change=false;
+    /** Used by Android when it re-creates the dialog; see onCreateView. */
+    public Select_Home_Search_Filter() {
+    }
+
 
     public Select_Home_Search_Filter(String cat_id1,String sub_cat_id1) {
         // Required empty public constructor
@@ -99,6 +103,13 @@ public class Select_Home_Search_Filter extends DialogFragment implements Get_Ins
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        if (savedInstanceState != null) {
+            // Android re-created this dialog after killing the app in the background, but the data it
+            // was opened with (constructor/setters/static listeners) is gone: close it instead of crashing.
+            dismissAllowingStateLoss();
+            return null;
+        }
+
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_select__home__search__filter, container, false);
         holder();

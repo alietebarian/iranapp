@@ -79,6 +79,11 @@ class User extends Authenticatable
         return $this->hasMany(EContract::class, 'user_id');
     }
 
+    public function membershipCard()
+    {
+        return $this->hasOne(MembershipCard::class, 'user_id');
+    }
+
     public function wallet()
     {
         return $this->hasMany(Wallet::class);

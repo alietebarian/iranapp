@@ -310,6 +310,27 @@ public class SplashScreenActivity extends AppCompatActivity implements Get_Inser
     }
 
 
+    boolean newVersionDialogPending = false;
+
+    private void showNewVersionDialog() {
+        // The version check can answer after the user left the app; showing a dialog then crashes,
+        // so wait until the screen is back in front.
+        if (isFinishing()) return;
+        if (getSupportFragmentManager().isStateSaved()) {
+            newVersionDialogPending = true;
+            return;
+        }
+        newVersionDialogPending = false;
+        new Show_New_App_Version_Dialog(SplashScreenActivity.this)
+                .show(getSupportFragmentManager(), "show_new_version");
+    }
+
+    @Override
+    protected void onPostResume() {
+        super.onPostResume();
+        if (newVersionDialogPending) showNewVersionDialog();
+    }
+
     VipAd vipAd = null;
 
     @Override
@@ -430,7 +451,13 @@ public class SplashScreenActivity extends AppCompatActivity implements Get_Inser
                         doAnimation();
                     } else {
                         Log.v("versioncode=", pInfo.versionCode + " version online=" + app_version);
-                        if (Integer.parseInt(app_version) <= pInfo.versionCode) {
+                        int onlineVersion;
+                        try {
+                            onlineVersion = Integer.parseInt(app_version.trim());
+                        } catch (NumberFormatException e) {
+                            onlineVersion = 0; // unreadable version from the server: don't block the app
+                        }
+                        if (onlineVersion <= pInfo.versionCode) {
                             User user = UserHelper.LoadUserInfo(SplashScreenActivity.this);
 
                             if (userSessionManager.getShowIntroPage() == 0) {
@@ -462,8 +489,7 @@ public class SplashScreenActivity extends AppCompatActivity implements Get_Inser
 
                             }
                         } else {
-                            new Show_New_App_Version_Dialog(SplashScreenActivity.this)
-                                    .show(getSupportFragmentManager(), "show_new_version");
+                            showNewVersionDialog();
                         }
                     }
 

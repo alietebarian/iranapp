@@ -684,6 +684,9 @@ public class MainActivity extends AppCompatActivity implements Get_Insert_Edit_D
     }
 
     private void loadVipAd(VipAd vipAd) {
+        // Called from network responses, which can arrive after this screen was left or closed;
+        // showing a dialog then crashes.
+        if (isFinishing() || isDestroyed() || getSupportFragmentManager().isStateSaved()) return;
 
         VipAdDialog vipAdDialog = new VipAdDialog();
         vipAdDialog.setContext(context);

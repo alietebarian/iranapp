@@ -20,6 +20,7 @@ use App\Http\Controllers\EstateAdsCategoriesController;
 use App\Http\Controllers\EstateAdsController;
 use App\Http\Controllers\EstateAdsPhotoController;
 use App\Http\Controllers\FavoriteAdsController;
+use App\Http\Controllers\MembershipCardController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\NewsPhotoController;
 use App\Http\Controllers\NotificationSettingController;
@@ -150,6 +151,8 @@ Route::group( [] , function () {
 		Route::get( '/users/employs-ads/favorites' , [VipAdsFavoriteController::class, 'getUserEmployAds'] );
 		Route::get( '/e-contracts/current' , [EContractController::class, 'current'] );
 		Route::post( '/e-contracts' , [EContractController::class, 'submit'] );
+		Route::get( '/membership-card' , [MembershipCardController::class, 'current'] );
+		Route::post( '/membership-card' , [MembershipCardController::class, 'submit'] );
 
 	} );
 	/*-------------------------------------------API visitor-----------------------------------------------------*/

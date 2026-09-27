@@ -31,6 +31,10 @@ public class Show_Link_To_Us extends DialogFragment {
     LinearLayout lin_back,lin_send_sms;
     View view;
     String title,text;
+    /** Used by Android when it re-creates the dialog; see onCreateView. */
+    public Show_Link_To_Us() {
+    }
+
     public Show_Link_To_Us(String title, String text) {
         // Required empty public constructor
         this.title=title;
@@ -54,6 +58,13 @@ public class Show_Link_To_Us extends DialogFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        if (savedInstanceState != null) {
+            // Android re-created this dialog after killing the app in the background, but the data it
+            // was opened with (constructor/setters/static listeners) is gone: close it instead of crashing.
+            dismissAllowingStateLoss();
+            return null;
+        }
+
 
         view= inflater.inflate(R.layout.fragment_show__link_to_us__dialog, container, false);
         holer();

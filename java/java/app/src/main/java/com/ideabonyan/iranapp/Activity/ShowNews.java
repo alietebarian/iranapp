@@ -34,6 +34,12 @@ public class ShowNews extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        // The news item is handed over in a static field, which is empty when Android restores this
+        // screen after killing the app in the background.
+        if (news == null) {
+            finish();
+            return;
+        }
         setContentView(R.layout.activity_show_news);
 
         initializer();

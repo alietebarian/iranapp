@@ -207,6 +207,10 @@ public class AdListActivity extends AppCompatActivity implements RemoveAd, Get_I
     @Override
     public void onAdFound(VipAd vipAd, String callerActivity) {
 
+        // Called from a network response, which can arrive after this screen was left or closed;
+        // showing a dialog then crashes.
+        if (isFinishing() || isDestroyed() || getSupportFragmentManager().isStateSaved()) return;
+
         if (callerActivity.equals("adsToBeListed")) {
 
             VipAdDialog vipAdDialog = new VipAdDialog();

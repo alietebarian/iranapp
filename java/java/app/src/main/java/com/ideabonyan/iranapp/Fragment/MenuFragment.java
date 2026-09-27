@@ -34,6 +34,7 @@ import com.ideabonyan.iranapp.Activity.AroundMeActivity;
 import com.ideabonyan.iranapp.Activity.ConfirmationActivity;
 import com.ideabonyan.iranapp.Activity.DashboardActivity;
 import com.ideabonyan.iranapp.Activity.EContractActivity;
+import com.ideabonyan.iranapp.Activity.MembershipCardActivity;
 import com.ideabonyan.iranapp.Activity.HelpActivity;
 import com.ideabonyan.iranapp.Activity.LoginActivity;
 import com.ideabonyan.iranapp.Activity.SignUpActivity;
@@ -59,7 +60,7 @@ public class MenuFragment extends Fragment {
 
     View view;
     LinearLayout menuFragmentLoginBTN, menuFragmentSignupBTN, dashboardBTN, newAdBTN, aroundMeBTN, setLocationBTN, notifChooseBTN, tariffBTN, helpBTN,
-            shareBTN, contactUsBTN, termsBTN, lin_byeCharge, eContractBTN;
+            shareBTN, contactUsBTN, termsBTN, lin_byeCharge, eContractBTN, membershipCardBTN;
     User user;
     TextView txt_reg;
     LinearLayout lin_reg, lin_near_me, lin_link_to_us;
@@ -96,6 +97,7 @@ public class MenuFragment extends Fragment {
         contactUsBTN = (LinearLayout) view.findViewById(R.id.menuFragmentContactUsBTN);
         termsBTN = (LinearLayout) view.findViewById(R.id.menuFragmentTermsBTN);
         eContractBTN = (LinearLayout) view.findViewById(R.id.menuFragmentEContractBTN);
+        membershipCardBTN = (LinearLayout) view.findViewById(R.id.menuFragmentMembershipCardBTN);
         lin_reg = (LinearLayout) view.findViewById(R.id.lin_reg);
         lin_link_to_us = (LinearLayout) view.findViewById(R.id.lin_link_to_us);
         user = UserHelper.LoadUserInfo(getActivity());
@@ -112,6 +114,12 @@ public class MenuFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 EContractActivity.open(getActivity());
+            }
+        });
+        membershipCardBTN.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                MembershipCardActivity.open(getActivity());
             }
         });
         lin_byeCharge.setOnClickListener(new View.OnClickListener() {

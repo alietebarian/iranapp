@@ -38,7 +38,7 @@ public class Get_Volley_Call_Back2 {
             }, new Response.ErrorListener() {
                 @Override
                 public void onErrorResponse(VolleyError error) {
-                    Log.v("error1",error.getMessage());
+                    Log.v("error1", String.valueOf(error));
 
                     try {
 
@@ -137,8 +137,10 @@ public class Get_Volley_Call_Back2 {
                     } catch (NullPointerException e) {
                         e.printStackTrace();
                         myGet_insert_edit_data.on_volley_error(error, id);
-                        ShowToast.failure("لطفا نحوه ی اتصال به اینترنت دستگاه خود را بررسی نمایید",
-                                (Activity) context);
+                        if (context instanceof Activity) {
+                            ShowToast.failure("لطفا نحوه ی اتصال به اینترنت دستگاه خود را بررسی نمایید",
+                                    (Activity) context);
+                        }
                     }
 
                 }

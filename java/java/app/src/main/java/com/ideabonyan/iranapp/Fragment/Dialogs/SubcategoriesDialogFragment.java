@@ -101,6 +101,13 @@ public class SubcategoriesDialogFragment extends DialogFragment implements Get_I
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        if (savedInstanceState != null) {
+            // Android re-created this dialog after killing the app in the background, but the data it
+            // was opened with (constructor/setters/static listeners) is gone: close it instead of crashing.
+            dismissAllowingStateLoss();
+            return null;
+        }
+
         view = inflater.inflate(R.layout.dialog_subcategories, null);
 
 

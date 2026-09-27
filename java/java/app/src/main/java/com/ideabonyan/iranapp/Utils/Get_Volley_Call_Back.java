@@ -42,7 +42,7 @@ public class Get_Volley_Call_Back {
             @Override
             public void onErrorResponse(VolleyError error) {
                 try {
-                    Log.v("error1",error.getMessage());
+                    Log.v("error1", String.valueOf(error));
                     if (String.valueOf(error.networkResponse.statusCode).equals("400")) {
                         if (error.networkResponse.data != null) {
                             String body = null;

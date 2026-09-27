@@ -47,6 +47,10 @@ public class Show_New_App_Version_Dialog extends DialogFragment implements Get_I
     Context context;
     CheckBox check_dontshow;
     VipAd vipAd = null;
+    /** Used by Android when it re-creates the dialog; see onCreateView. */
+    public Show_New_App_Version_Dialog() {
+    }
+
 
 
     public Show_New_App_Version_Dialog(Context context) {
@@ -58,6 +62,13 @@ public class Show_New_App_Version_Dialog extends DialogFragment implements Get_I
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        if (savedInstanceState != null) {
+            // Android re-created this dialog after killing the app in the background, but the data it
+            // was opened with (constructor/setters/static listeners) is gone: close it instead of crashing.
+            dismissAllowingStateLoss();
+            return null;
+        }
+
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_show__new__app__version__dialog, container, false);
         holder();
