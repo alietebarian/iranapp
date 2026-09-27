@@ -307,7 +307,10 @@ public class MultiImageSelectorFragment extends Fragment {
      */
 
     private void showCameraAction() {
-        if(ContextCompat.checkSelfPermission(getContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE)
+        // The photo goes to the app's own external files dir (FileUtils.createTmpFile), which needs
+        // WRITE_EXTERNAL_STORAGE only before Android 10; from Android 13 it can't even be granted.
+        if(Build.VERSION.SDK_INT < Build.VERSION_CODES.Q
+                && ContextCompat.checkSelfPermission(getContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE)
                 != PackageManager.PERMISSION_GRANTED){
             requestPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE,
                     getString(R.string.mis_permission_rationale_write_storage),

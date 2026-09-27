@@ -106,4 +106,10 @@
         <item name="android:textSize">16sp</item>
     </style>
 
+    <!-- CanHub CropImageActivity: shows its confirm ("crop") and rotate buttons in the action bar. -->
+    <style name="CropImageTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
 </resources>

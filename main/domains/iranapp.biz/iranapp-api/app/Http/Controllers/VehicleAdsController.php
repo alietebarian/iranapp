@@ -204,11 +204,9 @@ class VehicleAdsController extends Controller
         $data['cities'] = $currentProvince->city;
         $data['regions'] = $currentCity->region;
         $data['photos'] = $ads->photos;
-        if($ads->brand){
-            $data['models'] = $ads->brand->models;
-        }else{
-            $data['models'] = null;
-        }
+        // Only cars have a brand; the view count()s this list, and count(null) throws on PHP 8,
+        // so every motorcycle / heavy / classic / parts ad's edit page (where admins approve) 500'd.
+        $data['models'] = $ads->brand ? $ads->brand->models : collect();
         $data['cylinder_volumes'] = CylinderVolumes::all();
         return view('admin.vehicles.update')->with($data);
     }/*showUpdatePage*/
@@ -273,7 +271,8 @@ class VehicleAdsController extends Controller
         $msg = new \stdClass();
         $msg->title = 'ویرایش موفقیت آمیز';
         $msg->msg = 'آگهی با موفقیت ویرایش شد.';
-        if (count($ads->photo) == 5) {
+        // Vehicle ads name the relation photos() (estate/employ ads call theirs photo()).
+        if ($ads->photos()->count() == 5) {
             return redirect()->route('showAllVehicleAdsInAdminPanel')->with('success_msg', $msg);
         }
         return redirect()->route('vehicleAds.photos.show', $ads->id)->with('success_msg', $msg);

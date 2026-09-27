@@ -57,6 +57,7 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.ideabonyan.iranapp.Utils.ImagePermissions;
 import com.ideabonyan.iranapp.Components.MyCheckbox;
 import com.ideabonyan.iranapp.Fragment.Dialogs.Show_Rouls_Dialog;
 import com.ideabonyan.iranapp.Interface.Get_Insert_Edit_Data;
@@ -266,6 +267,15 @@ public class NewAdActivity extends AppCompatActivity implements OnMapReadyCallba
                 isBitmapsFilled[i] = true;
                 didThisHaveImage[i] = true;
             }
+        }
+    }
+
+    /** Photos the selected plan allows; 0 while no plan is loaded. */
+    private int maxPhotos() {
+        try {
+            return Integer.parseInt(adPlans.getMax_number_of_photos());
+        } catch (NumberFormatException e) {
+            return 0;
         }
     }
 
@@ -1011,6 +1021,12 @@ public class NewAdActivity extends AppCompatActivity implements OnMapReadyCallba
                 adPlans = adPlanses.get(i);
             }
         }
+        // Plan 17 is the default; if the server no longer lists it, use the first plan instead of
+        // leaving adPlans empty (every photo tap then crashed parsing its null photo limit).
+        if (adPlans.getId() == null && !adPlanses.isEmpty()) {
+            adPlans = adPlanses.get(0);
+            maxphoto = maxPhotos();
+        }
 
 
         for (int i = 0; i < maxphoto; i++) {
@@ -1153,7 +1169,7 @@ public class NewAdActivity extends AppCompatActivity implements OnMapReadyCallba
             public void onClick(View v) {
 //                if (adTypeSpnr.getSelectedItemPosition() != 0) {
                 if (!isBitmapsFilled[0]) {
-                    if (Integer.parseInt(adPlans.getMax_number_of_photos()) >= 1) {
+                    if (maxPhotos() >= 1) {
 
                         pickImage();
                         numberOfTheImageView = 1;
@@ -1193,7 +1209,7 @@ public class NewAdActivity extends AppCompatActivity implements OnMapReadyCallba
             public void onClick(View v) {
 //                if (adTypeSpnr.getSelectedItemPosition() != 0) {
                 if (!isBitmapsFilled[1]) {
-                    if (Integer.parseInt(adPlans.getMax_number_of_photos()) >= 2) {
+                    if (maxPhotos() >= 2) {
 
                         pickImage();
                         numberOfTheImageView = 2;
@@ -1233,7 +1249,7 @@ public class NewAdActivity extends AppCompatActivity implements OnMapReadyCallba
             public void onClick(View v) {
 //                if (adTypeSpnr.getSelectedItemPosition() != 0) {
                 if (!isBitmapsFilled[2]) {
-                    if (Integer.parseInt(adPlans.getMax_number_of_photos()) >= 3) {
+                    if (maxPhotos() >= 3) {
 
                         pickImage();
                         numberOfTheImageView = 3;
@@ -1273,7 +1289,7 @@ public class NewAdActivity extends AppCompatActivity implements OnMapReadyCallba
             public void onClick(View v) {
 //                if (adTypeSpnr.getSelectedItemPosition() != 0) {
                 if (!isBitmapsFilled[3]) {
-                    if (Integer.parseInt(adPlans.getMax_number_of_photos()) >= 4) {
+                    if (maxPhotos() >= 4) {
 
                         pickImage();
                         numberOfTheImageView = 4;
@@ -1313,7 +1329,7 @@ public class NewAdActivity extends AppCompatActivity implements OnMapReadyCallba
             public void onClick(View v) {
 //                if (adTypeSpnr.getSelectedItemPosition() != 0) {
                 if (!isBitmapsFilled[4]) {
-                    if (Integer.parseInt(adPlans.getMax_number_of_photos()) >= 5) {
+                    if (maxPhotos() >= 5) {
 
                         pickImage();
                         numberOfTheImageView = 5;
@@ -1353,7 +1369,7 @@ public class NewAdActivity extends AppCompatActivity implements OnMapReadyCallba
             public void onClick(View v) {
 //                if (adTypeSpnr.getSelectedItemPosition() != 0) {
                 if (!isBitmapsFilled[5]) {
-                    if (Integer.parseInt(adPlans.getMax_number_of_photos()) >= 6) {
+                    if (maxPhotos() >= 6) {
 
                         pickImage();
                         numberOfTheImageView = 6;
@@ -1394,7 +1410,7 @@ public class NewAdActivity extends AppCompatActivity implements OnMapReadyCallba
 
 //                if (adTypeSpnr.getSelectedItemPosition() != 0) {
                 if (!isBitmapsFilled[6]) {
-                    if (Integer.parseInt(adPlans.getMax_number_of_photos()) >= 7) {
+                    if (maxPhotos() >= 7) {
 
                         pickImage();
                         numberOfTheImageView = 7;
@@ -1434,7 +1450,7 @@ public class NewAdActivity extends AppCompatActivity implements OnMapReadyCallba
             public void onClick(View v) {
 //                if (adTypeSpnr.getSelectedItemPosition() != 0) {
                 if (!isBitmapsFilled[7]) {
-                    if (Integer.parseInt(adPlans.getMax_number_of_photos()) >= 8) {
+                    if (maxPhotos() >= 8) {
 
                         pickImage();
                         numberOfTheImageView = 8;
@@ -1567,14 +1583,14 @@ public class NewAdActivity extends AppCompatActivity implements OnMapReadyCallba
     private boolean checkAndRequestPermissions(boolean showAlartDialog) {
 
         int camera = ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA);
-        int read_external_storeg = ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE);
+        int read_external_storeg = ContextCompat.checkSelfPermission(this, ImagePermissions.READ_IMAGES);
 
         List<String> listPermissionsNeeded = new ArrayList<>();
         if (camera != PackageManager.PERMISSION_GRANTED) {
             listPermissionsNeeded.add(Manifest.permission.CAMERA);
         }
         if (read_external_storeg != PackageManager.PERMISSION_GRANTED) {
-            listPermissionsNeeded.add(Manifest.permission.READ_EXTERNAL_STORAGE);
+            listPermissionsNeeded.add(ImagePermissions.READ_IMAGES);
         }
 
 
@@ -1894,7 +1910,7 @@ public class NewAdActivity extends AppCompatActivity implements OnMapReadyCallba
                         for (Bitmap bitmap : bitmaps) {
                             long time = System.currentTimeMillis();
                             if (bitmap != null) {
-                                String pathTemp = Compress_image.reductImageSize(time + ".jpg", bitmap);
+                                String pathTemp = Compress_image.reductImageSize(NewAdActivity.this, time + ".jpg", bitmap);
                                 File photoFile = new File(pathTemp);
                                 reqEntity.addFormDataPart("photos[]", photoFile.getName(), okhttp3.RequestBody.create(okhttp3.MediaType.parse("image/jpeg"), photoFile));
                             }
@@ -1915,7 +1931,7 @@ public class NewAdActivity extends AppCompatActivity implements OnMapReadyCallba
 //                                    for (int j = 0; j > bitmaps.length; j++) {
                                     long time = System.currentTimeMillis();
                                     if (bitmaps[i] != null) {
-                                        String pathTemp = Compress_image.reductImageSize(time + ".jpg", bitmaps[i]);
+                                        String pathTemp = Compress_image.reductImageSize(NewAdActivity.this, time + ".jpg", bitmaps[i]);
                                         File photoFile = new File(pathTemp);
                                         reqEntity.addFormDataPart("photo_to_edit[]", photoFile.getName(), okhttp3.RequestBody.create(okhttp3.MediaType.parse("image/jpeg"), photoFile));
                                         // i nullify it here so it wouldn't be in the list for the totally new images
@@ -1928,7 +1944,7 @@ public class NewAdActivity extends AppCompatActivity implements OnMapReadyCallba
                         for (Bitmap bitmap : bitmaps) {
                             long time = System.currentTimeMillis();
                             if (bitmap != null) {
-                                String pathTemp = Compress_image.reductImageSize(time + ".jpg", bitmap);
+                                String pathTemp = Compress_image.reductImageSize(NewAdActivity.this, time + ".jpg", bitmap);
                                 File photoFile = new File(pathTemp);
                                 reqEntity.addFormDataPart("new_photos[]", photoFile.getName(), okhttp3.RequestBody.create(okhttp3.MediaType.parse("image/jpeg"), photoFile));
                             }

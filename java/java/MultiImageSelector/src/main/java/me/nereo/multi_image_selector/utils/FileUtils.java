@@ -20,16 +20,10 @@ public class FileUtils {
     private static final String JPEG_FILE_SUFFIX = ".jpg";
 
     public static File createTmpFile(Context context) throws IOException{
-        File dir = null;
-        if(TextUtils.equals(Environment.getExternalStorageState(), Environment.MEDIA_MOUNTED)) {
-            dir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM);
-            if (!dir.exists()) {
-                dir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM + "/Camera");
-                if (!dir.exists()) {
-                    dir = getCacheDirectory(context, true);
-                }
-            }
-        }else{
+        // The app's own external Pictures dir: no storage permission needed, still reachable by the
+        // camera app through the FileProvider. Public DCIM is not writable under scoped storage.
+        File dir = context.getExternalFilesDir(Environment.DIRECTORY_PICTURES);
+        if (dir == null) {
             dir = getCacheDirectory(context, true);
         }
         return File.createTempFile(JPEG_FILE_PREFIX, JPEG_FILE_SUFFIX, dir);

@@ -1,8 +1,8 @@
 package com.ideabonyan.iranapp.Utils;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.os.Environment;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -14,7 +14,11 @@ import java.io.IOException;
  */
 
 public class Compress_image {
-    public static String reductImageSize(String imgName, Bitmap bi) {
+    /**
+     * Writes the ad photo, scaled to 440x440 JPEG, to the app's cache dir and returns its path for
+     * upload. (It used to go to the root of shared storage, which Android 10+ no longer allows.)
+     */
+    public static String reductImageSize(Context context, String imgName, Bitmap bi) {
         FileOutputStream fo = null;
         String newImagePath = null;
         try {
@@ -29,7 +33,7 @@ public class Compress_image {
             scaledBitmap.compress(Bitmap.CompressFormat.JPEG, 100, bytes);//change resolution keep image dimensions
 
             // you can create a new file name "test.jpg" in sdcard folder.
-            newImagePath = Environment.getExternalStorageDirectory() + File.separator + imgName;
+            newImagePath = context.getCacheDir() + File.separator + imgName;
             File f = new File(newImagePath);
             f.createNewFile();
             fo = new FileOutputStream(f);

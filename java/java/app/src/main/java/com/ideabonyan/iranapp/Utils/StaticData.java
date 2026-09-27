@@ -18,7 +18,7 @@ public class StaticData {
 
 
 //    public static String DOMAIN = "http://192.168.1.4/gollac/public_html";http://
-    public static String DOMAIN = "http://iranapp.biz";
+    public static String DOMAIN = "http://10.0.2.2:8000"; // TEMP local testing — revert to http://iranapp.biz
 //    public static String DOMAIN = "http://asreesfahanapp.com";
     public static String DOMAIN_WITH_API = DOMAIN + "/api";
 

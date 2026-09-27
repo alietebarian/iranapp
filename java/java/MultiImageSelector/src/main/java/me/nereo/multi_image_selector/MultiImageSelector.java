@@ -92,12 +92,11 @@ public class MultiImageSelector {
     }
 
     private boolean hasPermission(Context context){
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN){
-            // Permission was added in API Level 16
-            return ContextCompat.checkSelfPermission(context, Manifest.permission.READ_EXTERNAL_STORAGE)
-                    == PackageManager.PERMISSION_GRANTED;
-        }
-        return true;
+        // Android 13+ never grants READ_EXTERNAL_STORAGE; gallery photos need READ_MEDIA_IMAGES there.
+        String permission = Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU
+                ? Manifest.permission.READ_MEDIA_IMAGES
+                : Manifest.permission.READ_EXTERNAL_STORAGE;
+        return ContextCompat.checkSelfPermission(context, permission) == PackageManager.PERMISSION_GRANTED;
     }
 
     private Intent createIntent(Context context){

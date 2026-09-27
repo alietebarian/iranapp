@@ -58,6 +58,7 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.ideabonyan.iranapp.Utils.ImagePermissions;
 import com.ideabonyan.iranapp.Interface.Get_Insert_Edit_Data;
 import com.ideabonyan.iranapp.Models.Brand;
 import com.ideabonyan.iranapp.Models.Modell;
@@ -1191,9 +1192,9 @@ public class Edite_Car_Add extends AppCompatActivity implements Get_Insert_Edit_
 
     private void pickImage() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN // Permission was added in API Level 16
-                && ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE)
+                && ActivityCompat.checkSelfPermission(this, ImagePermissions.READ_IMAGES)
                 != PackageManager.PERMISSION_GRANTED) {
-            requestPermission(Manifest.permission.READ_EXTERNAL_STORAGE,
+            requestPermission(ImagePermissions.READ_IMAGES,
                     getString(R.string.mis_permission_rationale),
                     REQUEST_STORAGE_READ_ACCESS_PERMISSION);
             requestPermission(Manifest.permission.CAMERA,
@@ -1486,7 +1487,7 @@ public class Edite_Car_Add extends AppCompatActivity implements Get_Insert_Edit_
                     for (int i = 1; i < bitmaps.length; i++) {
                         long time = System.currentTimeMillis();
                         if (bitmaps[i] != null) {
-                            String pathTemp = Compress_image.reductImageSize(time + ".jpg", bitmaps[i]);
+                            String pathTemp = Compress_image.reductImageSize(Edite_Car_Add.this, time + ".jpg", bitmaps[i]);
                             reqEntity.addFormDataPart("photos[]", new File(pathTemp).getName(), okhttp3.RequestBody.create(okhttp3.MediaType.parse("image/jpeg"), new File(pathTemp)));
 //                            Log.v("params", "photos[]:" + time + ".jpg");
 
@@ -1503,7 +1504,7 @@ public class Edite_Car_Add extends AppCompatActivity implements Get_Insert_Edit_
                     if (bitmaps[0] != null) {
                         long time = System.currentTimeMillis();
 
-                        String pathTemp = Compress_image.reductImageSize(time + ".jpg", bitmaps[0]);
+                        String pathTemp = Compress_image.reductImageSize(Edite_Car_Add.this, time + ".jpg", bitmaps[0]);
                         reqEntity.addFormDataPart("thumbnail_photo", new File(pathTemp).getName(), okhttp3.RequestBody.create(okhttp3.MediaType.parse("image/jpeg"), new File(pathTemp)));
 //                        Log.v("params", "thumbnail_photo:" + time + ".jpg");
 

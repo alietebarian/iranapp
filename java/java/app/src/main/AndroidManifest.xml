@@ -4,8 +4,14 @@
     package="com.ideabonyan.iranapp">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission
+        android:name="android.permission.READ_EXTERNAL_STORAGE"
+        android:maxSdkVersion="32" />
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        android:maxSdkVersion="28" />
+    <!-- Android 13+ replaced READ_EXTERNAL_STORAGE with this for picking gallery photos (Utils.ImagePermissions). -->
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.CAMERA" />
@@ -43,7 +49,7 @@
             android:grantUriPermissions="true"
             tools:replace="android:authorities">
             <meta-data
-                android:name="androidx.core.content.FILE_PROVIDER_PATHS"
+                android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths"
                 tools:replace="android:resource" />
         </provider>
@@ -144,8 +150,12 @@
             android:configChanges="orientation|screenSize"
             android:screenOrientation="portrait" />
 
-        <!-- Image Cropper: CropImageActivity is declared by the com.github.CanHub:Android-Image-Cropper
-             library's own manifest and merges in automatically; no need to redeclare it here. -->
+        <!-- Image Cropper: CropImageActivity comes from the CanHub library's manifest. Its confirm
+             ("crop") button is an action bar menu item, so it needs a theme with an action bar —
+             under the app's NoActionBar theme the user could not finish cropping an ad photo. -->
+        <activity
+            android:name="com.canhub.cropper.CropImageActivity"
+            android:theme="@style/CropImageTheme" />
         <activity
             android:name=".Activity.PishkhanWeatherActivity"
             android:screenOrientation="portrait" />

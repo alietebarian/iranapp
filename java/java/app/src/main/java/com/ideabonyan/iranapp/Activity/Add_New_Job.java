@@ -58,6 +58,7 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.ideabonyan.iranapp.Utils.ImagePermissions;
 import com.ideabonyan.iranapp.Fragment.Dialogs.Show_Rouls_Dialog;
 import com.ideabonyan.iranapp.Interface.Get_Insert_Edit_Data;
 import com.ideabonyan.iranapp.Models.Brand;
@@ -833,14 +834,14 @@ public class Add_New_Job extends AppCompatActivity implements OnMapReadyCallback
     private boolean checkAndRequestPermissions(boolean showAlartDialog) {
 
         int camera = ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA);
-        int read_external_storeg = ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE);
+        int read_external_storeg = ContextCompat.checkSelfPermission(this, ImagePermissions.READ_IMAGES);
 
         List<String> listPermissionsNeeded = new ArrayList<>();
         if (camera != PackageManager.PERMISSION_GRANTED) {
             listPermissionsNeeded.add(Manifest.permission.CAMERA);
         }
         if (read_external_storeg != PackageManager.PERMISSION_GRANTED) {
-            listPermissionsNeeded.add(Manifest.permission.READ_EXTERNAL_STORAGE);
+            listPermissionsNeeded.add(ImagePermissions.READ_IMAGES);
         }
 
 
@@ -1056,7 +1057,7 @@ public class Add_New_Job extends AppCompatActivity implements OnMapReadyCallback
                     for (int i = 1; i < bitmaps.length; i++) {
                         long time = System.currentTimeMillis();
                         if (bitmaps[i] != null) {
-                            String pathTemp = Compress_image.reductImageSize(time + ".jpg", bitmaps[i]);
+                            String pathTemp = Compress_image.reductImageSize(Add_New_Job.this, time + ".jpg", bitmaps[i]);
                             reqEntity.addFormDataPart("photos[]", new File(pathTemp).getName(), okhttp3.RequestBody.create(okhttp3.MediaType.parse("image/jpeg"), new File(pathTemp)));
                             Log.v("params", "photos[]:" + time + ".jpg");
 
@@ -1065,7 +1066,7 @@ public class Add_New_Job extends AppCompatActivity implements OnMapReadyCallback
                     if (bitmaps[0] != null) {
                         long time = System.currentTimeMillis();
 
-                        String pathTemp = Compress_image.reductImageSize(time + ".jpg", bitmaps[0]);
+                        String pathTemp = Compress_image.reductImageSize(Add_New_Job.this, time + ".jpg", bitmaps[0]);
                         reqEntity.addFormDataPart("thumbnail_photo", new File(pathTemp).getName(), okhttp3.RequestBody.create(okhttp3.MediaType.parse("image/jpeg"), new File(pathTemp)));
                         Log.v("params", "thumbnail_photo:" + time + ".jpg");
 
