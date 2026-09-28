@@ -16,7 +16,5 @@
         <domain includeSubdomains="true">emrani.net</domain>
         <domain includeSubdomains="true">iran-dev.ir</domain>
         <domain includeSubdomains="true">irapi.ir</domain>
-        <!-- TEMP local testing (emulator → host's php artisan serve) — remove before commit -->
-        <domain includeSubdomains="false">10.0.2.2</domain>
     </domain-config>
 </network-security-config>
