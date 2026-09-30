@@ -313,6 +313,10 @@
                             <span> گزارش نصب ها </span></a>
                     </li>
                     <li>
+                        <a href="{{ route('showPhoneBookInAdminPanel') }}" class="waves-effect"><i class="ti-agenda"></i>
+                            <span> دفترچه تلفن </span></a>
+                    </li>
+                    <li>
                         <a href="{{ route('showEContractsInAdminPanel') }}" class="waves-effect"><i class="ti-write"></i>
                             <span> قراردادهای الکترونیک </span>
                             @if(($pendingEContracts ?? 0) > 0)

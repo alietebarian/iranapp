@@ -15,6 +15,7 @@ use App\Http\Controllers\CommonController;
 use App\Http\Controllers\CylinderVolumesController;
 use App\Http\Controllers\EContractController;
 use App\Http\Controllers\InstallReportController;
+use App\Http\Controllers\PhoneBookController;
 use App\Http\Controllers\MembershipCardController;
 use App\Http\Controllers\EmploysAdsController;
 use App\Http\Controllers\EmploysAdsPhotoController;
@@ -201,6 +202,11 @@ Route::group( [ 'prefix' => 'admin' ] , function () {
 		Route::get( '/business/refers/{item}/delete' , [UserAdsNotificationController::class, 'destroy'] )->name( 'business.refers.destroy' );
 
 		Route::get( '/install-report' , [InstallReportController::class, 'index'] )->name( 'showInstallReportInAdminPanel' );
+
+		Route::get( '/phone-book' , [PhoneBookController::class, 'index'] )->name( 'showPhoneBookInAdminPanel' );
+		Route::post( '/phone-book/import' , [PhoneBookController::class, 'import'] )->name( 'importPhoneBookInAdminPanel' );
+		Route::delete( '/phone-book/{entry}' , [PhoneBookController::class, 'delete'] )->name( 'deletePhoneBookEntryInAdminPanel' );
+		Route::delete( '/phone-book' , [PhoneBookController::class, 'clear'] )->name( 'clearPhoneBookInAdminPanel' );
 
 		Route::get( '/e-contracts' , [EContractController::class, 'showListInAdminPanel'] )->name( 'showEContractsInAdminPanel' );
 		Route::get( '/e-contracts/{contract}' , [EContractController::class, 'showInAdminPanel'] )->name( 'showEContractInAdminPanel' );
