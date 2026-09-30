@@ -2,7 +2,9 @@ package com.ideabonyan.iranapp.Fragment.KasbokarTabs;
 
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
+import androidx.core.widget.NestedScrollView;
 import androidx.transition.TransitionManager;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -19,14 +21,19 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 import com.ideabonyan.iranapp.Activity.AboutActivity;
+import com.ideabonyan.iranapp.Activity.ConfirmationActivity;
 import com.ideabonyan.iranapp.Adapter.HomeCategoriesAdapter;
 import com.ideabonyan.iranapp.Fragment.Dialogs.CityPickerDialogFragment;
+import com.ideabonyan.iranapp.Fragment.Dialogs.Select_Add_Type_Dialog;
 import com.ideabonyan.iranapp.Fragment.Dialogs.SubcategoriesDialogFragment;
 import com.ideabonyan.iranapp.Interface.Get_Insert_Edit_Data3;
 import com.ideabonyan.iranapp.Interface.LocationChange;
 import com.ideabonyan.iranapp.Models.HomeCategories;
 import com.ideabonyan.iranapp.R;
+import com.ideabonyan.iranapp.UserData.User;
+import com.ideabonyan.iranapp.UserData.UserHelper;
 import com.ideabonyan.iranapp.UserData.UserSessionManager;
 import com.ideabonyan.iranapp.Utils.Get_Volley_Call_Back3;
 import com.ideabonyan.iranapp.Utils.RecyclerItemClickListener;
@@ -63,6 +70,7 @@ public class WithDiscounts extends Fragment implements Get_Insert_Edit_Data3, Lo
     View listEmptyText, rvArea;
     LinearLayout installStatsCard;
     TextView installStatsTotal, installStatsMonth, installStatsToday;
+    ExtendedFloatingActionButton newAdFab;
 
     UserSessionManager userSessionManager;
     int time=0;
@@ -102,7 +110,9 @@ public class WithDiscounts extends Fragment implements Get_Insert_Edit_Data3, Lo
         installStatsTotal = (TextView) view.findViewById(R.id.installStatsTotal);
         installStatsMonth = (TextView) view.findViewById(R.id.installStatsMonth);
         installStatsToday = (TextView) view.findViewById(R.id.installStatsToday);
+        newAdFab = (ExtendedFloatingActionButton) view.findViewById(R.id.homeNewAdFab);
 
+        setupNewAdFab();
         // Registered once: it reads the current datas on every click.
         recyclerViewOnClickListener();
     }
@@ -144,6 +154,42 @@ public class WithDiscounts extends Fragment implements Get_Insert_Edit_Data3, Lo
                     }
                 });
         VolleySingleton.GetInstance(getActivity()).AddToRequestQueue(request);
+    }
+
+    /**
+     * The «ثبت آگهی» button: does what «درج آگهی» of the menu tab does, and shrinks to its icon
+     * while the grid scrolls down so it covers less of the tiles.
+     */
+    private void setupNewAdFab() {
+        try {
+            newAdFab.setTypeface(Typeface.createFromAsset(getActivity().getAssets(), "IRANYekanRegularMobile(FaNum).ttf"));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        newAdFab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Loaded on click: the user may have logged in since the page was created.
+                User user = UserHelper.LoadUserInfo(getActivity());
+                if (user.isLoggedIn() && !user.isVerrified()) {
+                    startActivity(new Intent(getActivity(), ConfirmationActivity.class));
+                } else {
+                    new Select_Add_Type_Dialog().show(getChildFragmentManager(), "select_add_type_dialog");
+                }
+            }
+        });
+
+        ((NestedScrollView) rvArea).setOnScrollChangeListener(new NestedScrollView.OnScrollChangeListener() {
+            @Override
+            public void onScrollChange(NestedScrollView v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
+                if (scrollY > oldScrollY + 4 && newAdFab.isExtended()) {
+                    newAdFab.shrink();
+                } else if ((scrollY < oldScrollY - 4 || scrollY == 0) && !newAdFab.isExtended()) {
+                    newAdFab.extend();
+                }
+            }
+        });
     }
 
     private String formatCount(long count) {

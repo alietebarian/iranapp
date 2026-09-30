@@ -2,6 +2,7 @@
 <!-- Landing page of the app: the "دسته بندی ها" tab of KasbokarFragment.
      IDs are bound by com.ideabonyan.iranapp.Fragment.KasbokarTabs.WithDiscounts. -->
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/kasbokarDiscounts"
     android:layout_width="match_parent"
@@ -186,7 +187,7 @@
                         android:paddingLeft="7dp"
                         android:paddingTop="10dp"
                         android:paddingRight="7dp"
-                        android:paddingBottom="10dp"
+                        android:paddingBottom="84dp"
                         android:scrollbars="none" />
 
                     <LinearLayout
@@ -233,7 +234,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginRight="14dp"
                                 android:layout_weight="1"
-                                android:text="شما میتوانید با رفتن به تب «منو» و با زدن بر روی «درج آگهی» اولین آگهی شهرتان را ثبت کنید."
+                                android:text="شما میتوانید با زدن دکمه «ثبت آگهی» در پایین صفحه، اولین آگهی شهرتان را ثبت کنید."
                                 android:textColor="@color/home_text_muted"
                                 android:textSize="12sp" />
 
@@ -273,6 +274,24 @@
                 </LinearLayout>
 
             </androidx.core.widget.NestedScrollView>
+
+            <!-- Shortcut to «درج آگهی» of the menu tab. Shrinks to its icon while the grid scrolls
+                 down. The Material theme overlay is needed because the app theme is AppCompat. -->
+            <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+                android:id="@+id/homeNewAdFab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|left"
+                android:layout_margin="16dp"
+                android:layoutDirection="rtl"
+                android:text="ثبت آگهی"
+                android:textColor="@android:color/white"
+                android:textSize="14sp"
+                android:theme="@style/Theme.MaterialComponents.NoActionBar"
+                app:backgroundTint="@color/home_accent"
+                app:icon="@drawable/ic_add_black_24dp"
+                app:iconTint="@android:color/white"
+                app:rippleColor="#33FFFFFF" />
 
         </FrameLayout>
 

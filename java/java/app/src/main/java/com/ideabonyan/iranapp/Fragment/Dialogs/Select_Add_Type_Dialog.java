@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 import com.ideabonyan.iranapp.Activity.Add_New_Car_Add;
 import com.ideabonyan.iranapp.Activity.Add_New_Home_Add;
 import com.ideabonyan.iranapp.Activity.Add_New_Job;
@@ -21,6 +22,13 @@ import com.ideabonyan.iranapp.R;
 
 
 public class Select_Add_Type_Dialog extends DialogFragment {
+
+    /**
+     * TEMPORARY: new «آگهی کسب و کار» ads are switched off; the button stays visible but dimmed
+     * and only explains that. Set back to true to allow them again. Editing an existing business
+     * ad (ShowAdActivity) is not affected.
+     */
+    private static final boolean BUSINESS_ADS_ENABLED = false;
 
     View view;
     LinearLayout lin_home, lin_job, lin_car, lin_descount;
@@ -63,9 +71,14 @@ public class Select_Add_Type_Dialog extends DialogFragment {
     }
 
     private void onClicks() {
+        if (!BUSINESS_ADS_ENABLED) lin_descount.setAlpha(0.4f);
         lin_descount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (!BUSINESS_ADS_ENABLED) {
+                    Toast.makeText(getActivity(), "ثبت آگهی کسب و کار موقتاً غیرفعال است", Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 Intent i = new Intent(getActivity(), NewAdActivity.class);
                 startActivity(i);
                 Select_Add_Type_Dialog.this.dismiss();
