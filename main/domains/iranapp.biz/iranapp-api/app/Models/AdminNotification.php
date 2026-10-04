@@ -56,15 +56,33 @@ class AdminNotification extends Model
      */
     public static function unread(): Collection
     {
-        return self::query()
+        $ads = self::query()
             ->join('ads', function ($join) {
                 $join->on('ads.id', '=', 'admin_notifications.ads_id')
                     ->on('ads.valid_until', '=', 'admin_notifications.valid_until');
             })
             ->whereNull('admin_notifications.read_at')
-            ->orderBy('admin_notifications.valid_until')
-            ->orderBy('admin_notifications.id')
             ->get(['admin_notifications.*', 'ads.title']);
+
+        // Electronic contracts ending soon (App\Support\EContractExpiry); a contract that is no
+        // longer approved, or whose end date changed, drops out.
+        $contracts = self::query()
+            ->join('e_contracts', function ($join) {
+                $join->on('e_contracts.id', '=', 'admin_notifications.e_contract_id')
+                    ->on('e_contracts.ends_on', '=', 'admin_notifications.valid_until');
+            })
+            ->where('e_contracts.status', '=', EContract::STATUS_APPROVED)
+            ->whereNull('admin_notifications.read_at')
+            ->get(['admin_notifications.*', DB::raw("CONCAT('پایان قرارداد: ', e_contracts.business_name) as title")]);
+
+        return $ads->concat($contracts)
+            ->sortBy(fn ($n) => [$n->valid_until, $n->id])
+            ->values();
+    }
+
+    public function isAboutContract(): bool
+    {
+        return $this->e_contract_id !== null;
     }
 
     /** Tehran calendar days until the ad expires; 0 on its last day, negative once expired. */

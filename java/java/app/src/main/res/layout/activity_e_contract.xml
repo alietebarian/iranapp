@@ -109,6 +109,162 @@
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
+            <!-- ======== Paying for a paid contract (awaiting_payment) ======== -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/eContractPaymentCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:visibility="gone"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="3dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingBottom="12dp">
+
+                    <com.ideabonyan.iranapp.Components.MyTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:background="#1976D2"
+                        android:gravity="center"
+                        android:text="پرداخت هزینه قرارداد"
+                        android:textColor="#fff" />
+
+                    <com.ideabonyan.iranapp.Components.MyTextView
+                        style="@style/EContractLabel"
+                        android:text="مبلغ قابل پرداخت" />
+
+                    <com.ideabonyan.iranapp.Components.MyTextView
+                        android:id="@+id/eContractPayAmount"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:gravity="start"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="20sp" />
+
+                    <com.ideabonyan.iranapp.Components.MyTextView
+                        style="@style/EContractLabel"
+                        android:text="واریز به شماره کارت" />
+
+                    <LinearLayout
+                        android:id="@+id/eContractPayCardBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_marginTop="4dp"
+                        android:background="@drawable/edittext_background"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:foreground="?android:attr/selectableItemBackground"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:paddingBottom="8dp"
+                        android:paddingLeft="12dp"
+                        android:paddingRight="12dp"
+                        android:paddingTop="8dp">
+
+                        <com.ideabonyan.iranapp.Components.MyTextView
+                            android:id="@+id/eContractPayCard"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:textColor="#222"
+                            android:textDirection="ltr"
+                            android:textSize="19sp" />
+
+                        <com.ideabonyan.iranapp.Components.MyTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="کپی"
+                            android:textColor="#1976D2"
+                            android:textSize="13sp" />
+                    </LinearLayout>
+
+                    <com.ideabonyan.iranapp.Components.MyTextView
+                        android:id="@+id/eContractPayHolder"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginTop="4dp"
+                        android:gravity="start"
+                        android:textColor="#616161"
+                        android:textSize="13sp" />
+
+                    <com.ideabonyan.iranapp.Components.MyTextView
+                        android:id="@+id/eContractPayMessage"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginTop="10dp"
+                        android:gravity="start"
+                        android:lineSpacingExtra="4dp"
+                        android:textColor="#444"
+                        android:textSize="14sp"
+                        android:visibility="gone" />
+
+                    <com.ideabonyan.iranapp.Components.MyTextView
+                        android:id="@+id/eContractPayRejected"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginTop="10dp"
+                        android:background="#FDECEA"
+                        android:gravity="start"
+                        android:lineSpacingExtra="4dp"
+                        android:padding="10dp"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="14sp"
+                        android:visibility="gone" />
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/EContractInputLayout"
+                        android:layout_marginTop="10dp">
+
+                        <com.ideabonyan.iranapp.Components.MyEdittextView
+                            android:id="@+id/eContractPayReference"
+                            style="@style/EContractInput"
+                            android:hint="شماره پیگیری واریز (اختیاری)"
+                            android:maxLength="100" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginTop="10dp">
+
+                        <com.ideabonyan.iranapp.Components.MyButton
+                            android:id="@+id/eContractPaySubmitBTN"
+                            android:layout_width="match_parent"
+                            android:layout_height="52dp"
+                            android:background="@drawable/login_sign_up_btn"
+                            android:foreground="?android:attr/selectableItemBackground"
+                            android:text="هزینه را پرداخت کردم"
+                            android:textColor="#fff" />
+
+                        <ProgressBar
+                            android:id="@+id/eContractPayProgress"
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:layout_centerInParent="true"
+                            android:elevation="10dp"
+                            android:indeterminateTint="#fff"
+                            android:visibility="gone" />
+                    </RelativeLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
             <!-- ======== Contract header: logo, title, date ======== -->
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"

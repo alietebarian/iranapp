@@ -346,6 +346,23 @@
                             android:foreground="@null"
                             android:textColor="#757575" />
 
+                        <!-- Only the first member, the person the card is issued to, gives a national code. -->
+                        <com.ideabonyan.iranapp.Components.MyTextView
+                            style="@style/EContractLabel"
+                            android:text="کد ملی صاحب کارت (عضو اول)" />
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            style="@style/EContractInputLayout"
+                            android:layout_marginTop="0dp">
+
+                            <com.ideabonyan.iranapp.Components.MyEdittextView
+                                android:id="@+id/membershipNationalCode"
+                                style="@style/EContractInput"
+                                android:hint="کد ملی 10 رقمی"
+                                android:inputType="number"
+                                android:maxLength="10" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
                         <com.ideabonyan.iranapp.Components.MyTextView
                             android:id="@+id/membershipMembersLabel"
                             style="@style/EContractLabel"

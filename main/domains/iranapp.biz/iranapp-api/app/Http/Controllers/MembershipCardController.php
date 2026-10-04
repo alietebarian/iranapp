@@ -7,6 +7,7 @@ use App\Libraries\jdf;
 use App\Models\MembershipCard;
 use App\Models\User;
 use App\Support\JalaliDate;
+use App\Support\NationalCode;
 use Carbon\Carbon;
 use Illuminate\Database\UniqueConstraintViolationException;
 use Illuminate\Http\Request;
@@ -54,13 +55,25 @@ class MembershipCardController extends Controller
             ? array_values(array_filter(array_map(fn ($m) => is_string($m) ? trim(preg_replace('/\s+/u', ' ', $m)) : $m, $members),
                 fn ($m) => $m !== '' && $m !== null))
             : $members;
-        $input = ['members' => $members, 'app_version' => $request->input('app_version')];
+        $input = [
+            'members' => $members,
+            // Only the first member, the person the card is issued to, gives a national code.
+            'national_code' => NationalCode::normalize($request->input('national_code')),
+            'app_version' => $request->input('app_version'),
+        ];
 
         $validator = Validator::make($input, [
             'members' => 'required|array|min:' . MembershipCard::MIN_MEMBERS . '|max:' . MembershipCard::MAX_MEMBERS,
             'members.*' => 'required|string|min:3|max:100',
+            'national_code' => ['required', 'digits:10', function ($attribute, $value, $fail) {
+                if (! NationalCode::isValid($value)) {
+                    $fail('کد ملی عضو اول (صاحب کارت) معتبر نیست.');
+                }
+            }],
             'app_version' => 'nullable|string|max:40',
         ], [
+            'national_code.required' => 'کد ملی عضو اول (صاحب کارت) را وارد کنید.',
+            'national_code.digits' => 'کد ملی عضو اول (صاحب کارت) باید 10 رقم باشد.',
             'members.required' => 'نام دست کم یک عضو را وارد کنید.',
             'members.array' => 'نام اعضا نامعتبر است.',
             'members.min' => 'نام دست کم یک عضو را وارد کنید.',
@@ -109,6 +122,7 @@ class MembershipCardController extends Controller
             }
             $card->status = MembershipCard::STATUS_PENDING;
             $card->members = $input['members'];
+            $card->national_code = $input['national_code'];
             $card->startMembershipToday();
             $card->submitted_at = Carbon::now();
             $card->app_version = isset($input['app_version']) ? mb_substr((string) $input['app_version'], 0, 40) : null;
@@ -138,7 +152,8 @@ class MembershipCardController extends Controller
                             ->orWhere(DB::raw("CONCAT(first_name, ' ', last_name)"), 'like', '%' . $q . '%');
                     });
                 if ($serial !== '') {
-                    $query->orWhere('serial_number', 'like', '%' . $serial . '%');
+                    $query->orWhere('serial_number', 'like', '%' . $serial . '%')
+                        ->orWhere('national_code', 'like', '%' . $serial . '%');
                 }
             });
         }

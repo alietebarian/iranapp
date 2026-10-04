@@ -53,7 +53,7 @@ class AppServiceProvider extends ServiceProvider
             $pendingEContracts = 0;
             if (Auth::guard('admin')->check()) {
                 try {
-                    $pendingEContracts = EContract::where('status', EContract::STATUS_PENDING)->count();
+                    $pendingEContracts = EContract::whereIn('status', EContract::NEEDS_ADMIN)->count();
                 } catch (QueryException $e) {
                     Log::error('تعداد قراردادهای الکترونیک بارگذاری نشد: ' . $e->getMessage());
                 }

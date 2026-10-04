@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- اجاره اداری و تجاری: an office building with a key. Line icon (24 grid, 1.6 stroke, round caps), tinted at runtime. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+    <!-- Property type, with a notch cut out of its corner for the badge. -->
+    <group
+        android:scaleX="0.85"
+        android:scaleY="0.85">
+        <clip-path android:pathData="M0,0 H28.3 V13.5 H13.5 V28.3 H0 Z" />
+        <path
+            android:fillColor="#00000000"
+            android:strokeColor="#FF757575"
+            android:strokeWidth="1.88"
+            android:strokeLineCap="round"
+            android:strokeLineJoin="round"
+            android:pathData="M6,22 V4 a2,2 0 0,1 2,-2 h8 a2,2 0 0,1 2,2 v18 z" />
+        <path
+            android:fillColor="#00000000"
+            android:strokeColor="#FF757575"
+            android:strokeWidth="1.88"
+            android:strokeLineCap="round"
+            android:strokeLineJoin="round"
+            android:pathData="M6,12 H4 a2,2 0 0,0 -2,2 v6 a2,2 0 0,0 2,2 h2" />
+        <path
+            android:fillColor="#00000000"
+            android:strokeColor="#FF757575"
+            android:strokeWidth="1.88"
+            android:strokeLineCap="round"
+            android:strokeLineJoin="round"
+            android:pathData="M18,9 h2 a2,2 0 0,1 2,2 v9 a2,2 0 0,1 -2,2 h-2" />
+        <path
+            android:fillColor="#00000000"
+            android:strokeColor="#FF757575"
+            android:strokeWidth="1.88"
+            android:strokeLineCap="round"
+            android:strokeLineJoin="round"
+            android:pathData="M10,6 h4" />
+        <path
+            android:fillColor="#00000000"
+            android:strokeColor="#FF757575"
+            android:strokeWidth="1.88"
+            android:strokeLineCap="round"
+            android:strokeLineJoin="round"
+            android:pathData="M10,10 h4" />
+        <path
+            android:fillColor="#00000000"
+            android:strokeColor="#FF757575"
+            android:strokeWidth="1.88"
+            android:strokeLineCap="round"
+            android:strokeLineJoin="round"
+            android:pathData="M10,14 h4" />
+        <path
+            android:fillColor="#00000000"
+            android:strokeColor="#FF757575"
+            android:strokeWidth="1.88"
+            android:strokeLineCap="round"
+            android:strokeLineJoin="round"
+            android:pathData="M10,18 h4" />
+    </group>
+    <!-- Action badge in the corner. -->
+    <group
+        android:translateX="13"
+        android:translateY="13"
+        android:scaleX="0.46"
+        android:scaleY="0.46">
+        <path
+            android:fillColor="#00000000"
+            android:strokeColor="#FF757575"
+            android:strokeWidth="3.48"
+            android:strokeLineCap="round"
+            android:strokeLineJoin="round"
+            android:pathData="M21,2 l-2,2 m-7.61,7.61 a5.5,5.5 0 1,1 -7.78,7.78 a5.5,5.5 0 0,1 7.78,-7.78 z m0,0 L15.5,7.5 m0,0 l3,3 L22,7 l-3,-3 m-3.5,3.5 L19,4" />
+    </group>
+</vector>

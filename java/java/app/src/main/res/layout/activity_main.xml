@@ -110,37 +110,18 @@
                 android:layout_weight="1"
                 android:layout_gravity="center"
                 android:orientation="vertical">
+                <!-- Opens Home_Host, whose tab strip names its three sections. -->
                 <ImageView
-                    android:visibility="gone"
                     android:id="@+id/pishkhanIMG"
                     android:tint="@color/home_nav_icon"
                     android:layout_width="25dp"
                     android:layout_height="25dp"
-                    android:src="@drawable/home"/>
+                    android:src="@drawable/ic_nav_classifieds"/>
                 <com.ideabonyan.iranapp.Components.MyTextView
-                    android:textSize="10sp"
+                    android:textSize="12sp"
                     android:id="@+id/pishkhanTXT"
                     android:textColor="@color/home_nav_icon"
-                    android:text="املاک"
-                    android:layout_below="@id/pishkhanIMG"
-                    android:layout_width="match_parent"
-                    android:gravity="center"
-                    android:layout_height="wrap_content" />
-                <com.ideabonyan.iranapp.Components.MyTextView
-                    android:textSize="10sp"
-                    android:id="@+id/pishkhanTXT1"
-                    android:textColor="@color/home_nav_icon"
-                    android:text="استخدام"
-                    android:layout_below="@id/pishkhanIMG"
-                    android:layout_width="match_parent"
-                    android:gravity="center"
-                    android:layout_height="wrap_content" />
-                <com.ideabonyan.iranapp.Components.MyTextView
-                    android:textSize="10sp"
-                    android:id="@+id/pishkhanTXT2"
-                    android:textColor="@color/home_nav_icon"
-                    android:text="وسایل نقلیه"
-                    android:layout_below="@id/pishkhanIMG"
+                    android:text="نیازمندی ها"
                     android:layout_width="match_parent"
                     android:gravity="center"
                     android:layout_height="wrap_content" />

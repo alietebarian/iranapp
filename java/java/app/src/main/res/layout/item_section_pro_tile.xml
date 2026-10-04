@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- «کاربران پرو» row at the top of the املاک / وسایل نقلیه / استخدام pages. It opens the same
+     list filtered to pro users in each section, so it is set apart from the category grid. -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_home_tile_accent"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="@drawable/ripple_home_tile"
+    android:gravity="center_vertical"
+    android:layoutDirection="rtl"
+    android:orientation="horizontal"
+    android:paddingLeft="12dp"
+    android:paddingTop="10dp"
+    android:paddingRight="12dp"
+    android:paddingBottom="10dp">
+
+    <FrameLayout
+        android:layout_width="@dimen/_36sdp"
+        android:layout_height="@dimen/_36sdp"
+        android:background="@drawable/bg_icon_plate_dark">
+
+        <com.ideabonyan.iranapp.Components.GradientIconView
+            android:layout_width="@dimen/_18sdp"
+            android:layout_height="@dimen/_18sdp"
+            android:layout_gravity="center"
+            android:contentDescription="@null"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_pro_badge" />
+
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <com.ideabonyan.iranapp.Components.MyTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="start"
+            android:text="@string/pro_users_section"
+            android:textColor="@color/home_text"
+            android:textSize="13sp" />
+
+        <com.ideabonyan.iranapp.Components.MyTextView
+            android:id="@+id/sectionProSubtitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:gravity="start"
+            android:text="آگهی های کاربران پرو"
+            android:textColor="@color/home_text_muted"
+            android:textSize="10sp" />
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="18dp"
+        android:layout_height="18dp"
+        android:contentDescription="@null"
+        android:src="@drawable/ic_chevron_left"
+        android:tint="@color/home_nav_icon" />
+
+</LinearLayout>

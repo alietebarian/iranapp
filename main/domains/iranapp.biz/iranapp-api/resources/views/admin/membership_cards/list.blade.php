@@ -27,7 +27,7 @@
                         <div class="row">
                             <div class="col-xs-8 col-md-4">
                                 <div class="form-group">
-                                    <label for="q-in-filter">جستجو (نام اعضا، نام کاربر، شماره همراه یا شماره سریال)</label>
+                                    <label for="q-in-filter">جستجو (نام اعضا، نام کاربر، شماره همراه، شماره سریال یا کد ملی)</label>
                                     <input type="text" value="{{ request('q') }}" name="q" id="q-in-filter" class="form-control">
                                 </div>
                             </div>

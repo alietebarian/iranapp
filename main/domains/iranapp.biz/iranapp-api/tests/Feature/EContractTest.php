@@ -20,6 +20,13 @@ class EContractTest extends TestCase
 {
     use RefreshDatabase;
 
+    protected function setUp(): void
+    {
+        parent::setUp();
+        // The current wording is cached in a static for the request; tests share one process.
+        EContractTemplate::forgetCurrent();
+    }
+
     private function makeUser(string $mobile = '09120000000'): User
     {
         return User::create([
@@ -91,8 +98,8 @@ class EContractTest extends TestCase
             ->assertJsonPath('role', 'normal')
             ->assertJsonPath('contract', null)
             ->assertJsonPath('today', JalaliDate::today())
-            ->assertJsonPath('template.version', EContractTemplate::VERSION)
-            ->assertJsonCount(count(EContractTemplate::sections()), 'template.sections');
+            ->assertJsonPath('template.version', EContractTemplate::DEFAULT_VERSION)
+            ->assertJsonCount(count(EContractTemplate::defaultSections()), 'template.sections');
     }
 
     public function test_current_requires_login(): void
@@ -282,7 +289,8 @@ class EContractTest extends TestCase
         $this->actingAs($admin, 'admin')
             ->get(route('showEContractInAdminPanel', $contract->id))
             ->assertOk()
-            ->assertSee('تایید و ثبت قرارداد')
+            ->assertSee('تایید رایگان و ثبت قرارداد')
+            ->assertSee('ارسال مبلغ و شماره کارت برای کاربر')
             ->assertSee('رد قرارداد')
             // User input is escaped, not rendered as markup.
             ->assertSee('پوشاک &lt;b&gt;آریا&lt;/b&gt;', false)

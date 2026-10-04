@@ -65,6 +65,8 @@ public class MembershipCardActivity extends AppCompatActivity implements Get_Ins
             formDate, formExpiry, formSerial, membersLabel;
     TextView cardSerial;
     MyButton addMemberBTN, submitBTN;
+    // National code of the first member (the card's holder); the others only give names.
+    EditText nationalCode;
 
     // From /api/membership-card.
     int minMembers = 1;
@@ -106,6 +108,7 @@ public class MembershipCardActivity extends AppCompatActivity implements Get_Ins
         membersLabel = findViewById(R.id.membershipMembersLabel);
         membersBox = findViewById(R.id.membershipMembers);
         addMemberBTN = findViewById(R.id.membershipAddMemberBTN);
+        nationalCode = findViewById(R.id.membershipNationalCode);
         submitBTN = findViewById(R.id.membershipSubmitBTN);
         submitProgress = findViewById(R.id.membershipSubmitProgress);
     }
@@ -223,6 +226,7 @@ public class MembershipCardActivity extends AppCompatActivity implements Get_Ins
                 ? "پس از ثبت درخواست به شما اختصاص داده می شود"
                 : "⁦" + previous.optString("serial_number") + "⁩");
 
+        nationalCode.setText(previous == null || previous.isNull("national_code") ? "" : previous.optString("national_code"));
         membersBox.removeAllViews();
         JSONArray list = previous == null ? null : previous.optJSONArray("members");
         if (list != null && list.length() > 0) {
@@ -290,6 +294,9 @@ public class MembershipCardActivity extends AppCompatActivity implements Get_Ins
             return fail("نام دست کم یک عضو را وارد کنید", inputs.isEmpty() ? null : inputs.get(0));
         }
         if (filled > maxMembers) return fail("حداکثر " + maxMembers + " عضو را می توانید ثبت کنید", null);
+        String code = JalaliDate.toLatinDigits(nationalCode.getText().toString().trim());
+        if (code.isEmpty()) return fail("کد ملی عضو اول (صاحب کارت) را وارد کنید", nationalCode);
+        if (!EContractActivity.isValidNationalCode(code)) return fail("کد ملی عضو اول (صاحب کارت) معتبر نیست", nationalCode);
         return true;
     }
 
@@ -297,7 +304,8 @@ public class MembershipCardActivity extends AppCompatActivity implements Get_Ins
         ShowToast.failure(message, this);
         if (field != null) {
             field.requestFocus();
-            scroll.post(() -> scroll.smoothScrollTo(0, Math.max(0, form.getTop() + membersBox.getTop() - 100)));
+            View anchor = field == nationalCode ? (View) nationalCode.getParent().getParent() : membersBox;
+            scroll.post(() -> scroll.smoothScrollTo(0, Math.max(0, form.getTop() + anchor.getTop() - 100)));
         }
         return false;
     }
@@ -313,6 +321,7 @@ public class MembershipCardActivity extends AppCompatActivity implements Get_Ins
             String name = text(input);
             if (!name.isEmpty()) params.put("members[" + (index++) + "]", name);
         }
+        params.put("national_code", JalaliDate.toLatinDigits(nationalCode.getText().toString().trim()));
         params.put("app_version", BuildConfig.VERSION_NAME);
 
         Get_Volley_Call_Back.binddata(this);

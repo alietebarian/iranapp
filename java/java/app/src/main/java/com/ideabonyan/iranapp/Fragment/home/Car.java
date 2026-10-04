@@ -11,6 +11,7 @@ import android.widget.LinearLayout;
 
 import com.ideabonyan.iranapp.Activity.Show_Car_list;
 import com.ideabonyan.iranapp.R;
+import com.ideabonyan.iranapp.Utils.SectionTiles;
 import com.ideabonyan.iranapp.Utils.StaticData;
 
 /**
@@ -36,6 +37,14 @@ public class Car extends Fragment {
     }
 
     private void holder() {
+        SectionTiles.bindPro(view, "آگهی های وسایل نقلیه کاربران پرو");
+        SectionTiles.bind(view, R.id.lin_car, R.drawable.ic_cat_car, "خودرو", null);
+        SectionTiles.bind(view, R.id.lin_motor, R.drawable.ic_vehicle_motorcycle, "موتور سیکلت", null);
+        SectionTiles.bind(view, R.id.lin_havey_car, R.drawable.ic_cat_transport, "خودرو سنگین و نیمه سنگین", null);
+        SectionTiles.bind(view, R.id.lin_classic_car, R.drawable.ic_vehicle_classic, "خودرو کلاسیک", null);
+        SectionTiles.bind(view, R.id.lin_car_part, R.drawable.ic_cat_service, "لوازم وسایل نقلیه", null);
+        SectionTiles.bind(view, R.id.lin_other, R.drawable.ic_vehicle_bicycle, "سایر وسایل نقلیه", null);
+
         lin_car_part = (LinearLayout) view.findViewById(R.id.lin_car_part);
         lin_havey_car = (LinearLayout) view.findViewById(R.id.lin_havey_car);
         lin_classic_car = (LinearLayout) view.findViewById(R.id.lin_classic_car);

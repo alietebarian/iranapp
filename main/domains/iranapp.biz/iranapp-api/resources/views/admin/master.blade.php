@@ -186,7 +186,7 @@
                                 @endif
                             </a>
                             <ul class="dropdown-menu dropdown-menu-lg">
-                                <li class="notifi-title">آگهی های در حال انقضاء</li>
+                                <li class="notifi-title">آگهی ها و قراردادهای در حال انقضاء</li>
                                 <li class="list-group slimscroll-noti notification-list">
                                     @forelse($adminNotifications as $notification)
                                         @php($daysLeft = $notification->daysLeft())
@@ -316,13 +316,20 @@
                         <a href="{{ route('showPhoneBookInAdminPanel') }}" class="waves-effect"><i class="ti-agenda"></i>
                             <span> دفترچه تلفن </span></a>
                     </li>
-                    <li>
-                        <a href="{{ route('showEContractsInAdminPanel') }}" class="waves-effect"><i class="ti-write"></i>
+                    <li class="has_sub">
+                        <a href="javascript:void(0);" class="waves-effect"><i class="ti-write"></i>
                             <span> قراردادهای الکترونیک </span>
                             @if(($pendingEContracts ?? 0) > 0)
                                 <span class="label label-danger pull-right">{{ $pendingEContracts }}</span>
+                            @else
+                                <span class="menu-arrow"></span>
                             @endif
                         </a>
+                        <ul class="list-unstyled">
+                            <li><a href="{{ route('showEContractsInAdminPanel') }}">لیست قراردادها</a></li>
+                            <li><a href="{{ route('showActiveEContractsInAdminPanel') }}">کاربران دارای قرارداد</a></li>
+                            <li><a href="{{ route('showEContractTemplateEditor') }}">ویرایش متن قرارداد</a></li>
+                        </ul>
                     </li>
                     <li>
                         <a href="{{ route('showMembershipCardsInAdminPanel') }}" class="waves-effect"><i class="ti-id-badge"></i>

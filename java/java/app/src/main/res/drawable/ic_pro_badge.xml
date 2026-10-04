@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- کاربران پرو: a badge with a check. Line icon (24 grid, 1.6 stroke, round caps), tinted at runtime. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+    <path
+        android:fillColor="#00000000"
+        android:strokeColor="#FF757575"
+        android:strokeWidth="1.6"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:pathData="M3.85,8.62 a4,4 0 0,1 4.78,-4.77 a4,4 0 0,1 6.74,0 a4,4 0 0,1 4.78,4.78 a4,4 0 0,1 0,6.74 a4,4 0 0,1 -4.77,4.78 a4,4 0 0,1 -6.75,0 a4,4 0 0,1 -4.78,-4.77 a4,4 0 0,1 0,-6.76 Z" />
+    <path
+        android:fillColor="#00000000"
+        android:strokeColor="#FF757575"
+        android:strokeWidth="1.6"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:pathData="M9,12 l2,2 l4,-4" />
+</vector>

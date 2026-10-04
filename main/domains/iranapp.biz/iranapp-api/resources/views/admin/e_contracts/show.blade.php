@@ -50,6 +50,7 @@
 @section('content')
     @php
         $sections = $contract->highlightedSections();
+        $signedTemplate = $contract->signedTemplate();
     @endphp
     <div class="content-page">
         <div class="content">
@@ -70,7 +71,7 @@
                                     {{-- The same wordmark the app shows at the top of the contract (R.drawable.iran_app_logo1). --}}
                                     <img src="{{ URL::to('/admin/assets/images/iran_app_logo.png') }}" alt="ایران اپ" class="pull-right">
                                     <div class="pull-left text-left">
-                                        <p class="doc-title">{{ \App\Support\EContractTemplate::TITLE }}</p>
+                                        <p class="doc-title">{{ $signedTemplate['title'] ?? \App\Support\EContractTemplate::DEFAULT_TITLE }}</p>
                                         <div>تاریخ: <b>{{ $contract->contract_date }}</b></div>
                                         <div class="text-muted"><small>شماره: {{ $contract->id }}</small></div>
                                     </div>
@@ -96,60 +97,7 @@
 
                     {{-- Review panel --}}
                     <div class="col-md-5">
-                        <div class="card-box">
-                            <h4 class="m-t-0 header-title"><b>وضعیت قرارداد</b></h4>
-                            @if($contract->status == 'pending')
-                                <div class="alert alert-warning">این قرارداد در انتظار بررسی است.</div>
-                            @elseif($contract->status == 'approved')
-                                <div class="alert alert-success">
-                                    این قرارداد تایید شده و کاربر، کاربر پرو است.
-                                    @if($contract->reviewed_at)
-                                        <br><small>تاریخ تایید: {{ \App\Support\JalaliDate::fromTimestamp($contract->reviewed_at, 'Y/m/d - H:i') }}
-                                            @if($contract->reviewer) - توسط {{ $contract->reviewer->first_name }} {{ $contract->reviewer->last_name }} @endif
-                                        </small>
-                                    @endif
-                                </div>
-                            @else
-                                <div class="alert alert-danger">
-                                    این قرارداد رد شده است.
-                                    <br><b>دلیل:</b> {{ $contract->rejection_reason }}
-                                    @if($contract->reviewed_at)
-                                        <br><small>تاریخ رد: {{ \App\Support\JalaliDate::fromTimestamp($contract->reviewed_at, 'Y/m/d - H:i') }}
-                                            @if($contract->reviewer) - توسط {{ $contract->reviewer->first_name }} {{ $contract->reviewer->last_name }} @endif
-                                        </small>
-                                    @endif
-                                </div>
-                            @endif
-
-                            @if($contract->isPending())
-                                <form action="{{ route('approveEContract', $contract->id) }}" method="post"
-                                      onsubmit="return confirm('با تایید این قرارداد، کاربر به کاربر پرو ارتقا می یابد. ادامه می دهید؟');">
-                                    {{ csrf_field() }}
-                                    <input type="hidden" name="_method" value="PUT">
-                                    <button type="submit" class="btn btn-success btn-block waves-effect waves-light">
-                                        <i class="fa fa-check"></i> تایید و ثبت قرارداد
-                                    </button>
-                                </form>
-
-                                <hr>
-
-                                <form action="{{ route('rejectEContract', $contract->id) }}" method="post">
-                                    {{ csrf_field() }}
-                                    <input type="hidden" name="_method" value="PUT">
-                                    <div class="form-group">
-                                        <label for="rejection_reason">دلیل رد قرارداد (برای کاربر نمایش داده می شود)</label>
-                                        <textarea name="rejection_reason" id="rejection_reason" rows="4" class="form-control"
-                                                  placeholder="مثلا: کد ملی با نام مدیر مطابقت ندارد؛ لطفا اصلاح کنید.">{{ old('rejection_reason') }}</textarea>
-                                        @if($errors->has('rejection_reason'))
-                                            <span class="input-field-errors">{{ $errors->first('rejection_reason') }}</span>
-                                        @endif
-                                    </div>
-                                    <button type="submit" class="btn btn-danger btn-block waves-effect waves-light">
-                                        <i class="fa fa-times"></i> رد قرارداد
-                                    </button>
-                                </form>
-                            @endif
-                        </div>
+                        @include('admin.e_contracts.review_panel')
 
                         <div class="card-box">
                             <h4 class="m-t-0 header-title"><b>مشخصات طرف دوم</b></h4>
@@ -192,7 +140,15 @@
                                 @endif
                                 <tr><th>تاریخ و ساعت ارسال</th><td>{{ \App\Support\JalaliDate::fromTimestamp($contract->created_at, 'Y/m/d - H:i') }}</td></tr>
                                 <tr><th>پذیرش شرایط قرارداد</th><td>{{ \App\Support\JalaliDate::fromTimestamp($contract->terms_accepted_at, 'Y/m/d - H:i') }}</td></tr>
-                                <tr><th>نسخه متن قرارداد</th><td>{{ $contract->template_version }}</td></tr>
+                                <tr>
+                                    <th>نسخه متن قرارداد</th>
+                                    <td>
+                                        {{ $contract->template_version }}
+                                        @if($contract->template_version !== \App\Support\EContractTemplate::current()['version'])
+                                            <small class="text-muted">(متن فعلی قرارداد نسخه {{ \App\Support\EContractTemplate::current()['version'] }} است)</small>
+                                        @endif
+                                    </td>
+                                </tr>
                                 @if($contract->ip_address)
                                     <tr><th>آدرس IP</th><td>{{ $contract->ip_address }}</td></tr>
                                 @endif

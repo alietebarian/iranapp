@@ -151,6 +151,7 @@ Route::group( [] , function () {
 		Route::get( '/users/employs-ads/favorites' , [VipAdsFavoriteController::class, 'getUserEmployAds'] );
 		Route::get( '/e-contracts/current' , [EContractController::class, 'current'] );
 		Route::post( '/e-contracts' , [EContractController::class, 'submit'] );
+		Route::post( '/e-contracts/payment' , [EContractController::class, 'submitPayment'] );
 		Route::get( '/membership-card' , [MembershipCardController::class, 'current'] );
 		Route::post( '/membership-card' , [MembershipCardController::class, 'submit'] );
 

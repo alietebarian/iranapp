@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- سایر وسایل نقلیه: a bicycle. Line icon (24 grid, 1.6 stroke, round caps), tinted at runtime. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+    <path
+        android:fillColor="#00000000"
+        android:strokeColor="#FF757575"
+        android:strokeWidth="1.6"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:pathData="M18.5,14 A3.5,3.5 0 1,0 18.5,21 A3.5,3.5 0 1,0 18.5,14 Z" />
+    <path
+        android:fillColor="#00000000"
+        android:strokeColor="#FF757575"
+        android:strokeWidth="1.6"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:pathData="M5.5,14 A3.5,3.5 0 1,0 5.5,21 A3.5,3.5 0 1,0 5.5,14 Z" />
+    <path
+        android:fillColor="#00000000"
+        android:strokeColor="#FF757575"
+        android:strokeWidth="1.6"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:pathData="M15,4 A1,1 0 1,0 15,6 A1,1 0 1,0 15,4 Z" />
+    <path
+        android:fillColor="#00000000"
+        android:strokeColor="#FF757575"
+        android:strokeWidth="1.6"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:pathData="M12,17.5 V14 l-3,-3 l4,-3 l2,3 h2" />
+</vector>

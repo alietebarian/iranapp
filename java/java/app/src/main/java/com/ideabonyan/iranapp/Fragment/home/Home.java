@@ -10,6 +10,7 @@ import android.widget.LinearLayout;
 
 import com.ideabonyan.iranapp.Activity.Show_Home_List;
 import com.ideabonyan.iranapp.R;
+import com.ideabonyan.iranapp.Utils.SectionTiles;
 import com.ideabonyan.iranapp.Utils.StaticData;
 
 public class Home extends Fragment {
@@ -28,6 +29,13 @@ public class Home extends Fragment {
     }
 
     private void holder() {
+        SectionTiles.bindPro(view, "آگهی های املاک کاربران پرو");
+        SectionTiles.bind(view, R.id.lin_sell_home, R.drawable.ic_estate_home_sale, "فروش مسکونی", "آپارتمان، خانه، زمین");
+        SectionTiles.bind(view, R.id.ejare_home, R.drawable.ic_estate_home_rent, "اجاره مسکونی", "آپارتمان، خانه");
+        SectionTiles.bind(view, R.id.khadamar_home, R.drawable.ic_estate_services, "خدمات املاک", null);
+        SectionTiles.bind(view, R.id.forosh_edari, R.drawable.ic_estate_office_sale, "فروش اداری و تجاری", "مغازه، دفتر کار، صنعتی");
+        SectionTiles.bind(view, R.id.ejare_edari, R.drawable.ic_estate_office_rent, "اجاره اداری و تجاری", "مغازه، دفتر کار، صنعتی");
+
         lin_sell_home = (LinearLayout) view.findViewById(R.id.lin_sell_home);
         ejare_home = (LinearLayout) view.findViewById(R.id.ejare_home);
         forosh_edari = (LinearLayout) view.findViewById(R.id.forosh_edari);

@@ -11,6 +11,7 @@ import android.widget.LinearLayout;
 
 import com.ideabonyan.iranapp.Activity.Show_Job_list;
 import com.ideabonyan.iranapp.R;
+import com.ideabonyan.iranapp.Utils.SectionTiles;
 import com.ideabonyan.iranapp.Utils.StaticData;
 
 /**
@@ -36,6 +37,11 @@ public class Job extends Fragment {
     }
 
     private void holder() {
+        SectionTiles.bindPro(view, "آگهی های استخدام کاربران پرو");
+        SectionTiles.bind(view, R.id.lin_worker, R.drawable.ic_job_seeker, "آماده به کار", null);
+        SectionTiles.bind(view, R.id.lin_employe, R.drawable.ic_cat_job, "استخدام", null);
+        SectionTiles.bind(view, R.id.lin_both, R.drawable.ic_job_both, "هر دو", null);
+
         lin_both = (LinearLayout) view.findViewById(R.id.lin_both);
         lin_employe = (LinearLayout) view.findViewById(R.id.lin_employe);
         lin_worker = (LinearLayout) view.findViewById(R.id.lin_worker);

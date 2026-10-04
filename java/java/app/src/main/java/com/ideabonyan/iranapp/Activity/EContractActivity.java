@@ -63,6 +63,7 @@ public class EContractActivity extends AppCompatActivity implements Get_Insert_E
 
     private static final int REQUEST_LOAD = 1;
     private static final int REQUEST_SUBMIT = 2;
+    private static final int REQUEST_PAYMENT = 3;
 
     private static final String HIGHLIGHT_COLOR = "#b71c1c";
     private static final Pattern PLACEHOLDER = Pattern.compile("\\{(\\w+)\\}");
@@ -77,11 +78,23 @@ public class EContractActivity extends AppCompatActivity implements Get_Insert_E
     MyCheckbox acceptChk;
     MyButton submitBTN;
 
+    // Paying for a paid contract.
+    CardView paymentCard;
+    LinearLayout payCardBox;
+    MyTextView payAmount, payCard, payHolder, payMessage, payRejected;
+    MyEdittextView payReference;
+    MyButton paySubmitBTN;
+    ProgressBar payProgress;
+    String cardNumber = "";
+
     Typeface font;
 
     // From /api/e-contracts/current.
     JSONArray sections = new JSONArray();
     String blank = "..............";
+    // The wording version shown to the user; sent back so the server can tell if an admin has
+    // edited the text since (App\Support\EContractTemplate).
+    String templateVersion = "";
     String today;
     int[] todayDate;
     int[] durations = {3, 6, 12, 24, 36};
@@ -131,6 +144,16 @@ public class EContractActivity extends AppCompatActivity implements Get_Insert_E
         acceptChk = findViewById(R.id.eContractAcceptChk);
         submitBTN = findViewById(R.id.eContractSubmitBTN);
         submitProgress = findViewById(R.id.eContractSubmitProgress);
+        paymentCard = findViewById(R.id.eContractPaymentCard);
+        payCardBox = findViewById(R.id.eContractPayCardBox);
+        payAmount = findViewById(R.id.eContractPayAmount);
+        payCard = findViewById(R.id.eContractPayCard);
+        payHolder = findViewById(R.id.eContractPayHolder);
+        payMessage = findViewById(R.id.eContractPayMessage);
+        payRejected = findViewById(R.id.eContractPayRejected);
+        payReference = findViewById(R.id.eContractPayReference);
+        paySubmitBTN = findViewById(R.id.eContractPaySubmitBTN);
+        payProgress = findViewById(R.id.eContractPayProgress);
     }
 
     private void onClicks() {
@@ -138,6 +161,13 @@ public class EContractActivity extends AppCompatActivity implements Get_Insert_E
         findViewById(R.id.eContractRetryBTN).setOnClickListener(v -> loadCurrent());
         startDateTXT.setOnClickListener(v -> showStartDatePicker());
         durationTXT.setOnClickListener(v -> showDurationPicker());
+        payCardBox.setOnClickListener(v -> copyToClipboard("شماره کارت", cardNumber));
+        paySubmitBTN.setOnClickListener(v -> new AlertDialog.Builder(this)
+                .setTitle("تایید پرداخت")
+                .setMessage("آیا مبلغ " + payAmount.getText() + " را به کارت " + payCard.getText() + " واریز کرده اید؟")
+                .setPositiveButton("بله، پرداخت کردم", (d, w) -> submitPayment())
+                .setNegativeButton("هنوز نه", null)
+                .show());
         submitBTN.setOnClickListener(v -> {
             if (validate()) submit();
         });
@@ -171,7 +201,9 @@ public class EContractActivity extends AppCompatActivity implements Get_Insert_E
         loading.setVisibility(View.VISIBLE);
         errorView.setVisibility(View.GONE);
         Get_Volley_Call_Back.binddata(this);
-        Get_Volley_Call_Back.Call_Volley(this, new HashMap<>(), withToken(StaticData.E_CONTRACT_CURRENT), Request.Method.GET, REQUEST_LOAD);
+        // compact: the server sends the wording only when the form is shown, and the stored
+        // contract text only when it is not (EContractController::current).
+        Get_Volley_Call_Back.Call_Volley(this, new HashMap<>(), withToken(StaticData.E_CONTRACT_CURRENT) + "&compact=1", Request.Method.GET, REQUEST_LOAD);
     }
 
     private void onLoaded(JSONObject json) throws JSONException {
@@ -180,10 +212,8 @@ public class EContractActivity extends AppCompatActivity implements Get_Insert_E
         today = json.getString("today");
         todayDate = JalaliDate.parse(today);
 
-        JSONObject template = json.getJSONObject("template");
-        sections = template.getJSONArray("sections");
-        blank = template.optString("blank", blank);
-        titleTXT.setText(template.optString("title", "قرارداد همکاری"));
+        JSONObject template = json.optJSONObject("template");
+        if (template != null) applyTemplate(template);
 
         JSONObject options = json.getJSONObject("options");
         fillRadioGroup(businessTypeGroup, options.getJSONArray("business_types"));
@@ -195,15 +225,27 @@ public class EContractActivity extends AppCompatActivity implements Get_Insert_E
         JSONObject contract = json.isNull("contract") ? null : json.getJSONObject("contract");
         String status = contract == null ? "none" : contract.getString("status");
 
+        paymentCard.setVisibility(View.GONE);
         switch (status) {
             case "pending":
                 showReadOnly(contract, "#FFA000", "در انتظار بررسی",
                         "درخواست قرارداد شما در تاریخ " + contract.optString("submitted_at") + " ارسال شد و در حال بررسی توسط کارشناسان ایران اپ است.\n"
                                 + "نتیجه بررسی از طریق اعلان به شما اطلاع داده می شود.");
                 break;
+            case "awaiting_payment":
+                showReadOnly(contract, "#1976D2", "در انتظار پرداخت",
+                        "درخواست قرارداد شما بررسی شد. برای ثبت نهایی قرارداد، مبلغ زیر را به شماره کارت اعلام شده واریز کنید "
+                                + "و سپس دکمه «هزینه را پرداخت کردم» را بزنید.");
+                showPayment(contract);
+                break;
+            case "payment_submitted":
+                showReadOnly(contract, "#FFA000", "پرداخت شما در حال بررسی است",
+                        "شما در تاریخ " + contract.optString("payment_submitted_at") + " اعلام کردید که مبلغ "
+                                + contract.optString("amount_formatted") + " تومان را پرداخت کرده اید.\n"
+                                + "پس از تایید واریز توسط ایران اپ، قرارداد شما ثبت نهایی می شود و نتیجه از طریق اعلان به شما اطلاع داده می شود.");
+                break;
             case "approved":
-                showReadOnly(contract, "#388E3C", "قرارداد شما تایید شد",
-                        "قرارداد شما در تاریخ " + contract.optString("reviewed_at") + " تایید و ثبت شد و حساب کاربری شما به «کاربر پرو» ارتقا یافت.");
+                showApproved(contract);
                 break;
             case "rejected":
                 showStatus(HIGHLIGHT_COLOR, "قرارداد شما نیاز به اصلاح دارد",
@@ -217,6 +259,31 @@ public class EContractActivity extends AppCompatActivity implements Get_Insert_E
         }
 
         scroll.setVisibility(View.VISIBLE);
+    }
+
+    private void applyTemplate(JSONObject template) throws JSONException {
+        sections = template.getJSONArray("sections");
+        blank = template.optString("blank", blank);
+        templateVersion = template.optString("version", "");
+        titleTXT.setText(template.optString("title", "قرارداد همکاری"));
+    }
+
+    /**
+     * An admin edited the contract's wording while the user was filling the form. What they typed
+     * is kept; the new text replaces the old one and they must read and accept it again.
+     */
+    private void onTemplateChanged(JSONObject template, String message) throws JSONException {
+        applyTemplate(template);
+        updatePreview();
+        acceptChk.setChecked(false);
+        scroll.post(() -> scroll.smoothScrollTo(0, Math.max(0, ((View) contractText.getParent()).getTop() - 20)));
+        new AlertDialog.Builder(this)
+                .setTitle("متن قرارداد به روز شد")
+                .setMessage(message.isEmpty()
+                        ? "متن قرارداد به روز شده است. لطفا متن جدید را مطالعه کنید و دوباره شرایط را بپذیرید."
+                        : message)
+                .setPositiveButton("مطالعه متن جدید", null)
+                .show();
     }
 
     private void fillRadioGroup(RadioGroup group, JSONArray items) throws JSONException {
@@ -236,6 +303,79 @@ public class EContractActivity extends AppCompatActivity implements Get_Insert_E
     }
 
     /** Pending or approved: the stored contract, no form. */
+    /** Approved: free or paid, and how long is left; a warning in the last EXPIRY_REMINDER_DAYS days. */
+    private void showApproved(JSONObject contract) {
+        StringBuilder text = new StringBuilder("قرارداد شما در تاریخ " + contract.optString("reviewed_at")
+                + " تایید و ثبت شد و حساب کاربری شما «کاربر پرو» است.");
+        if ("paid".equals(contract.optString("billing"))) {
+            text.append("\nنوع قرارداد: پولی (").append(contract.optString("amount_formatted")).append(" تومان)");
+        } else {
+            text.append("\nنوع قرارداد: رایگان");
+        }
+        text.append("\nمدت قرارداد: از ").append(contract.optString("start_date"))
+                .append(" تا ").append(contract.optString("end_date"));
+
+        String color = "#388E3C";
+        String title = "قرارداد شما تایید شد";
+        if (!contract.isNull("days_left")) {
+            int daysLeft = contract.optInt("days_left");
+            if (daysLeft < 0) {
+                color = "#757575";
+                title = "قرارداد شما به پایان رسیده است";
+                text.append("\n\nبرای تمدید قرارداد با ایران اپ تماس بگیرید.");
+            } else if (daysLeft <= contract.optInt("expiry_reminder_days", 15)) {
+                color = "#E65100";
+                title = daysLeft == 0 ? "قرارداد شما امروز به پایان می رسد" : "قرارداد شما " + daysLeft + " روز دیگر به پایان می رسد";
+                text.append("\n\nبرای تمدید قرارداد با ایران اپ تماس بگیرید.");
+            } else {
+                text.append("\n").append(daysLeft).append(" روز تا پایان قرارداد باقی مانده است.");
+            }
+        }
+        showReadOnly(contract, color, title, text.toString());
+    }
+
+    /** The amount, the card to pay to and the "I have paid" button. */
+    private void showPayment(JSONObject contract) {
+        paymentCard.setVisibility(View.VISIBLE);
+        cardNumber = contract.optString("card_number");
+        payAmount.setText(contract.optString("amount_formatted") + " تومان");
+        payCard.setText(contract.optString("card_number_formatted"));
+        payHolder.setText("به نام: " + contract.optString("card_holder"));
+
+        String message = contract.isNull("payment_message") ? "" : contract.optString("payment_message");
+        payMessage.setVisibility(message.isEmpty() ? View.GONE : View.VISIBLE);
+        payMessage.setText(message);
+
+        String rejected = contract.isNull("payment_rejection_reason") ? "" : contract.optString("payment_rejection_reason");
+        payRejected.setVisibility(rejected.isEmpty() ? View.GONE : View.VISIBLE);
+        payRejected.setText("پرداخت قبلی شما تایید نشد: " + rejected);
+        resetPayButton();
+    }
+
+    private void submitPayment() {
+        paySubmitBTN.setText("");
+        paySubmitBTN.setEnabled(false);
+        payProgress.setVisibility(View.VISIBLE);
+
+        Map<String, String> params = new HashMap<>();
+        params.put("payment_reference", text(payReference));
+        Get_Volley_Call_Back.binddata(this);
+        Get_Volley_Call_Back.Call_Volley(this, params, withToken(StaticData.E_CONTRACT_PAYMENT), Request.Method.POST, REQUEST_PAYMENT);
+    }
+
+    private void resetPayButton() {
+        payProgress.setVisibility(View.GONE);
+        paySubmitBTN.setEnabled(true);
+        paySubmitBTN.setText("هزینه را پرداخت کردم");
+    }
+
+    private void copyToClipboard(String label, String value) {
+        android.content.ClipboardManager clipboard = (android.content.ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
+        if (clipboard == null || value.isEmpty()) return;
+        clipboard.setPrimaryClip(android.content.ClipData.newPlainText(label, value));
+        ShowToast.success(label + " کپی شد", this);
+    }
+
     private void showReadOnly(JSONObject contract, String color, String title, String text) {
         showStatus(color, title, text);
         form.setVisibility(View.GONE);
@@ -523,6 +663,7 @@ public class EContractActivity extends AppCompatActivity implements Get_Insert_E
         params.put("discount_percent", text(discount));
         params.put("terms_accepted", acceptChk.isChecked() ? "1" : "0");
         params.put("app_version", BuildConfig.VERSION_NAME);
+        params.put("template_version", templateVersion);
 
         Get_Volley_Call_Back.binddata(this);
         Get_Volley_Call_Back.Call_Volley(this, params, withToken(StaticData.E_CONTRACT_SUBMIT), Request.Method.POST, REQUEST_SUBMIT);
@@ -564,6 +705,18 @@ public class EContractActivity extends AppCompatActivity implements Get_Insert_E
                 return;
             }
 
+            if (id == REQUEST_PAYMENT) {
+                resetPayButton();
+                if ("200".equals(status)) {
+                    ShowToast.success("پرداخت شما اعلام شد؛ پس از تایید، قرارداد ثبت نهایی می شود", this);
+                    scroll.scrollTo(0, 0);
+                } else {
+                    ShowToast.failure(json.optString("message", "لطفا دوباره تلاش کنید"), this);
+                }
+                loadCurrent();
+                return;
+            }
+
             resetSubmitButton();
             switch (status) {
                 case "201":
@@ -584,6 +737,10 @@ public class EContractActivity extends AppCompatActivity implements Get_Insert_E
                             .show();
                     break;
                 case "409":
+                    if ("template_changed".equals(json.optString("error")) && json.has("template")) {
+                        onTemplateChanged(json.getJSONObject("template"), json.optString("message"));
+                        break;
+                    }
                     // Already pending or approved (e.g. a retried request): show the current state.
                     ShowToast.failure(json.optString("message", "درخواست شما پیش از این ثبت شده است"), this);
                     loadCurrent();
@@ -598,6 +755,7 @@ public class EContractActivity extends AppCompatActivity implements Get_Insert_E
                 errorView.setVisibility(View.VISIBLE);
             } else {
                 resetSubmitButton();
+                resetPayButton();
                 ShowToast.failure("لطفا دوباره تلاش کنید", this);
             }
         }
@@ -612,6 +770,7 @@ public class EContractActivity extends AppCompatActivity implements Get_Insert_E
             errorView.setVisibility(View.VISIBLE);
         } else {
             resetSubmitButton();
+            resetPayButton();
             ShowToast.failure("ارسال ممکن نشد؛ لطفا اتصال اینترنت خود را بررسی کنید", this);
         }
     }

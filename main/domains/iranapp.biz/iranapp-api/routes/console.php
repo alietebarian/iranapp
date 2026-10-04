@@ -15,3 +15,7 @@ Schedule::call(fn () => \App\Models\News::releaseDueNotifications())->everyMinut
 // The same fallback for birthday greetings (see SendBirthdayGreetings); the daily claim in
 // Birthdays::sendDueGreetings() keeps them from going out twice.
 Schedule::call(fn () => \App\Support\Birthdays::sendDueGreetings())->hourly()->name('birthday-greetings');
+
+// The same fallback for contract-expiry reminders (see SendEContractExpiryReminders); each
+// contract is claimed before it is reminded, so it never gets two.
+Schedule::call(fn () => \App\Support\EContractExpiry::sendDueReminders())->hourly()->name('e-contract-expiry-reminders');

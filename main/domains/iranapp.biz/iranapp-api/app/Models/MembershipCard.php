@@ -45,6 +45,7 @@ class MembershipCard extends Model
         'serial_number',
         'status',
         'members',
+        'national_code',
         'membership_date',
         'expiry_date',
         'starts_on',
@@ -143,6 +144,8 @@ class MembershipCard extends Model
             'status_label' => $this->statusLabel(),
             'serial_number' => $this->formattedSerial(),
             'members' => $this->members,
+            // Of the first member, the person the card is issued to.
+            'national_code' => $this->national_code,
             'membership_date' => $this->membership_date,
             'expiry_date' => $this->expiry_date,
             'is_expired' => $this->isExpired(),

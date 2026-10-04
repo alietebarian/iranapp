@@ -8,6 +8,8 @@
     <color name="home_bg_bottom">#090C14</color>
     <color name="home_tile">#1A2030</color>
     <color name="home_tile_stroke">#2A3245</color>
+    <!-- Border of a tile set apart from the grid (bg_home_tile_accent) -->
+    <color name="home_tile_stroke_accent">#80FF5252</color>
     <color name="home_text">#EEF1F6</color>
     <color name="home_text_muted">#A9B2C3</color>
     <color name="home_accent">#FF5252</color>

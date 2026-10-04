@@ -180,9 +180,17 @@
                                     <th>اعضا ({{ count($card->members) }} نفر)</th>
                                     <td>
                                         @foreach($card->members as $i => $member)
-                                            {{ $i + 1 }}. {{ $member }}<br>
+                                            {{ $i + 1 }}. {{ $member }}
+                                            @if($i === 0)
+                                                <small class="text-muted">(صاحب کارت)</small>
+                                            @endif
+                                            <br>
                                         @endforeach
                                     </td>
+                                </tr>
+                                <tr>
+                                    <th>کد ملی صاحب کارت</th>
+                                    <td>{{ $card->national_code ?: 'ثبت نشده (درخواست پیش از اضافه شدن این فیلد)' }}</td>
                                 </tr>
                                 <tr><th>تاریخ عضویت</th><td>{{ $card->membership_date }}</td></tr>
                                 <tr><th>تاریخ پایان اعتبار</th><td>{{ $card->expiry_date }}</td></tr>

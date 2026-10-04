@@ -51,12 +51,56 @@ class MembershipCardTest extends TestCase
         return $user->createToken('mobile')->plainTextToken;
     }
 
-    private function submit(User $user, array $members)
+    private function submit(User $user, array $members, ?string $nationalCode = '0012345679')
     {
         return $this->postJson('/api/membership-card?token=' . $this->token($user), [
             'members' => $members,
+            'national_code' => $nationalCode,
             'app_version' => '1.1.106',
         ]);
+    }
+
+    /** Only the first member, the person the card is issued to, gives a national code. */
+    public function test_the_first_members_national_code_is_required_and_checked(): void
+    {
+        $user = $this->makeUser();
+
+        $this->submit($user, ['علی رضایی', 'مریم احمدی'], null)
+            ->assertJsonPath('status', 422)
+            ->assertJsonPath('errors.0', 'کد ملی عضو اول (صاحب کارت) را وارد کنید.');
+        $this->submit($user, ['علی رضایی'], '1234567890')
+            ->assertJsonPath('status', 422)
+            ->assertJsonPath('errors.0', 'کد ملی عضو اول (صاحب کارت) معتبر نیست.');
+        $this->assertSame(0, MembershipCard::count());
+
+        // Persian digits are accepted; the other members need nothing but a name.
+        $this->submit($user, ['علی رضایی', 'مریم احمدی', 'سارا رضایی'], '۰۰۱۲۳۴۵۶۷۹')
+            ->assertJsonPath('status', 201)
+            ->assertJsonPath('card.national_code', '0012345679');
+        $this->assertSame('0012345679', MembershipCard::sole()->national_code);
+    }
+
+    public function test_admin_sees_and_can_search_the_national_code(): void
+    {
+        $user = $this->makeUser();
+        $this->submit($user, ['علی رضایی', 'مریم احمدی']);
+        $card = MembershipCard::sole();
+
+        $admin = new \App\Models\Admin();
+        $admin->first_name = 'مدیر';
+        $admin->last_name = 'تست';
+        $admin->mobile = '09121234567';
+        $admin->email = 'admin@test.local';
+        $admin->password = \Illuminate\Support\Facades\Hash::make('admin12345');
+        $admin->save();
+
+        $this->actingAs($admin, 'admin')->get(route('showMembershipCardInAdminPanel', $card->id))
+            ->assertOk()
+            ->assertSee('کد ملی صاحب کارت')
+            ->assertSee('0012345679');
+        $this->actingAs($admin, 'admin')->get(route('showMembershipCardsInAdminPanel', ['q' => '0012345679']))
+            ->assertOk()
+            ->assertSee('علی رضایی');
     }
 
     public function test_current_returns_no_card_for_a_new_user(): void

@@ -16,6 +16,10 @@ class AdminNotificationController extends Controller
         $notification->read_at = Carbon::now();
         $notification->save();
 
+        if ($notification->isAboutContract()) {
+            return redirect()->route('showEContractInAdminPanel', $notification->e_contract_id);
+        }
+
         return redirect()->route('showExpiringAds', [
             'filter' => 'doFilter',
             'interval_days' => $notification->daysLeft() < 0 ? 'expired' : AdminNotification::EXPIRING_ADS_DAYS,

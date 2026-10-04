@@ -11,7 +11,7 @@
                             <li class="{{ $status == $key ? 'active' : '' }}">
                                 <a href="{{ route('showEContractsInAdminPanel', ['status' => $key, 'q' => request('q')]) }}">
                                     {{ $label }}
-                                    <span class="badge {{ $key == 'pending' ? 'badge-danger' : '' }}">{{ $counts[$key] ?? 0 }}</span>
+                                    <span class="badge {{ in_array($key, \App\Models\EContract::NEEDS_ADMIN, true) ? 'badge-danger' : '' }}">{{ $counts[$key] ?? 0 }}</span>
                                 </a>
                             </li>
                         @endforeach
@@ -72,18 +72,16 @@
                                         <td>{{ \App\Models\EContract::durationLabel($contract->duration_months) }}</td>
                                         <td>{{ \App\Support\JalaliDate::fromTimestamp($contract->created_at, 'Y/m/d - H:i') }}</td>
                                         <td>
-                                            @if($contract->status == 'pending')
-                                                <span class="label label-warning">{{ $contract->statusLabel() }}</span>
-                                            @elseif($contract->status == 'approved')
-                                                <span class="label label-success">{{ $contract->statusLabel() }}</span>
-                                            @else
-                                                <span class="label label-danger">{{ $contract->statusLabel() }}</span>
+                                            @php($labelClass = ['pending' => 'warning', 'awaiting_payment' => 'info', 'payment_submitted' => 'primary', 'approved' => 'success'][$contract->status] ?? 'danger')
+                                            <span class="label label-{{ $labelClass }}">{{ $contract->statusLabel() }}</span>
+                                            @if($contract->status == 'approved' && $contract->billingLabel())
+                                                <br><small class="text-muted">{{ $contract->billingLabel() }}{{ $contract->isPaid() ? ' - ' . $contract->formattedAmount() . ' تومان' : '' }}</small>
                                             @endif
                                         </td>
                                         <td>
                                             <a href="{{ route('showEContractInAdminPanel', $contract->id) }}"
                                                class="btn btn-primary btn-xs">
-                                                {{ $contract->status == 'pending' ? 'بررسی قرارداد' : 'مشاهده قرارداد' }}
+                                                {{ in_array($contract->status, \App\Models\EContract::NEEDS_ADMIN, true) ? 'بررسی قرارداد' : 'مشاهده قرارداد' }}
                                             </a>
                                         </td>
                                     </tr>

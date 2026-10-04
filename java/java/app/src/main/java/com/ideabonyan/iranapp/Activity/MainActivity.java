@@ -87,7 +87,7 @@ public class MainActivity extends AppCompatActivity implements Get_Insert_Edit_D
     int REQUEST_ID_MULTIPLE_PERMISSIONS = 0;
     LinearLayout menuBTN, favoritesBTN, pishkhanBTN, newsBTN, kasbokarBTN, lin_big;
     ImageView menuIMG, favoritesIMG, pishkhanIMG, newsIMG, kasbokarIMG;
-    TextView menuTXT, favoritesTXT, pishkhanTXT, pishkhanTXT2, pishkhanTXT1, newsTXT, kasbokarTXT;
+    TextView menuTXT, favoritesTXT, pishkhanTXT, newsTXT, kasbokarTXT;
     Context context;
     Toolbar toolbar;
     DrawerLayout drawerLayout;
@@ -208,8 +208,6 @@ public class MainActivity extends AppCompatActivity implements Get_Insert_Edit_D
         menuTXT = (TextView) findViewById(R.id.menuTXT);
         favoritesTXT = (TextView) findViewById(R.id.favoritesTXT);
         pishkhanTXT = (TextView) findViewById(R.id.pishkhanTXT);
-        pishkhanTXT1 = (TextView) findViewById(R.id.pishkhanTXT1);
-        pishkhanTXT2 = (TextView) findViewById(R.id.pishkhanTXT2);
         newsTXT = (TextView) findViewById(R.id.newsTXT);
         kasbokarTXT = (TextView) findViewById(R.id.kasbokarTXT);
 
@@ -469,8 +467,6 @@ public class MainActivity extends AppCompatActivity implements Get_Insert_Edit_D
                 menuTXT.setTextColor(ContextCompat.getColor(context, R.color.home_nav_selected));
                 favoritesTXT.setTextColor(ContextCompat.getColor(context, R.color.home_nav_icon));
                 pishkhanTXT.setTextColor(ContextCompat.getColor(context, R.color.home_nav_icon));
-                pishkhanTXT2.setTextColor(ContextCompat.getColor(context, R.color.home_nav_icon));
-                pishkhanTXT1.setTextColor(ContextCompat.getColor(context, R.color.home_nav_icon));
                 newsTXT.setTextColor(ContextCompat.getColor(context, R.color.home_nav_icon));
                 kasbokarTXT.setTextColor(ContextCompat.getColor(context, R.color.home_nav_icon));
             }
@@ -491,8 +487,6 @@ public class MainActivity extends AppCompatActivity implements Get_Insert_Edit_D
                 menuTXT.setTextColor(ContextCompat.getColor(context, R.color.home_nav_icon));
                 favoritesTXT.setTextColor(ContextCompat.getColor(context, R.color.home_nav_selected));
                 pishkhanTXT.setTextColor(ContextCompat.getColor(context, R.color.home_nav_icon));
-                pishkhanTXT2.setTextColor(ContextCompat.getColor(context, R.color.home_nav_icon));
-                pishkhanTXT1.setTextColor(ContextCompat.getColor(context, R.color.home_nav_icon));
                 newsTXT.setTextColor(ContextCompat.getColor(context, R.color.home_nav_icon));
                 kasbokarTXT.setTextColor(ContextCompat.getColor(context, R.color.home_nav_icon));
             }
@@ -512,8 +506,6 @@ public class MainActivity extends AppCompatActivity implements Get_Insert_Edit_D
                 menuTXT.setTextColor(ContextCompat.getColor(context, R.color.home_nav_icon));
                 favoritesTXT.setTextColor(ContextCompat.getColor(context, R.color.home_nav_icon));
                 pishkhanTXT.setTextColor(ContextCompat.getColor(context, R.color.home_nav_selected));
-                pishkhanTXT2.setTextColor(ContextCompat.getColor(context, R.color.home_nav_selected));
-                pishkhanTXT1.setTextColor(ContextCompat.getColor(context, R.color.home_nav_selected));
                 newsTXT.setTextColor(ContextCompat.getColor(context, R.color.home_nav_icon));
                 kasbokarTXT.setTextColor(ContextCompat.getColor(context, R.color.home_nav_icon));
             }
@@ -533,8 +525,6 @@ public class MainActivity extends AppCompatActivity implements Get_Insert_Edit_D
                 menuTXT.setTextColor(ContextCompat.getColor(context, R.color.home_nav_icon));
                 favoritesTXT.setTextColor(ContextCompat.getColor(context, R.color.home_nav_icon));
                 pishkhanTXT.setTextColor(ContextCompat.getColor(context, R.color.home_nav_icon));
-                pishkhanTXT2.setTextColor(ContextCompat.getColor(context, R.color.home_nav_icon));
-                pishkhanTXT1.setTextColor(ContextCompat.getColor(context, R.color.home_nav_icon));
                 newsTXT.setTextColor(ContextCompat.getColor(context, R.color.home_nav_selected));
                 kasbokarTXT.setTextColor(ContextCompat.getColor(context, R.color.home_nav_icon));
             }
@@ -554,8 +544,6 @@ public class MainActivity extends AppCompatActivity implements Get_Insert_Edit_D
                 menuTXT.setTextColor(ContextCompat.getColor(context, R.color.home_nav_icon));
                 favoritesTXT.setTextColor(ContextCompat.getColor(context, R.color.home_nav_icon));
                 pishkhanTXT.setTextColor(ContextCompat.getColor(context, R.color.home_nav_icon));
-                pishkhanTXT2.setTextColor(ContextCompat.getColor(context, R.color.home_nav_icon));
-                pishkhanTXT1.setTextColor(ContextCompat.getColor(context, R.color.home_nav_icon));
                 newsTXT.setTextColor(ContextCompat.getColor(context, R.color.home_nav_icon));
                 kasbokarTXT.setTextColor(ContextCompat.getColor(context, R.color.home_nav_selected));
             }

@@ -14,6 +14,7 @@ use App\Http\Controllers\CityController;
 use App\Http\Controllers\CommonController;
 use App\Http\Controllers\CylinderVolumesController;
 use App\Http\Controllers\EContractController;
+use App\Http\Controllers\EContractTemplateController;
 use App\Http\Controllers\InstallReportController;
 use App\Http\Controllers\PhoneBookController;
 use App\Http\Controllers\MembershipCardController;
@@ -209,9 +210,17 @@ Route::group( [ 'prefix' => 'admin' ] , function () {
 		Route::delete( '/phone-book' , [PhoneBookController::class, 'clear'] )->name( 'clearPhoneBookInAdminPanel' );
 
 		Route::get( '/e-contracts' , [EContractController::class, 'showListInAdminPanel'] )->name( 'showEContractsInAdminPanel' );
-		Route::get( '/e-contracts/{contract}' , [EContractController::class, 'showInAdminPanel'] )->name( 'showEContractInAdminPanel' );
+		// Before /e-contracts/{contract}, so "template" is not taken for a contract id.
+		Route::get( '/e-contracts/template' , [EContractTemplateController::class, 'edit'] )->name( 'showEContractTemplateEditor' );
+		Route::put( '/e-contracts/template' , [EContractTemplateController::class, 'update'] )->name( 'saveEContractTemplate' );
+		Route::get( '/e-contracts/template/versions/{version}' , [EContractTemplateController::class, 'showVersion'] )->name( 'showEContractTemplateVersion' );
+		Route::get( '/e-contracts/{contract}' , [EContractController::class, 'showInAdminPanel'] )->whereNumber( 'contract' )->name( 'showEContractInAdminPanel' );
 		Route::put( '/e-contracts/{contract}/approve' , [EContractController::class, 'approve'] )->name( 'approveEContract' );
 		Route::put( '/e-contracts/{contract}/reject' , [EContractController::class, 'reject'] )->name( 'rejectEContract' );
+		Route::put( '/e-contracts/{contract}/request-payment' , [EContractController::class, 'requestPayment'] )->name( 'requestEContractPayment' );
+		Route::put( '/e-contracts/{contract}/confirm-payment' , [EContractController::class, 'confirmPayment'] )->name( 'confirmEContractPayment' );
+		Route::put( '/e-contracts/{contract}/reject-payment' , [EContractController::class, 'rejectPayment'] )->name( 'rejectEContractPayment' );
+		Route::get( '/e-contracts-active' , [EContractController::class, 'showActiveInAdminPanel'] )->name( 'showActiveEContractsInAdminPanel' );
 
 		Route::get( '/membership-cards' , [MembershipCardController::class, 'showListInAdminPanel'] )->name( 'showMembershipCardsInAdminPanel' );
 		Route::get( '/membership-cards/{card}' , [MembershipCardController::class, 'showInAdminPanel'] )->name( 'showMembershipCardInAdminPanel' );
