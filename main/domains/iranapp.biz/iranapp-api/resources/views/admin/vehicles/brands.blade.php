@@ -74,25 +74,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-xs-12">
-                                    <ul class="pagination pagination-split">
-                                        @if($brands->currentPage() != 1)
-                                            <li>
-                                                <a href="{{ $brands->previousPageUrl() }}"><i
-                                                            class="fa fa-angle-left"></i></a>
-                                            </li>
-                                        @endif
-                                        @for($i =1 ; $i <= $brands->lastPage() ; $i++)
-                                            <li class="{{ $i == $brands->currentPage() ? 'active' : '' }}">
-                                                <a href="{{ $brands->url($i) }}">{{ $i }}</a>
-                                            </li>
-                                        @endfor
-                                        @if($brands->currentPage() != $brands->lastPage())
-                                            <li>
-                                                <a href="{{ $brands->nextPageUrl() }}"><i
-                                                            class="fa fa-angle-right"></i></a>
-                                            </li>
-                                        @endif
-                                    </ul>
+                                    {{ $brands->withQueryString()->links() }}
                                 </div>
                             </div>
                         </div>

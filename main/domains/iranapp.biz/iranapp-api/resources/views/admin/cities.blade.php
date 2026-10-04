@@ -81,25 +81,7 @@
                             @if(count($cities) > 0)
                                 <div class="row">
                                     <div class="col-xs-12">
-                                        <ul class="pagination pagination-split">
-                                            @if($cities->currentPage() != 1)
-                                                <li>
-                                                    <a href="{{ $cities->previousPageUrl() }}"><i
-                                                                class="fa fa-angle-left"></i></a>
-                                                </li>
-                                            @endif
-                                            @for($i =1 ; $i <= $cities->lastPage() ; $i++)
-                                                <li class="{{ $i == $cities->currentPage() ? 'active' : '' }}">
-                                                    <a href="{{ $cities->url($i) }}">{{ $i }}</a>
-                                                </li>
-                                            @endfor
-                                            @if($cities->currentPage() != $cities->lastPage())
-                                                <li>
-                                                    <a href="{{ $cities->nextPageUrl() }}"><i
-                                                                class="fa fa-angle-right"></i></a>
-                                                </li>
-                                            @endif
-                                        </ul>
+                                        {{ $cities->withQueryString()->links() }}
                                     </div>
                                 </div>
                             @endif

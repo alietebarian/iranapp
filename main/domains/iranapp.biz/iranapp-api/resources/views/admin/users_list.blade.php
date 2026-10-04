@@ -72,7 +72,7 @@
                             <div class="alert alert-success text-center">کاربری یافت نشد!</div>
                         @endif
                     </div>
-                    {{ $list->links() }}
+                    {{ $list->withQueryString()->links() }}
                 </div>
             </div>
         </div>

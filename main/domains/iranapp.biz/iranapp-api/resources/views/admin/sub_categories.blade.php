@@ -119,25 +119,7 @@
                             @if(count($sub_categories) > 0)
                                 <div class="row">
                                     <div class="col-xs-12">
-                                        <ul class="pagination pagination-split">
-                                            @if($sub_categories->currentPage() != 1)
-                                                <li>
-                                                    <a href="{{ $sub_categories->previousPageUrl() }}"><i
-                                                                class="fa fa-angle-left"></i></a>
-                                                </li>
-                                            @endif
-                                            @for($i =1 ; $i <= $sub_categories->lastPage() ; $i++)
-                                                <li class="{{ $i == $sub_categories->currentPage() ? 'active' : '' }}">
-                                                    <a href="{{ $sub_categories->url($i) }}">{{ $i }}</a>
-                                                </li>
-                                            @endfor
-                                            @if($sub_categories->currentPage() != $sub_categories->lastPage())
-                                                <li>
-                                                    <a href="{{ $sub_categories->nextPageUrl() }}"><i
-                                                                class="fa fa-angle-right"></i></a>
-                                                </li>
-                                            @endif
-                                        </ul>
+                                        {{ $sub_categories->withQueryString()->links() }}
                                     </div>
                                 </div>
                             @endif

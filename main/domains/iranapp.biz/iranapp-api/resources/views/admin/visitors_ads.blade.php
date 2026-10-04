@@ -200,7 +200,7 @@
                             </div>
                         @endif
                     </form>
-                    {{ $ads->links() }}
+                    {{ $ads->withQueryString()->links() }}
                 </div>
             </div>
         </div>

@@ -60,37 +60,7 @@
                         </table>
                     </div>
 
-                    <ul class="pagination pagination-split">
-                        @if($ads->currentPage() != 1)
-                            <li>
-                                <a href="{{ $ads->previousPageUrl() }}"><i class="fa fa-angle-left"></i></a>
-                            </li>
-                        @endif
-                        @php
-                            $ellipsisWrote = false;
-                        @endphp
-                        @for($i = 1 ; $i <= $ads->lastPage() ; $i++)
-                            @if( ($i >= 1 && $i <=3) || ( $i <= $ads->lastPage() && $i >= $ads->lastPage() - 2) || ($i >= $ads->currentPage() && $i <= $ads->currentPage() + 2) || ($i <= $ads->currentPage() &&  $i >= $ads->currentPage() - 2) )
-                                <li class="{{ $i == $ads->currentPage()  ? 'active' : '' }}">
-                                    <a href="{{ $ads->url($i) }}">{{ $i }}</a>
-                                </li>
-                            @else
-                                @if(!$ellipsisWrote)
-                                    <li>
-                                        <a>...</a>
-                                    </li>
-                                    @php
-                                        $ellipsisWrote = true;
-                                    @endphp
-                                @endif
-                            @endif
-                        @endfor
-                        @if($ads->hasMorePages())
-                            <li>
-                                <a href="{{ $ads->nextPageUrl() }}"><i class="fa fa-angle-right"></i></a>
-                            </li>
-                        @endif
-                    </ul>
+                    {{ $ads->withQueryString()->links() }}
 
                 </div>
             </div>

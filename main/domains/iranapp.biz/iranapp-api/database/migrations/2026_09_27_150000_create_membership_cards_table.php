@@ -18,7 +18,7 @@ return new class extends Migration
         Schema::create('membership_cards', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->unsigned()->unique();
-            // 1394001003631900, 1394001003631901, ... (see MembershipCard::FIRST_SERIAL).
+            // 1394001013631900, 1394001013631901, ... (see MembershipCard::FIRST_SERIAL).
             $table->unsignedBigInteger('serial_number')->unique();
             $table->enum('status', ['pending', 'approved', 'rejected'])->default('pending');
 

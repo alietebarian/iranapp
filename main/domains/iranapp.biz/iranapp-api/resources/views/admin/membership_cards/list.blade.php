@@ -100,7 +100,7 @@
                             <div class="alert alert-success text-center">درخواستی یافت نشد!</div>
                         @endif
                     </div>
-                    {{ $list->links() }}
+                    {{ $list->withQueryString()->links() }}
                 </div>
             </div>
         </div>

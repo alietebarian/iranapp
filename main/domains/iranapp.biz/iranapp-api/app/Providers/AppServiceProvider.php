@@ -7,6 +7,7 @@ use App\Models\EContract;
 use App\Models\MembershipCard;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\QueryException;
+use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\View;
@@ -27,6 +28,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        // ->links() everywhere (only the admin panel renders pagination) uses the panel's own
+        // RTL design; Laravel's default is Tailwind markup the Bootstrap 3 theme does not style.
+        Paginator::defaultView('admin.partials.pagination');
+        Paginator::defaultSimpleView('admin.partials.pagination');
+
         // Without a timeout, an FCM request Google never answers (as can happen from the Iranian
         // host) hangs until PHP's execution-time limit. FIREBASE_HTTP_CLIENT_TIMEOUT overrides this.
         $firebaseTimeout = 'firebase.projects.' . config('firebase.default') . '.http_client_options.timeout';

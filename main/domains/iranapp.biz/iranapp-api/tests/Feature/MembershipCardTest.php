@@ -121,6 +121,24 @@ class MembershipCardTest extends TestCase
         $this->getJson('/api/membership-card')->assertJsonPath('error', 'token_expired');
     }
 
+    /** Serials issued with the "0363" typo become "1363"; the rest of each number is unchanged. */
+    public function test_the_serial_typo_migration_moves_existing_cards_and_new_ones_follow(): void
+    {
+        $this->submit($this->makeUser('09120000001'), ['عضو یکم']);
+        $this->submit($this->makeUser('09120000002'), ['عضو دوم']);
+        // As they were issued before the fix.
+        MembershipCard::query()->update(['serial_number' => \Illuminate\Support\Facades\DB::raw('serial_number - 10000000')]);
+        $this->assertSame(['1394 0010 0363 1900', '1394 0010 0363 1901'],
+            MembershipCard::orderBy('serial_number')->get()->map->formattedSerial()->all());
+
+        (require database_path('migrations/2026_10_04_120000_fix_membership_card_serial_typo.php'))->up();
+
+        $this->assertSame(['1394 0010 1363 1900', '1394 0010 1363 1901'],
+            MembershipCard::orderBy('serial_number')->get()->map->formattedSerial()->all());
+        $this->submit($this->makeUser('09120000003'), ['عضو سوم'])
+            ->assertJsonPath('card.serial_number', '1394 0010 1363 1902');
+    }
+
     public function test_a_request_is_stored_as_pending_with_today_and_a_one_year_expiry(): void
     {
         $user = $this->makeUser();
@@ -129,7 +147,7 @@ class MembershipCardTest extends TestCase
             ->assertOk()
             ->assertJsonPath('status', 201)
             ->assertJsonPath('card.status', 'pending')
-            ->assertJsonPath('card.serial_number', '1394 0010 0363 1900')
+            ->assertJsonPath('card.serial_number', '1394 0010 1363 1900')
             ->assertJsonPath('card.members', ['علی رضایی', 'مریم احمدی']);
 
         $card = MembershipCard::sole();
@@ -144,9 +162,9 @@ class MembershipCardTest extends TestCase
 
     public function test_each_new_user_gets_the_next_serial(): void
     {
-        $this->submit($this->makeUser('09120000001'), ['عضو یکم'])->assertJsonPath('card.serial_number', '1394 0010 0363 1900');
-        $this->submit($this->makeUser('09120000002'), ['عضو دوم'])->assertJsonPath('card.serial_number', '1394 0010 0363 1901');
-        $this->submit($this->makeUser('09120000003'), ['عضو سوم'])->assertJsonPath('card.serial_number', '1394 0010 0363 1902');
+        $this->submit($this->makeUser('09120000001'), ['عضو یکم'])->assertJsonPath('card.serial_number', '1394 0010 1363 1900');
+        $this->submit($this->makeUser('09120000002'), ['عضو دوم'])->assertJsonPath('card.serial_number', '1394 0010 1363 1901');
+        $this->submit($this->makeUser('09120000003'), ['عضو سوم'])->assertJsonPath('card.serial_number', '1394 0010 1363 1902');
     }
 
     public function test_one_to_six_members_are_accepted(): void
@@ -230,7 +248,7 @@ class MembershipCardTest extends TestCase
         $this->submit($user, ['علی رضایی', 'مریم احمدی'])
             ->assertJsonPath('status', 201)
             ->assertJsonPath('card.status', 'pending')
-            ->assertJsonPath('card.serial_number', '1394 0010 0363 1901')
+            ->assertJsonPath('card.serial_number', '1394 0010 1363 1901')
             ->assertJsonPath('card.rejection_reason', null);
 
         $card->refresh();
@@ -285,18 +303,18 @@ class MembershipCardTest extends TestCase
             ->get(route('showMembershipCardsInAdminPanel'))
             ->assertOk()
             ->assertSee('کارت عضویت')
-            ->assertSee('1394 0010 0363 1900')
+            ->assertSee('1394 0010 1363 1900')
             ->assertSee('بررسی درخواست');
 
         $this->actingAs($admin, 'admin')
             ->get(route('showMembershipCardsInAdminPanel', ['status' => 'all', 'q' => 'مریم']))
-            ->assertSee('1394 0010 0363 1900');
+            ->assertSee('1394 0010 1363 1900');
         $this->actingAs($admin, 'admin')
             ->get(route('showMembershipCardsInAdminPanel', ['status' => 'all', 'q' => '1900']))
-            ->assertSee('1394 0010 0363 1900');
+            ->assertSee('1394 0010 1363 1900');
         $this->actingAs($admin, 'admin')
             ->get(route('showMembershipCardsInAdminPanel', ['status' => 'all', 'q' => 'ناموجود']))
-            ->assertDontSee('1394 0010 0363 1900');
+            ->assertDontSee('1394 0010 1363 1900');
 
         $this->actingAs($admin, 'admin')
             ->get(route('showMembershipCardInAdminPanel', $card->id))

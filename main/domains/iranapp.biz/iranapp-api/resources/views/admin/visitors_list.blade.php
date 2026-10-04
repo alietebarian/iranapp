@@ -85,37 +85,7 @@
                         @endif
                     </div>
                     @if(count($visitors) > 0 )
-                        <ul class="pagination pagination-split">
-                            @if($visitors->currentPage() != 1)
-                                <li>
-                                    <a href="{{ $visitors->previousPageUrl() }}"><i class="fa fa-angle-left"></i></a>
-                                </li>
-                            @endif
-                            @php
-                                $ellipsisWrote = false;
-                            @endphp
-                            @for($i = 1 ; $i <= $visitors->lastPage() ; $i++)
-                                @if( ($i >= 1 && $i <=3) || ( $i <= $visitors->lastPage() && $i >= $visitors->lastPage() - 2) || ($i >= $visitors->currentPage() && $i <= $visitors->currentPage() + 2) || ($i <= $visitors->currentPage() &&  $i >= $visitors->currentPage() - 2) )
-                                    <li class="{{ $i == $visitors->currentPage()  ? 'active' : '' }}">
-                                        <a href="{{ $visitors->url($i) }}">{{ $i }}</a>
-                                    </li>
-                                @else
-                                    @if(!$ellipsisWrote)
-                                        <li>
-                                            <a>...</a>
-                                        </li>
-                                        @php
-                                            $ellipsisWrote = true;
-                                        @endphp
-                                    @endif
-                                @endif
-                            @endfor
-                            @if($visitors->hasMorePages())
-                                <li>
-                                    <a href="{{ $visitors->nextPageUrl() }}"><i class="fa fa-angle-right"></i></a>
-                                </li>
-                            @endif
-                        </ul>
+                        {{ $visitors->withQueryString()->links() }}
                     @endif
                 </div>
             </div>

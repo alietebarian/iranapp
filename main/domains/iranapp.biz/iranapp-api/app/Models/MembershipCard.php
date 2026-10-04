@@ -29,8 +29,8 @@ class MembershipCard extends Model
     /** Printed at the top of the card screen in the app. */
     const TITLE = 'کارت هدیه معرفی به مراکز طرف قرارداد';
 
-    /** "1394 0010 0363 1900": the first card's serial; each new user's card is the next number. */
-    const FIRST_SERIAL = 1394001003631900;
+    /** "1394 0010 1363 1900": the first card's serial; each new user's card is the next number. */
+    const FIRST_SERIAL = 1394001013631900;
 
     const MIN_MEMBERS = 1;
     const MAX_MEMBERS = 6;
@@ -124,7 +124,7 @@ class MembershipCard extends Model
         return self::STATUS_LABELS[$this->status] ?? $this->status;
     }
 
-    /** "1394 0010 0363 1900" */
+    /** "1394 0010 1363 1900" */
     public static function formatSerial($serial): string
     {
         return trim(chunk_split((string) $serial, 4, ' '));

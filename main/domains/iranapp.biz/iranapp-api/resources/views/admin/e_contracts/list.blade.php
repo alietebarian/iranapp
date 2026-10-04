@@ -92,7 +92,7 @@
                             <div class="alert alert-success text-center">قراردادی یافت نشد!</div>
                         @endif
                     </div>
-                    {{ $list->links() }}
+                    {{ $list->withQueryString()->links() }}
                 </div>
             </div>
         </div>

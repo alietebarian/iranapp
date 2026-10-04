@@ -31,37 +31,7 @@
                         @endif
                     </div>
                     @if(count($list) > 0 )
-                        <ul class="pagination pagination-split">
-                            @if($list->currentPage() != 1)
-                                <li>
-                                    <a href="{{ $list->previousPageUrl() }}"><i class="fa fa-angle-left"></i></a>
-                                </li>
-                            @endif
-                            @php
-                                $ellipsisWrote = false;
-                            @endphp
-                            @for($i = 1 ; $i <= $list->lastPage() ; $i++)
-                                @if( ($i >= 1 && $i <=3) || ( $i <= $list->lastPage() && $i >= $list->lastPage() - 2) || ($i >= $list->currentPage() && $i <= $list->currentPage() + 2) || ($i <= $list->currentPage() &&  $i >= $list->currentPage() - 2) )
-                                    <li class="{{ $i == $list->currentPage()  ? 'active' : '' }}">
-                                        <a href="{{ $list->url($i) }}">{{ $i }}</a>
-                                    </li>
-                                @else
-                                    @if(!$ellipsisWrote)
-                                        <li>
-                                            <a>...</a>
-                                        </li>
-                                        @php
-                                            $ellipsisWrote = true;
-                                        @endphp
-                                    @endif
-                                @endif
-                            @endfor
-                            @if($list->hasMorePages())
-                                <li>
-                                    <a href="{{ $list->nextPageUrl() }}"><i class="fa fa-angle-right"></i></a>
-                                </li>
-                            @endif
-                        </ul>
+                        {{ $list->withQueryString()->links() }}
                     @endif
                 </div>
             </div>

@@ -129,7 +129,7 @@
                             </div>
                         @endif
                     </div>
-                    {{ $list->links() }}
+                    {{ $list->withQueryString()->links() }}
 
                     @if($total > 0)
                         <form action="{{ route('clearPhoneBookInAdminPanel') }}" method="post" style="margin-top: 15px;"
