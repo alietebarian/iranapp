@@ -71,6 +71,8 @@ public class WithDiscounts extends Fragment implements Get_Insert_Edit_Data3, Lo
     LinearLayout installStatsCard;
     TextView installStatsTotal, installStatsMonth, installStatsToday;
     ExtendedFloatingActionButton newAdFab;
+    View cityBar;
+    TextView cityNameText, cityActionText;
 
     UserSessionManager userSessionManager;
     int time=0;
@@ -111,7 +113,11 @@ public class WithDiscounts extends Fragment implements Get_Insert_Edit_Data3, Lo
         installStatsMonth = (TextView) view.findViewById(R.id.installStatsMonth);
         installStatsToday = (TextView) view.findViewById(R.id.installStatsToday);
         newAdFab = (ExtendedFloatingActionButton) view.findViewById(R.id.homeNewAdFab);
+        cityBar = view.findViewById(R.id.homeCityBar);
+        cityNameText = (TextView) view.findViewById(R.id.homeCityName);
+        cityActionText = (TextView) view.findViewById(R.id.homeCityAction);
 
+        setupCityBar();
         setupNewAdFab();
         // Registered once: it reads the current datas on every click.
         recyclerViewOnClickListener();
@@ -160,6 +166,40 @@ public class WithDiscounts extends Fragment implements Get_Insert_Edit_Data3, Lo
      * The «ثبت آگهی» button: does what «درج آگهی» of the menu tab does, and shrinks to its icon
      * while the grid scrolls down so it covers less of the tiles.
      */
+    /**
+     * New users get a highlighted «انتخاب شهر» prompt here instead of having to find the city
+     * setting in the menu tab. SplashScreenActivity fills in a default city id without a name,
+     * so only a stored name means the user has picked a city in CityPickerDialogFragment.
+     */
+    private void setupCityBar() {
+        String cityName = userSessionManager.getCityName();
+        boolean hasChosenCity = !userSessionManager.getCityInfo().equals("0")
+                && cityName != null && !cityName.equals("0") && !cityName.isEmpty();
+
+        if (hasChosenCity) {
+            String provinceName = userSessionManager.getProvinceName();
+            boolean hasProvince = provinceName != null && !provinceName.equals("0") && !provinceName.equals(cityName);
+            cityNameText.setText("شهر شما: " + cityName + (hasProvince ? "، " + provinceName : ""));
+            cityActionText.setText("تغییر");
+            cityBar.setBackgroundResource(R.drawable.bg_home_tile);
+        } else {
+            cityNameText.setText("شهر خود را انتخاب کنید تا دسته بندی های شهرتان نمایش داده شود");
+            cityActionText.setText("انتخاب شهر");
+            cityBar.setBackgroundResource(R.drawable.bg_home_tile_accent);
+        }
+
+        cityBar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // The picker calls back the last bound screen; make sure that is this one.
+                CityPickerDialogFragment.binddata(WithDiscounts.this);
+                CityPickerDialogFragment cityPickerDialogFragment = new CityPickerDialogFragment();
+                cityPickerDialogFragment.setContext(getActivity());
+                cityPickerDialogFragment.show(getChildFragmentManager(), "ProvincePickerFragment");
+            }
+        });
+    }
+
     private void setupNewAdFab() {
         try {
             newAdFab.setTypeface(Typeface.createFromAsset(getActivity().getAssets(), "IRANYekanRegularMobile(FaNum).ttf"));

@@ -16,6 +16,71 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+        <!-- City bar: opens the city picker. Before a city is chosen there are no categories,
+             so WithDiscounts gives it the accent border and the «انتخاب شهر» prompt. -->
+        <LinearLayout
+            android:id="@+id/homeCityBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginRight="12dp"
+            android:background="@drawable/bg_home_tile"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:gravity="center_vertical"
+            android:minHeight="52dp"
+            android:paddingLeft="12dp"
+            android:paddingTop="8dp"
+            android:paddingRight="12dp"
+            android:paddingBottom="8dp">
+
+            <ImageView
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:contentDescription="@null"
+                android:src="@drawable/ic_chevron_left"
+                android:tint="@color/home_accent" />
+
+            <com.ideabonyan.iranapp.Components.MyTextView
+                android:id="@+id/homeCityAction"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="2dp"
+                android:text="انتخاب شهر"
+                android:textColor="@color/home_accent"
+                android:textSize="13sp" />
+
+            <com.ideabonyan.iranapp.Components.MyTextView
+                android:id="@+id/homeCityName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:ellipsize="end"
+                android:gravity="right"
+                android:maxLines="2"
+                android:text="شهر خود را انتخاب کنید تا دسته بندی های شهرتان نمایش داده شود"
+                android:textColor="@color/home_text"
+                android:textSize="13sp" />
+
+            <FrameLayout
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:background="@drawable/bg_icon_plate_dark">
+
+                <ImageView
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:layout_gravity="center"
+                    android:contentDescription="@null"
+                    android:src="@drawable/ic_location_on_black_24dp"
+                    android:tint="@color/home_accent" />
+            </FrameLayout>
+        </LinearLayout>
+
         <!-- App install statistics; stays hidden until /app-stats/installs answers. -->
         <LinearLayout
             android:id="@+id/installStatsCard"
@@ -257,7 +322,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginRight="14dp"
                                 android:layout_weight="1"
-                                android:text="برای دیدن آگهی های شهرهای اطراف به تب «منو» بروید، و با زدن بر روی «تعیین موقعیت» شهر های اطراف خود را انتخاب کنید."
+                                android:text="برای دیدن آگهی های شهرهای اطراف، روی نوار شهر در بالای صفحه بزنید و شهر دیگری انتخاب کنید."
                                 android:textColor="@color/home_text_muted"
                                 android:textSize="12sp" />
 
