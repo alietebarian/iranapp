@@ -2,7 +2,9 @@ package com.ideabonyan.iranapp.Fragment.Dialogs;
 
 import android.app.Dialog;
 import android.app.DialogFragment;
+import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
@@ -22,7 +24,6 @@ import android.widget.ProgressBar;
 import com.android.volley.Request;
 import com.android.volley.VolleyError;
 import com.ideabonyan.iranapp.Interface.Get_Insert_Edit_Data;
-import com.ideabonyan.iranapp.Interface.SmsListener;
 import com.ideabonyan.iranapp.R;
 import com.ideabonyan.iranapp.Utils.Get_Volley_Call_Back;
 import com.ideabonyan.iranapp.Utils.ShowToast;
@@ -83,44 +84,56 @@ public class ForgotPassDialog extends DialogFragment implements Get_Insert_Edit_
         passTIL = (TextInputLayout) view.findViewById(R.id.forgotPassDialogNewPassEdtP);
 
         onClicks();
-        try {
-            smsRecive();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
 
         return view;
     }
 
 
-    private final SmsListener smsListener = new SmsListener() {
-        @Override
-        public void messageReceived(String messageText) {
-            // Only while the code field is showing and no check is already in flight.
-            if (processState != 2 || !confirmCodeEDT.isEnabled()) return;
+    private SmsReceiver smsReceiver;
+    private Context smsContext;
 
-            String otp = SmsReceiver.extractCode(messageText, CODE_LENGTH);
-            if (otp == null) return;
-
-            confirmCodeEDT.setText(otp);
-
-            confirmationCode = otp;
-            sendConfirmationCode();
-            doBTN.setVisibility(View.INVISIBLE);
-            progressBar.setVisibility(View.VISIBLE);
-            doBTN.setClickable(false);
-            confirmCodeEDT.setEnabled(false);
-        }
-    };
-
+    // Started just before the code is requested; Play services shows that one SMS and asks the user.
     private void smsRecive() {
-        SmsReceiver.bindListener(smsListener);
-        SmsReceiver.requestPermissionIfNeeded(getActivity());
+        SmsReceiver.stop(smsContext, smsReceiver);
+        smsContext = getActivity();
+        smsReceiver = SmsReceiver.start(smsContext, new SmsReceiver.ConsentListener() {
+            @Override
+            public void onConsentIntent(Intent consentIntent) {
+                if (!isAdded()) return;
+                try {
+                    startActivityForResult(consentIntent, SmsReceiver.REQUEST_SMS_CONSENT);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode != SmsReceiver.REQUEST_SMS_CONSENT) return;
+
+        // Only while the code field is showing and no check is already in flight.
+        if (processState != 2 || !confirmCodeEDT.isEnabled()) return;
+
+        String otp = SmsReceiver.extractCode(SmsReceiver.messageFrom(resultCode, data), CODE_LENGTH);
+        if (otp == null) return;
+
+        confirmCodeEDT.setText(otp);
+
+        confirmationCode = otp;
+        sendConfirmationCode();
+        doBTN.setVisibility(View.INVISIBLE);
+        progressBar.setVisibility(View.VISIBLE);
+        doBTN.setClickable(false);
+        confirmCodeEDT.setEnabled(false);
     }
 
     @Override
     public void onDestroyView() {
-        SmsReceiver.unbindListener(smsListener);
+        SmsReceiver.stop(smsContext, smsReceiver);
+        smsReceiver = null;
         super.onDestroyView();
     }
 
@@ -173,6 +186,7 @@ public class ForgotPassDialog extends DialogFragment implements Get_Insert_Edit_
     }
 
     private void sendNumber() {
+        smsRecive();
 
         String url = StaticData.FORGOT_PASS_NUM;
         Map<String, String> params = new HashMap<String, String>();

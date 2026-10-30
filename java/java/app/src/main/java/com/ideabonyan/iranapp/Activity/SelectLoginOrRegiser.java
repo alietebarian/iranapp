@@ -58,10 +58,8 @@ public class SelectLoginOrRegiser extends AppCompatActivity {
 
         int sms = ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION);
         int locSvc = ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION);
-        int task = ContextCompat.checkSelfPermission(this, Manifest.permission.GET_TASKS);
         int camera = ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA);
         int read_external_storeg = ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE);
-        int RECEIVE_SMS = ContextCompat.checkSelfPermission(this, Manifest.permission.RECEIVE_SMS);
 
 
         List<String> listPermissionsNeeded = new ArrayList<>();
@@ -72,17 +70,11 @@ public class SelectLoginOrRegiser extends AppCompatActivity {
         if (locSvc != PackageManager.PERMISSION_GRANTED) {
             listPermissionsNeeded.add(Manifest.permission.ACCESS_COARSE_LOCATION);
         }
-        if (task != PackageManager.PERMISSION_GRANTED) {
-            listPermissionsNeeded.add(Manifest.permission.GET_TASKS);
-        }
         if (camera != PackageManager.PERMISSION_GRANTED) {
             listPermissionsNeeded.add(Manifest.permission.CAMERA);
         }
         if (read_external_storeg != PackageManager.PERMISSION_GRANTED) {
             listPermissionsNeeded.add(Manifest.permission.READ_EXTERNAL_STORAGE);
-        }
-        if (RECEIVE_SMS != PackageManager.PERMISSION_GRANTED) {
-            listPermissionsNeeded.add(Manifest.permission.RECEIVE_SMS);
         }
 
         if (!listPermissionsNeeded.isEmpty()) {

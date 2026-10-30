@@ -23,7 +23,6 @@ import com.ideabonyan.iranapp.Components.MyTextView;
 import com.ideabonyan.iranapp.Fragment.Dialogs.ChangeMobileDialog;
 import com.ideabonyan.iranapp.Interface.Get_Insert_Edit_Data;
 import com.ideabonyan.iranapp.Interface.LoginLogoutChangeListener;
-import com.ideabonyan.iranapp.Interface.SmsListener;
 import com.ideabonyan.iranapp.R;
 import com.ideabonyan.iranapp.UserData.User;
 import com.ideabonyan.iranapp.UserData.UserHelper;
@@ -72,26 +71,39 @@ public class ConfirmationActivity extends AppCompatActivity implements Get_Inser
         }
     }
 
-    private final SmsListener smsListener = new SmsListener() {
-        @Override
-        public void messageReceived(String messageText) {
-            String otp = SmsReceiver.extractCode(messageText, CODE_LENGTH);
-            if (otp == null) return;
+    private SmsReceiver smsReceiver;
 
-            codeEDT.setText(otp);
-            codeEDT.setSelection(otp.length());
-            doSendTheCode();
-        }
-    };
-
+    // Play services shows the one incoming SMS and asks the user before handing it over.
     private void smsRecive() {
-        SmsReceiver.bindListener(smsListener);
-        SmsReceiver.requestPermissionIfNeeded(this);
+        SmsReceiver.stop(this, smsReceiver);
+        smsReceiver = SmsReceiver.start(this, new SmsReceiver.ConsentListener() {
+            @Override
+            public void onConsentIntent(Intent consentIntent) {
+                try {
+                    startActivityForResult(consentIntent, SmsReceiver.REQUEST_SMS_CONSENT);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode != SmsReceiver.REQUEST_SMS_CONSENT) return;
+
+        String otp = SmsReceiver.extractCode(SmsReceiver.messageFrom(resultCode, data), CODE_LENGTH);
+        if (otp == null) return;
+
+        codeEDT.setText(otp);
+        codeEDT.setSelection(otp.length());
+        doSendTheCode();
     }
 
     @Override
     protected void onDestroy() {
-        SmsReceiver.unbindListener(smsListener);
+        SmsReceiver.stop(this, smsReceiver);
         super.onDestroy();
     }
 
@@ -135,6 +147,7 @@ public class ConfirmationActivity extends AppCompatActivity implements Get_Inser
                     ShowToast.success("به زودی کد فعال سازی جدید برای شما ارسال خواهد شد.", ConfirmationActivity.this);
 
                     isResendActive = false;
+                    smsRecive();
                     counter.setVisibility(View.VISIBLE);
                     resend.setBackgroundResource(R.drawable.confirmation_disabled_button);
                     runTimer();

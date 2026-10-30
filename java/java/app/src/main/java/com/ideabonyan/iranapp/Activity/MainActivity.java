@@ -727,7 +727,6 @@ public class MainActivity extends AppCompatActivity implements Get_Insert_Edit_D
 
         int sms = ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION);
         int locSvc = ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION);
-        int task = ContextCompat.checkSelfPermission(this, Manifest.permission.GET_TASKS);
         int camera = ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA);
         int read_external_storeg = ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE);
 
@@ -738,9 +737,6 @@ public class MainActivity extends AppCompatActivity implements Get_Insert_Edit_D
         }
         if (locSvc != PackageManager.PERMISSION_GRANTED) {
             listPermissionsNeeded.add(Manifest.permission.ACCESS_COARSE_LOCATION);
-        }
-        if (task != PackageManager.PERMISSION_GRANTED) {
-            listPermissionsNeeded.add(Manifest.permission.GET_TASKS);
         }
         if (camera != PackageManager.PERMISSION_GRANTED) {
             listPermissionsNeeded.add(Manifest.permission.CAMERA);

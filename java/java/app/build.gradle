@@ -82,6 +82,8 @@ dependencies {
     implementation 'com.squareup.picasso:picasso:2.8'
     implementation 'com.google.android.gms:play-services-maps:19.0.0'
     implementation 'com.google.android.gms:play-services-location:21.3.0'
+    // SMS User Consent API: reads the activation code without the RECEIVE_SMS permission.
+    implementation 'com.google.android.gms:play-services-auth-api-phone:18.1.0'
     implementation 'me.zhanghai.android.materialratingbar:library:1.0.2'
     implementation 'com.github.developer-shivam:Crescento:1.2.0'
     // NOTE: CanHub 4.x+ replaced the activity()/onActivityResult API used throughout this app
