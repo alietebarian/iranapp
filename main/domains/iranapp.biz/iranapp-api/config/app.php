@@ -123,4 +123,10 @@ return [
         'store' => env('APP_MAINTENANCE_STORE', 'database'),
     ],
 
+    // Kavenegar verify/lookup API, used by send_sms() in app/helpers.php for activation,
+    // password-reset and payment SMS.
+    'kaveh_negar' => [
+        'api_key' => env('KAVENEGAR_API_KEY'),
+    ],
+
 ];

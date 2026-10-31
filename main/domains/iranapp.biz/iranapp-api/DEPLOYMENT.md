@@ -82,6 +82,8 @@ MAIL_USERNAME=
 MAIL_PASSWORD=
 
 FIREBASE_CREDENTIALS=storage/app/firebase/service-account.json
+
+KAVENEGAR_API_KEY=  # کلید API کاوه‌نگار؛ بدون آن پیامک فعال‌سازی و فراموشی رمز ارسال نمی‌شود
 ```
 
 سپس:

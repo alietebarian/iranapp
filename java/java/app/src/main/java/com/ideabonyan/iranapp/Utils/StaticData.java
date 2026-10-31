@@ -18,14 +18,14 @@ public class StaticData {
 
 
 //    public static String DOMAIN = "http://192.168.1.4/gollac/public_html";http://
-    public static String DOMAIN = "http://10.0.2.2:8000";
+    public static String DOMAIN = "http://iranapp.biz";
 //    public static String DOMAIN = "http://asreesfahanapp.com";
     public static String DOMAIN_WITH_API = DOMAIN + "/api";
 
-    static public String REGISTER = DOMAIN_WITH_API + "/register" +                   "?first_name=فرهاد&last_name=اشتری&password=123456&fcm_token=asdfasdf&mobile=09139665377";
-    static public String LOGIN = DOMAIN_WITH_API + "/login" +                         "?mobile=09139665376&password=123456";
+    static public String REGISTER = DOMAIN_WITH_API + "/register";
+    static public String LOGIN = DOMAIN_WITH_API + "/login";
     static public String distance = DOMAIN_WITH_API + "/distance";
-    static public String CONFIRMATION = DOMAIN_WITH_API + "/verify-and-login" +       "?mobile=09139665376&password=123456&token=1234";
+    static public String CONFIRMATION = DOMAIN_WITH_API + "/verify-and-login";
     static public String UPDATE_PASS = DOMAIN_WITH_API + "/password/change" ;//+         "?password=123456789&token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjEsImlzcyI6Imh0dHA6Ly93d3cuZ2hvbGxhYy5mYXJoYWQtYXNodGFyaS5jb20vYXBpL2xvZ2luIiwiaWF0IjoxNTAxNzQzMDMzLCJleHAiOjE1MDE3NDY2MzMsIm5iZiI6MTUwMTc0MzAzMywianRpIjoiQUdXZHNGenVlc0M5QVRJYSJ9.HKayrv8fsMxkm3fqdFTb8df2B-uY2DaO7C2XEXe5ixM";
     static public String UPDATE_NAME = DOMAIN_WITH_API + "/account-info/change" ;// + "?first_name=farhad&last_name=ashtari&token=eyJ0eXAiOiJ" ;
 
