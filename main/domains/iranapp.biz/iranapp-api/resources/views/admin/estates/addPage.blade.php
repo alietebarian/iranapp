@@ -127,13 +127,7 @@
                                     <label for="user">نام کاربر
                                         <b class="input-field-errors">*</b>
                                     </label>
-                                    <select class="selectpicker" name="user_id" id="user" data-live-search="true"
-                                            data-style="btn-white">
-                                        <option disabled selected>:: انتخاب کنید ::</option>
-                                        @foreach($users as $user)
-                                            <option {{ old('user_id') == $user->id ? 'selected' : '' }} value="{{ $user->id }}">{{ $user->first_name }} {{ $user->last_name }}</option>
-                                        @endforeach
-                                    </select>
+                                    @include('admin.partials.user_picker')
                                     @if($errors->has('user_id'))
                                         <b class="text-danger">{{ $errors->first('user_id') }}</b>
                                     @endif

@@ -34,13 +34,7 @@
                             <div class="col-xs-6 col-md-4">
                                 <div class="form-group">
                                     <label for="user_select" class="control-label">انتخاب کاربر</label>
-                                    <select name="user_id" id="user_select" class="selectpicker form-control"
-                                            data-live-search="true">
-                                        <option {{ !request()->has('user_id') ? 'selected' : '' }} value="all">:: انتخاب کنید ::</option>
-                                        @foreach($users as $user)
-                                            <option {{ request()->input('user_id') == $user->id ? 'selected' : '' }} value="{{ $user->id }}">{{ $user->first_name }} {{ $user->last_name }}</option>
-                                        @endforeach
-                                    </select>
+                                    @include('admin.partials.user_picker', ['id' => 'user_select', 'clearable' => true, 'selected' => request()->input('user_id')])
                                 </div>
                                 @if($errors->has('user'))
                                     <b class="text-danger">{{ $errors->first('user') }}</b>

@@ -92,7 +92,6 @@ class EmploysAdsController extends Controller
     public function showCreatePage(Request $request)
     {
         $data['provinces'] = Province::all();
-        $data['users'] = User::all();
         $data['specialtys'] = DB::table('employs_ads_specialty')->get();
         return view('admin.employs.addPage')->with($data);
     }/*showCreatePage*/
@@ -155,7 +154,6 @@ class EmploysAdsController extends Controller
     public function showUpdatePage(Request $request, EmploysAds $ads)
     {
         $data['provinces'] = Province::all();
-        $data['users'] = User::all();
         $data['Specialtys'] = EmploysAdsSpecialty::all();
         $data['ads'] = $ads;
         $currentCity = Region::find($ads->region_id)->city;

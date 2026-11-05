@@ -107,7 +107,6 @@ class UserAdsNotificationController extends Controller
             $refersQuery[$index]->created_at_fa = jdf::jdate('j F Y ساعت H:i', Carbon::createFromFormat('Y-m-d H:i:s', $refer->created_at)->getTimestamp());
         }
         $data['list'] = $refersQuery;
-        $data['users'] = User::all();
         return view('admin.business-refers.index')->with($data);
     }
 

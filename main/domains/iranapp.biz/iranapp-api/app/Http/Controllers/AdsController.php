@@ -481,7 +481,6 @@ class AdsController extends Controller {
 		$data[ 'plans' ]      = $plans;
 		$data[ 'provinces' ]  = Province::all();
 		$data[ 'categories' ] = Category::all();
-		$data[ 'users' ]      = User::all();
 
 		return view( 'admin.ads_insert_page' )->with( $data );
 	}
@@ -615,7 +614,6 @@ class AdsController extends Controller {
 		$currentCategory            = SubCategory::find( $ads->sub_category_id )->category;
 		$data[ 'current_category' ] = $currentCategory;
 		$data[ 'sub_categories' ]   = $currentCategory->subCategories;
-		$data[ 'users' ]            = User::all();
 		$data[ 'ads' ]              = $ads;
 		$data[ 'ad_plan' ]          = $ads->plan;
 		$data[ 'photos' ]           = AdsPhoto::where( 'ads_id' , $ads->id )->get();

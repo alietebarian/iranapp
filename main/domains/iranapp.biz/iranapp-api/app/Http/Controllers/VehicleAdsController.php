@@ -113,7 +113,6 @@ class VehicleAdsController extends Controller
     public function showCreatePage(Request $request)
     {
         $data['provinces'] = Province::all();
-        $data['users'] = User::all();
         $data['brands'] = DB::table('brand')->get();
         $data['cylinder_volumes'] = CylinderVolumes::all();
         return view('admin.vehicles.addPage')->with($data);
@@ -194,7 +193,6 @@ class VehicleAdsController extends Controller
     public function showUpdatePage(Request $request, VehicleAds $ads)
     {
         $data['provinces'] = Province::all();
-        $data['users'] = User::all();
         $data['brands'] = Brand::all();
         $data['ads'] = $ads;
         $currentCity = Region::find($ads->region_id)->city;

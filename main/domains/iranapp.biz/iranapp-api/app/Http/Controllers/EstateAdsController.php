@@ -241,7 +241,6 @@ class EstateAdsController extends Controller
     public function showCreatePage(Request $request)
     {
         $data['provinces'] = Province::all();
-        $data['users'] = User::all();
         $data['categories'] = EstateAdsCategories::whereNull('parent_id')->get();
         return view('admin.estates.addPage')->with($data);
     }
@@ -417,7 +416,6 @@ class EstateAdsController extends Controller
     public function showUpdatePage(Request $request, EstateAds $ads)
     {
         $data['provinces'] = Province::all();
-        $data['users'] = User::all();
         $data['ads'] = $ads;
         $data['photos'] = $ads->photo;
         $data['categories'] = EstateAdsCategories::whereNull('parent_id')->get();

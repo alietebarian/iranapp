@@ -175,13 +175,7 @@
                             <div class="col-xs-12 col-md-6">
                                 <div class="form-group">
                                     <label for="user">نام کاربر</label>
-                                    <select name="user_id[]" id="user"
-                                            class="form-control selectpicker js-example-basic-multiple"
-                                            multiple="multiple" data-live-search="true">
-                                        @foreach($users as $usr)
-                                            <option {{ in_array($usr->id ,$user_ads) ? 'selected' : '' }} value="{{ $usr->id }}">{{ $usr->first_name }} {{ $usr->last_name }}</option>
-                                        @endforeach
-                                    </select>
+                                    @include('admin.partials.user_picker', ['multiple' => true, 'selected' => $user_ads])
                                 </div>
                             </div>
                             <div class="col-xs-12 col-md-6">
