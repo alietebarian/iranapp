@@ -1,0 +1,21 @@
+# iranapp.biz/download — the direct APK of the latest release (iranapp.apk, replaced on every
+# release; see DEPLOYMENT.md, section 9).
+
+DirectoryIndex index.html
+
+<IfModule mod_mime.c>
+    AddType application/vnd.android.package-archive .apk
+</IfModule>
+
+<IfModule mod_headers.c>
+    <FilesMatch "\.apk$">
+        # Unquoted on purpose: LiteSpeed sends \" literally, and some browsers then save the file
+        # as "iranapp.apk" with the quotes (or _iranapp.apk_). A plain token needs no quotes.
+        Header set Content-Disposition "attachment; filename=iranapp.apk"
+        # Same URL for every release: make browsers and proxies re-check instead of serving an old build.
+        Header set Cache-Control "no-cache"
+    </FilesMatch>
+    <FilesMatch "\.html$">
+        Header set Cache-Control "no-cache"
+    </FilesMatch>
+</IfModule>

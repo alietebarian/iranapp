@@ -1,0 +1,2 @@
+# The release APK is uploaded to the server by hand; keep the binary out of git.
+*.apk

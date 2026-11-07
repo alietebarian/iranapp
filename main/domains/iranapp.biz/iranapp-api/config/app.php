@@ -129,4 +129,8 @@ return [
         'api_key' => env('KAVENEGAR_API_KEY'),
     ],
 
+    // Refuse API calls from app builds older than 202 (App\Http\Middleware\BlockOutdatedApps).
+    // Turn on only after the new version is live on Cafe Bazaar and iranapp.biz/download.
+    'block_outdated_apps' => (bool) env('BLOCK_OUTDATED_APPS', false),
+
 ];

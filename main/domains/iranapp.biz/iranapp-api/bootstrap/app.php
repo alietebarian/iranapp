@@ -22,6 +22,7 @@ return Application::configure(basePath: dirname(__DIR__))
             \App\Http\Middleware\SendEContractExpiryReminders::class,
         ]);
         $middleware->api(prepend: [
+            \App\Http\Middleware\BlockOutdatedApps::class,
             \App\Http\Middleware\AcceptTokenQueryParameter::class,
         ]);
 
