@@ -1888,6 +1888,7 @@ public class Edit_Home_Add extends AppCompatActivity implements OnMapReadyCallba
 
 
                     okhttp3.Request request = new okhttp3.Request.Builder()
+                            .header("User-Agent", com.ideabonyan.iranapp.Utils.AppUserAgent.value())
                             .url(handleInserUrl)
                             .header("Authorization", "Bearer " + token)
                             .post(reqEntity.build())

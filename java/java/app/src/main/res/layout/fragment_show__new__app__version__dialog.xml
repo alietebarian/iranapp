@@ -28,7 +28,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
-                android:text="نسخه جدید ایران آپ را از کافه بازار بخواهید."
+                android:text="برای ادامه، نسخه جدید ایران آپ را نصب کنید."
                 android:textColor="#c62828" />
 
             <ImageView
@@ -41,18 +41,6 @@
 
 
         </LinearLayout>
-
-
-        <com.ideabonyan.iranapp.Components.MyCheckbox
-            android:visibility="gone"
-            android:id="@+id/check_dontshow"
-            android:layoutDirection="rtl"
-            android:textColor="#444"
-            android:layout_margin="5dp"
-            android:textSize="14sp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="عدم نمایش مجدد این هشدار"/>
         
 
         <LinearLayout
@@ -79,7 +67,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center"
-                        android:text="بیخیال"
+                        android:text="خروج"
                         android:textColor="#fff"
                         android:textSize="16sp"
                         />

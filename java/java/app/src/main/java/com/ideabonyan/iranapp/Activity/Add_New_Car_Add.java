@@ -1378,6 +1378,7 @@ public class Add_New_Car_Add extends AppCompatActivity implements Get_Insert_Edi
 
 
                     okhttp3.Request request = new okhttp3.Request.Builder()
+                            .header("User-Agent", com.ideabonyan.iranapp.Utils.AppUserAgent.value())
                             .url(handleInserUrl)
                             .header("Authorization", "Bearer " + token)
                             .post(reqEntity.build())

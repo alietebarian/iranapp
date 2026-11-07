@@ -85,39 +85,9 @@ public class SplashScreenActivity extends AppCompatActivity implements Get_Inser
 //        initService();
 
         Log.v("show_intro",userSessionManager.getShowIntroPage()+"");
-        if (userSessionManager.getDont_show_new_version().equals("0")) {
-            getappversioncode();
-        } else {
-            if (userSessionManager.getShowIntroPage()==0){
-                runTimer2();
-                Log.v("show_intro",userSessionManager.getShowIntroPage()+"1");
-                doAnimation();
-
-            }else{
-                Log.v("show_intro",userSessionManager.getShowIntroPage()+"2");
-
-                if (user.isLoggedIn()&&user.isVerrified()){
-                    getData();
-                    Log.v("show_intro",userSessionManager.getShowIntroPage()+"3");
-                    runTimer();
-                    doAnimation();
-                }else if (user.isLoggedIn()&!user.isVerrified()){
-                    runTimer3();
-                    Log.v("show_intro",userSessionManager.getShowIntroPage()+"4");
-                    doAnimation();
-
-
-                }else{
-                    runTimer4();
-                    Log.v("show_intro",userSessionManager.getShowIntroPage()+"5");
-                    doAnimation();
-
-
-                }
-
-            }
-
-        }
+        // Every launch asks the server for the latest version: the update is mandatory, so the
+        // old "don't show again" flag (set by builds before 201) no longer skips the check.
+        getappversioncode();
         new Handler().postDelayed(new Runnable() {
             @RequiresApi(api = Build.VERSION_CODES.M)
             @Override

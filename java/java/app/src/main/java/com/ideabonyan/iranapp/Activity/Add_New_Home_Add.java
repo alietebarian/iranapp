@@ -1575,6 +1575,7 @@ public class Add_New_Home_Add extends AppCompatActivity implements OnMapReadyCal
 
 
                     okhttp3.Request request = new okhttp3.Request.Builder()
+                            .header("User-Agent", com.ideabonyan.iranapp.Utils.AppUserAgent.value())
                             .url(handleInserUrl)
                             .header("Authorization", "Bearer " + token)
                             .post(reqEntity.build())

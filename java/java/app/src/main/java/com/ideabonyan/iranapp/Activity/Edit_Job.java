@@ -1182,6 +1182,7 @@ public class Edit_Job extends AppCompatActivity implements OnMapReadyCallback, G
 
 
                     okhttp3.Request request = new okhttp3.Request.Builder()
+                            .header("User-Agent", com.ideabonyan.iranapp.Utils.AppUserAgent.value())
                             .url(handleInserUrl)
                             .header("Authorization", "Bearer " + token)
                             .post(reqEntity.build())

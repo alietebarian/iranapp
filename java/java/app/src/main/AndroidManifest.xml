@@ -20,6 +20,7 @@
          Activation codes are read with the SMS User Consent API (Utils.SmsReceiver) instead. -->
 
     <application
+        android:name=".IranApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"

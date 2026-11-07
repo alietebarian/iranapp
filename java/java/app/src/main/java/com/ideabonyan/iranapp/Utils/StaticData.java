@@ -128,6 +128,9 @@ public class StaticData {
     static public String BOOK_SEARCH = "http://api.wikiapi.ir/book/api/v1/search.php";
 
     public static String getappverioncode=DOMAIN_WITH_API+"/app-version";
+    // Download page with the Bazaar link and the direct APK; the update dialog opens it when
+    // Cafe Bazaar isn't installed (public_html/download on the server).
+    static public String DOWNLOAD_PAGE = DOMAIN + "/download/";
     // GET: the install counts shown on the landing page. POST: InstallTracker reporting this install.
     static public String INSTALL_STATS = DOMAIN_WITH_API + "/app-stats/installs";
     // Electronic contract (منو > دیگر > قرارداد الکترونیک): current state + wording, and submission.
