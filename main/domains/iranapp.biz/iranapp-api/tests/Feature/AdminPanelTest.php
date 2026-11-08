@@ -52,6 +52,14 @@ class AdminPanelTest extends TestCase
         $this->assertAuthenticatedAs(Admin::first(), 'admin');
     }
 
+    /** A logged-in admin opening the login page again used to land on "/", which is a 404. */
+    public function test_login_page_sends_a_logged_in_admin_to_the_dashboard(): void
+    {
+        $this->actingAs($this->makeAdmin(), 'admin')
+            ->get('/admin/login')
+            ->assertRedirect(route('showAdminDashboard'));
+    }
+
     public function test_wrong_password_does_not_authenticate(): void
     {
         $this->makeAdmin();

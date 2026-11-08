@@ -5,6 +5,10 @@
 
     RewriteEngine On
 
+    # /admin is the panel's assets folder (403 when opened); send it to the panel. A logged-out
+    # visitor goes on from the dashboard to the login page.
+    RewriteRule ^admin/?$ /admin/dashboard [R=302,L]
+
     # Redirect Trailing Slashes If Not A Folder...
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteRule ^(.*)/$ /$1 [L,R=301]

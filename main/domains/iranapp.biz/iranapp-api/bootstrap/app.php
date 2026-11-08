@@ -33,6 +33,9 @@ return Application::configure(basePath: dirname(__DIR__))
                 ? null
                 : route('showAdminLoginForm')
         );
+        // guest:admin guards only the admin login form. Laravel's default sends an already
+        // logged-in admin to "/", which has no page (404); open the dashboard instead.
+        $middleware->redirectUsersTo(fn () => route('showAdminDashboard'));
         $middleware->api(append: [
             \App\Http\Middleware\ConvertArabicLettersToPersian::class,
             \App\Http\Middleware\convertFarsiNumbers::class,
