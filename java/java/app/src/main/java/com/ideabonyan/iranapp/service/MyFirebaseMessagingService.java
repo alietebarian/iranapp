@@ -17,6 +17,7 @@ import com.ideabonyan.iranapp.UserData.User;
 import com.ideabonyan.iranapp.UserData.UserHelper;
 import com.ideabonyan.iranapp.UserData.UserSessionManager;
 import com.ideabonyan.iranapp.Utils.Config;
+import com.ideabonyan.iranapp.Utils.FcmTokenSync;
 import com.ideabonyan.iranapp.Utils.Get_Volley_Call_Back;
 import com.ideabonyan.iranapp.Utils.NotificationUtils;
 import com.ideabonyan.iranapp.Utils.StaticData;
@@ -50,26 +51,21 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService impleme
     }
 
     private void storeRegIdInPref(String token) {
+        userSessionManager = new UserSessionManager(getApplicationContext());
+        if (!userSessionManager.getNotificationInfo().equals("2")) {
+            // First registration of this device: the server starts it with both kinds on.
+            userSessionManager.setNotificationStatus("1", "1");
+        }
+        // Before setNotigy_code: FcmTokenSync reads the token being replaced from it. Every
+        // new token is sent, not just the first one (that is what broke after the move to the
+        // iranapp-fc361 Firebase project).
+        FcmTokenSync.sync(getApplicationContext(), token);
+
         SharedPreferences pref = getApplicationContext().getSharedPreferences(Config.SHARED_PREF, 0);
         SharedPreferences.Editor editor = pref.edit();
         editor.putString("regId", token);
-        userSessionManager = new UserSessionManager(getApplicationContext());
         userSessionManager.setNotigy_code(token);
         editor.apply();
-
-        checkForNotificationSettings(token);
-    }
-
-    private void checkForNotificationSettings(String token) {
-        if (!userSessionManager.getNotificationInfo().equals("2")) {
-            if (!token.equals("0")) {
-                String url = StaticData.NOTIFICATIONS_IF_NOT_LOGGED_IN + "?token=" + token;
-                Map<String, String> params = new HashMap<>();
-                Get_Volley_Call_Back.binddata(this);
-                Get_Volley_Call_Back.Call_Volley(getApplicationContext(), params, url, Request.Method.POST, 1);
-                userSessionManager.setNotificationStatus("1", "1");
-            }
-        }
     }
 
     @Override

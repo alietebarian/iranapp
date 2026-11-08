@@ -10,6 +10,7 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import androidx.annotation.NonNull;
@@ -64,6 +65,7 @@ import com.ideabonyan.iranapp.UserData.UserHelper;
 import com.ideabonyan.iranapp.UserData.UserSessionManager;
 import com.ideabonyan.iranapp.Utils.Config;
 import com.ideabonyan.iranapp.Utils.CustomTypefaceSpan;
+import com.ideabonyan.iranapp.Utils.FcmTokenSync;
 import com.ideabonyan.iranapp.Utils.Get_Volley_Call_Back;
 import com.ideabonyan.iranapp.Utils.NotificationUtils;
 import com.ideabonyan.iranapp.service.MyFirebaseMessagingService;
@@ -551,6 +553,13 @@ public class MainActivity extends AppCompatActivity implements Get_Insert_Edit_D
     }
 
     private void fireBaseStuff() {
+        // onNewToken only fires when FCM issues a token; this also catches a token the server
+        // never accepted (no internet then, or sent by a version before 2.0.3).
+        FirebaseMessaging.getInstance().getToken()
+                .addOnSuccessListener(token -> {
+                    FcmTokenSync.sync(this, token);
+                    userSessionManager.setNotigy_code(token);
+                });
 
         mRegistrationBroadcastReceiver = new BroadcastReceiver() {
             @Override
@@ -743,6 +752,12 @@ public class MainActivity extends AppCompatActivity implements Get_Insert_Edit_D
         }
         if (read_external_storeg != PackageManager.PERMISSION_GRANTED) {
             listPermissionsNeeded.add(Manifest.permission.READ_EXTERNAL_STORAGE);
+        }
+        // Android 13+ shows no notification at all until the user allows it, and only asks
+        // when the app requests it.
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU
+                && ContextCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
+            listPermissionsNeeded.add(Manifest.permission.POST_NOTIFICATIONS);
         }
 
         if (!listPermissionsNeeded.isEmpty()) {

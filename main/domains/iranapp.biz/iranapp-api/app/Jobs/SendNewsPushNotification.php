@@ -29,9 +29,13 @@ class SendNewsPushNotification
             return;
         }
 
+        // Logged-in users keep their choice on users; every other device (most of them) on
+        // notification_setting, where the app's «نوع اعلان» dialog saves it. sendToTokens drops
+        // the duplicates of devices that are in both.
         $tokens = DB::table('users')
             ->where('send_news_notifications', 1)
             ->pluck('fcm_token')
+            ->merge(DB::table('notification_setting')->where('send_news_notifications', 1)->pluck('fcm_token'))
             ->all();
         if (empty(array_filter($tokens))) {
             return;
