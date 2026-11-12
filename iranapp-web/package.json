@@ -1,0 +1,39 @@
+{
+  "name": "iranapp-web",
+  "private": true,
+  "version": "1.0.0",
+  "description": "نسخه تحت وب ایران آپ (PWA) — همان امکانات اپلیکیشن اندروید، روی همان API",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "typecheck": "tsc -b",
+    "preview": "vite preview",
+    "import-assets": "python scripts/import-android-assets.py"
+  },
+  "dependencies": {
+    "@mdi/js": "^7.4.47",
+    "@tanstack/react-query": "^5.107.1",
+    "axios": "^1.21.1",
+    "embla-carousel-react": "^8.6.0",
+    "firebase": "^13.3.0",
+    "leaflet": "^1.9.4",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "react-leaflet": "^5.0.0",
+    "react-router": "^8.5.1",
+    "zustand": "^5.1.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.3.5",
+    "@types/leaflet": "^1.9.22",
+    "@types/node": "^26.6.6",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^6.3.0",
+    "tailwindcss": "^4.3.5",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.8",
+    "vite-plugin-pwa": "^2.0.0"
+  }
+}

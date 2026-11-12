@@ -1,0 +1,23 @@
+# Dependencies (restored with `npm install`)
+node_modules/
+
+# Build output (rebuilt with `npm run build`)
+dist/
+dev-dist/
+*.tsbuildinfo
+
+# Local settings and secrets; .env.example is the committed template
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log
+npm-debug.log*
+
+# Editor and OS files
+.vscode/*
+!.vscode/extensions.json
+.idea/
+.DS_Store
+Thumbs.db

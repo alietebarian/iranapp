@@ -1,0 +1,327 @@
+@import 'tailwindcss';
+
+/* The fonts of the Android app (assets/IRANYekanRegularMobile(FaNum).ttf and b_sina_bold.ttf).
+   The FaNum cut draws Latin digits as Persian ones, exactly like the app. */
+@font-face {
+  font-family: 'IRANYekan';
+  src: url('./assets/fonts/IRANYekanFaNum.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'BSina';
+  src: url('./assets/fonts/BSinaBold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@theme {
+  --font-sans: 'IRANYekan', Tahoma, 'Segoe UI', system-ui, sans-serif;
+  --font-sina: 'BSina', 'IRANYekan', Tahoma, sans-serif;
+
+  /* res/values/colors.xml */
+  --color-primary: #b71c1c;
+  --color-primary-dark: #616161;
+  --color-accent-gray: #6b6b6b;
+  --color-mild: #616161;
+  --color-hot: #00796b;
+  --color-warn: #df0404;
+
+  --color-pro-bg: #fff8e1;
+  --color-pro-accent: #f9a825;
+  --color-pro-text: #8d5b00;
+
+  /* res/values/category_colors.xml: the dark landing page */
+  --color-home-accent: #ff5252;
+  --color-home-bar: #151b29;
+  --color-home-bar-stroke: #262e40;
+  --color-home-bg-top: #131826;
+  --color-home-bg-bottom: #090c14;
+  --color-home-plate: #3c4760;
+  --color-home-plate-stroke: #55617c;
+  --color-home-nav: #8d98ac;
+  --color-home-text: #eef1f6;
+  --color-home-muted: #a9b2c3;
+  --color-home-tile: #1a2030;
+  --color-home-tile-stroke: #2a3245;
+
+  --color-sub-icon: #2b3440;
+  --color-sub-plate: #f2f4f7;
+  --color-sub-plate-stroke: #dfe3ea;
+
+  --shadow-card: 0 1px 3px rgb(0 0 0 / 0.2), 0 1px 2px rgb(0 0 0 / 0.12);
+  --shadow-bar: 0 2px 4px rgb(0 0 0 / 0.22);
+}
+
+/* The app sizes many views in "sdp": a dp that grows with the screen width (1sdp = width / 300).
+   The page column is at most 480px wide, like a phone. */
+:root {
+  --shell-width: min(100vw, 480px);
+  --sdp: calc(var(--shell-width) / 300);
+  --bar-height: 56px;
+}
+
+@utility w-sdp-* {
+  width: calc(--value(number) * var(--sdp));
+}
+@utility h-sdp-* {
+  height: calc(--value(number) * var(--sdp));
+}
+@utility size-sdp-* {
+  width: calc(--value(number) * var(--sdp));
+  height: calc(--value(number) * var(--sdp));
+}
+@utility min-h-sdp-* {
+  min-height: calc(--value(number) * var(--sdp));
+}
+
+/* Things that are fixed to the viewport but must stay inside the phone-wide column. */
+@utility shell-fixed {
+  position: fixed;
+  left: 50%;
+  width: var(--shell-width);
+  transform: translateX(-50%);
+}
+
+@utility bg-home-dark {
+  background-image: linear-gradient(to bottom, var(--color-home-bg-top), var(--color-home-bg-bottom));
+}
+@utility bg-gradient-red {
+  background-image: radial-gradient(circle at 50% 25%, #ef5350, var(--color-primary) 85%);
+}
+@utility bg-btn-red {
+  background-image: linear-gradient(to top, #e53935, var(--color-primary));
+}
+@utility no-scrollbar {
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+@utility pb-safe {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+@utility pt-safe {
+  padding-top: env(safe-area-inset-top);
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  html,
+  body {
+    height: 100%;
+    overscroll-behavior: none;
+  }
+
+  body {
+    margin: 0;
+    background: #05070c;
+    color: #424242;
+    font-family: var(--font-sans);
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  #root {
+    position: relative;
+    width: var(--shell-width);
+    height: 100dvh;
+    margin: 0 auto;
+    overflow: hidden;
+    background: #eeeeee;
+  }
+
+  /* Dialogs and toasts are rendered here so they sit above every page but stay in the column. */
+  #overlay-root {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    z-index: 40;
+    width: var(--shell-width);
+    height: 100dvh;
+    transform: translateX(-50%);
+    pointer-events: none;
+  }
+
+  button,
+  a,
+  [role='button'] {
+    cursor: pointer;
+    touch-action: manipulation;
+  }
+
+  button:disabled {
+    cursor: default;
+  }
+
+  input,
+  textarea,
+  select {
+    font-family: inherit;
+    /* iOS zooms the page when a focused field is smaller than 16px, so fields are 16px here
+       instead of the app's 14sp. */
+    font-size: 16px;
+    outline: none;
+  }
+
+  input[type='number']::-webkit-inner-spin-button,
+  input[type='number']::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  select {
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: transparent;
+  }
+
+  img {
+    -webkit-user-drag: none;
+  }
+
+  /* Phones draw overlay scrollbars; on a desktop keep them thin and quiet. */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: rgb(128 128 128 / 0.45) transparent;
+  }
+}
+
+/* Material-like press feedback. */
+@utility tap {
+  transition: background-color 120ms, opacity 120ms, filter 120ms;
+  &:active {
+    filter: brightness(0.9);
+  }
+}
+@utility tap-light {
+  transition: background-color 120ms;
+  &:active {
+    background-color: rgb(0 0 0 / 0.08);
+  }
+}
+@utility tap-dark {
+  transition: background-color 120ms;
+  &:active {
+    background-color: rgb(255 255 255 / 0.08);
+  }
+}
+
+@keyframes spin-progress {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes linear-progress {
+  0% {
+    left: -40%;
+    right: 100%;
+  }
+  60% {
+    left: 100%;
+    right: -40%;
+  }
+  100% {
+    left: 100%;
+    right: -40%;
+  }
+}
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes pop-in {
+  from {
+    opacity: 0;
+    transform: scale(0.94);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes page-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes splash-word {
+  from {
+    opacity: 0;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(-14px);
+  }
+}
+
+@utility animate-fade-in {
+  animation: fade-in 160ms ease-out both;
+}
+@utility animate-pop-in {
+  animation: pop-in 180ms ease-out both;
+}
+@utility animate-slide-up {
+  animation: slide-up 220ms ease-out both;
+}
+@utility animate-page-in {
+  animation: page-in 200ms ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 1ms !important;
+    transition-duration: 1ms !important;
+  }
+}
+
+/* The long HTML texts taken from the app (rules, contact). */
+.rich-text p {
+  margin: 0 0 10px;
+}
+.rich-text h4 {
+  margin: 14px 0 8px;
+  font-size: 15px;
+  color: var(--color-primary);
+}
+
+/* Leaflet inside a right-to-left page. */
+.leaflet-container {
+  direction: ltr;
+  font-family: var(--font-sans);
+  background: #e5e3df;
+  /* Its panes use z-index up to 1000; keep them in their own stacking context, under dialogs. */
+  z-index: 0;
+}
+.leaflet-container .leaflet-control-attribution {
+  font-size: 9px;
+}
